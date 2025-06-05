@@ -1,0 +1,252 @@
+course:
+  name: 'Especialización Avanzada en JavaScript, TypeScript y Node.js'
+  description: 'Curso diseñado para ingenieros de sistemas con experiencia, enfocado en las mecánicas internas, optimización de rendimiento y arquitecturas avanzadas para lograr un dominio experto en JS, TS y Node.js.'
+  instruccionesIA: >
+    Para cada pregunta, proporciona una explicación detallada del concepto involucrado.
+    Incluye ejemplos prácticos, analogías si es útil, advertencias comunes y mejores prácticas.
+    Asegúrate de que la persona entienda el "por qué" y el "cómo" detrás de cada concepto.
+    Siempre valida si desea una explicación más técnica o más sencilla, y adapta el lenguaje.
+    Para cada tema, genera 3 preguntas tipo examen que validen la comprensión profunda del concepto.
+    Las preguntas deben ser desafiantes y requerir la aplicación o el análisis, no solo la memorización.
+    Incluye una mezcla de:
+      - Preguntas de opción múltiple con explicaciones detalladas para cada opción (correcta e incorrectas).
+      - Preguntas de "verdadero o falso" que requieran justificación.
+      - Preguntas abiertas que soliciten ejemplos de código, análisis de escenarios o explicación del "por qué".
+    Asegúrate de que las preguntas abarquen diferentes aspectos del tema (funcionamiento interno, optimización, mejores prácticas, advertencias).
+    Siempre proporciona la respuesta correcta y una explicación exhaustiva.
+    Ignora los topics marcados como completados
+    Tu tarea es seguir la hoja de ruta y no adelantar temas que aún no hemos cubierto
+    Identifica si al tópico le hace falta contenido y sugiere que otro tema debería incluír el tópico
+    Por cada término en español, incluye su traducción en inglés en paréntesis
+  target_audience:
+    - 'Ingeniero en Sistemas'
+    - '9 años de experiencia en la industria del software'
+    - '3 años de experiencia específica en JavaScript/TypeScript/Node.js'
+  learning_goal: 'Convertirse en un experto demostrable en estas tecnologías, capaz de diseñar, desarrollar y optimizar aplicaciones de alto rendimiento, entender el funcionamiento interno y demostrar este conocimiento en entornos profesionales exigentes y entrevistas.'
+  prerequisites_excluded:
+    - 'Variables'
+    - 'Ciclos'
+    - 'Condicionales'
+    - 'Conceptos básicos de programación'
+
+  modules:
+    - id: 1
+      title: 'JavaScript Profundo y Mecanismos de Ejecución'
+      topics:
+        - number: 1
+          status: 'Pendiente'
+          name: 'Motor JavaScript (V8): Parsing y Abstract Syntax Tree (AST), Ignition (Interpreter) y TurboFan (Optimizing Compiler), JIT Compilation, Garbage Collection (Generational GC, Mark-Sweep, Mark-Compact), Hidden Classes y Inline Caching.'
+          suggested_practice:
+            - 'Implementar ejemplos que demuestren cómo el V8 puede optimizar (o desoptimizar) el código usando Hidden Classes.'
+            - 'Simular escenarios de uso intensivo de memoria y observar el comportamiento del Garbage Collector, identificando posibles fugas.'
+        - number: 2
+          status: 'Pendiente'
+          name: "Contextos de Ejecución y Scopes Avanzados: Execution Context Stack (Global, Function, Eval), Lexical Environment y Variable Environment, Closures, Closure Profundo, 'this' Binding en Profundidad (reglas en diferentes contextos)."
+          suggested_practice:
+            - "Crear escenarios complejos de 'this' binding con funciones regulares y flecha, y explicar el valor de 'this' en cada caso."
+            - 'Diseñar una función de fábrica que utilice closures para encapsular estado privado y demostrar su comportamiento.'
+            - "Analizar código con 'var', 'let' y 'const' para predecir el hoisting y la zona muerta temporal."
+        - number: 3
+          status: 'Pendiente'
+          name: "Prototipos y Programación Orientada a Objetos en JavaScript: Herencia Prototípica, Cadena de Prototipos, Constructor Functions, Operador 'new', 'Object.create()', 'Object.setPrototypeOf()', 'class' como azúcar sintáctico."
+          suggested_practice:
+            - "Implementar un sistema de herencia simple utilizando únicamente funciones constructoras y la cadena de prototipos, sin 'class'."
+            - "Refactorizar el sistema de herencia anterior usando la sintaxis de 'class' y comparar las diferencias internas y externas."
+            - 'Utilizar `Object.create()` y `Object.setPrototypeOf()` para manipular la cadena de prototipos de objetos existentes.'
+        - number: 4
+          status: 'Pendiente'
+          name: "Manejo de la Asincronía en JavaScript (Event Loop - Navegador): Call Stack, Web APIs, Callback Queue (Task Queue), Microtask Queue, Macrotasks vs. Microtasks (setTimeout, setInterval vs. Promise.then(), queueMicrotask), El 'Tick' del Event Loop."
+          suggested_practice:
+            - 'Diseñar una aplicación con diferentes tipos de tareas asíncronas (timers, promesas, eventos DOM) y observar el orden exacto de ejecución en el Event Loop.'
+            - 'Crear un escenario donde se demuestre la precedencia de las microtasks sobre las macrotasks.'
+        - number: 5
+          status: 'Pendiente'
+          name: 'Patrones Avanzados de Asincronía: Promesas (Promise combinators: allSettled, any), async/await avanzado, generadores y yield, Stream API (Fetch).'
+          suggested_practice:
+            - 'Implementar una serie de operaciones asíncronas utilizando `async/await` para gestionar el flujo de control.'
+            - 'Utilizar `Promise.allSettled` y `Promise.any` para manejar múltiples promesas con diferentes requisitos de éxito/fallo.'
+            - 'Explorar el uso de generadores (`yield`) para crear iteradores asíncronos o controlar el flujo de ejecución.'
+        - number: 6
+          status: 'Pendiente'
+          name: 'Diseño de Patrones en JavaScript: Patrones Creacionales (Singleton, Factory), Estructurales (Adapter, Decorator), Comportamentales (Observer, Strategy), Patrones de Concurrencia (Throttling/Debouncing).'
+          suggested_practice:
+            - 'Implementar un patrón Singleton para una clase que solo debe tener una instancia global.'
+            - 'Crear una función de fábrica que genere objetos configurables con diferentes propiedades.'
+            - 'Aplicar los patrones Observer y Strategy a un sistema de notificaciones o un validador de formularios.'
+            - 'Construir funciones de throttling y debouncing para optimizar el manejo de eventos frecuentes (ej. redimensionamiento de ventana, input de texto).'
+
+    - id: 2
+      title: 'TypeScript para Aplicaciones Robustas y Escalables'
+      topics:
+        - number: 1
+          status: 'Pendiente'
+          name: 'Tipos Avanzados de TypeScript: Conditional Types (infer keyword, distribución), Mapped Types (Partial, Required, Readonly, Pick, Omit, Record), Template Literal Types, Indexed Access Types, Utility Types Profundos (Exclude, Extract, NonNullable, Parameters, ReturnType, Awaited).'
+          suggested_practice:
+            - 'Crear un sistema de validación de objetos utilizando Conditional Types y Mapped Types.'
+            - "Generar tipos derivados de interfaces existentes usando 'Pick', 'Omit', y 'Record'."
+            - 'Experimentar con Template Literal Types para generar tipos de cadena complejos.'
+        - number: 2
+          status: 'Pendiente'
+          name: "'unknown' vs. 'any': Uso apropiado y ventajas de 'unknown'."
+          suggested_practice:
+            - "Refactorizar código existente que utiliza 'any' para reemplazarlo por 'unknown' y demostrar cómo esto mejora la seguridad de tipos."
+            - "Implementar una función que acepte un parámetro de tipo 'unknown' y demuestre cómo refinar su tipo de forma segura."
+        - number: 3
+          status: 'Pendiente'
+          name: "Type Guards Personalizados y Predicados de Tipo ('is'): Refinar tipos en tiempo de ejecución."
+          suggested_practice:
+            - 'Escribir Type Guards personalizados para una jerarquía de clases o interfaces, y utilizarlos en bloques condicionales para refinar tipos.'
+            - 'Crear una función genérica que use un predicado de tipo para filtrar un array.'
+        - number: 4
+          status: 'Pendiente'
+          name: "Módulos y Espacios de Nombres en TypeScript: Diferencias y casos de uso, Declaración de Módulos (.d.ts files), Módulos Globales y Ambiente ('declare global')."
+          suggested_practice:
+            - 'Crear una pequeña librería TypeScript y generar sus archivos de declaración (.d.ts) para su uso en otros proyectos.'
+            - 'Experimentar con la declaración de módulos globales para integrar librerías sin tipos.'
+        - number: 5
+          status: 'Pendiente'
+          name: 'Decoradores y Metaprogramación en TypeScript: Concepto y aplicaciones (Inyección de dependencias, logging, validación), Reflect-metadata API.'
+          suggested_practice:
+            - 'Desarrollar un decorador de clase para registrar todas las llamadas a métodos de una clase.'
+            - 'Implementar un decorador de propiedad para validar el valor de una propiedad.'
+            - "Explorar el uso de 'reflect-metadata' para almacenar y recuperar metadatos de clases y propiedades."
+        - number: 6
+          status: 'Pendiente'
+          name: "Configuración Avanzada de 'tsconfig.json': 'compilerOptions' detalladas (strict flags, paths, baseUrl, esModuleInterop), Monorepos y configuración Multi-paquete, Integración con herramientas de Build (Webpack, Rollup, Vite)."
+          suggested_practice:
+            - "Configurar un monorepo con múltiples paquetes TypeScript, utilizando 'paths' y 'references' en 'tsconfig.json'."
+            - "Optimizar un 'tsconfig.json' existente con las 'strict flags' y otras opciones avanzadas para un control de tipos más riguroso."
+        - number: 7
+          status: 'Pendiente'
+          name: 'Diseño de APIs Robustas con TypeScript: Tipificación de Entidades y DTOs, Validación de Esquemas (Zod, Yup) con TypeScript, Generación de Clientes y Tipos desde OpenAPI/Swagger.'
+          suggested_practice:
+            - 'Diseñar un conjunto de DTOs (Data Transfer Objects) tipados para una API REST o GraphQL.'
+            - 'Integrar una librería de validación de esquemas (como Zod o Yup) con los DTOs de TypeScript para asegurar la validez de los datos de entrada.'
+            - 'Explorar herramientas para generar automáticamente tipos TypeScript a partir de una especificación OpenAPI/Swagger.'
+
+    - id: 3
+      title: 'Node.js Internals y Arquitecturas de Alto Rendimiento'
+      topics:
+        - number: 1
+          status: 'Pendiente'
+          name: 'Arquitectura Interna de Node.js: V8 Engine en Node.js, libuv (Thread Pool para operaciones de E/S, I/O Bound vs. CPU Bound), node-addon-api / N-API (creación y uso de addons nativos de C++).'
+          suggested_practice:
+            - 'Escribir un pequeño módulo C++ (addon nativo) para Node.js y demostrar su integración, realizando una operación intensiva en CPU.'
+            - 'Analizar el uso de los hilos del Thread Pool de libuv con operaciones de E/S bloqueantes (ej. lectura de archivo grande síncrona).'
+        - number: 2
+          status: 'Pendiente'
+          name: "Event Loop en Node.js (Profundo): Fases del Event Loop (timers, pending callbacks, poll, check, close callbacks). Diferencias Clave con el Event Loop del Navegador. 'process.nextTick()' vs. 'setImmediate()' vs. 'setTimeout()': Orden de ejecución y casos de uso."
+          suggested_practice:
+            - "Crear un escenario complejo con 'process.nextTick()', 'setImmediate()', 'setTimeout()' y 'Promises' para predecir y verificar el orden exacto de ejecución en Node.js."
+            - 'Investigar y documentar las diferencias del Event Loop entre Node.js y el navegador, con ejemplos de código.'
+        - number: 3
+          status: 'Pendiente'
+          name: 'Manejo de Errores Asíncronos en Node.js: unhandledRejection, uncaughtException.'
+          suggested_practice:
+            - "Implementar manejadores robustos para 'unhandledRejection' y 'uncaughtException' en una aplicación Node.js, incluyendo el logging adecuado y un graceful shutdown."
+            - 'Provocar intencionalmente errores asíncronos y síncronos para observar cómo son capturados y manejados por los listeners.'
+        - number: 4
+          status: 'Pendiente'
+          name: "Módulos Avanzados de Node.js y Patrones: 'child_process' (spawn, fork, exec, comunicación entre procesos), 'cluster' Module (escalamiento horizontal, workers), 'worker_threads' (hilos para operaciones CPU-bound, comunicación), Stream API (Readable, Writable, Duplex, Transform Streams, Backpressure), Buffer y Typed Arrays."
+          suggested_practice:
+            - "Construir un servidor Node.js que demuestre el uso del 'cluster' module para escalar una aplicación web y manejar peticiones concurrentes."
+            - "Implementar un servicio que use 'worker_threads' para realizar una operación CPU-bound (ej. cálculo pesado) sin bloquear el Event Loop principal."
+            - 'Procesar un archivo grande utilizando Node.js Streams, aplicando transformaciones intermedias y manejando el backpressure.'
+        - number: 5
+          status: 'Pendiente'
+          name: 'Optimizaciones de Rendimiento y Debugging en Node.js: Profiling (perf_hooks, Chrome DevTools), Análisis de Memoria (Heap snapshots, detección de fugas), Benchmarking (autocannon, wrk), Manejo de Errores y Logging Avanzado (Pino, Winston).'
+          suggested_practice:
+            - 'Utilizar el profiler de Chrome DevTools (o similar) para identificar cuellos de botella en una aplicación Node.js de ejemplo.'
+            - 'Generar un heap snapshot y analizarlo para detectar posibles fugas de memoria.'
+            - 'Realizar benchmarking de diferentes implementaciones de una misma funcionalidad para comparar su rendimiento.'
+            - 'Configurar una librería de logging avanzada (Pino/Winston) para manejar logs estructurados y diferentes niveles de severidad.'
+        - number: 6
+          status: 'Pendiente'
+          name: 'Contenedorización (Docker) y Orquestación (Kubernetes) para Aplicaciones Node.js: Buenas prácticas para despliegue y escalabilidad.'
+          suggested_practice:
+            - 'Dockerizar una aplicación Node.js existente, creando un Dockerfile optimizado para producción (multi-stage builds, reduciendo tamaño de imagen).'
+            - 'Desplegar una aplicación Node.js contenedorizada localmente utilizando Docker Compose, simulando un entorno de microservicios.'
+        - number: 7
+          status: 'Pendiente'
+          name: 'Seguridad en Aplicaciones Node.js: Vulnerabilidades Comunes (Inyección SQL, XSS, CSRF), Protección con Helmet.js, Autenticación/Autorización Avanzadas (JWT, OAuth 2.0, OpenID Connect), Manejo Seguro de Secretos.'
+          suggested_practice:
+            - 'Implementar una API REST con autenticación basada en JWT y autorización basada en roles.'
+            - 'Integrar Helmet.js en una aplicación Express para proteger contra vulnerabilidades web comunes.'
+            - 'Demostrar cómo manejar de forma segura secretos (claves API, credenciales DB) en un entorno Node.js.'
+
+    - id: 4
+      title: 'Desarrollo de Aplicaciones Avanzadas con Node.js y TypeScript'
+      topics:
+        - number: 1
+          status: 'Pendiente'
+          name: 'Arquitecturas de Microservicios con Node.js y TypeScript: Principios (desacoplamiento), Comunicación (REST, gRPC, Message Queues), API Gateway, Service Discovery, Patrones de Resiliencia (Circuit Breaker, Retries), Monitoreo y Observabilidad (Prometheus, Grafana, Jaeger).'
+          suggested_practice:
+            - 'Diseñar e implementar un sistema de microservicios básico con Node.js, utilizando REST o gRPC para la comunicación.'
+            - 'Implementar un patrón de Circuit Breaker para mejorar la resiliencia entre microservicios.'
+            - 'Configurar un sistema de monitoreo básico (ej. con Prometheus y Grafana) para observar métricas de los microservicios.'
+        - number: 2
+          status: 'Pendiente'
+          name: 'Bases de Datos Avanzadas con Node.js: ORM/ODM Profundo (TypeORM, Prisma: migraciones, relaciones, optimizaciones), Bases de Datos NoSQL (MongoDB/Mongoose, Redis: caching, pub/sub), Diseño de Esquemas Eficientes.'
+          suggested_practice:
+            - 'Diseñar un esquema de base de datos complejo (relacional o NoSQL) y utilizar un ORM/ODM (TypeORM/Prisma/Mongoose) para gestionarlo, incluyendo migraciones y relaciones avanzadas.'
+            - 'Implementar caching con Redis para optimizar el acceso a datos frecuentemente consultados.'
+        - number: 3
+          status: 'Pendiente'
+          name: 'Testing Avanzado de Aplicaciones Node.js y TypeScript: Estrategias (Unit, Integration, E2E), Frameworks de Testing (Jest, Vitest, Supertest, Cypress), Mocks, Stubs y Spies (uso avanzado), Test Doubles, Generación de Datos de Prueba (Faker.js), Test-Driven Development (TDD) y Behavior-Driven Development (BDD).'
+          suggested_practice:
+            - 'Implementar una suite de pruebas unitarias para un módulo Node.js utilizando Jest/Vitest, incluyendo mocking y spies.'
+            - 'Escribir pruebas de integración para una API REST utilizando Supertest.'
+            - 'Diseñar y ejecutar pruebas E2E para una aplicación web usando Cypress.'
+            - 'Practicar TDD desarrollando una pequeña funcionalidad.'
+        - number: 4
+          status: 'Pendiente'
+          name: 'GraphQL con Node.js y TypeScript: Conceptos Avanzados (Schemas, Resolvers, Directives, Subscriptions), Implementación (Apollo Server/Yoga), Federation y Stitching, Optimización de Rendimiento (N+1 problem, DataLoader).'
+          suggested_practice:
+            - 'Construir una API GraphQL compleja con Apollo Server, definiendo esquemas, resolvers y utilizando directivas personalizadas.'
+            - 'Implementar suscripciones GraphQL para actualizaciones en tiempo real.'
+            - 'Resolver el problema N+1 en GraphQL usando DataLoader.'
+        - number: 5
+          status: 'Pendiente'
+          name: 'Despliegue y CI/CD para Aplicaciones Node.js: Estrategias de Despliegue (Blue/Green, Canary), CI/CD Pipelines (GitHub Actions, GitLab CI), Serverless (AWS Lambda, Azure Functions, Google Cloud Functions: diseño de funciones, Cold Starts), Monitoreo y Alerting Post-Despliegue.'
+          suggested_practice:
+            - 'Configurar un pipeline CI/CD básico en GitHub Actions o GitLab CI para un proyecto Node.js, incluyendo pruebas, linting y despliegue a un entorno de staging.'
+            - 'Desplegar una función Serverless en AWS Lambda (o plataforma similar) que realice una operación CRUD sencilla.'
+            - 'Explorar herramientas de monitoreo y alerting para una aplicación desplegada.'
+
+    - id: 5
+      title: 'Habilidades de Experto y Preparación para Entrevistas'
+      topics:
+        - number: 1
+          status: 'Pendiente'
+          name: "Debugging y Resolución de Problemas (Troubleshooting) Avanzado: Estrategias para depurar aplicaciones complejas, Uso de herramientas de monitoreo y logs, Análisis de 'post-mortems'."
+          suggested_practice:
+            - 'Depurar una aplicación Node.js compleja utilizando las herramientas de desarrollo de Chrome o VS Code, incluyendo puntos de interrupción condicionales y logpoints.'
+            - 'Analizar logs reales de una aplicación en producción para diagnosticar un problema de rendimiento o un error.'
+            - "Realizar un análisis de 'post-mortem' de un incidente simulado en una aplicación."
+        - number: 2
+          status: 'Pendiente'
+          name: 'Revisión de Código (Code Review) y Buenas Prácticas: Cómo realizar code reviews efectivos, Principios SOLID, DRY, KISS, Clean Code y Clean Architecture en Node.js/TypeScript.'
+          suggested_practice:
+            - 'Participar activamente en code reviews de un proyecto open source o de compañeros, proporcionando feedback constructivo.'
+            - 'Refactorizar un fragmento de código que viole uno o más principios SOLID, DRY o KISS para mejorar su diseño.'
+            - 'Aplicar patrones de Clean Code (ej. nombres significativos, funciones pequeñas, manejo de errores claro) a un módulo existente.'
+        - number: 3
+          status: 'Pendiente'
+          name: 'Diseño de Sistemas (System Design) con Node.js: Preparación para entrevistas de System Design, Escalabilidad, disponibilidad, consistencia, tolerancia a fallos, Casos de estudio.'
+          suggested_practice:
+            - 'Diseñar la arquitectura de un sistema escalable y altamente disponible (ej. un servicio de chat en tiempo real o un acortador de URLs) utilizando tecnologías de Node.js y bases de datos, justificando las decisiones de diseño.'
+            - 'Analizar estudios de caso de diseño de sistemas y proponer mejoras o alternativas.'
+        - number: 4
+          status: 'Pendiente'
+          name: 'Algoritmos y Estructuras de Datos Relevantes para JavaScript/Node.js: Repaso de estructuras de datos clave (Arrays, Linked Lists, Trees, Graphs, Hash Tables), Algoritmos de búsqueda y ordenamiento, Complejidad Big O y optimización de algoritmos, Resolución de problemas algorítmicos comunes.'
+          suggested_practice:
+            - 'Implementar diferentes estructuras de datos (ej. Linked List, Binary Search Tree) en JavaScript.'
+            - 'Resolver problemas algorítmicos comunes en plataformas como LeetCode o HackerRank, prestando atención a la complejidad Big O y la optimización.'
+            - 'Comparar la eficiencia de diferentes algoritmos de ordenamiento (ej. Bubble Sort vs. Quick Sort) para conjuntos de datos grandes.'
+        - number: 5
+          status: 'Pendiente'
+          name: 'Preparación para Entrevistas Técnicas Avanzadas: Preguntas profundas sobre JavaScript (Event Loop, V8, closures), TypeScript (tipos complejos, decorators), Node.js (Event Loop, libuv, Thread Pool), Diseño de APIs/microservicios/seguridad, Estrategias para responder preguntas de comportamiento y liderazgo técnico.'
+          suggested_practice:
+            - 'Realizar simulacros de entrevistas técnicas, practicando la explicación de conceptos complejos de JavaScript y Node.js.'
+            - 'Preparar respuestas concisas y claras para preguntas comunes sobre el Event Loop, `this` binding y la herencia prototípica.'
+            - 'Desarrollar un portafolio de proyectos que demuestren el conocimiento de los temas avanzados cubiertos en el curso.'

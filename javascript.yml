@@ -78,14 +78,14 @@ course:
               status: "Completo"
               suggested_practice:
                 - "Modificar variables en diferentes entornos léxicos y observar el resultado."
-            - name: "Closures y Closure Profundo"
-              status: "Pendiente"
-              suggested_practice:
-                - "Crear closures anidados y explicar el alcance de las variables."
             - name: "'this' Binding en Profundidad"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar el binding de 'this' en funciones normales, flecha y métodos."
+            - name: "Closures y Closure Profundo"
+              status: "Pendiente"
+              suggested_practice:
+                - "Crear closures anidados y explicar el alcance de las variables."
             - name: "Temporal Dead Zone (TDZ) y Hoisting avanzado"
               status: "Pendiente"
               suggested_practice:

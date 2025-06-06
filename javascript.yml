@@ -38,31 +38,38 @@ course:
           status: "Completado"
           name: "Motor JavaScript (V8)"
           subtopics:
-            - name: "Parsing y Abstract Syntax Tree (AST)"
+            - id: 1.1.1
+              name: "Parsing y Abstract Syntax Tree (AST)"
               status: "Completado"
               suggested_practice:
                 - "Analizar cómo el código fuente se convierte en AST usando herramientas como AST Explorer."
-            - name: "Ignition (Interpreter) y TurboFan (Optimizing Compiler)"
+            - id: 1.1.2
+              name: "Ignition (Interpreter) y TurboFan (Optimizing Compiler)"
               status: "Completado"
               suggested_practice:
                 - "Comparar el rendimiento de código interpretado vs. optimizado en V8."
-            - name: "JIT Compilation"
+            - id: 1.1.3
+              name: "JIT Compilation"
               status: "Completado"
               suggested_practice:
                 - "Investigar cuándo y cómo V8 decide compilar funciones Just-In-Time."
-            - name: "Garbage Collection (Generational GC, Mark-Sweep, Mark-Compact)"
+            - id: 1.1.4
+              name: "Garbage Collection (Generational GC, Mark-Sweep, Mark-Compact)"
               status: "Completado"
               suggested_practice:
                 - "Simular escenarios de uso intensivo de memoria y observar el comportamiento del Garbage Collector."
-            - name: "Hidden Classes y Inline Caching"
+            - id: 1.1.5
+              name: "Hidden Classes y Inline Caching"
               status: "Completado"
               suggested_practice:
                 - "Implementar ejemplos que demuestren cómo el V8 puede optimizar (o desoptimizar) el código usando Hidden Classes."
-            - name: "Snapshot Serialization y Deserialización"
+            - id: 1.1.6
+              name: "Snapshot Serialization y Deserialización"
               status: "Completado"
               suggested_practice:
                 - "Investigar cómo V8 serializa y deserializa snapshots y su impacto en el arranque de Node.js."
-            - name: "Optimización de Arrays"
+            - id: 1.1.7
+              name: "Optimización de Arrays"
               status: "Completado"
               suggested_practice:
                 - "Comparar el rendimiento de arrays homogéneos vs. heterogéneos en V8."
@@ -70,27 +77,33 @@ course:
           status: "Completo"
           name: "Contextos de Ejecución y Scopes Avanzados"
           subtopics:
-            - name: "Execution Context Stack (Global, Function, Eval)"
+            - id: 1.2.1
+              name: "Execution Context Stack (Global, Function, Eval)"
               status: "Completo"
               suggested_practice:
                 - "Visualizar el stack de contextos de ejecución con ejemplos anidados."
-            - name: "Lexical Environment y Variable Environment"
+            - id: 1.2.2
+              name: "Lexical Environment y Variable Environment"
               status: "Completo"
               suggested_practice:
                 - "Modificar variables en diferentes entornos léxicos y observar el resultado."
-            - name: "'this' Binding en Profundidad"
+            - id: 1.2.3
+              name: "'this' Binding en Profundidad"
               status: "Completo"
               suggested_practice:
                 - "Comparar el binding de 'this' en funciones normales, flecha y métodos."
-            - name: "Closures y Closure Profundo y su relacion con This"
+            - id: 1.2.4
+              name: "Closures y Closure Profundo y su relacion con This"
               status: "Completo"
               suggested_practice:
                 - "Crear closures anidados y explicar el alcance de las variables."
-            - name: "Temporal Dead Zone (TDZ) y Hoisting avanzado"
+            - id: 1.2.5
+              name: "Temporal Dead Zone (TDZ) y Hoisting avanzado"
               status: "Completo"
               suggested_practice:
                 - "Predecir errores de acceso a variables en la TDZ y explicar el hoisting."
-            - name: "Strict Mode (Modo Estricto): diferencias y advertencias"
+            - id: 1.2.6
+              name: "Strict Mode (Modo Estricto): diferencias y advertencias"
               status: "Completo"
               suggested_practice:
                 - "Identificar errores que solo ocurren en modo estricto y explicar por qué."
@@ -98,27 +111,33 @@ course:
           status: "Pendiente"
           name: "Prototipos y Programación Orientada a Objetos en JavaScript"
           subtopics:
-            - name: "Herencia Prototípica y Cadena de Prototipos"
+            - id: 1.3.1
+              name: "Herencia Prototípica y Cadena de Prototipos"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar una cadena de prototipos y rastrear la resolución de propiedades."
-            - name: "Constructor Functions y Operador 'new'"
+            - id: 1.3.2
+              name: "Constructor Functions y Operador 'new'"
               status: "Pendiente"
               suggested_practice:
                 - "Crear objetos con funciones constructoras y analizar el resultado de 'new'."
-            - name: "Object.create() y Object.setPrototypeOf()"
+            - id: 1.3.3
+              name: "Object.create() y Object.setPrototypeOf()"
               status: "Pendiente"
               suggested_practice:
                 - "Modificar la cadena de prototipos de un objeto existente y observar el efecto."
-            - name: "'class' como azúcar sintáctico"
+            - id: 1.3.4
+              name: "'class' como azúcar sintáctico"
               status: "Pendiente"
               suggested_practice:
                 - "Refactorizar código de funciones constructoras a clases ES6."
-            - name: "Mixins y composición de objetos"
+            - id: 1.3.5
+              name: "Mixins y composición de objetos"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar mixins para compartir funcionalidad entre objetos."
-            - name: "Símbolos y propiedades privadas"
+            - id: 1.3.6
+              name: "Símbolos y propiedades privadas"
               status: "Pendiente"
               suggested_practice:
                 - "Usar símbolos y campos privados para encapsular propiedades."
@@ -126,27 +145,33 @@ course:
           status: "Pendiente"
           name: "Manejo de la Asincronía en JavaScript (Event Loop - Navegador)"
           subtopics:
-            - name: "Call Stack y Web APIs"
+            - id: 1.4.1
+              name: "Call Stack y Web APIs"
               status: "Pendiente"
               suggested_practice:
                 - "Simular llamadas asíncronas y observar el call stack y las Web APIs."
-            - name: "Callback Queue (Task Queue) y Microtask Queue"
+            - id: 1.4.2
+              name: "Callback Queue (Task Queue) y Microtask Queue"
               status: "Pendiente"
               suggested_practice:
                 - "Ejecutar código que mezcle microtasks y macrotasks y analizar el orden."
-            - name: "Macrotasks vs. Microtasks (setTimeout, setInterval vs. Promise.then(), queueMicrotask)"
+            - id: 1.4.3
+              name: "Macrotasks vs. Microtasks (setTimeout, setInterval vs. Promise.then(), queueMicrotask)"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar el orden de ejecución de diferentes tipos de tareas."
-            - name: "El 'Tick' del Event Loop"
+            - id: 1.4.4
+              name: "El 'Tick' del Event Loop"
               status: "Pendiente"
               suggested_practice:
                 - "Visualizar el ciclo de ticks del event loop con ejemplos prácticos."
-            - name: "Timers Internals"
+            - id: 1.4.5
+              name: "Timers Internals"
               status: "Pendiente"
               suggested_practice:
                 - "Investigar cómo se gestionan internamente los timers en el navegador y Node.js."
-            - name: "Web Workers y Service Workers"
+            - id: 1.4.6
+              name: "Web Workers y Service Workers"
               status: "Pendiente"
               suggested_practice:
                 - "Crear un Web Worker y un Service Worker y analizar su ciclo de vida."
@@ -154,27 +179,33 @@ course:
           status: "Pendiente"
           name: "Patrones Avanzados de Asincronía"
           subtopics:
-            - name: "Promesas (Promise combinators: allSettled, any)"
+            - id: 1.5.1
+              name: "Promesas (Promise combinators: allSettled, any)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar ejemplos con combinadores de promesas y analizar los resultados."
-            - name: "async/await avanzado"
+            - id: 1.5.2
+              name: "async/await avanzado"
               status: "Pendiente"
               suggested_practice:
                 - "Gestionar errores y flujos complejos usando async/await."
-            - name: "Generadores y yield"
+            - id: 1.5.3
+              name: "Generadores y yield"
               status: "Pendiente"
               suggested_practice:
                 - "Crear un generador personalizado y consumirlo con un bucle."
-            - name: "Stream API (Fetch)"
+            - id: 1.5.4
+              name: "Stream API (Fetch)"
               status: "Pendiente"
               suggested_practice:
                 - "Consumir datos de una API usando streams y analizar el flujo."
-            - name: "Cancelable Promises y AbortController"
+            - id: 1.5.5
+              name: "Cancelable Promises y AbortController"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar una promesa cancelable usando AbortController."
-            - name: "Async Iterators y for-await-of"
+            - id: 1.5.6
+              name: "Async Iterators y for-await-of"
               status: "Pendiente"
               suggested_practice:
                 - "Iterar sobre datos asíncronos usando for-await-of."
@@ -182,27 +213,33 @@ course:
           status: "Pendiente"
           name: "Diseño de Patrones en JavaScript"
           subtopics:
-            - name: "Patrones Creacionales (Singleton, Factory)"
+            - id: 1.6.1
+              name: "Patrones Creacionales (Singleton, Factory)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar un patrón Singleton y un Factory en JavaScript."
-            - name: "Patrones Estructurales (Adapter, Decorator)"
+            - id: 1.6.2
+              name: "Patrones Estructurales (Adapter, Decorator)"
               status: "Pendiente"
               suggested_practice:
                 - "Aplicar los patrones Adapter y Decorator a una función existente."
-            - name: "Patrones Comportamentales (Observer, Strategy)"
+            - id: 1.6.3
+              name: "Patrones Comportamentales (Observer, Strategy)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar Observer y Strategy en un sistema de eventos."
-            - name: "Patrones de Concurrencia (Throttling/Debouncing)"
+            - id: 1.6.4
+              name: "Patrones de Concurrencia (Throttling/Debouncing)"
               status: "Pendiente"
               suggested_practice:
                 - "Optimizar el manejo de eventos frecuentes con throttling y debouncing."
-            - name: "Patrones de Memoization y Cache"
+            - id: 1.6.5
+              name: "Patrones de Memoization y Cache"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar memoization para funciones costosas."
-            - name: "Patrones de Middleware"
+            - id: 1.6.6
+              name: "Patrones de Middleware"
               status: "Pendiente"
               suggested_practice:
                 - "Crear un sistema de middlewares encadenados para peticiones."
@@ -213,31 +250,38 @@ course:
           status: "Pendiente"
           name: "Tipos Avanzados de TypeScript"
           subtopics:
-            - name: "Conditional Types (infer keyword, distribución)"
+            - id: 2.1.1
+              name: "Conditional Types (infer keyword, distribución)"
               status: "Pendiente"
               suggested_practice:
                 - "Crear ejemplos de tipos condicionales para validar tipos en tiempo de compilación."
-            - name: "Mapped Types (Partial, Required, Readonly, Pick, Omit, Record)"
+            - id: 2.1.2
+              name: "Mapped Types (Partial, Required, Readonly, Pick, Omit, Record)"
               status: "Pendiente"
               suggested_practice:
                 - "Transformar interfaces usando mapped types y analizar los resultados."
-            - name: "Template Literal Types"
+            - id: 2.1.3
+              name: "Template Literal Types"
               status: "Pendiente"
               suggested_practice:
                 - "Definir tipos de cadenas dinámicas y usarlos en funciones genéricas."
-            - name: "Indexed Access Types"
+            - id: 2.1.4
+              name: "Indexed Access Types"
               status: "Pendiente"
               suggested_practice:
                 - "Acceder a tipos anidados en estructuras complejas y documentar los resultados."
-            - name: "Utility Types Profundos (Exclude, Extract, NonNullable, Parameters, ReturnType, Awaited)"
+            - id: 2.1.5
+              name: "Utility Types Profundos (Exclude, Extract, NonNullable, Parameters, ReturnType, Awaited)"
               status: "Pendiente"
               suggested_practice:
                 - "Aplicar utility types a tipos personalizados y explicar su utilidad."
-            - name: "Recursive Types y tipos auto-referenciados"
+            - id: 2.1.6
+              name: "Recursive Types y tipos auto-referenciados"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar tipos recursivos para estructuras como árboles o listas enlazadas."
-            - name: "Branded Types para validación nominal"
+            - id: 2.1.7
+              name: "Branded Types para validación nominal"
               status: "Pendiente"
               suggested_practice:
                 - "Crear branded types para diferenciar tipos primitivos en validaciones."
@@ -245,11 +289,13 @@ course:
           status: "Pendiente"
           name: "'unknown' vs. 'any'"
           subtopics:
-            - name: "Uso apropiado y ventajas de 'unknown'"
+            - id: 2.2.1
+              name: "Uso apropiado y ventajas de 'unknown'"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar el comportamiento de 'unknown' y 'any' en funciones genéricas."
-            - name: "Refinamiento seguro de tipos desde 'unknown'"
+            - id: 2.2.2
+              name: "Refinamiento seguro de tipos desde 'unknown'"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar type guards para refinar valores de tipo 'unknown'."
@@ -257,11 +303,13 @@ course:
           status: "Pendiente"
           name: "Type Guards Personalizados y Predicados de Tipo ('is')"
           subtopics:
-            - name: "Type Guards personalizados para jerarquías de clases o interfaces"
+            - id: 2.3.1
+              name: "Type Guards personalizados para jerarquías de clases o interfaces"
               status: "Pendiente"
               suggested_practice:
                 - "Crear una jerarquía de clases e implementar type guards personalizados."
-            - name: "Predicados de tipo y filtrado de arrays"
+            - id: 2.3.2
+              name: "Predicados de tipo y filtrado de arrays"
               status: "Pendiente"
               suggested_practice:
                 - "Filtrar arrays usando predicados de tipo y documentar los resultados."
@@ -269,19 +317,23 @@ course:
           status: "Pendiente"
           name: "Módulos y Espacios de Nombres en TypeScript"
           subtopics:
-            - name: "Diferencias y casos de uso"
+            - id: 2.4.1
+              name: "Diferencias y casos de uso"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar módulos y namespaces en un proyecto pequeño."
-            - name: "Declaración de Módulos (.d.ts files)"
+            - id: 2.4.2
+              name: "Declaración de Módulos (.d.ts files)"
               status: "Pendiente"
               suggested_practice:
                 - "Crear archivos de declaración para una librería personalizada."
-            - name: "Módulos Globales y Ambiente ('declare global')"
+            - id: 2.4.3
+              name: "Módulos Globales y Ambiente ('declare global')"
               status: "Pendiente"
               suggested_practice:
                 - "Agregar tipos globales a un proyecto y analizar su impacto."
-            - name: "Aumento de Módulos (Module Augmentation)"
+            - id: 2.4.4
+              name: "Aumento de Módulos (Module Augmentation)"
               status: "Pendiente"
               suggested_practice:
                 - "Explorar cómo extender tipos de módulos existentes en TypeScript utilizando la sintaxis de `module augmentation`."
@@ -294,15 +346,18 @@ course:
           status: "Pendiente"
           name: "Decoradores y Metaprogramación en TypeScript"
           subtopics:
-            - name: "Concepto y aplicaciones (Inyección de dependencias, logging, validación)"
+            - id: 2.5.1
+              name: "Concepto y aplicaciones (Inyección de dependencias, logging, validación)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar un decorador de logging para métodos de una clase."
-            - name: "Reflect-metadata API"
+            - id: 2.5.2
+              name: "Reflect-metadata API"
               status: "Pendiente"
               suggested_practice:
                 - "Utilizar reflect-metadata para almacenar y recuperar metadatos en clases."
-            - name: "Limitaciones y advertencias de los decoradores en tiempo de compilación"
+            - id: 2.5.3
+              name: "Limitaciones y advertencias de los decoradores en tiempo de compilación"
               status: "Pendiente"
               suggested_practice:
                 - "Investigar y documentar limitaciones de los decoradores en TypeScript."
@@ -310,19 +365,23 @@ course:
           status: "Pendiente"
           name: "Configuración Avanzada de 'tsconfig.json'"
           subtopics:
-            - name: "compilerOptions detalladas (strict flags, paths, baseUrl, esModuleInterop)"
+            - id: 2.6.1
+              name: "compilerOptions detalladas (strict flags, paths, baseUrl, esModuleInterop)"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar un proyecto con diferentes strict flags y analizar los errores de tipos."
-            - name: "Monorepos y configuración Multi-paquete"
+            - id: 2.6.2
+              name: "Monorepos y configuración Multi-paquete"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar un monorepo con referencias cruzadas entre paquetes."
-            - name: "Integración con herramientas de Build (Webpack, Rollup, Vite)"
+            - id: 2.6.3
+              name: "Integración con herramientas de Build (Webpack, Rollup, Vite)"
               status: "Pendiente"
               suggested_practice:
                 - "Integrar TypeScript con una herramienta de build y analizar el resultado."
-            - name: "Integración con herramientas de linting (ESLint, TSLint)"
+            - id: 2.6.4
+              name: "Integración con herramientas de linting (ESLint, TSLint)"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar ESLint en un proyecto TypeScript y corregir advertencias."
@@ -330,23 +389,28 @@ course:
           status: "Pendiente"
           name: "Diseño de APIs Robustas con TypeScript"
           subtopics:
-            - name: "Tipificación de Entidades y DTOs"
+            - id: 2.7.1
+              name: "Tipificación de Entidades y DTOs"
               status: "Pendiente"
               suggested_practice:
                 - "Definir DTOs tipados para una API REST y validar su uso."
-            - name: "Validación de Esquemas (Zod, Yup) con TypeScript"
+            - id: 2.7.2
+              name: "Validación de Esquemas (Zod, Yup) con TypeScript"
               status: "Pendiente"
               suggested_practice:
                 - "Integrar Zod o Yup para validar datos en tiempo de ejecución."
-            - name: "Generación de Clientes y Tipos desde OpenAPI/Swagger"
+            - id: 2.7.3
+              name: "Generación de Clientes y Tipos desde OpenAPI/Swagger"
               status: "Pendiente"
               suggested_practice:
                 - "Generar tipos TypeScript a partir de una especificación OpenAPI."
-            - name: "Validación de tipos en tiempo de ejecución vs. tiempo de compilación"
+            - id: 2.7.4
+              name: "Validación de tipos en tiempo de ejecución vs. tiempo de compilación"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar validaciones en tiempo de ejecución y compilación en un ejemplo práctico."
-            - name: "OpenAPI Generators y herramientas de documentación automática"
+            - id: 2.7.5
+              name: "OpenAPI Generators y herramientas de documentación automática"
               status: "Pendiente"
               suggested_practice:
                 - "Explorar herramientas para documentar y generar tipos automáticamente."
@@ -357,19 +421,23 @@ course:
           status: "Pendiente"
           name: "Arquitectura Interna de Node.js"
           subtopics:
-            - name: "V8 Engine en Node.js"
+            - id: 3.1.1
+              name: "V8 Engine en Node.js"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar el rendimiento de código JavaScript en Node.js vs. navegador."
-            - name: "libuv (Thread Pool para operaciones de E/S, I/O Bound vs. CPU Bound)"
+            - id: 3.1.2
+              name: "libuv (Thread Pool para operaciones de E/S, I/O Bound vs. CPU Bound)"
               status: "Pendiente"
               suggested_practice:
                 - "Simular operaciones I/O bound y CPU bound y analizar el uso del thread pool."
-            - name: "node-addon-api / N-API (creación y uso de addons nativos de C++)"
+            - id: 3.1.3
+              name: "node-addon-api / N-API (creación y uso de addons nativos de C++)"
               status: "Pendiente"
               suggested_practice:
                 - "Crear un addon nativo simple en C++ y consumirlo desde Node.js."
-            - name: "Zero-Cost Abstractions y Node.js Native Modules"
+            - id: 3.1.4
+              name: "Zero-Cost Abstractions y Node.js Native Modules"
               status: "Pendiente"
               suggested_practice:
                 - "Investigar cómo Node.js implementa módulos nativos y sus ventajas de rendimiento."
@@ -377,19 +445,23 @@ course:
           status: "Pendiente"
           name: "Event Loop en Node.js (Profundo)"
           subtopics:
-            - name: "Fases del Event Loop (timers, pending callbacks, poll, check, close callbacks)"
+            - id: 3.2.1
+              name: "Fases del Event Loop (timers, pending callbacks, poll, check, close callbacks)"
               status: "Pendiente"
               suggested_practice:
                 - "Visualizar el flujo de tareas en cada fase del event loop usando ejemplos prácticos."
-            - name: "Diferencias Clave con el Event Loop del Navegador"
+            - id: 3.2.2
+              name: "Diferencias Clave con el Event Loop del Navegador"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar el orden de ejecución de tareas en Node.js y navegador."
-            - name: "process.nextTick() vs. setImmediate() vs. setTimeout(): Orden de ejecución y casos de uso"
+            - id: 3.2.3
+              name: "process.nextTick() vs. setImmediate() vs. setTimeout(): Orden de ejecución y casos de uso"
               status: "Pendiente"
               suggested_practice:
                 - "Crear ejemplos que mezclen estas APIs y predecir el orden de ejecución."
-            - name: "Timers Phase Internals y optimización de callbacks"
+            - id: 3.2.4
+              name: "Timers Phase Internals y optimización de callbacks"
               status: "Pendiente"
               suggested_practice:
                 - "Medir el impacto de callbacks pesados en la fase de timers."
@@ -397,11 +469,13 @@ course:
           status: "Pendiente"
           name: "Manejo de Errores Asíncronos en Node.js"
           subtopics:
-            - name: "unhandledRejection, uncaughtException"
+            - id: 3.3.1
+              name: "unhandledRejection, uncaughtException"
               status: "Pendiente"
               suggested_practice:
                 - "Provocar y capturar errores asíncronos y analizar el flujo de manejo."
-            - name: "Error boundaries y patrones de resiliencia"
+            - id: 3.3.2
+              name: "Error boundaries y patrones de resiliencia"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar un patrón de error boundary en una app Node.js."
@@ -409,27 +483,33 @@ course:
           status: "Pendiente"
           name: "Módulos Avanzados de Node.js y Patrones"
           subtopics:
-            - name: "child_process (spawn, fork, exec, comunicación entre procesos)"
+            - id: 3.4.1
+              name: "child_process (spawn, fork, exec, comunicación entre procesos)"
               status: "Pendiente"
               suggested_practice:
                 - "Crear un proceso hijo y comunicar datos entre procesos."
-            - name: "cluster Module (escalamiento horizontal, workers)"
+            - id: 3.4.2
+              name: "cluster Module (escalamiento horizontal, workers)"
               status: "Pendiente"
               suggested_practice:
                 - "Escalar un servidor HTTP usando el módulo cluster."
-            - name: "worker_threads (hilos para operaciones CPU-bound, comunicación)"
+            - id: 3.4.3
+              name: "worker_threads (hilos para operaciones CPU-bound, comunicación)"
               status: "Pendiente"
               suggested_practice:
                 - "Mover una tarea CPU-bound a un worker thread y medir el impacto."
-            - name: "Stream API (Readable, Writable, Duplex, Transform Streams, Backpressure)"
+            - id: 3.4.4
+              name: "Stream API (Readable, Writable, Duplex, Transform Streams, Backpressure)"
               status: "Pendiente"
               suggested_practice:
                 - "Procesar archivos grandes usando streams y manejar backpressure."
-            - name: "Buffer y Typed Arrays"
+            - id: 3.4.5
+              name: "Buffer y Typed Arrays"
               status: "Pendiente"
               suggested_practice:
                 - "Manipular binarios usando Buffer y Typed Arrays."
-            - name: "Native Streams vs. Userland Streams"
+            - id: 3.4.6
+              name: "Native Streams vs. Userland Streams"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar streams nativos y de usuario en Node.js."
@@ -437,23 +517,28 @@ course:
           status: "Pendiente"
           name: "Optimizaciones de Rendimiento y Debugging en Node.js"
           subtopics:
-            - name: "Profiling (perf_hooks, Chrome DevTools)"
+            - id: 3.5.1
+              name: "Profiling (perf_hooks, Chrome DevTools)"
               status: "Pendiente"
               suggested_practice:
                 - "Usar perf_hooks y DevTools para identificar cuellos de botella."
-            - name: "Análisis de Memoria (Heap snapshots, detección de fugas)"
+            - id: 3.5.2
+              name: "Análisis de Memoria (Heap snapshots, detección de fugas)"
               status: "Pendiente"
               suggested_practice:
                 - "Tomar y analizar heap snapshots para detectar fugas."
-            - name: "Benchmarking (autocannon, wrk)"
+            - id: 3.5.3
+              name: "Benchmarking (autocannon, wrk)"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar el rendimiento de dos implementaciones usando autocannon."
-            - name: "Manejo de Errores y Logging Avanzado (Pino, Winston)"
+            - id: 3.5.4
+              name: "Manejo de Errores y Logging Avanzado (Pino, Winston)"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar Pino o Winston para logging estructurado."
-            - name: "Thread-safe patterns y race conditions"
+            - id: 3.5.5
+              name: "Thread-safe patterns y race conditions"
               status: "Pendiente"
               suggested_practice:
                 - "Simular race conditions y aplicar patrones thread-safe."
@@ -461,32 +546,37 @@ course:
           status: "Pendiente"
           name: "Contenedorización (Docker) y Orquestación (Kubernetes) para Aplicaciones Node.js"
           subtopics:
-            - name: "Dockerfile para Node.js y optimización de imágenes"
+            - id: 3.6.1
+              name: "Dockerfile para Node.js y optimización de imágenes"
               status: "Pendiente"
               suggested_practice:
                 - "Crear un `Dockerfile` optimizado para una aplicación Node.js, utilizando imágenes base apropiadas (`node:lts-alpine`)."
                 - "Implementar `multi-stage builds` para reducir el tamaño de la imagen final, separando las dependencias de desarrollo y producción."
                 - "Configurar variables de entorno, volúmenes y user/group en el `Dockerfile` para seguridad y configurabilidad."
-            - name: "Gestión avanzada de dependencias en entornos conteinerizados"
+            - id: 3.6.2
+              name: "Gestión avanzada de dependencias en entornos conteinerizados"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar el uso de `npm ci` vs `npm install` en un entorno Docker para builds reproducibles."
                 - "Implementar estrategias de caching (Docker build cache, multi-stage builds) para las dependencias de Node.js en Docker."
                 - "Optimizar el proceso de instalación de dependencias para reducir el tiempo de construcción de la imagen, considerando `COPY --from`."
-            - name: "Configuración de Kubernetes para aplicaciones Node.js"
+            - id: 3.6.3
+              name: "Configuración de Kubernetes para aplicaciones Node.js"
               status: "Pendiente"
               suggested_practice:
                 - "Desplegar una aplicación Node.js en un cluster de Kubernetes (Minikube, Kind, GKE, EKS)."
                 - "Definir `Deployments`, `Services`, y `Ingresses` para la aplicación, exponiendo puertos y rutas."
                 - "Configurar `liveness` y `readiness probes` para asegurar la salud de los pods de la aplicación y manejar reinicios/despliegues."
                 - "Implementar `Horizontal Pod Autoscaler` (HPA) para escalado automático basado en métricas."
-            - name: "Consideraciones de rendimiento y recursos en contenedores"
+            - id: 3.6.4
+              name: "Consideraciones de rendimiento y recursos en contenedores"
               status: "Pendiente"
               suggested_practice:
                 - "Ajustar los límites de CPU y memoria (`requests` y `limits`) para contenedores de Node.js en Kubernetes y observar su impacto."
                 - "Analizar el impacto del sistema de archivos y las operaciones de E/S en el rendimiento de la aplicación conteinerizada."
                 - "Optimizar la configuración de recursos para maximizar la eficiencia y prevenir `OOMKilled`."
-            - name: "Patrones Serverless Avanzados para Node.js"
+            - id: 3.6.5
+              name: "Patrones Serverless Avanzados para Node.js"
               status: "Pendiente"
               suggested_practice:
                 - "Desplegar una función Node.js en un proveedor Serverless (AWS Lambda, Google Cloud Functions, Azure Functions) utilizando TypeScript."
@@ -497,23 +587,28 @@ course:
           status: "Pendiente"
           name: "Seguridad en Aplicaciones Node.js"
           subtopics:
-            - name: "Vulnerabilidades Comunes (Inyección SQL, XSS, CSRF)"
+            - id: 3.7.1
+              name: "Vulnerabilidades Comunes (Inyección SQL, XSS, CSRF)"
               status: "Pendiente"
               suggested_practice:
                 - "Simular ataques comunes y aplicar mitigaciones."
-            - name: "Protección con Helmet.js"
+            - id: 3.7.2
+              name: "Protección con Helmet.js"
               status: "Pendiente"
               suggested_practice:
                 - "Integrar Helmet.js y analizar los headers de seguridad."
-            - name: "Autenticación/Autorización Avanzadas (JWT, OAuth 2.0, OpenID Connect)"
+            - id: 3.7.3
+              name: "Autenticación/Autorización Avanzadas (JWT, OAuth 2.0, OpenID Connect)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar autenticación JWT y OAuth en una API."
-            - name: "Manejo Seguro de Secretos"
+            - id: 3.7.4
+              name: "Manejo Seguro de Secretos"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar variables de entorno seguras y rotación de secretos."
-            - name: "Seguridad en dependencias (npm audit, Snyk, supply chain attacks)"
+            - id: 3.7.5
+              name: "Seguridad en dependencias (npm audit, Snyk, supply chain attacks)"
               status: "Pendiente"
               suggested_practice:
                 - "Auditar dependencias y corregir vulnerabilidades reportadas."
@@ -524,35 +619,43 @@ course:
           status: "Pendiente"
           name: "Arquitecturas de Microservicios con Node.js y TypeScript"
           subtopics:
-            - name: "Principios (desacoplamiento)"
+            - id: 4.1.1
+              name: "Principios (desacoplamiento)"
               status: "Pendiente"
               suggested_practice:
                 - "Diseñar un microservicio desacoplado y documentar sus dependencias."
-            - name: "Comunicación (REST, gRPC, Message Queues)"
+            - id: 4.1.2
+              name: "Comunicación (REST, gRPC, Message Queues)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar comunicación entre servicios usando REST y gRPC."
-            - name: "API Gateway"
+            - id: 4.1.3
+              name: "API Gateway"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar un API Gateway y enrutar peticiones a microservicios."
-            - name: "Service Discovery"
+            - id: 4.1.4
+              name: "Service Discovery"
               status: "Pendiente"
               suggested_practice:
                 - "Simular service discovery dinámico en un entorno de microservicios."
-            - name: "Patrones de Resiliencia (Circuit Breaker, Retries)"
+            - id: 4.1.5
+              name: "Patrones de Resiliencia (Circuit Breaker, Retries)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar un patrón Circuit Breaker en Node.js."
-            - name: "Monitoreo y Observabilidad (Prometheus, Grafana, Jaeger)"
+            - id: 4.1.6
+              name: "Monitoreo y Observabilidad (Prometheus, Grafana, Jaeger)"
               status: "Pendiente"
               suggested_practice:
                 - "Instrumentar métricas y trazas en microservicios y visualizarlas."
-            - name: "Event Sourcing y CQRS"
+            - id: 4.1.7
+              name: "Event Sourcing y CQRS"
               status: "Pendiente"
               suggested_practice:
                 - "Modelar un flujo de eventos y comandos usando CQRS."
-            - name: "Mensajería asíncrona avanzada (RabbitMQ, Kafka)"
+            - id: 4.1.8
+              name: "Mensajería asíncrona avanzada (RabbitMQ, Kafka)"
               status: "Pendiente"
               suggested_practice:
                 - "Integrar RabbitMQ o Kafka para comunicación asíncrona."
@@ -560,23 +663,28 @@ course:
           status: "Pendiente"
           name: "Bases de Datos Avanzadas con Node.js"
           subtopics:
-            - name: "ORM/ODM Profundo (TypeORM, Prisma: migraciones, relaciones, optimizaciones)"
+            - id: 4.2.1
+              name: "ORM/ODM Profundo (TypeORM, Prisma: migraciones, relaciones, optimizaciones)"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar migraciones y relaciones avanzadas con TypeORM o Prisma."
-            - name: "Bases de Datos NoSQL (MongoDB/Mongoose, Redis: caching, pub/sub)"
+            - id: 4.2.2
+              name: "Bases de Datos NoSQL (MongoDB/Mongoose, Redis: caching, pub/sub)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar caching y pub/sub con Redis y MongoDB."
-            - name: "Diseño de Esquemas Eficientes"
+            - id: 4.2.3
+              name: "Diseño de Esquemas Eficientes"
               status: "Pendiente"
               suggested_practice:
                 - "Optimizar un esquema de base de datos para consultas frecuentes."
-            - name: "Sharding y replicación avanzada"
+            - id: 4.2.4
+              name: "Sharding y replicación avanzada"
               status: "Pendiente"
               suggested_practice:
                 - "Simular sharding y replicación en una base de datos NoSQL."
-            - name: "Transacciones Distribuidas y Patrón Saga"
+            - id: 4.2.5
+              name: "Transacciones Distribuidas y Patrón Saga"
               status: "Pendiente"
               suggested_practice:
                 - "Investigar los desafíos de mantener la consistencia en sistemas distribuidos con múltiples bases de datos."
@@ -587,27 +695,33 @@ course:
           status: "Pendiente"
           name: "Testing Avanzado de Aplicaciones Node.js y TypeScript"
           subtopics:
-            - name: "Estrategias (Unit, Integration, E2E)"
+            - id: 4.3.1
+              name: "Estrategias (Unit, Integration, E2E)"
               status: "Pendiente"
               suggested_practice:
                 - "Diseñar pruebas unitarias, de integración y E2E para un microservicio."
-            - name: "Frameworks de Testing (Jest, Vitest, Supertest, Cypress)"
+            - id: 4.3.2
+              name: "Frameworks de Testing (Jest, Vitest, Supertest, Cypress)"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar frameworks de testing en un mismo módulo."
-            - name: "Mocks, Stubs y Spies (uso avanzado), Test Doubles"
+            - id: 4.3.3
+              name: "Mocks, Stubs y Spies (uso avanzado), Test Doubles"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar mocks y spies avanzados en pruebas de integración."
-            - name: "Generación de Datos de Prueba (Faker.js)"
+            - id: 4.3.4
+              name: "Generación de Datos de Prueba (Faker.js)"
               status: "Pendiente"
               suggested_practice:
                 - "Generar datos de prueba realistas con Faker.js."
-            - name: "Test-Driven Development (TDD) y Behavior-Driven Development (BDD)"
+            - id: 4.3.5
+              name: "Test-Driven Development (TDD) y Behavior-Driven Development (BDD)"
               status: "Pendiente"
               suggested_practice:
                 - "Desarrollar una funcionalidad usando TDD y BDD."
-            - name: "Contract Testing (Pact, Dredd)"
+            - id: 4.3.6
+              name: "Contract Testing (Pact, Dredd)"
               status: "Pendiente"
               suggested_practice:
                 - "Validar contratos de APIs con Pact o Dredd."
@@ -615,23 +729,28 @@ course:
           status: "Pendiente"
           name: "GraphQL con Node.js y TypeScript"
           subtopics:
-            - name: "Conceptos Avanzados (Schemas, Resolvers, Directives, Subscriptions)"
+            - id: 4.4.1
+              name: "Conceptos Avanzados (Schemas, Resolvers, Directives, Subscriptions)"
               status: "Pendiente"
               suggested_practice:
                 - "Definir un esquema GraphQL avanzado con directivas y suscripciones."
-            - name: "Implementación (Apollo Server/Yoga)"
+            - id: 4.4.2
+              name: "Implementación (Apollo Server/Yoga)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar una API GraphQL con Apollo Server y Yoga."
-            - name: "Federation y Stitching"
+            - id: 4.4.3
+              name: "Federation y Stitching"
               status: "Pendiente"
               suggested_practice:
                 - "Federar múltiples servicios GraphQL y usar stitching."
-            - name: "Optimización de Rendimiento (N+1 problem, DataLoader)"
+            - id: 4.4.4
+              name: "Optimización de Rendimiento (N+1 problem, DataLoader)"
               status: "Pendiente"
               suggested_practice:
                 - "Resolver el problema N+1 usando DataLoader."
-            - name: "Persisted Queries y seguridad en GraphQL"
+            - id: 4.4.5
+              name: "Persisted Queries y seguridad en GraphQL"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar persisted queries y analizar riesgos de seguridad."
@@ -639,27 +758,33 @@ course:
           status: "Pendiente"
           name: "Despliegue y CI/CD para Aplicaciones Node.js"
           subtopics:
-            - name: "Estrategias de Despliegue (Blue/Green, Canary)"
+            - id: 4.5.1
+              name: "Estrategias de Despliegue (Blue/Green, Canary)"
               status: "Pendiente"
               suggested_practice:
                 - "Simular despliegues blue/green y canary en un entorno de pruebas."
-            - name: "CI/CD Pipelines (GitHub Actions, GitLab CI)"
+            - id: 4.5.2
+              name: "CI/CD Pipelines (GitHub Actions, GitLab CI)"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar un pipeline CI/CD con pruebas y despliegue automático."
-            - name: "Serverless (AWS Lambda, Azure Functions, Google Cloud Functions: diseño de funciones, Cold Starts)"
+            - id: 4.5.3
+              name: "Serverless (AWS Lambda, Azure Functions, Google Cloud Functions: diseño de funciones, Cold Starts)"
               status: "Pendiente"
               suggested_practice:
                 - "Desplegar una función serverless y medir el cold start."
-            - name: "Monitoreo y Alerting Post-Despliegue"
+            - id: 4.5.4
+              name: "Monitoreo y Alerting Post-Despliegue"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar alertas y monitoreo post-despliegue."
-            - name: "Feature Flags y despliegue progresivo"
+            - id: 4.5.5
+              name: "Feature Flags y despliegue progresivo"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar feature flags y realizar un despliegue progresivo."
-            - name: "Infraestructura como Código (IaC) con Node.js/TypeScript"
+            - id: 4.5.6
+              name: "Infraestructura como Código (IaC) con Node.js/TypeScript"
               status: "Pendiente"
               suggested_practice:
                 - "Aprender los conceptos básicos de IaC (idempotencia, estado, versiones) y sus beneficios para la automatización de infraestructura."
@@ -673,19 +798,23 @@ course:
           status: "Pendiente"
           name: "Debugging y Resolución de Problemas (Troubleshooting) Avanzado"
           subtopics:
-            - name: "Estrategias para depurar aplicaciones complejas"
+            - id: 5.1.1
+              name: "Estrategias para depurar aplicaciones complejas"
               status: "Pendiente"
               suggested_practice:
                 - "Depurar una app Node.js compleja usando breakpoints y logs."
-            - name: "Uso de herramientas de monitoreo y logs"
+            - id: 5.1.2
+              name: "Uso de herramientas de monitoreo y logs"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar y analizar logs y métricas en producción."
-            - name: "Análisis de 'post-mortems'"
+            - id: 5.1.3
+              name: "Análisis de 'post-mortems'"
               status: "Pendiente"
               suggested_practice:
                 - "Realizar un post-mortem de un incidente simulado."
-            - name: "Análisis de core dumps y crash dumps"
+            - id: 5.1.4
+              name: "Análisis de core dumps y crash dumps"
               status: "Pendiente"
               suggested_practice:
                 - "Analizar un core dump generado por un crash en Node.js."
@@ -693,15 +822,18 @@ course:
           status: "Pendiente"
           name: "Revisión de Código (Code Review) y Buenas Prácticas"
           subtopics:
-            - name: "Cómo realizar code reviews efectivos"
+            - id: 5.2.1
+              name: "Cómo realizar code reviews efectivos"
               status: "Pendiente"
               suggested_practice:
                 - "Participar en code reviews y documentar feedback constructivo."
-            - name: "Principios SOLID, DRY, KISS, Clean Code y Clean Architecture en Node.js/TypeScript"
+            - id: 5.2.2
+              name: "Principios SOLID, DRY, KISS, Clean Code y Clean Architecture en Node.js/TypeScript"
               status: "Pendiente"
               suggested_practice:
                 - "Refactorizar código aplicando principios SOLID y Clean Code."
-            - name: "Automatización de code reviews (herramientas y bots)"
+            - id: 5.2.3
+              name: "Automatización de code reviews (herramientas y bots)"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar una herramienta de automatización de code reviews."
@@ -709,11 +841,13 @@ course:
           status: "Pendiente"
           name: "Diseño de Sistemas (System Design) con Node.js"
           subtopics:
-            - name: "Preparación para entrevistas de System Design"
+            - id: 5.3.1
+              name: "Preparación para entrevistas de System Design"
               status: "Pendiente"
               suggested_practice:
                 - "Simular una entrevista de system design y justificar decisiones."
-            - name: "Patrones de Diseño Comunes en System Design"
+            - id: 5.3.2
+              name: "Patrones de Diseño Comunes en System Design"
               status: "Pendiente"
               suggested_practice:
                 - "Estudiar y aplicar patrones de escalabilidad como Load Balancing (balanceo de carga), Caching (caché distribuido), Sharding (fragmentación) y Replication (replicación de datos)."
@@ -721,15 +855,18 @@ course:
                 - "Analizar el uso de Message Queues (colas de mensajes) y Event Streams (flujos de eventos) para comunicación y desacoplamiento asíncrono."
                 - "Discutir y ejemplificar patrones de seguridad (ej. OAuth, JWT, mTLS) en el diseño de sistemas distribuidos."
                 - "Aplicar estos patrones en el diseño de arquitecturas de sistemas para resolver problemas específicos."
-            - name: "Escalabilidad, disponibilidad, consistencia, tolerancia a fallos"
+            - id: 5.3.3
+              name: "Escalabilidad, disponibilidad, consistencia, tolerancia a fallos"
               status: "Pendiente"
               suggested_practice:
                 - "Diseñar un sistema que cumpla requisitos de escalabilidad y tolerancia a fallos."
-            - name: "Casos de estudio"
+            - id: 5.3.4
+              name: "Casos de estudio"
               status: "Pendiente"
               suggested_practice:
                 - "Analizar un caso de estudio real y proponer mejoras."
-            - name: "Consistencia eventual y patrones CAP"
+            - id: 5.3.5
+              name: "Consistencia eventual y patrones CAP"
               status: "Pendiente"
               suggested_practice:
                 - "Explicar y ejemplificar el uso de patrones CAP en sistemas distribuidos."
@@ -737,23 +874,28 @@ course:
           status: "Pendiente"
           name: "Algoritmos y Estructuras de Datos Relevantes para JavaScript/Node.js"
           subtopics:
-            - name: "Repaso de estructuras de datos clave (Arrays, Linked Lists, Trees, Graphs, Hash Tables)"
+            - id: 5.4.1
+              name: "Repaso de estructuras de datos clave (Arrays, Linked Lists, Trees, Graphs, Hash Tables)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar y comparar estructuras de datos en JavaScript."
-            - name: "Algoritmos de búsqueda y ordenamiento"
+            - id: 5.4.2
+              name: "Algoritmos de búsqueda y ordenamiento"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar eficiencia de algoritmos de búsqueda y ordenamiento."
-            - name: "Complejidad Big O y optimización de algoritmos"
+            - id: 5.4.3
+              name: "Complejidad Big O y optimización de algoritmos"
               status: "Pendiente"
               suggested_practice:
                 - "Analizar y optimizar la complejidad de un algoritmo dado."
-            - name: "Resolución de problemas algorítmicos comunes"
+            - id: 5.4.4
+              name: "Resolución de problemas algorítmicos comunes"
               status: "Pendiente"
               suggested_practice:
                 - "Resolver problemas de plataformas como LeetCode o HackerRank."
-            - name: "Algoritmos concurrentes y estructuras lock-free"
+            - id: 5.4.5
+              name: "Algoritmos concurrentes y estructuras lock-free"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar un algoritmo concurrente y analizar condiciones de carrera."
@@ -761,27 +903,33 @@ course:
           status: "Pendiente"
           name: "Preparación para Entrevistas Técnicas Avanzadas"
           subtopics:
-            - name: "Preguntas profundas sobre JavaScript (Event Loop, V8, closures)"
+            - id: 5.5.1
+              name: "Preguntas profundas sobre JavaScript (Event Loop, V8, closures)"
               status: "Pendiente"
               suggested_practice:
                 - "Responder preguntas técnicas avanzadas sobre el Event Loop y V8."
-            - name: "TypeScript (tipos complejos, decorators)"
+            - id: 5.5.2
+              name: "TypeScript (tipos complejos, decorators)"
               status: "Pendiente"
               suggested_practice:
                 - "Explicar y ejemplificar tipos complejos y decoradores en TypeScript."
-            - name: "Node.js (Event Loop, libuv, Thread Pool)"
+            - id: 5.5.3
+              name: "Node.js (Event Loop, libuv, Thread Pool)"
               status: "Pendiente"
               suggested_practice:
                 - "Describir el funcionamiento interno del Event Loop y libuv."
-            - name: "Diseño de APIs/microservicios/seguridad"
+            - id: 5.5.4
+              name: "Diseño de APIs/microservicios/seguridad"
               status: "Pendiente"
               suggested_practice:
                 - "Diseñar una API segura y escalable para un caso de entrevista."
-            - name: "Estrategias para responder preguntas de comportamiento y liderazgo técnico"
+            - id: 5.5.5
+              name: "Estrategias para responder preguntas de comportamiento y liderazgo técnico"
               status: "Pendiente"
               suggested_practice:
                 - "Practicar respuestas a preguntas de liderazgo y comportamiento."
-            - name: "Preguntas de diseño de sistemas distribuidos y cloud-native"
+            - id: 5.5.6
+              name: "Preguntas de diseño de sistemas distribuidos y cloud-native"
               status: "Pendiente"
               suggested_practice:
                 - "Resolver preguntas de diseño de sistemas distribuidos en entrevistas."

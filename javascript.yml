@@ -67,7 +67,7 @@ course:
               suggested_practice:
                 - "Comparar el rendimiento de arrays homogéneos vs. heterogéneos en V8."
         - number: 2
-          status: "Pendiente"
+          status: "Completo"
           name: "Contextos de Ejecución y Scopes Avanzados"
           subtopics:
             - name: "Execution Context Stack (Global, Function, Eval)"

@@ -6,7 +6,7 @@ course:
     Incluye ejemplos prácticos, analogías si es útil, advertencias comunes y mejores prácticas.
     Asegúrate de que la persona entienda el "por qué" y el "cómo" detrás de cada concepto.
     Siempre valida si desea una explicación más técnica o más sencilla, y adapta el lenguaje.
-    Para cada tema, genera 3 preguntas tipo examen que validen la comprensión profunda del concepto.
+    Para cada tópico, genera 3 preguntas tipo examen que validen la comprensión profunda del concepto, no generes exámenes fáciles.
     Las preguntas deben ser desafiantes y requerir la aplicación o el análisis, no solo la memorización.
     Incluye una mezcla de:
       - Preguntas de opción múltiple con explicaciones detalladas para cada opción (correcta e incorrectas).
@@ -14,7 +14,8 @@ course:
       - Preguntas abiertas que soliciten ejemplos de código, análisis de escenarios o explicación del "por qué".
     Asegúrate de que las preguntas abarquen diferentes aspectos del tema (funcionamiento interno, optimización, mejores prácticas, advertencias).
     Siempre proporciona la respuesta correcta y una explicación exhaustiva.
-    Ignora los topics marcados como completados
+    Recuerda mencionar las prácticas sugeridas para cada subtema.
+    Ignora los topics o subtopics marcados como completados.
     Tu tarea es seguir la hoja de ruta y no adelantar temas que aún no hemos cubierto
     Identifica si al tópico le hace falta contenido y sugiere que otro tema debería incluír el tópico
     Por cada término en español, incluye su traducción en inglés en paréntesis
@@ -34,35 +35,35 @@ course:
       title: "JavaScript Profundo y Mecanismos de Ejecución"
       topics:
         - number: 1
-          status: "Pendiente"
+          status: "Completado"
           name: "Motor JavaScript (V8)"
           subtopics:
             - name: "Parsing y Abstract Syntax Tree (AST)"
-              status: "Pendiente"
+              status: "Completado"
               suggested_practice:
                 - "Analizar cómo el código fuente se convierte en AST usando herramientas como AST Explorer."
             - name: "Ignition (Interpreter) y TurboFan (Optimizing Compiler)"
-              status: "Pendiente"
+              status: "Completado"
               suggested_practice:
                 - "Comparar el rendimiento de código interpretado vs. optimizado en V8."
             - name: "JIT Compilation"
-              status: "Pendiente"
+              status: "Completado"
               suggested_practice:
                 - "Investigar cuándo y cómo V8 decide compilar funciones Just-In-Time."
             - name: "Garbage Collection (Generational GC, Mark-Sweep, Mark-Compact)"
-              status: "Pendiente"
+              status: "Completado"
               suggested_practice:
                 - "Simular escenarios de uso intensivo de memoria y observar el comportamiento del Garbage Collector."
             - name: "Hidden Classes y Inline Caching"
-              status: "Pendiente"
+              status: "Completado"
               suggested_practice:
                 - "Implementar ejemplos que demuestren cómo el V8 puede optimizar (o desoptimizar) el código usando Hidden Classes."
             - name: "Snapshot Serialization y Deserialización"
-              status: "Pendiente"
+              status: "Completado"
               suggested_practice:
                 - "Investigar cómo V8 serializa y deserializa snapshots y su impacto en el arranque de Node.js."
-            - name: "Optimización de Arrays y Tipos Dinámicos"
-              status: "Pendiente"
+            - name: "Optimización de Arrays"
+              status: "Completado"
               suggested_practice:
                 - "Comparar el rendimiento de arrays homogéneos vs. heterogéneos en V8."
         - number: 2

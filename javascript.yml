@@ -79,19 +79,19 @@ course:
               suggested_practice:
                 - "Modificar variables en diferentes entornos léxicos y observar el resultado."
             - name: "'this' Binding en Profundidad"
-              status: "Pendiente"
+              status: "Completo"
               suggested_practice:
                 - "Comparar el binding de 'this' en funciones normales, flecha y métodos."
-            - name: "Closures y Closure Profundo"
-              status: "Pendiente"
+            - name: "Closures y Closure Profundo y su relacion con This"
+              status: "Completo"
               suggested_practice:
                 - "Crear closures anidados y explicar el alcance de las variables."
             - name: "Temporal Dead Zone (TDZ) y Hoisting avanzado"
-              status: "Pendiente"
+              status: "Completo"
               suggested_practice:
                 - "Predecir errores de acceso a variables en la TDZ y explicar el hoisting."
             - name: "Strict Mode (Modo Estricto): diferencias y advertencias"
-              status: "Pendiente"
+              status: "Completo"
               suggested_practice:
                 - "Identificar errores que solo ocurren en modo estricto y explicar por qué."
         - number: 3

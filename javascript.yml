@@ -71,11 +71,11 @@ course:
           name: "Contextos de Ejecución y Scopes Avanzados"
           subtopics:
             - name: "Execution Context Stack (Global, Function, Eval)"
-              status: "Pendiente"
+              status: "Completo"
               suggested_practice:
                 - "Visualizar el stack de contextos de ejecución con ejemplos anidados."
             - name: "Lexical Environment y Variable Environment"
-              status: "Pendiente"
+              status: "Completo"
               suggested_practice:
                 - "Modificar variables en diferentes entornos léxicos y observar el resultado."
             - name: "Closures y Closure Profundo"

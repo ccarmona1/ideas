@@ -281,6 +281,15 @@ course:
               status: "Pendiente"
               suggested_practice:
                 - "Agregar tipos globales a un proyecto y analizar su impacto."
+            - name: "Aumento de Módulos (Module Augmentation)"
+              status: "Pendiente"
+              suggested_practice:
+                - "Explorar cómo extender tipos de módulos existentes en TypeScript utilizando la sintaxis de `module augmentation`."
+                - "Modificar la definición de un módulo de librería existente para añadir nuevas propiedades o métodos."
+                - "Crear tus propias declaraciones de aumento de módulos para librerías comunes."
+                - "Implementar aumentos de módulos para añadir funcionalidad a módulos de terceros."
+                - "Usar aumentos de módulos para refinar o restringir los tipos de un módulo existente."
+                - "Combinar aumentos de módulos con `declaration merging` para extender clases o interfaces."
         - number: 5
           status: "Pendiente"
           name: "Decoradores y Metaprogramación en TypeScript"
@@ -452,14 +461,38 @@ course:
           status: "Pendiente"
           name: "Contenedorización (Docker) y Orquestación (Kubernetes) para Aplicaciones Node.js"
           subtopics:
-            - name: "Buenas prácticas para despliegue y escalabilidad"
+            - name: "Dockerfile para Node.js y optimización de imágenes"
               status: "Pendiente"
               suggested_practice:
-                - "Dockerizar una app Node.js y desplegarla con Kubernetes local."
-            - name: "Node.js en entornos serverless y edge computing"
+                - "Crear un `Dockerfile` optimizado para una aplicación Node.js, utilizando imágenes base apropiadas (`node:lts-alpine`)."
+                - "Implementar `multi-stage builds` para reducir el tamaño de la imagen final, separando las dependencias de desarrollo y producción."
+                - "Configurar variables de entorno, volúmenes y user/group en el `Dockerfile` para seguridad y configurabilidad."
+            - name: "Gestión avanzada de dependencias en entornos conteinerizados"
               status: "Pendiente"
               suggested_practice:
-                - "Desplegar una función Node.js en un entorno serverless."
+                - "Comparar el uso de `npm ci` vs `npm install` en un entorno Docker para builds reproducibles."
+                - "Implementar estrategias de caching (Docker build cache, multi-stage builds) para las dependencias de Node.js en Docker."
+                - "Optimizar el proceso de instalación de dependencias para reducir el tiempo de construcción de la imagen, considerando `COPY --from`."
+            - name: "Configuración de Kubernetes para aplicaciones Node.js"
+              status: "Pendiente"
+              suggested_practice:
+                - "Desplegar una aplicación Node.js en un cluster de Kubernetes (Minikube, Kind, GKE, EKS)."
+                - "Definir `Deployments`, `Services`, y `Ingresses` para la aplicación, exponiendo puertos y rutas."
+                - "Configurar `liveness` y `readiness probes` para asegurar la salud de los pods de la aplicación y manejar reinicios/despliegues."
+                - "Implementar `Horizontal Pod Autoscaler` (HPA) para escalado automático basado en métricas."
+            - name: "Consideraciones de rendimiento y recursos en contenedores"
+              status: "Pendiente"
+              suggested_practice:
+                - "Ajustar los límites de CPU y memoria (`requests` y `limits`) para contenedores de Node.js en Kubernetes y observar su impacto."
+                - "Analizar el impacto del sistema de archivos y las operaciones de E/S en el rendimiento de la aplicación conteinerizada."
+                - "Optimizar la configuración de recursos para maximizar la eficiencia y prevenir `OOMKilled`."
+            - name: "Patrones Serverless Avanzados para Node.js"
+              status: "Pendiente"
+              suggested_practice:
+                - "Desplegar una función Node.js en un proveedor Serverless (AWS Lambda, Google Cloud Functions, Azure Functions) utilizando TypeScript."
+                - "Implementar estrategias para mitigar y manejar `cold starts` en funciones serverless (ej. provisioned concurrency, mantener lambdas 'calientes')."
+                - "Configurar eventos y triggers complejos para funciones serverless (API Gateway, SQS, S3, DynamoDB Streams)."
+
         - number: 7
           status: "Pendiente"
           name: "Seguridad en Aplicaciones Node.js"
@@ -543,6 +576,13 @@ course:
               status: "Pendiente"
               suggested_practice:
                 - "Simular sharding y replicación en una base de datos NoSQL."
+            - name: "Transacciones Distribuidas y Patrón Saga"
+              status: "Pendiente"
+              suggested_practice:
+                - "Investigar los desafíos de mantener la consistencia en sistemas distribuidos con múltiples bases de datos."
+                - "Implementar el patrón Saga para manejar transacciones distribuidas en una arquitectura de microservicios, utilizando un orquestador o coreografía."
+                - "Diseñar e implementar mecanismos de compensación y reversión (rollbacks) para los pasos de una Saga."
+                - "Analizar las implicaciones de la consistencia eventual en sistemas basados en Sagas."
         - number: 3
           status: "Pendiente"
           name: "Testing Avanzado de Aplicaciones Node.js y TypeScript"
@@ -619,6 +659,13 @@ course:
               status: "Pendiente"
               suggested_practice:
                 - "Implementar feature flags y realizar un despliegue progresivo."
+            - name: "Infraestructura como Código (IaC) con Node.js/TypeScript"
+              status: "Pendiente"
+              suggested_practice:
+                - "Aprender los conceptos básicos de IaC (idempotencia, estado, versiones) y sus beneficios para la automatización de infraestructura."
+                - "Elegir una herramienta de IaC (Terraform, AWS CDK, Pulumi) y familiarizarse con su sintaxis y flujo de trabajo."
+                - "Crear una infraestructura simple (ej. un VPC, subnets, un grupo de seguridad) utilizando IaC."
+                - "Automatizar el despliegue de infraestructura de Node.js (ej. un cluster ECS/EKS, una base de datos RDS) utilizando IaC en un pipeline CI/CD."
     - id: 5
       title: "Habilidades de Experto y Preparación para Entrevistas"
       topics:
@@ -666,6 +713,14 @@ course:
               status: "Pendiente"
               suggested_practice:
                 - "Simular una entrevista de system design y justificar decisiones."
+            - name: "Patrones de Diseño Comunes en System Design"
+              status: "Pendiente"
+              suggested_practice:
+                - "Estudiar y aplicar patrones de escalabilidad como Load Balancing (balanceo de carga), Caching (caché distribuido), Sharding (fragmentación) y Replication (replicación de datos)."
+                - "Comprender y explicar patrones de alta disponibilidad como Failover (conmutación por error) y Leader-Follower."
+                - "Analizar el uso de Message Queues (colas de mensajes) y Event Streams (flujos de eventos) para comunicación y desacoplamiento asíncrono."
+                - "Discutir y ejemplificar patrones de seguridad (ej. OAuth, JWT, mTLS) en el diseño de sistemas distribuidos."
+                - "Aplicar estos patrones en el diseño de arquitecturas de sistemas para resolver problemas específicos."
             - name: "Escalabilidad, disponibilidad, consistencia, tolerancia a fallos"
               status: "Pendiente"
               suggested_practice:

@@ -125,17 +125,24 @@ course:
                 - "Modificar la cadena de prototipos de un objeto existente y observar el efecto."
             - id: 1.3.3
               name: "Clases ES6+: Azúcar Sintáctico, Herencia y Representación Interna"
-              status: "Pendiente"
+              status: "Completado"
               suggested_practice:
                 - "Refactorizar código de funciones constructoras a clases ES6."
                 - "Implementar herencia usando clases ES6 y comparar con prototipos."
                 - "Investigar cómo V8 transpila y optimiza las clases ES6 en comparación con funciones constructoras."
             - id: 1.3.4
               name: "Mixins, Composición y Encapsulamiento (Símbolos y Propiedades Privadas)"
-              status: "Pendiente"
+              status: "Completado"
               suggested_practice:
                 - "Implementar mixins para compartir funcionalidad entre objetos."
                 - "Usar símbolos y campos privados para encapsular propiedades."
+            - id: 1.3.5
+              name: "Características Estáticas de las Clases (Static Class Features)"
+              status: "Pendiente"
+              suggested_practice:
+                - "Implementar métodos y propiedades estáticas en clases ES6+ y analizar su uso y limitaciones."
+                - "Comparar el acceso a miembros estáticos vs. de instancia y explicar escenarios de uso."
+                - "Investigar nuevas propuestas de características estáticas (ej. static initialization blocks) y su soporte en motores modernos."
         - number: 4
           status: "Pendiente"
           name: "Novedades y Mejoras en ES6+ (ECMAScript 2015+)"

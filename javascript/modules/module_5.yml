@@ -1,0 +1,142 @@
+id: 5
+title: "Habilidades de Experto y Preparación para Entrevistas"
+topics:
+  - number: 1
+    status: "Pendiente"
+    name: "Debugging y Resolución de Problemas (Troubleshooting) Avanzado"
+    subtopics:
+      - id: 5.1.1
+        name: "Estrategias para depurar aplicaciones complejas"
+        status: "Pendiente"
+        suggested_practice:
+          - "Depurar una app Node.js compleja usando breakpoints y logs."
+      - id: 5.1.2
+        name: "Uso de herramientas de monitoreo y logs"
+        status: "Pendiente"
+        suggested_practice:
+          - "Configurar y analizar logs y métricas en producción."
+      - id: 5.1.3
+        name: "Análisis de 'post-mortems'"
+        status: "Pendiente"
+        suggested_practice:
+          - "Realizar un post-mortem de un incidente simulado."
+      - id: 5.1.4
+        name: "Análisis de core dumps y crash dumps"
+        status: "Pendiente"
+        suggested_practice:
+          - "Analizar un core dump generado por un crash en Node.js."
+  - number: 2
+    status: "Pendiente"
+    name: "Revisión de Código (Code Review) y Buenas Prácticas"
+    subtopics:
+      - id: 5.2.1
+        name: "Cómo realizar code reviews efectivos"
+        status: "Pendiente"
+        suggested_practice:
+          - "Participar en code reviews y documentar feedback constructivo."
+      - id: 5.2.2
+        name: "Principios SOLID, DRY, KISS, Clean Code y Clean Architecture en Node.js/TypeScript"
+        status: "Pendiente"
+        suggested_practice:
+          - "Refactorizar código aplicando principios SOLID y Clean Code."
+      - id: 5.2.3
+        name: "Automatización de code reviews (herramientas y bots)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Configurar una herramienta de automatización de code reviews."
+  - number: 3
+    status: "Pendiente"
+    name: "Diseño de Sistemas (System Design) con Node.js"
+    subtopics:
+      - id: 5.3.1
+        name: "Preparación para entrevistas de System Design"
+        status: "Pendiente"
+        suggested_practice:
+          - "Simular una entrevista de system design y justificar decisiones."
+      - id: 5.3.2
+        name: "Patrones de Diseño Comunes en System Design"
+        status: "Pendiente"
+        suggested_practice:
+          - "Estudiar y aplicar patrones de escalabilidad como Load Balancing (balanceo de carga), Caching (caché distribuido), Sharding (fragmentación) y Replication (replicación de datos)."
+          - "Comprender y explicar patrones de alta disponibilidad como Failover (conmutación por error) y Leader-Follower."
+          - "Analizar el uso de Message Queues (colas de mensajes) y Event Streams (flujos de eventos) para comunicación y desacoplamiento asíncrono."
+          - "Discutir y ejemplificar patrones de seguridad (ej. OAuth, JWT, mTLS) en el diseño de sistemas distribuidos."
+          - "Aplicar estos patrones en el diseño de arquitecturas de sistemas para resolver problemas específicos."
+      - id: 5.3.3
+        name: "Escalabilidad, disponibilidad, consistencia, tolerancia a fallos"
+        status: "Pendiente"
+        suggested_practice:
+          - "Diseñar un sistema que cumpla requisitos de escalabilidad y tolerancia a fallos."
+      - id: 5.3.4
+        name: "Casos de estudio"
+        status: "Pendiente"
+        suggested_practice:
+          - "Analizar un caso de estudio real y proponer mejoras."
+      - id: 5.3.5
+        name: "Consistencia eventual y patrones CAP"
+        status: "Pendiente"
+        suggested_practice:
+          - "Explicar y ejemplificar el uso de patrones CAP en sistemas distribuidos."
+  - number: 4
+    status: "Pendiente"
+    name: "Algoritmos y Estructuras de Datos Relevantes para JavaScript/Node.js"
+    subtopics:
+      - id: 5.4.1
+        name: "Repaso de estructuras de datos clave (Arrays, Linked Lists, Trees, Graphs, Hash Tables)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar y comparar estructuras de datos en JavaScript."
+      - id: 5.4.2
+        name: "Algoritmos de búsqueda y ordenamiento"
+        status: "Pendiente"
+        suggested_practice:
+          - "Comparar eficiencia de algoritmos de búsqueda y ordenamiento."
+      - id: 5.4.3
+        name: "Complejidad Big O y optimización de algoritmos"
+        status: "Pendiente"
+        suggested_practice:
+          - "Analizar y optimizar la complejidad de un algoritmo dado."
+      - id: 5.4.4
+        name: "Resolución de problemas algorítmicos comunes"
+        status: "Pendiente"
+        suggested_practice:
+          - "Resolver problemas de plataformas como LeetCode o HackerRank."
+      - id: 5.4.5
+        name: "Algoritmos concurrentes y estructuras lock-free"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar un algoritmo concurrente y analizar condiciones de carrera."
+  - number: 5
+    status: "Pendiente"
+    name: "Preparación para Entrevistas Técnicas Avanzadas"
+    subtopics:
+      - id: 5.5.1
+        name: "Preguntas profundas sobre JavaScript (Event Loop, V8, closures)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Responder preguntas técnicas avanzadas sobre el Event Loop y V8."
+      - id: 5.5.2
+        name: "TypeScript (tipos complejos, decorators)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Explicar y ejemplificar tipos complejos y decoradores en TypeScript."
+      - id: 5.5.3
+        name: "Node.js (Event Loop, libuv, Thread Pool)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Describir el funcionamiento interno del Event Loop y libuv."
+      - id: 5.5.4
+        name: "Diseño de APIs/microservicios/seguridad"
+        status: "Pendiente"
+        suggested_practice:
+          - "Diseñar una API segura y escalable para un caso de entrevista."
+      - id: 5.5.5
+        name: "Estrategias para responder preguntas de comportamiento y liderazgo técnico"
+        status: "Pendiente"
+        suggested_practice:
+          - "Practicar respuestas a preguntas de liderazgo y comportamiento."
+      - id: 5.5.6
+        name: "Preguntas de diseño de sistemas distribuidos y cloud-native"
+        status: "Pendiente"
+        suggested_practice:
+          - "Resolver preguntas de diseño de sistemas distribuidos en entrevistas."

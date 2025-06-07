@@ -1,0 +1,179 @@
+id: 4
+title: "Desarrollo de Aplicaciones Avanzadas con Node.js y TypeScript"
+topics:
+  - number: 1
+    status: "Pendiente"
+    name: "Arquitecturas de Microservicios con Node.js y TypeScript"
+    subtopics:
+      - id: 4.1.1
+        name: "Principios (desacoplamiento)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Diseñar un microservicio desacoplado y documentar sus dependencias."
+      - id: 4.1.2
+        name: "Comunicación (REST, gRPC, Message Queues)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar comunicación entre servicios usando REST y gRPC."
+      - id: 4.1.3
+        name: "API Gateway"
+        status: "Pendiente"
+        suggested_practice:
+          - "Configurar un API Gateway y enrutar peticiones a microservicios."
+      - id: 4.1.4
+        name: "Service Discovery"
+        status: "Pendiente"
+        suggested_practice:
+          - "Simular service discovery dinámico en un entorno de microservicios."
+      - id: 4.1.5
+        name: "Patrones de Resiliencia (Circuit Breaker, Retries)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar un patrón Circuit Breaker en Node.js."
+      - id: 4.1.6
+        name: "Monitoreo y Observabilidad (Prometheus, Grafana, Jaeger)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Instrumentar métricas y trazas en microservicios y visualizarlas."
+      - id: 4.1.7
+        name: "Event Sourcing y CQRS"
+        status: "Pendiente"
+        suggested_practice:
+          - "Modelar un flujo de eventos y comandos usando CQRS."
+      - id: 4.1.8
+        name: "Mensajería asíncrona avanzada (RabbitMQ, Kafka)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Integrar RabbitMQ o Kafka para comunicación asíncrona."
+  - number: 2
+    status: "Pendiente"
+    name: "Bases de Datos Avanzadas con Node.js"
+    subtopics:
+      - id: 4.2.1
+        name: "ORM/ODM Profundo (TypeORM, Prisma: migraciones, relaciones, optimizaciones)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Configurar migraciones y relaciones avanzadas con TypeORM o Prisma."
+      - id: 4.2.2
+        name: "Bases de Datos NoSQL (MongoDB/Mongoose, Redis: caching, pub/sub)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar caching y pub/sub con Redis y MongoDB."
+      - id: 4.2.3
+        name: "Diseño de Esquemas Eficientes"
+        status: "Pendiente"
+        suggested_practice:
+          - "Optimizar un esquema de base de datos para consultas frecuentes."
+      - id: 4.2.4
+        name: "Sharding y replicación avanzada"
+        status: "Pendiente"
+        suggested_practice:
+          - "Simular sharding y replicación en una base de datos NoSQL."
+      - id: 4.2.5
+        name: "Transacciones Distribuidas y Patrón Saga"
+        status: "Pendiente"
+        suggested_practice:
+          - "Investigar los desafíos de mantener la consistencia en sistemas distribuidos con múltiples bases de datos."
+          - "Implementar el patrón Saga para manejar transacciones distribuidas en una arquitectura de microservicios, utilizando un orquestador o coreografía."
+          - "Diseñar e implementar mecanismos de compensación y reversión (rollbacks) para los pasos de una Saga."
+          - "Analizar las implicaciones de la consistencia eventual en sistemas basados en Sagas."
+  - number: 3
+    status: "Pendiente"
+    name: "Testing Avanzado de Aplicaciones Node.js y TypeScript"
+    subtopics:
+      - id: 4.3.1
+        name: "Estrategias (Unit, Integration, E2E)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Diseñar pruebas unitarias, de integración y E2E para un microservicio."
+      - id: 4.3.2
+        name: "Frameworks de Testing (Jest, Vitest, Supertest, Cypress)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Comparar frameworks de testing en un mismo módulo."
+      - id: 4.3.3
+        name: "Mocks, Stubs y Spies (uso avanzado), Test Doubles"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar mocks y spies avanzados en pruebas de integración."
+      - id: 4.3.4
+        name: "Generación de Datos de Prueba (Faker.js)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Generar datos de prueba realistas con Faker.js."
+      - id: 4.3.5
+        name: "Test-Driven Development (TDD) y Behavior-Driven Development (BDD)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Desarrollar una funcionalidad usando TDD y BDD."
+      - id: 4.3.6
+        name: "Contract Testing (Pact, Dredd)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Validar contratos de APIs con Pact o Dredd."
+  - number: 4
+    status: "Pendiente"
+    name: "GraphQL con Node.js y TypeScript"
+    subtopics:
+      - id: 4.4.1
+        name: "Conceptos Avanzados (Schemas, Resolvers, Directives, Subscriptions)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Definir un esquema GraphQL avanzado con directivas y suscripciones."
+      - id: 4.4.2
+        name: "Implementación (Apollo Server/Yoga)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar una API GraphQL con Apollo Server y Yoga."
+      - id: 4.4.3
+        name: "Federation y Stitching"
+        status: "Pendiente"
+        suggested_practice:
+          - "Federar múltiples servicios GraphQL y usar stitching."
+      - id: 4.4.4
+        name: "Optimización de Rendimiento (N+1 problem, DataLoader)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Resolver el problema N+1 usando DataLoader."
+      - id: 4.4.5
+        name: "Persisted Queries y seguridad en GraphQL"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar persisted queries y analizar riesgos de seguridad."
+  - number: 5
+    status: "Pendiente"
+    name: "Despliegue y CI/CD para Aplicaciones Node.js"
+    subtopics:
+      - id: 4.5.1
+        name: "Estrategias de Despliegue (Blue/Green, Canary)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Simular despliegues blue/green y canary en un entorno de pruebas."
+      - id: 4.5.2
+        name: "CI/CD Pipelines (GitHub Actions, GitLab CI)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Configurar un pipeline CI/CD con pruebas y despliegue automático."
+      - id: 4.5.3
+        name: "Serverless (AWS Lambda, Azure Functions, Google Cloud Functions: diseño de funciones, Cold Starts)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Desplegar una función serverless y medir el cold start."
+      - id: 4.5.4
+        name: "Monitoreo y Alerting Post-Despliegue"
+        status: "Pendiente"
+        suggested_practice:
+          - "Configurar alertas y monitoreo post-despliegue."
+      - id: 4.5.5
+        name: "Feature Flags y despliegue progresivo"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar feature flags y realizar un despliegue progresivo."
+      - id: 4.5.6
+        name: "Infraestructura como Código (IaC) con Node.js/TypeScript"
+        status: "Pendiente"
+        suggested_practice:
+          - "Aprender los conceptos básicos de IaC (idempotencia, estado, versiones) y sus beneficios para la automatización de infraestructura."
+          - "Elegir una herramienta de IaC (Terraform, AWS CDK, Pulumi) y familiarizarse con su sintaxis y flujo de trabajo."
+          - "Crear una infraestructura simple (ej. un VPC, subnets, un grupo de seguridad) utilizando IaC."
+          - "Automatizar el despliegue de infraestructura de Node.js (ej. un cluster ECS/EKS, una base de datos RDS) utilizando IaC en un pipeline CI/CD."

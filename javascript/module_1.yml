@@ -93,28 +93,28 @@ topics:
           - "Identificar errores que solo ocurren en modo estricto y explicar por qué."
       - id: 1.2.7
         name: "Visualización Avanzada de Scope Chain y Resolución en Tiempo de Ejecución"
-        status: "Pendiente"
+        status: "Completado"
         suggested_practice:
           - "Utilizar diagramas o herramientas para visualizar el scope chain en ejemplos complejos."
           - "Ejercicios prácticos de debugging de closures y memory leaks relacionados con contextos de ejecución."
       - id: 1.2.8
         name: "Edge Cases con eval y with: Seguridad y Performance"
-        status: "Pendiente"
+        status: "Completado"
         suggested_practice:
           - "Analizar casos límite y advertencias de seguridad/performance al usar eval y with."
       - id: 1.2.9
         name: "Impacto de Módulos ES6 en el Scope Global y Aislamiento de Contextos"
-        status: "Pendiente"
+        status: "Completado"
         suggested_practice:
           - "Comparar el comportamiento del scope global en scripts tradicionales vs. módulos ES6."
       - id: 1.2.10
         name: "Debugging de Scopes y Contextos con Herramientas Modernas"
-        status: "Pendiente"
+        status: "pendiente"
         suggested_practice:
           - "Utilizar DevTools y VSCode para inspeccionar scopes y contextos de ejecución en tiempo real."
       - id: 1.2.11
         name: "Performance y Optimización de Closures en V8"
-        status: "Pendiente"
+        status: "pendiente"
         suggested_practice:
           - "Analizar el impacto de closures anidados en el rendimiento y optimización en V8."
   - number: 3
@@ -253,7 +253,7 @@ topics:
         suggested_practice:
           - "Desestructurar objetos y arrays en funciones y asignaciones."
       - id: 1.4.4
-        name: "Módulos ES6 (import/export)"
+        name: "Módulos ES6 (import/export) vs javascript tradicional; Aislamiento de Contextos"
         status: "Pendiente"
         suggested_practice:
           - "Refactorizar código para usar módulos ES6 en vez de CommonJS."

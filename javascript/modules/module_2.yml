@@ -1,0 +1,92 @@
+id: 2
+title: "TypeScript para Aplicaciones Robustas y Escalables"
+topics:
+  - number: 1
+    status: "Pendiente"
+    name: "Tipos Avanzados y Utilidades de TypeScript"
+    subtopics:
+      - id: 2.1.1
+        name: "Conditional Types, Mapped Types y Utility Types"
+        status: "Pendiente"
+        suggested_practice:
+          - "Crear ejemplos de tipos condicionales, mapped types y utility types para validar tipos en tiempo de compilación."
+          - "Transformar interfaces usando mapped types y analizar los resultados."
+          - "Aplicar utility types a tipos personalizados y explicar su utilidad."
+      - id: 2.1.2
+        name: "Template Literal Types, Indexed Access y Recursive Types"
+        status: "Pendiente"
+        suggested_practice:
+          - "Definir tipos de cadenas dinámicas y usarlos en funciones genéricas."
+          - "Acceder a tipos anidados en estructuras complejas y documentar los resultados."
+          - "Implementar tipos recursivos para estructuras como árboles o listas enlazadas."
+      - id: 2.1.3
+        name: "Branded Types y Validación Nominal"
+        status: "Pendiente"
+        suggested_practice:
+          - "Crear branded types para diferenciar tipos primitivos en validaciones."
+  - number: 2
+    status: "Pendiente"
+    name: "Seguridad de Tipos: unknown, any y Type Guards"
+    subtopics:
+      - id: 2.2.1
+        name: "Uso apropiado de 'unknown' vs. 'any' y refinamiento seguro"
+        status: "Pendiente"
+        suggested_practice:
+          - "Comparar el comportamiento de 'unknown' y 'any' en funciones genéricas."
+          - "Implementar type guards para refinar valores de tipo 'unknown'."
+      - id: 2.2.2
+        name: "Type Guards personalizados y predicados de tipo"
+        status: "Pendiente"
+        suggested_practice:
+          - "Crear una jerarquía de clases e implementar type guards personalizados."
+          - "Filtrar arrays usando predicados de tipo y documentar los resultados."
+  - number: 3
+    status: "Pendiente"
+    name: "Módulos, Espacios de Nombres y Declaraciones Avanzadas"
+    subtopics:
+      - id: 2.3.1
+        name: "Módulos, Namespaces y Declaraciones (.d.ts, declare global, module augmentation)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Comparar módulos y namespaces en un proyecto pequeño."
+          - "Crear archivos de declaración para una librería personalizada."
+          - "Agregar tipos globales a un proyecto y analizar su impacto."
+          - "Explorar cómo extender tipos de módulos existentes en TypeScript utilizando la sintaxis de module augmentation."
+          - "Implementar aumentos de módulos para añadir funcionalidad a módulos de terceros."
+          - "Combinar aumentos de módulos con declaration merging para extender clases o interfaces."
+  - number: 4
+    status: "Pendiente"
+    name: "Decoradores, Metaprogramación y Configuración Avanzada"
+    subtopics:
+      - id: 2.4.1
+        name: "Decoradores, Reflect-metadata y Limitaciones"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar un decorador de logging para métodos de una clase."
+          - "Utilizar reflect-metadata para almacenar y recuperar metadatos en clases."
+          - "Investigar y documentar limitaciones de los decoradores en TypeScript."
+      - id: 2.4.2
+        name: "Configuración avanzada de tsconfig.json, Monorepos y Herramientas"
+        status: "Pendiente"
+        suggested_practice:
+          - "Configurar un proyecto con diferentes strict flags y analizar los errores de tipos."
+          - "Configurar un monorepo con referencias cruzadas entre paquetes."
+          - "Integrar TypeScript con una herramienta de build y analizar el resultado."
+          - "Configurar ESLint en un proyecto TypeScript y corregir advertencias."
+  - number: 5
+    status: "Pendiente"
+    name: "Diseño y Validación de APIs con TypeScript"
+    subtopics:
+      - id: 2.5.1
+        name: "Tipificación de Entidades, DTOs y Validación de Esquemas"
+        status: "Pendiente"
+        suggested_practice:
+          - "Definir DTOs tipados para una API REST y validar su uso."
+          - "Integrar Zod o Yup para validar datos en tiempo de ejecución."
+      - id: 2.5.2
+        name: "Generación de Tipos y Documentación Automática"
+        status: "Pendiente"
+        suggested_practice:
+          - "Generar tipos TypeScript a partir de una especificación OpenAPI."
+          - "Comparar validaciones en tiempo de ejecución y compilación en un ejemplo práctico."
+          - "Explorar herramientas para documentar y generar tipos automáticamente."

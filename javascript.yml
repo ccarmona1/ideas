@@ -75,37 +75,37 @@ course:
               suggested_practice:
                 - "Comparar el rendimiento de arrays homogéneos vs. heterogéneos en V8."
         - number: 2
-          status: "Completo"
+          status: "Completado"
           name: "Contextos de Ejecución y Scopes Avanzados"
           subtopics:
             - id: 1.2.1
               name: "Execution Context Stack (Global, Function, Eval)"
-              status: "Completo"
+              status: "Completado"
               suggested_practice:
                 - "Visualizar el stack de contextos de ejecución con ejemplos anidados."
             - id: 1.2.2
               name: "Lexical Environment y Variable Environment"
-              status: "Completo"
+              status: "Completado"
               suggested_practice:
                 - "Modificar variables en diferentes entornos léxicos y observar el resultado."
             - id: 1.2.3
               name: "'this' Binding en Profundidad"
-              status: "Completo"
+              status: "Completado"
               suggested_practice:
                 - "Comparar el binding de 'this' en funciones normales, flecha y métodos."
             - id: 1.2.4
               name: "Closures y Closure Profundo y su relacion con This"
-              status: "Completo"
+              status: "Completado"
               suggested_practice:
                 - "Crear closures anidados y explicar el alcance de las variables."
             - id: 1.2.5
               name: "Temporal Dead Zone (TDZ) y Hoisting avanzado"
-              status: "Completo"
+              status: "Completado"
               suggested_practice:
                 - "Predecir errores de acceso a variables en la TDZ y explicar el hoisting."
             - id: 1.2.6
               name: "Strict Mode (Modo Estricto): diferencias y advertencias"
-              status: "Completo"
+              status: "Completado"
               suggested_practice:
                 - "Identificar errores que solo ocurren en modo estricto y explicar por qué."
         - number: 3

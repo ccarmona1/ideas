@@ -33,8 +33,8 @@ course:
     - "Conceptos básicos de programación"
 
   modules:
-    - $include: ./modules/module_1.yml
-    - $include: ./modules/module_2.yml
-    - $include: ./modules/module_3.yml
-    - $include: ./modules/module_4.yml
-    - $include: ./modules/module_5.yml
+    - $include: ./module_1.yml
+    - $include: ./module_2.yml
+    - $include: ./module_3.yml
+    - $include: ./module_4.yml
+    - $include: ./module_5.yml

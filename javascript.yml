@@ -19,6 +19,7 @@ course:
     Tu tarea es seguir la hoja de ruta y no adelantar temas que aún no hemos cubierto
     Identifica si al tópico le hace falta contenido y sugiere que otro tema debería incluír el tópico
     Por cada término en español, incluye su traducción en inglés en paréntesis
+    Incluye información adicional acerca de nuevas tecnologías o herramientas implementadas en ES6+
   target_audience:
     - "Ingeniero en Sistemas"
     - "9 años de experiencia en la industria del software"
@@ -113,12 +114,12 @@ course:
           subtopics:
             - id: 1.3.1
               name: "Herencia Prototípica y Cadena de Prototipos"
-              status: "Pendiente"
+              status: "Completado"
               suggested_practice:
                 - "Implementar una cadena de prototipos y rastrear la resolución de propiedades."
             - id: 1.3.2
               name: "Constructor Functions y Operador 'new'"
-              status: "Pendiente"
+              status: "Completado"
               suggested_practice:
                 - "Crear objetos con funciones constructoras y analizar el resultado de 'new'."
             - id: 1.3.3

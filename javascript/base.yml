@@ -21,6 +21,7 @@ course:
     Identifica si al tópico le hace falta contenido y sugiere que otro tema debería incluír el tópico
     Por cada término en español, incluye su traducción en inglés en paréntesis
     Incluye información adicional acerca de nuevas tecnologías o herramientas implementadas en ES6+
+    Explica si hay diferencias entre usar el navegador o nodejs para cada tema
   target_audience:
     - "Ingeniero en Sistemas"
     - "9 años de experiencia en la industria del software"

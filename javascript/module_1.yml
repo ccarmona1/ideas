@@ -109,14 +109,9 @@ topics:
           - "Comparar el comportamiento del scope global en scripts tradicionales vs. módulos ES6."
       - id: 1.2.10
         name: "Debugging de Scopes y Contextos con Herramientas Modernas"
-        status: "pendiente"
+        status: "Completado"
         suggested_practice:
           - "Utilizar DevTools y VSCode para inspeccionar scopes y contextos de ejecución en tiempo real."
-      - id: 1.2.11
-        name: "Performance y Optimización de Closures en V8"
-        status: "pendiente"
-        suggested_practice:
-          - "Analizar el impacto de closures anidados en el rendimiento y optimización en V8."
   - number: 3
     status: "Pendiente"
     name: "Prototipos, Clases y Encapsulamiento en JavaScript"

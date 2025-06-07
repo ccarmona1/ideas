@@ -110,7 +110,7 @@ course:
                 - "Identificar errores que solo ocurren en modo estricto y explicar por qué."
         - number: 3
           status: "Pendiente"
-          name: "Prototipos y Programación Orientada a Objetos en JavaScript"
+          name: "Prototipos, Clases y Encapsulamiento en JavaScript"
           subtopics:
             - id: 1.3.1
               name: "Herencia Prototípica y Cadena de Prototipos"
@@ -118,128 +118,193 @@ course:
               suggested_practice:
                 - "Implementar una cadena de prototipos y rastrear la resolución de propiedades."
             - id: 1.3.2
-              name: "Constructor Functions y Operador 'new'"
+              name: "Funciones Constructoras, Operador 'new' y Object.create()"
               status: "Completado"
               suggested_practice:
                 - "Crear objetos con funciones constructoras y analizar el resultado de 'new'."
-            - id: 1.3.3
-              name: "Object.create() y Object.setPrototypeOf()"
-              status: "Pendiente"
-              suggested_practice:
                 - "Modificar la cadena de prototipos de un objeto existente y observar el efecto."
-            - id: 1.3.4
-              name: "'class' como azúcar sintáctico"
+            - id: 1.3.3
+              name: "Clases ES6+: Azúcar Sintáctico, Herencia y Representación Interna"
               status: "Pendiente"
               suggested_practice:
                 - "Refactorizar código de funciones constructoras a clases ES6."
-            - id: 1.3.5
-              name: "Mixins y composición de objetos"
+                - "Implementar herencia usando clases ES6 y comparar con prototipos."
+                - "Investigar cómo V8 transpila y optimiza las clases ES6 en comparación con funciones constructoras."
+            - id: 1.3.4
+              name: "Mixins, Composición y Encapsulamiento (Símbolos y Propiedades Privadas)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar mixins para compartir funcionalidad entre objetos."
-            - id: 1.3.6
-              name: "Símbolos y propiedades privadas"
-              status: "Pendiente"
-              suggested_practice:
                 - "Usar símbolos y campos privados para encapsular propiedades."
         - number: 4
           status: "Pendiente"
-          name: "Manejo de la Asincronía en JavaScript (Event Loop - Navegador)"
+          name: "Novedades y Mejoras en ES6+ (ECMAScript 2015+)"
           subtopics:
             - id: 1.4.1
+              name: "Declaración de Variables: var, let, const, TDZ y Block Scope"
+              status: "Pendiente"
+              suggested_practice:
+                - "Comparar el comportamiento de var, let y const en diferentes contextos."
+                - "Visualizar errores y diferencias de acceso a variables en la TDZ usando let/const y var."
+                - "Analizar cómo V8 maneja el scope de let/const y su impacto en la optimización y el hoisting."
+            - id: 1.4.2
+              name: "Arrow Functions, Closures y Lexical Environment"
+              status: "Pendiente"
+              suggested_practice:
+                - "Reescribir funciones tradicionales usando arrow functions y analizar el binding de this."
+                - "Crear ejemplos de closures usando let/const y arrow functions, y analizar el entorno léxico generado."
+                - "Comparar el rendimiento y el manejo de closures entre funciones tradicionales y arrow functions en V8."
+            - id: 1.4.3
+              name: "Destructuración y Parámetros por Defecto"
+              status: "Pendiente"
+              suggested_practice:
+                - "Desestructurar objetos y arrays en funciones y asignaciones."
+            - id: 1.4.4
+              name: "Módulos ES6 (import/export)"
+              status: "Pendiente"
+              suggested_practice:
+                - "Refactorizar código para usar módulos ES6 en vez de CommonJS."
+            - id: 1.4.5
+              name: "Promesas, async/await y Combinadores de Promesas"
+              status: "Pendiente"
+              suggested_practice:
+                - "Convertir callbacks a promesas y usar Promise.all, Promise.race, etc."
+                - "Implementar ejemplos con combinadores de promesas y analizar los resultados."
+                - "Gestionar errores y flujos complejos usando async/await."
+            - id: 1.4.6
+              name: "Iteradores, Generadores y for-of"
+              status: "Pendiente"
+              suggested_practice:
+                - "Implementar ejemplos prácticos usando generadores y for-of."
+                - "Crear un generador personalizado y consumirlo con un bucle."
+            - id: 1.4.7
+              name: "Otras Mejoras: rest/spread, template literals, Map/Set, etc."
+              status: "Pendiente"
+              suggested_practice:
+                - "Implementar ejemplos prácticos usando rest/spread, template literals, Map/Set."
+            - id: 1.4.8
+              name: "Impacto de let/const y block scope en el motor V8 y optimización"
+              status: "Pendiente"
+              suggested_practice:
+                - "Analizar cómo V8 maneja el scope de let/const y su impacto en la optimización y el hoisting."
+            - id: 1.4.9
+              name: "Arrow Functions y optimización en V8 (lexical this, closures)"
+              status: "Pendiente"
+              suggested_practice:
+                - "Comparar el rendimiento y el manejo de closures entre funciones tradicionales y arrow functions en V8."
+            - id: 1.4.10
+              name: "Clases ES6 y su representación interna en V8 (azúcar sintáctico vs. prototipos)"
+              status: "Pendiente"
+              suggested_practice:
+                - "Investigar cómo V8 transpila y optimiza las clases ES6 en comparación con funciones constructoras."
+            - id: 1.4.11
+              name: "TDZ (Temporal Dead Zone) y hoisting avanzado con let/const vs var (ver Scopes)"
+              status: "Pendiente"
+              suggested_practice:
+                - "Visualizar errores y diferencias de acceso a variables en la TDZ usando let/const y var."
+            - id: 1.4.12
+              name: "Lexical Environment y closures modernos con ES6+ (ver Scopes)"
+              status: "Pendiente"
+              suggested_practice:
+                - "Crear ejemplos de closures usando let/const y arrow functions, y analizar el entorno léxico generado."
+        - number: 5
+          status: "Pendiente"
+          name: "Manejo de la Asincronía en JavaScript (Event Loop - Navegador)"
+          subtopics:
+            - id: 1.5.1
               name: "Call Stack y Web APIs"
               status: "Pendiente"
               suggested_practice:
                 - "Simular llamadas asíncronas y observar el call stack y las Web APIs."
-            - id: 1.4.2
+            - id: 1.5.2
               name: "Callback Queue (Task Queue) y Microtask Queue"
               status: "Pendiente"
               suggested_practice:
                 - "Ejecutar código que mezcle microtasks y macrotasks y analizar el orden."
-            - id: 1.4.3
+            - id: 1.5.3
               name: "Macrotasks vs. Microtasks (setTimeout, setInterval vs. Promise.then(), queueMicrotask)"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar el orden de ejecución de diferentes tipos de tareas."
-            - id: 1.4.4
+            - id: 1.5.4
               name: "El 'Tick' del Event Loop"
               status: "Pendiente"
               suggested_practice:
                 - "Visualizar el ciclo de ticks del event loop con ejemplos prácticos."
-            - id: 1.4.5
+            - id: 1.5.5
               name: "Timers Internals"
               status: "Pendiente"
               suggested_practice:
                 - "Investigar cómo se gestionan internamente los timers en el navegador y Node.js."
-            - id: 1.4.6
+            - id: 1.5.6
               name: "Web Workers y Service Workers"
               status: "Pendiente"
               suggested_practice:
                 - "Crear un Web Worker y un Service Worker y analizar su ciclo de vida."
-        - number: 5
+        - number: 6
           status: "Pendiente"
           name: "Patrones Avanzados de Asincronía"
           subtopics:
-            - id: 1.5.1
+            - id: 1.6.1
               name: "Promesas (Promise combinators: allSettled, any)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar ejemplos con combinadores de promesas y analizar los resultados."
-            - id: 1.5.2
+            - id: 1.6.2
               name: "async/await avanzado"
               status: "Pendiente"
               suggested_practice:
                 - "Gestionar errores y flujos complejos usando async/await."
-            - id: 1.5.3
+            - id: 1.6.3
               name: "Generadores y yield"
               status: "Pendiente"
               suggested_practice:
                 - "Crear un generador personalizado y consumirlo con un bucle."
-            - id: 1.5.4
-              name: "Stream API (Fetch)"
+            - id: 1.6.4
+              name: "Stream API (Fetch, Node.js Streams, Backpressure)"
               status: "Pendiente"
               suggested_practice:
-                - "Consumir datos de una API usando streams y analizar el flujo."
-            - id: 1.5.5
+                - "Consumir datos de una API o archivo usando streams y analizar el flujo y el manejo de backpressure."
+            - id: 1.6.5
               name: "Cancelable Promises y AbortController"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar una promesa cancelable usando AbortController."
-            - id: 1.5.6
+            - id: 1.6.6
               name: "Async Iterators y for-await-of"
               status: "Pendiente"
               suggested_practice:
                 - "Iterar sobre datos asíncronos usando for-await-of."
-        - number: 6
+        - number: 7
           status: "Pendiente"
           name: "Diseño de Patrones en JavaScript"
           subtopics:
-            - id: 1.6.1
+            - id: 1.7.1
               name: "Patrones Creacionales (Singleton, Factory)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar un patrón Singleton y un Factory en JavaScript."
-            - id: 1.6.2
+            - id: 1.7.2
               name: "Patrones Estructurales (Adapter, Decorator)"
               status: "Pendiente"
               suggested_practice:
                 - "Aplicar los patrones Adapter y Decorator a una función existente."
-            - id: 1.6.3
+            - id: 1.7.3
               name: "Patrones Comportamentales (Observer, Strategy)"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar Observer y Strategy en un sistema de eventos."
-            - id: 1.6.4
+            - id: 1.7.4
               name: "Patrones de Concurrencia (Throttling/Debouncing)"
               status: "Pendiente"
               suggested_practice:
                 - "Optimizar el manejo de eventos frecuentes con throttling y debouncing."
-            - id: 1.6.5
+            - id: 1.7.5
               name: "Patrones de Memoization y Cache"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar memoization para funciones costosas."
-            - id: 1.6.6
+            - id: 1.7.6
               name: "Patrones de Middleware"
               status: "Pendiente"
               suggested_practice:
@@ -249,171 +314,92 @@ course:
       topics:
         - number: 1
           status: "Pendiente"
-          name: "Tipos Avanzados de TypeScript"
+          name: "Tipos Avanzados y Utilidades de TypeScript"
           subtopics:
             - id: 2.1.1
-              name: "Conditional Types (infer keyword, distribución)"
+              name: "Conditional Types, Mapped Types y Utility Types"
               status: "Pendiente"
               suggested_practice:
-                - "Crear ejemplos de tipos condicionales para validar tipos en tiempo de compilación."
-            - id: 2.1.2
-              name: "Mapped Types (Partial, Required, Readonly, Pick, Omit, Record)"
-              status: "Pendiente"
-              suggested_practice:
+                - "Crear ejemplos de tipos condicionales, mapped types y utility types para validar tipos en tiempo de compilación."
                 - "Transformar interfaces usando mapped types y analizar los resultados."
-            - id: 2.1.3
-              name: "Template Literal Types"
+                - "Aplicar utility types a tipos personalizados y explicar su utilidad."
+            - id: 2.1.2
+              name: "Template Literal Types, Indexed Access y Recursive Types"
               status: "Pendiente"
               suggested_practice:
                 - "Definir tipos de cadenas dinámicas y usarlos en funciones genéricas."
-            - id: 2.1.4
-              name: "Indexed Access Types"
-              status: "Pendiente"
-              suggested_practice:
                 - "Acceder a tipos anidados en estructuras complejas y documentar los resultados."
-            - id: 2.1.5
-              name: "Utility Types Profundos (Exclude, Extract, NonNullable, Parameters, ReturnType, Awaited)"
-              status: "Pendiente"
-              suggested_practice:
-                - "Aplicar utility types a tipos personalizados y explicar su utilidad."
-            - id: 2.1.6
-              name: "Recursive Types y tipos auto-referenciados"
-              status: "Pendiente"
-              suggested_practice:
                 - "Implementar tipos recursivos para estructuras como árboles o listas enlazadas."
-            - id: 2.1.7
-              name: "Branded Types para validación nominal"
+            - id: 2.1.3
+              name: "Branded Types y Validación Nominal"
               status: "Pendiente"
               suggested_practice:
                 - "Crear branded types para diferenciar tipos primitivos en validaciones."
         - number: 2
           status: "Pendiente"
-          name: "'unknown' vs. 'any'"
+          name: "Seguridad de Tipos: unknown, any y Type Guards"
           subtopics:
             - id: 2.2.1
-              name: "Uso apropiado y ventajas de 'unknown'"
+              name: "Uso apropiado de 'unknown' vs. 'any' y refinamiento seguro"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar el comportamiento de 'unknown' y 'any' en funciones genéricas."
-            - id: 2.2.2
-              name: "Refinamiento seguro de tipos desde 'unknown'"
-              status: "Pendiente"
-              suggested_practice:
                 - "Implementar type guards para refinar valores de tipo 'unknown'."
-        - number: 3
-          status: "Pendiente"
-          name: "Type Guards Personalizados y Predicados de Tipo ('is')"
-          subtopics:
-            - id: 2.3.1
-              name: "Type Guards personalizados para jerarquías de clases o interfaces"
+            - id: 2.2.2
+              name: "Type Guards personalizados y predicados de tipo"
               status: "Pendiente"
               suggested_practice:
                 - "Crear una jerarquía de clases e implementar type guards personalizados."
-            - id: 2.3.2
-              name: "Predicados de tipo y filtrado de arrays"
-              status: "Pendiente"
-              suggested_practice:
                 - "Filtrar arrays usando predicados de tipo y documentar los resultados."
-        - number: 4
+        - number: 3
           status: "Pendiente"
-          name: "Módulos y Espacios de Nombres en TypeScript"
+          name: "Módulos, Espacios de Nombres y Declaraciones Avanzadas"
           subtopics:
-            - id: 2.4.1
-              name: "Diferencias y casos de uso"
+            - id: 2.3.1
+              name: "Módulos, Namespaces y Declaraciones (.d.ts, declare global, module augmentation)"
               status: "Pendiente"
               suggested_practice:
                 - "Comparar módulos y namespaces en un proyecto pequeño."
-            - id: 2.4.2
-              name: "Declaración de Módulos (.d.ts files)"
-              status: "Pendiente"
-              suggested_practice:
                 - "Crear archivos de declaración para una librería personalizada."
-            - id: 2.4.3
-              name: "Módulos Globales y Ambiente ('declare global')"
-              status: "Pendiente"
-              suggested_practice:
                 - "Agregar tipos globales a un proyecto y analizar su impacto."
-            - id: 2.4.4
-              name: "Aumento de Módulos (Module Augmentation)"
-              status: "Pendiente"
-              suggested_practice:
-                - "Explorar cómo extender tipos de módulos existentes en TypeScript utilizando la sintaxis de `module augmentation`."
-                - "Modificar la definición de un módulo de librería existente para añadir nuevas propiedades o métodos."
-                - "Crear tus propias declaraciones de aumento de módulos para librerías comunes."
+                - "Explorar cómo extender tipos de módulos existentes en TypeScript utilizando la sintaxis de module augmentation."
                 - "Implementar aumentos de módulos para añadir funcionalidad a módulos de terceros."
-                - "Usar aumentos de módulos para refinar o restringir los tipos de un módulo existente."
-                - "Combinar aumentos de módulos con `declaration merging` para extender clases o interfaces."
-        - number: 5
+                - "Combinar aumentos de módulos con declaration merging para extender clases o interfaces."
+        - number: 4
           status: "Pendiente"
-          name: "Decoradores y Metaprogramación en TypeScript"
+          name: "Decoradores, Metaprogramación y Configuración Avanzada"
           subtopics:
-            - id: 2.5.1
-              name: "Concepto y aplicaciones (Inyección de dependencias, logging, validación)"
+            - id: 2.4.1
+              name: "Decoradores, Reflect-metadata y Limitaciones"
               status: "Pendiente"
               suggested_practice:
                 - "Implementar un decorador de logging para métodos de una clase."
-            - id: 2.5.2
-              name: "Reflect-metadata API"
-              status: "Pendiente"
-              suggested_practice:
                 - "Utilizar reflect-metadata para almacenar y recuperar metadatos en clases."
-            - id: 2.5.3
-              name: "Limitaciones y advertencias de los decoradores en tiempo de compilación"
-              status: "Pendiente"
-              suggested_practice:
                 - "Investigar y documentar limitaciones de los decoradores en TypeScript."
-        - number: 6
-          status: "Pendiente"
-          name: "Configuración Avanzada de 'tsconfig.json'"
-          subtopics:
-            - id: 2.6.1
-              name: "compilerOptions detalladas (strict flags, paths, baseUrl, esModuleInterop)"
+            - id: 2.4.2
+              name: "Configuración avanzada de tsconfig.json, Monorepos y Herramientas"
               status: "Pendiente"
               suggested_practice:
                 - "Configurar un proyecto con diferentes strict flags y analizar los errores de tipos."
-            - id: 2.6.2
-              name: "Monorepos y configuración Multi-paquete"
-              status: "Pendiente"
-              suggested_practice:
                 - "Configurar un monorepo con referencias cruzadas entre paquetes."
-            - id: 2.6.3
-              name: "Integración con herramientas de Build (Webpack, Rollup, Vite)"
-              status: "Pendiente"
-              suggested_practice:
                 - "Integrar TypeScript con una herramienta de build y analizar el resultado."
-            - id: 2.6.4
-              name: "Integración con herramientas de linting (ESLint, TSLint)"
-              status: "Pendiente"
-              suggested_practice:
                 - "Configurar ESLint en un proyecto TypeScript y corregir advertencias."
-        - number: 7
+        - number: 5
           status: "Pendiente"
-          name: "Diseño de APIs Robustas con TypeScript"
+          name: "Diseño y Validación de APIs con TypeScript"
           subtopics:
-            - id: 2.7.1
-              name: "Tipificación de Entidades y DTOs"
+            - id: 2.5.1
+              name: "Tipificación de Entidades, DTOs y Validación de Esquemas"
               status: "Pendiente"
               suggested_practice:
                 - "Definir DTOs tipados para una API REST y validar su uso."
-            - id: 2.7.2
-              name: "Validación de Esquemas (Zod, Yup) con TypeScript"
-              status: "Pendiente"
-              suggested_practice:
                 - "Integrar Zod o Yup para validar datos en tiempo de ejecución."
-            - id: 2.7.3
-              name: "Generación de Clientes y Tipos desde OpenAPI/Swagger"
+            - id: 2.5.2
+              name: "Generación de Tipos y Documentación Automática"
               status: "Pendiente"
               suggested_practice:
                 - "Generar tipos TypeScript a partir de una especificación OpenAPI."
-            - id: 2.7.4
-              name: "Validación de tipos en tiempo de ejecución vs. tiempo de compilación"
-              status: "Pendiente"
-              suggested_practice:
                 - "Comparar validaciones en tiempo de ejecución y compilación en un ejemplo práctico."
-            - id: 2.7.5
-              name: "OpenAPI Generators y herramientas de documentación automática"
-              status: "Pendiente"
-              suggested_practice:
                 - "Explorar herramientas para documentar y generar tipos automáticamente."
     - id: 3
       title: "Node.js Internals y Arquitecturas de Alto Rendimiento"

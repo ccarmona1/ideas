@@ -41,26 +41,20 @@ topics:
         suggested_practice:
           - "Comparar el rendimiento de arrays homogéneos vs. heterogéneos en V8."
       - id: 1.1.8
-        name: "Profiling y Logs Avanzados en V8 (trace-opt, trace-deopt, trace-gc)"
-        status: "Pendiente"
-        suggested_practice:
-          - "Ejecutar código con flags de V8 (--trace-opt, --trace-deopt, --trace-gc) y analizar los logs para identificar optimizaciones y desoptimizaciones."
-          - "Interpretar logs de V8 para debugging de performance."
-      - id: 1.1.9
         name: "Deopt Reasons y Pipeline de Optimización/Desoptimización"
-        status: "Pendiente"
+        status: "Completado"
         suggested_practice:
           - "Investigar y documentar las razones comunes de desoptimización (deopt reasons) en V8."
           - "Simular escenarios que provoquen desoptimización y analizar el impacto en el rendimiento."
-      - id: 1.1.10
+      - id: 1.1.9
         name: "Comparación de Motores JavaScript (V8, SpiderMonkey, JavaScriptCore)"
-        status: "Pendiente"
+        status: "Completado"
         suggested_practice:
           - "Comparar decisiones de diseño y optimización entre V8 y otros motores populares."
           - "Analizar cómo afectan los cambios de versión de V8 a la compatibilidad y rendimiento de Node.js."
-      - id: 1.1.11
+      - id: 1.1.10
         name: "Impacto de Nuevas Propuestas ECMAScript en V8"
-        status: "Pendiente"
+        status: "Completado"
         suggested_practice:
           - "Investigar cómo nuevas propuestas (ej. records & tuples, temporal) afectan la arquitectura y optimización de V8."
   - number: 2
@@ -282,26 +276,33 @@ topics:
         suggested_practice:
           - "Implementar ejemplos prácticos usando rest/spread, template literals, Map/Set."
       - id: 1.4.8
+        name: "Optional Chaining (?.) y Nullish Coalescing (??)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar ejemplos prácticos usando optional chaining y nullish coalescing para acceder a propiedades anidadas y valores por defecto."
+          - "Comparar el uso de estos operadores con técnicas tradicionales como && y ||."
+          - "Analizar casos donde el uso incorrecto de nullish coalescing puede llevar a errores sutiles."
+      - id: 1.4.9
         name: "Impacto de let/const y block scope en el motor V8 y optimización"
         status: "Pendiente"
         suggested_practice:
           - "Analizar cómo V8 maneja el scope de let/const y su impacto en la optimización y el hoisting."
-      - id: 1.4.9
+      - id: 1.4.10
         name: "Arrow Functions y optimización en V8 (lexical this, closures)"
         status: "Pendiente"
         suggested_practice:
           - "Comparar el rendimiento y el manejo de closures entre funciones tradicionales y arrow functions en V8."
-      - id: 1.4.10
+      - id: 1.4.11
         name: "Clases ES6 y su representación interna en V8 (azúcar sintáctico vs. prototipos)"
         status: "Pendiente"
         suggested_practice:
           - "Investigar cómo V8 transpila y optimiza las clases ES6 en comparación con funciones constructoras."
-      - id: 1.4.11
+      - id: 1.4.12
         name: "TDZ (Temporal Dead Zone) y hoisting avanzado con let/const vs var (ver Scopes)"
         status: "Pendiente"
         suggested_practice:
           - "Visualizar errores y diferencias de acceso a variables en la TDZ usando let/const y var."
-      - id: 1.4.12
+      - id: 1.4.13
         name: "Lexical Environment y closures modernos con ES6+ (ver Scopes)"
         status: "Pendiente"
         suggested_practice:

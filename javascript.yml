@@ -138,11 +138,53 @@ course:
                 - "Usar símbolos y campos privados para encapsular propiedades."
             - id: 1.3.5
               name: "Características Estáticas de las Clases (Static Class Features)"
-              status: "Pendiente"
+              status: "Completado"
               suggested_practice:
                 - "Implementar métodos y propiedades estáticas en clases ES6+ y analizar su uso y limitaciones."
                 - "Comparar el acceso a miembros estáticos vs. de instancia y explicar escenarios de uso."
                 - "Investigar nuevas propuestas de características estáticas (ej. static initialization blocks) y su soporte en motores modernos."
+            - id: 1.3.6
+              name: "Clases Abstractas (Abstract Classes): Simulación, Patrones y Limitaciones"
+              status: "Pendiente"
+              suggested_practice:
+                - "Simular una clase abstracta en JavaScript usando ES6+ y demostrar su uso."
+                - "Comparar clases abstractas con interfaces (duck typing) y explicar cuándo usar cada una."
+                - "Analizar limitaciones y advertencias al simular abstracción en JavaScript."
+            - id: 1.3.7
+              name: "Interfaces y Duck Typing en JavaScript: Patrones y Buenas Prácticas"
+              status: "Pendiente"
+              suggested_practice:
+                - "Implementar duck typing para validar la forma de un objeto en tiempo de ejecución."
+                - "Comparar el uso de interfaces en TypeScript con patrones de duck typing en JavaScript."
+                - "Analizar ventajas y riesgos del duck typing en aplicaciones grandes."
+            - id: 1.3.8
+              name: "Polimorfismo en JavaScript: Clásico y por Composición"
+              status: "Pendiente"
+              suggested_practice:
+                - "Implementar polimorfismo usando herencia prototípica y composición de funciones."
+                - "Comparar polimorfismo clásico vs. por composición en escenarios prácticos."
+                - "Analizar cuándo preferir composición sobre herencia para polimorfismo."
+            - id: 1.3.9
+              name: "Decoradores de Clase (Class Decorators): Estado Actual y Polyfills"
+              status: "Pendiente"
+              suggested_practice:
+                - "Simular un decorador de clase usando funciones de orden superior en JavaScript."
+                - "Investigar el estado de la propuesta de decoradores en ECMAScript y su uso con Babel."
+                - "Comparar decoradores en JavaScript con los de TypeScript y Python."
+            - id: 1.3.10
+              name: "Comparación de Clases y Objetos en JavaScript vs. Otros Lenguajes (Java, C#, Python)"
+              status: "Pendiente"
+              suggested_practice:
+                - "Comparar la herencia, encapsulamiento y polimorfismo en JavaScript y otros lenguajes OO."
+                - "Identificar ventajas y limitaciones del modelo de objetos de JavaScript."
+                - "Analizar casos donde la diferencia de modelo impacta el diseño de software."
+            - id: 1.3.11
+              name: "Limitaciones y Advertencias de las Clases ES6+"
+              status: "Pendiente"
+              suggested_practice:
+                - "Identificar comportamientos inesperados de las clases ES6+ (ej. no herencia de propiedades estáticas, this en métodos estáticos, etc.)."
+                - "Analizar advertencias sobre el uso de clases en entornos de alto rendimiento."
+                - "Investigar diferencias entre clases ES6+ y funciones constructoras en cuanto a optimización y debugging."
         - number: 4
           status: "Pendiente"
           name: "Novedades y Mejoras en ES6+ (ECMAScript 2015+)"

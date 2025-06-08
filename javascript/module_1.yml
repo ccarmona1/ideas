@@ -220,7 +220,7 @@ topics:
         suggested_practice:
           - "Ejercicios de integración de patrones como módulo o revealing module con clases ES6+."
   - number: 4
-    status: "En progreso"
+    status: "Completado"
     name: "Novedades y Mejoras en ES6+ (ECMAScript 2015+)"
     subtopics:
       - id: 1.4.1
@@ -262,16 +262,11 @@ topics:
           - "Implementar ejemplos prácticos usando rest/spread, template literals, Map/Set."
       - id: 1.4.7
         name: "Optional Chaining (?.) y Nullish Coalescing (??) y todos los operadores"
-        status: "Pendiente"
+        status: "Completado"
         suggested_practice:
           - "Implementar ejemplos prácticos usando optional chaining y nullish coalescing para acceder a propiedades anidadas y valores por defecto."
           - "Comparar el uso de estos operadores con técnicas tradicionales como && y ||."
           - "Analizar casos donde el uso incorrecto de nullish coalescing puede llevar a errores sutiles."
-      - id: 1.4.8
-        name: "Impacto de let/const y block scope en el motor V8 y optimización"
-        status: "Pendiente"
-        suggested_practice:
-          - "Analizar cómo V8 maneja el scope de let/const y su impacto en la optimización y el hoisting."
   - number: 5
     status: "Pendiente"
     name: "Manejo de la Asincronía en JavaScript (Event Loop - Navegador) (antes de ES6 y ES6+)"

@@ -90,3 +90,96 @@ topics:
           - "Generar tipos TypeScript a partir de una especificación OpenAPI."
           - "Comparar validaciones en tiempo de ejecución y compilación en un ejemplo práctico."
           - "Explorar herramientas para documentar y generar tipos automáticamente."
+  - number: 6
+    status: "Pendiente"
+    name: "Inferencia de Tipos y Strictness en TypeScript"
+    subtopics:
+      - id: 2.6.1
+        name: "Inferencia de Tipos y Migración Progresiva"
+        status: "Pendiente"
+        suggested_practice:
+          - "Analizar cómo TypeScript infiere tipos en variables, funciones y objetos."
+          - "Migrar código JavaScript a TypeScript usando inferencia y JSDoc."
+      - id: 2.6.2
+        name: "Strictness Flags y Control de Errores"
+        status: "Pendiente"
+        suggested_practice:
+          - "Configurar strictNullChecks, noImplicitAny y otras flags en tsconfig.json."
+          - "Ejercicios de debugging de errores de strictness."
+  - number: 7
+    status: "Pendiente"
+    name: "Funciones Avanzadas y Tipos de Callbacks"
+    subtopics:
+      - id: 2.7.1
+        name: "Sobrecarga de Funciones y Polimorfismo"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar funciones sobrecargadas y analizar su tipado."
+      - id: 2.7.2
+        name: "Callbacks, Eventos y Tipos Genéricos"
+        status: "Pendiente"
+        suggested_practice:
+          - "Definir tipos para callbacks y eventos en aplicaciones reales."
+  - number: 8
+    status: "Pendiente"
+    name: "Integración con JavaScript y Migración Progresiva"
+    subtopics:
+      - id: 2.8.1
+        name: "Tipado Gradual y JSDoc"
+        status: "Pendiente"
+        suggested_practice:
+          - "Usar @ts-check y JSDoc para tipar archivos JS."
+      - id: 2.8.2
+        name: "Interoperabilidad con Librerías JavaScript"
+        status: "Pendiente"
+        suggested_practice:
+          - "Importar y tipar librerías JS puras en proyectos TS."
+  - number: 9
+    status: "Pendiente"
+    name: "Testing y TypeScript"
+    subtopics:
+      - id: 2.9.1
+        name: "Testing con TypeScript (Jest, Vitest, etc.)"
+        status: "Pendiente"
+        suggested_practice:
+          - "Configurar un entorno de testing con TypeScript."
+          - "Tipar mocks y pruebas unitarias."
+  - number: 10
+    status: "Pendiente"
+    name: "Performance, Limitaciones y Workarounds"
+    subtopics:
+      - id: 2.10.1
+        name: "Performance del Compilador y Tipos Complejos"
+        status: "Pendiente"
+        suggested_practice:
+          - "Analizar el impacto de tipos complejos en el tiempo de compilación."
+          - "Investigar workarounds para limitaciones conocidas."
+  - number: 11
+    status: "Pendiente"
+    name: "Patrones de Diseño y TypeScript"
+    subtopics:
+      - id: 2.11.1
+        name: "Patrones Clásicos y Enforcing con Tipos"
+        status: "Pendiente"
+        suggested_practice:
+          - "Implementar patrones como Singleton, Factory y Observer usando TS."
+  - number: 12
+    status: "Pendiente"
+    name: "Integración con Herramientas Modernas"
+    subtopics:
+      - id: 2.12.1
+        name: "Build Tools, Monorepos y Workspaces"
+        status: "Pendiente"
+        suggested_practice:
+          - "Integrar TypeScript con Vite, esbuild o SWC."
+          - "Configurar monorepos con pnpm o yarn workspaces."
+  - number: 13
+    status: "Pendiente"
+    name: "Ecosistema, Comunidad y Futuro de TypeScript"
+    subtopics:
+      - id: 2.13.1
+        name: "Propuestas Futuras y Herramientas de Generación de Tipos"
+        status: "Pendiente"
+        suggested_practice:
+          - "Explorar herramientas como GraphQL Codegen y tRPC para generación automática de tipos."
+          - "Investigar el estado de propuestas futuras en el repositorio oficial de TypeScript."

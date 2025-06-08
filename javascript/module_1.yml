@@ -7,54 +7,54 @@ topics:
     subtopics:
       - id: 1.1.1
         name: "Parsing y Abstract Syntax Tree (AST)"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Analizar cómo el código fuente se convierte en AST usando herramientas como AST Explorer."
       - id: 1.1.2
         name: "Ignition (Interpreter) y TurboFan (Optimizing Compiler)"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Comparar el rendimiento de código interpretado vs. optimizado en V8."
       - id: 1.1.3
         name: "JIT Compilation"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Investigar cuándo y cómo V8 decide compilar funciones Just-In-Time."
       - id: 1.1.4
         name: "Garbage Collection (Generational GC, Mark-Sweep, Mark-Compact)"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Simular escenarios de uso intensivo de memoria y observar el comportamiento del Garbage Collector."
       - id: 1.1.5
         name: "Hidden Classes y Inline Caching"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Implementar ejemplos que demuestren cómo el V8 puede optimizar (o desoptimizar) el código usando Hidden Classes."
       - id: 1.1.6
         name: "Snapshot Serialization y Deserialización"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Investigar cómo V8 serializa y deserializa snapshots y su impacto en el arranque de Node.js."
       - id: 1.1.7
         name: "Optimización de Arrays"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Comparar el rendimiento de arrays homogéneos vs. heterogéneos en V8."
       - id: 1.1.8
         name: "Deopt Reasons y Pipeline de Optimización/Desoptimización"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Investigar y documentar las razones comunes de desoptimización (deopt reasons) en V8."
           - "Simular escenarios que provoquen desoptimización y analizar el impacto en el rendimiento."
       - id: 1.1.9
         name: "Comparación de Motores JavaScript (V8, SpiderMonkey, JavaScriptCore)"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Comparar decisiones de diseño y optimización entre V8 y otros motores populares."
           - "Analizar cómo afectan los cambios de versión de V8 a la compatibilidad y rendimiento de Node.js."
       - id: 1.1.10
         name: "Impacto de Nuevas Propuestas ECMAScript en V8"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Investigar cómo nuevas propuestas (ej. records & tuples, temporal) afectan la arquitectura y optimización de V8."
   - number: 2
@@ -63,53 +63,53 @@ topics:
     subtopics:
       - id: 1.2.1
         name: "Execution Context Stack (Global, Function, Eval)"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Visualizar el stack de contextos de ejecución con ejemplos anidados."
       - id: 1.2.2
         name: "Lexical Environment y Variable Environment"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Modificar variables en diferentes entornos léxicos y observar el resultado."
       - id: 1.2.3
         name: "'this' Binding en Profundidad"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Comparar el binding de 'this' en funciones normales, flecha y métodos."
       - id: 1.2.4
         name: "Closures y Closure Profundo y su relacion con This"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Crear closures anidados y explicar el alcance de las variables."
       - id: 1.2.5
         name: "Temporal Dead Zone (TDZ) y Hoisting avanzado"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Predecir errores de acceso a variables en la TDZ y explicar el hoisting."
       - id: 1.2.6
         name: "Strict Mode (Modo Estricto): diferencias y advertencias"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Identificar errores que solo ocurren en modo estricto y explicar por qué."
       - id: 1.2.7
         name: "Visualización Avanzada de Scope Chain y Resolución en Tiempo de Ejecución"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Utilizar diagramas o herramientas para visualizar el scope chain en ejemplos complejos."
           - "Ejercicios prácticos de debugging de closures y memory leaks relacionados con contextos de ejecución."
       - id: 1.2.8
         name: "Edge Cases con eval y with: Seguridad y Performance"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Analizar casos límite y advertencias de seguridad/performance al usar eval y with."
       - id: 1.2.9
         name: "Impacto de Módulos ES6 en el Scope Global y Aislamiento de Contextos"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Comparar el comportamiento del scope global en scripts tradicionales vs. módulos ES6."
       - id: 1.2.10
         name: "Debugging de Scopes y Contextos con Herramientas Modernas"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Utilizar DevTools y VSCode para inspeccionar scopes y contextos de ejecución en tiempo real."
   - number: 3
@@ -118,105 +118,105 @@ topics:
     subtopics:
       - id: 1.3.1
         name: "Herencia Prototípica y Cadena de Prototipos"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Implementar una cadena de prototipos y rastrear la resolución de propiedades."
       - id: 1.3.2
         name: "Funciones Constructoras, Operador 'new' y Object.create()"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Crear objetos con funciones constructoras y analizar el resultado de 'new'."
           - "Modificar la cadena de prototipos de un objeto existente y observar el efecto."
       - id: 1.3.3
         name: "Clases ES6+: Azúcar Sintáctico, Herencia y Representación Interna"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Refactorizar código de funciones constructoras a clases ES6."
           - "Implementar herencia usando clases ES6 y comparar con prototipos."
           - "Investigar cómo V8 transpila y optimiza las clases ES6 en comparación con funciones constructoras."
       - id: 1.3.4
         name: "Mixins, Composición y Encapsulamiento (Símbolos y Propiedades Privadas)"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Implementar mixins para compartir funcionalidad entre objetos."
           - "Usar símbolos y campos privados para encapsular propiedades."
       - id: 1.3.5
         name: "Características Estáticas de las Clases (Static Class Features)"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Implementar métodos y propiedades estáticas en clases ES6+ y analizar su uso y limitaciones."
           - "Comparar el acceso a miembros estáticos vs. de instancia y explicar escenarios de uso."
           - "Investigar nuevas propuestas de características estáticas (ej. static initialization blocks) y su soporte en motores modernos."
       - id: 1.3.6
         name: "Clases Abstractas (Abstract Classes): Simulación, Patrones y Limitaciones"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Simular una clase abstracta en JavaScript usando ES6+ y demostrar su uso."
           - "Analizar limitaciones y advertencias al simular abstracción en JavaScript."
       - id: 1.3.7
         name: "Interfaces y Duck Typing en JavaScript: Patrones y Buenas Prácticas"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Implementar duck typing para validar la forma de un objeto en tiempo de ejecución."
           - "Comparar el uso de interfaces en TypeScript con patrones de duck typing en JavaScript."
           - "Analizar ventajas y riesgos del duck typing en aplicaciones grandes."
       - id: 1.3.8
         name: "Polimorfismo en JavaScript: Clásico y por Composición"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Implementar polimorfismo usando herencia prototípica y composición de funciones."
           - "Comparar polimorfismo clásico vs. por composición en escenarios prácticos."
           - "Analizar cuándo preferir composición sobre herencia para polimorfismo."
       - id: 1.3.9
         name: "Decoradores de Clase (Class Decorators): Estado Actual y Polyfills"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Simular un decorador de clase usando funciones de orden superior en JavaScript."
           - "Investigar el estado de la propuesta de decoradores en ECMAScript y su uso con Babel."
           - "Comparar decoradores en JavaScript con los de TypeScript y Python."
       - id: 1.3.10
         name: "Comparación de Clases y Objetos en JavaScript vs. Otros Lenguajes (Java, C#, Python)"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Comparar la herencia, encapsulamiento y polimorfismo en JavaScript y otros lenguajes OO."
           - "Identificar ventajas y limitaciones del modelo de objetos de JavaScript."
           - "Analizar casos donde la diferencia de modelo impacta el diseño de software."
       - id: 1.3.11
         name: "Limitaciones y Advertencias de las Clases ES6+"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Identificar comportamientos inesperados de las clases ES6+ (ej. no herencia de propiedades estáticas, this en métodos estáticos, etc.)."
           - "Analizar advertencias sobre el uso de clases en entornos de alto rendimiento."
           - "Investigar diferencias entre clases ES6+ y funciones constructoras en cuanto a optimización y debugging."
       - id: 1.3.12
         name: "Debugging Avanzado de la Cadena de Prototipos"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Ejercicios prácticos de debugging de la cadena de prototipos en aplicaciones reales."
       - id: 1.3.13
         name: "Performance de Herencia y Composición en V8"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Comparar el rendimiento de diferentes patrones de herencia y composición en V8."
       - id: 1.3.14
         name: "Proxies y Metaprogramación Avanzada para Encapsulamiento"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Implementar proxies para encapsular y controlar el acceso a propiedades y métodos."
       - id: 1.3.15
         name: "Interoperabilidad ES5/ES6+ y Migración de Sistemas Legacy"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Ejercicios de interoperabilidad entre código ES5 y ES6+."
           - "Casos de estudio de migración de sistemas legacy basados en prototipos a clases modernas."
       - id: 1.3.16
         name: "Análisis de Seguridad: Encapsulamiento con Símbolos y Campos Privados"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Analizar cómo evitar fugas de información usando símbolos y campos privados."
       - id: 1.3.17
         name: "Integración de Patrones de Diseño Clásicos con Clases Modernas"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Ejercicios de integración de patrones como módulo o revealing module con clases ES6+."
   - number: 4
@@ -225,44 +225,44 @@ topics:
     subtopics:
       - id: 1.4.1
         name: "Declaración de Variables: var, let, const, TDZ y Block Scope"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Comparar el comportamiento de var, let y const en diferentes contextos."
           - "Visualizar errores y diferencias de acceso a variables en la TDZ usando let/const y var."
           - "Analizar cómo V8 maneja el scope de let/const y su impacto en la optimización y el hoisting."
       - id: 1.4.2
         name: "Arrow Functions, Closures y Lexical Environment"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Reescribir funciones tradicionales usando arrow functions y analizar el binding de this."
           - "Crear ejemplos de closures usando let/const y arrow functions, y analizar el entorno léxico generado."
           - "Comparar el rendimiento y el manejo de closures entre funciones tradicionales y arrow functions en V8."
       - id: 1.4.3
         name: "Destructuración y Parámetros por Defecto"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Desestructurar objetos y arrays en funciones y asignaciones."
       - id: 1.4.4
         name: "Promesas, async/await y Combinadores de Promesas"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Convertir callbacks a promesas y usar Promise.all, Promise.race, etc."
           - "Implementar ejemplos con combinadores de promesas y analizar los resultados."
           - "Gestionar errores y flujos complejos usando async/await."
       - id: 1.4.5
         name: "Iteradores, Generadores y for-of"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Implementar ejemplos prácticos usando generadores y for-of."
           - "Crear un generador personalizado y consumirlo con un bucle."
       - id: 1.4.6
         name: "Otras Mejoras: template literals, Map/Set (todas)."
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Implementar ejemplos prácticos usando rest/spread, template literals, Map/Set."
       - id: 1.4.7
         name: "Optional Chaining (?.) y Nullish Coalescing (??) y todos los operadores"
-        status: "Completado"
+        completed: true
         suggested_practice:
           - "Implementar ejemplos prácticos usando optional chaining y nullish coalescing para acceder a propiedades anidadas y valores por defecto."
           - "Comparar el uso de estos operadores con técnicas tradicionales como && y ||."
@@ -273,33 +273,33 @@ topics:
     subtopics:
       - id: 1.5.1
         name: "Call Stack y Web APIs"
-        status: "Pendiente"
+        completed: true
         suggested_practice:
           - "Simular llamadas asíncronas y observar el call stack y las Web APIs."
       - id: 1.5.2
         name: "Callback Queue (Task Queue) y Microtask Queue"
-        status: "Pendiente"
+        completed: true
         suggested_practice:
           - "Ejecutar código que mezcle microtasks y macrotasks y analizar el orden."
       - id: 1.5.3
         name: "Macrotasks vs. Microtasks (setTimeout, setInterval vs. Promise.then(), queueMicrotask)"
-        status: "Pendiente"
+        completed: true
         suggested_practice:
           - "Comparar el orden de ejecución de diferentes tipos de tareas."
           - "Analizar fragmentos de código estático que mezclen tareas síncronas, macrotasks y microtasks, y predecir el resultado antes de ejecutarlo. Justificar el razonamiento paso a paso."
       - id: 1.5.4
         name: "El 'Tick' del Event Loop"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Visualizar el ciclo de ticks del event loop con ejemplos prácticos."
       - id: 1.5.5
         name: "Timers Internals"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Investigar cómo se gestionan internamente los timers en el navegador y Node.js."
       - id: 1.5.6
         name: "Web Workers y Service Workers"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Crear un Web Worker y un Service Worker y analizar su ciclo de vida."
           - "Comparar Web Workers con worker_threads de Node.js: diferencias de API, casos de uso, limitaciones y advertencias de interoperabilidad."
@@ -312,32 +312,32 @@ topics:
     subtopics:
       - id: 1.6.1
         name: "Promesas (Promise combinators: allSettled, any)"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Implementar ejemplos con combinadores de promesas y analizar los resultados."
       - id: 1.6.2
         name: "async/await avanzado"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Gestionar errores y flujos complejos usando async/await."
       - id: 1.6.3
         name: "Generadores y yield"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Crear un generador personalizado y consumirlo con un bucle."
       - id: 1.6.4
         name: "Stream API (Fetch, Node.js Streams, Backpressure)"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Consumir datos de una API o archivo usando streams y analizar el flujo y el manejo de backpressure."
       - id: 1.6.5
         name: "Cancelable Promises y AbortController"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Implementar una promesa cancelable usando AbortController."
       - id: 1.6.6
         name: "Async Iterators y for-await-of"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Iterar sobre datos asíncronos usando for-await-of."
   - number: 7
@@ -346,34 +346,34 @@ topics:
     subtopics:
       - id: 1.7.1
         name: "Patrones Creacionales (Singleton, Factory)"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Implementar un patrón Singleton y un Factory en JavaScript."
           - "Comparar la implementación de estos patrones en JavaScript con otros lenguajes como Java y C#."
       - id: 1.7.2
         name: "Patrones Estructurales (Adapter, Decorator, Proxy)"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Implementar un patrón Adapter y analizar cómo transforma la interfaz de un objeto."
           - "Crear un Decorator que añada comportamiento a un objeto en tiempo de ejecución."
           - "Usar un Proxy para interceptar y redefinir operaciones fundamentales en un objeto."
       - id: 1.7.3
         name: "Patrones de Comportamiento (Observer, Strategy, Command)"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Implementar el patrón Observer para notificar cambios entre objetos."
           - "Usar el patrón Strategy para definir una familia de algoritmos y hacerlos intercambiables."
           - "Implementar el patrón Command para encapsular acciones como objetos."
       - id: 1.7.4
         name: "Patrones Avanzados (Module, Revealing Module, IIFE)"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Implementar el patrón Module para encapsular variables y funciones privadas."
           - "Usar el patrón Revealing Module para exponer solo ciertas partes de un módulo."
           - "Crear una IIFE (Immediately Invoked Function Expression) para crear un ámbito léxico privado."
       - id: 1.7.5
         name: "Comparación y Elección de Patrones de Diseño"
-        status: "Pendiente"
+        completed: false
         suggested_practice:
           - "Comparar las ventajas y desventajas de diferentes patrones de diseño en JavaScript."
           - "Discutir cuándo es apropiado usar un patrón sobre otro en base a requisitos específicos."

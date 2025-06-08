@@ -2,7 +2,7 @@ id: 5
 title: "Habilidades de Experto y Preparación para Entrevistas"
 topics:
   - number: 1
-    status: "Pendiente"
+    completed: false
     name: "Debugging y Resolución de Problemas (Troubleshooting) Avanzado"
     subtopics:
       - id: 5.1.1
@@ -26,7 +26,7 @@ topics:
         suggested_practice:
           - "Analizar un core dump generado por un crash en Node.js."
   - number: 2
-    status: "Pendiente"
+    completed: false
     name: "Revisión de Código (Code Review) y Buenas Prácticas"
     subtopics:
       - id: 5.2.1
@@ -45,7 +45,7 @@ topics:
         suggested_practice:
           - "Configurar una herramienta de automatización de code reviews."
   - number: 3
-    status: "Pendiente"
+    completed: false
     name: "Diseño de Sistemas (System Design) con Node.js"
     subtopics:
       - id: 5.3.1
@@ -78,7 +78,7 @@ topics:
         suggested_practice:
           - "Explicar y ejemplificar el uso de patrones CAP en sistemas distribuidos."
   - number: 4
-    status: "Pendiente"
+    completed: false
     name: "Algoritmos y Estructuras de Datos Relevantes para JavaScript/Node.js"
     subtopics:
       - id: 5.4.1
@@ -107,7 +107,7 @@ topics:
         suggested_practice:
           - "Implementar un algoritmo concurrente y analizar condiciones de carrera."
   - number: 5
-    status: "Pendiente"
+    completed: false
     name: "Preparación para Entrevistas Técnicas Avanzadas"
     subtopics:
       - id: 5.5.1

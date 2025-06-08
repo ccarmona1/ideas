@@ -2,7 +2,7 @@ id: 1
 title: "JavaScript Profundo y Mecanismos de Ejecución"
 topics:
   - number: 1
-    status: "Completado"
+    completed: true
     name: "Motor JavaScript (V8)"
     subtopics:
       - id: 1.1.1
@@ -58,7 +58,7 @@ topics:
         suggested_practice:
           - "Investigar cómo nuevas propuestas (ej. records & tuples, temporal) afectan la arquitectura y optimización de V8."
   - number: 2
-    status: "Completado"
+    completed: true
     name: "Contextos de Ejecución y Scopes Avanzados"
     subtopics:
       - id: 1.2.1
@@ -113,7 +113,7 @@ topics:
         suggested_practice:
           - "Utilizar DevTools y VSCode para inspeccionar scopes y contextos de ejecución en tiempo real."
   - number: 3
-    status: "Completado"
+    completed: true
     name: "Prototipos, Clases y Encapsulamiento en JavaScript"
     subtopics:
       - id: 1.3.1
@@ -220,7 +220,7 @@ topics:
         suggested_practice:
           - "Ejercicios de integración de patrones como módulo o revealing module con clases ES6+."
   - number: 4
-    status: "Completado"
+    completed: true
     name: "Novedades y Mejoras en ES6+ (ECMAScript 2015+)"
     subtopics:
       - id: 1.4.1
@@ -268,7 +268,7 @@ topics:
           - "Comparar el uso de estos operadores con técnicas tradicionales como && y ||."
           - "Analizar casos donde el uso incorrecto de nullish coalescing puede llevar a errores sutiles."
   - number: 5
-    status: "Pendiente"
+    completed: false
     name: "Manejo de la Asincronía en JavaScript (Event Loop - Navegador) (antes de ES6 y ES6+)"
     subtopics:
       - id: 1.5.1
@@ -307,7 +307,7 @@ topics:
           - "Diferencias clave entre Web Workers (navegador) y worker_threads (Node.js): los Web Workers están diseñados para entornos de navegador y no tienen acceso directo al sistema de archivos ni a módulos de Node.js, mientras que worker_threads permiten operaciones de bajo nivel y acceso completo al entorno Node.js."
           - "Advertencia: El código para Web Workers no es portable directamente a Node.js y viceversa. Analizar cuándo usar cada uno y las mejores prácticas para interoperabilidad."
   - number: 6
-    status: "Pendiente"
+    completed: false
     name: "Patrones Avanzados de Asincronía con ES6+"
     subtopics:
       - id: 1.6.1
@@ -341,7 +341,7 @@ topics:
         suggested_practice:
           - "Iterar sobre datos asíncronos usando for-await-of."
   - number: 7
-    status: "Pendiente"
+    completed: false
     name: "Diseño de Patrones en JavaScript con ES6+"
     subtopics:
       - id: 1.7.1

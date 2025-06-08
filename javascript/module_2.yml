@@ -2,7 +2,7 @@ id: 2
 title: "TypeScript para Aplicaciones Robustas y Escalables"
 topics:
   - number: 1
-    status: "Pendiente"
+    completed: false
     name: "Tipos Avanzados y Utilidades de TypeScript"
     subtopics:
       - id: 2.1.1
@@ -25,7 +25,7 @@ topics:
         suggested_practice:
           - "Crear branded types para diferenciar tipos primitivos en validaciones."
   - number: 2
-    status: "Pendiente"
+    completed: false
     name: "Seguridad de Tipos: unknown, any y Type Guards"
     subtopics:
       - id: 2.2.1
@@ -41,7 +41,7 @@ topics:
           - "Crear una jerarquía de clases e implementar type guards personalizados."
           - "Filtrar arrays usando predicados de tipo y documentar los resultados."
   - number: 3
-    status: "Pendiente"
+    completed: false
     name: "Módulos, Espacios de Nombres y Declaraciones Avanzadas"
     subtopics:
       - id: 2.3.1
@@ -55,7 +55,7 @@ topics:
           - "Implementar aumentos de módulos para añadir funcionalidad a módulos de terceros."
           - "Combinar aumentos de módulos con declaration merging para extender clases o interfaces."
   - number: 4
-    status: "Pendiente"
+    completed: false
     name: "Decoradores, Metaprogramación y Configuración Avanzada"
     subtopics:
       - id: 2.4.1
@@ -74,7 +74,7 @@ topics:
           - "Integrar TypeScript con una herramienta de build y analizar el resultado."
           - "Configurar ESLint en un proyecto TypeScript y corregir advertencias."
   - number: 5
-    status: "Pendiente"
+    completed: false
     name: "Diseño y Validación de APIs con TypeScript"
     subtopics:
       - id: 2.5.1
@@ -91,7 +91,7 @@ topics:
           - "Comparar validaciones en tiempo de ejecución y compilación en un ejemplo práctico."
           - "Explorar herramientas para documentar y generar tipos automáticamente."
   - number: 6
-    status: "Pendiente"
+    completed: false
     name: "Inferencia de Tipos y Strictness en TypeScript"
     subtopics:
       - id: 2.6.1
@@ -107,7 +107,7 @@ topics:
           - "Configurar strictNullChecks, noImplicitAny y otras flags en tsconfig.json."
           - "Ejercicios de debugging de errores de strictness."
   - number: 7
-    status: "Pendiente"
+    completed: false
     name: "Funciones Avanzadas y Tipos de Callbacks"
     subtopics:
       - id: 2.7.1
@@ -121,7 +121,7 @@ topics:
         suggested_practice:
           - "Definir tipos para callbacks y eventos en aplicaciones reales."
   - number: 8
-    status: "Pendiente"
+    completed: false
     name: "Integración con JavaScript y Migración Progresiva"
     subtopics:
       - id: 2.8.1
@@ -135,7 +135,7 @@ topics:
         suggested_practice:
           - "Importar y tipar librerías JS puras en proyectos TS."
   - number: 9
-    status: "Pendiente"
+    completed: false
     name: "Testing y TypeScript"
     subtopics:
       - id: 2.9.1
@@ -145,7 +145,7 @@ topics:
           - "Configurar un entorno de testing con TypeScript."
           - "Tipar mocks y pruebas unitarias."
   - number: 10
-    status: "Pendiente"
+    completed: false
     name: "Performance, Limitaciones y Workarounds"
     subtopics:
       - id: 2.10.1
@@ -155,7 +155,7 @@ topics:
           - "Analizar el impacto de tipos complejos en el tiempo de compilación."
           - "Investigar workarounds para limitaciones conocidas."
   - number: 11
-    status: "Pendiente"
+    completed: false
     name: "Patrones de Diseño y TypeScript"
     subtopics:
       - id: 2.11.1
@@ -164,7 +164,7 @@ topics:
         suggested_practice:
           - "Implementar patrones como Singleton, Factory y Observer usando TS."
   - number: 12
-    status: "Pendiente"
+    completed: false
     name: "Integración con Herramientas Modernas"
     subtopics:
       - id: 2.12.1
@@ -174,7 +174,7 @@ topics:
           - "Integrar TypeScript con Vite, esbuild o SWC."
           - "Configurar monorepos con pnpm o yarn workspaces."
   - number: 13
-    status: "Pendiente"
+    completed: false
     name: "Ecosistema, Comunidad y Futuro de TypeScript"
     subtopics:
       - id: 2.13.1

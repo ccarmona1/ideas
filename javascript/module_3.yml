@@ -2,7 +2,7 @@ id: 3
 title: "Node.js Internals y Arquitecturas de Alto Rendimiento"
 topics:
   - number: 1
-    status: "Pendiente"
+    completed: false
     name: "Arquitectura Interna de Node.js"
     subtopics:
       - id: 3.1.1
@@ -26,7 +26,7 @@ topics:
         suggested_practice:
           - "Investigar cómo Node.js implementa módulos nativos y sus ventajas de rendimiento."
   - number: 2
-    status: "Pendiente"
+    completed: false
     name: "Event Loop en Node.js (Profundo)"
     subtopics:
       - id: 3.2.1
@@ -50,7 +50,7 @@ topics:
         suggested_practice:
           - "Medir el impacto de callbacks pesados en la fase de timers."
   - number: 3
-    status: "Pendiente"
+    completed: false
     name: "Manejo de Errores Asíncronos en Node.js"
     subtopics:
       - id: 3.3.1
@@ -64,7 +64,7 @@ topics:
         suggested_practice:
           - "Implementar un patrón de error boundary en una app Node.js."
   - number: 4
-    status: "Pendiente"
+    completed: false
     name: "Módulos Avanzados de Node.js y Patrones"
     subtopics:
       - id: 3.4.1
@@ -102,7 +102,7 @@ topics:
         suggested_practice:
           - "Comparar streams nativos y de usuario en Node.js."
   - number: 5
-    status: "Pendiente"
+    completed: false
     name: "Optimizaciones de Rendimiento y Debugging en Node.js"
     subtopics:
       - id: 3.5.1
@@ -131,7 +131,7 @@ topics:
         suggested_practice:
           - "Simular race conditions y aplicar patrones thread-safe."
   - number: 6
-    status: "Pendiente"
+    completed: false
     name: "Contenedorización (Docker) y Orquestación (Kubernetes) para Aplicaciones Node.js"
     subtopics:
       - id: 3.6.1
@@ -171,7 +171,7 @@ topics:
           - "Implementar estrategias para mitigar y manejar `cold starts` en funciones serverless (ej. provisioned concurrency, mantener lambdas 'calientes')."
           - "Configurar eventos y triggers complejos para funciones serverless (API Gateway, SQS, S3, DynamoDB Streams)."
   - number: 7
-    status: "Pendiente"
+    completed: false
     name: "Seguridad en Aplicaciones Node.js"
     subtopics:
       - id: 3.7.1

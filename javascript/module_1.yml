@@ -256,7 +256,7 @@ topics:
           - "Implementar ejemplos prácticos usando generadores y for-of."
           - "Crear un generador personalizado y consumirlo con un bucle."
       - id: 1.4.6
-        name: "Otras Mejoras: rest/spread, template literals, Map/Set (todas)."
+        name: "Otras Mejoras: template literals, Map/Set (todas)."
         status: "Pendiente"
         suggested_practice:
           - "Implementar ejemplos prácticos usando rest/spread, template literals, Map/Set."

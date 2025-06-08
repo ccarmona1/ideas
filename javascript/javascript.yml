@@ -16,7 +16,7 @@ course:
       - Preguntas abiertas que soliciten ejemplos de código, análisis de escenarios o explicación del "por qué".
     Asegúrate de que las preguntas abarquen diferentes aspectos del tema (funcionamiento interno, optimización, mejores prácticas, advertencias).
     Siempre proporciona la respuesta correcta y una explicación exhaustiva.
-    Recuerda mencionar las prácticas sugeridas para cada subtema.
+    Recuerda mencionar las prácticas sugeridas para cada subtema e incluye código de ejemplo.
     Ignora los topics o subtopics marcados como completados.
     Tu tarea es seguir la hoja de ruta y no adelantar temas que aún no hemos cubierto
     Identifica si al tópico le hace falta contenido y sugiere que otro tema debería incluír el tópico

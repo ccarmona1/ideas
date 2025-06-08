@@ -286,6 +286,7 @@ topics:
         status: "Pendiente"
         suggested_practice:
           - "Comparar el orden de ejecución de diferentes tipos de tareas."
+          - "Analizar fragmentos de código estático que mezclen tareas síncronas, macrotasks y microtasks, y predecir el resultado antes de ejecutarlo. Justificar el razonamiento paso a paso."
       - id: 1.5.4
         name: "El 'Tick' del Event Loop"
         status: "Pendiente"
@@ -301,6 +302,10 @@ topics:
         status: "Pendiente"
         suggested_practice:
           - "Crear un Web Worker y un Service Worker y analizar su ciclo de vida."
+          - "Comparar Web Workers con worker_threads de Node.js: diferencias de API, casos de uso, limitaciones y advertencias de interoperabilidad."
+        notes:
+          - "Diferencias clave entre Web Workers (navegador) y worker_threads (Node.js): los Web Workers están diseñados para entornos de navegador y no tienen acceso directo al sistema de archivos ni a módulos de Node.js, mientras que worker_threads permiten operaciones de bajo nivel y acceso completo al entorno Node.js."
+          - "Advertencia: El código para Web Workers no es portable directamente a Node.js y viceversa. Analizar cuándo usar cada uno y las mejores prácticas para interoperabilidad."
   - number: 6
     status: "Pendiente"
     name: "Patrones Avanzados de Asincronía con ES6+"
@@ -344,28 +349,32 @@ topics:
         status: "Pendiente"
         suggested_practice:
           - "Implementar un patrón Singleton y un Factory en JavaScript."
+          - "Comparar la implementación de estos patrones en JavaScript con otros lenguajes como Java y C#."
       - id: 1.7.2
-        name: "Patrones Estructurales (Adapter, Decorator)"
+        name: "Patrones Estructurales (Adapter, Decorator, Proxy)"
         status: "Pendiente"
         suggested_practice:
-          - "Aplicar los patrones Adapter y Decorator a una función existente."
+          - "Implementar un patrón Adapter y analizar cómo transforma la interfaz de un objeto."
+          - "Crear un Decorator que añada comportamiento a un objeto en tiempo de ejecución."
+          - "Usar un Proxy para interceptar y redefinir operaciones fundamentales en un objeto."
       - id: 1.7.3
-        name: "Patrones Comportamentales (Observer, Strategy)"
+        name: "Patrones de Comportamiento (Observer, Strategy, Command)"
         status: "Pendiente"
         suggested_practice:
-          - "Implementar Observer y Strategy en un sistema de eventos."
+          - "Implementar el patrón Observer para notificar cambios entre objetos."
+          - "Usar el patrón Strategy para definir una familia de algoritmos y hacerlos intercambiables."
+          - "Implementar el patrón Command para encapsular acciones como objetos."
       - id: 1.7.4
-        name: "Patrones de Concurrencia (Throttling/Debouncing)"
+        name: "Patrones Avanzados (Module, Revealing Module, IIFE)"
         status: "Pendiente"
         suggested_practice:
-          - "Optimizar el manejo de eventos frecuentes con throttling y debouncing."
+          - "Implementar el patrón Module para encapsular variables y funciones privadas."
+          - "Usar el patrón Revealing Module para exponer solo ciertas partes de un módulo."
+          - "Crear una IIFE (Immediately Invoked Function Expression) para crear un ámbito léxico privado."
       - id: 1.7.5
-        name: "Patrones de Memoization y Cache"
+        name: "Comparación y Elección de Patrones de Diseño"
         status: "Pendiente"
         suggested_practice:
-          - "Implementar memoization para funciones costosas."
-      - id: 1.7.6
-        name: "Patrones de Middleware"
-        status: "Pendiente"
-        suggested_practice:
-          - "Crear un sistema de middlewares encadenados para peticiones."
+          - "Comparar las ventajas y desventajas de diferentes patrones de diseño en JavaScript."
+          - "Discutir cuándo es apropiado usar un patrón sobre otro en base a requisitos específicos."
+          - "Analizar ejemplos de la vida real donde se hayan aplicado estos patrones."

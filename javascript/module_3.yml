@@ -82,6 +82,10 @@ topics:
         status: "Pendiente"
         suggested_practice:
           - "Mover una tarea CPU-bound a un worker thread y medir el impacto."
+          - "Comparar worker_threads de Node.js con Web Workers y Service Workers del navegador: diferencias de API, casos de uso, limitaciones y advertencias de interoperabilidad."
+        notes:
+          - "Diferencias clave: worker_threads en Node.js permiten acceso completo al sistema y están orientados a tareas CPU-bound, mientras que Web Workers están limitados al entorno seguro del navegador. Service Workers tienen un ciclo de vida especial y están enfocados en interceptar y gestionar peticiones de red en aplicaciones web."
+          - "Advertencia: No confundir los modelos de concurrencia y comunicación entre procesos/hilos en Node.js y navegador. Analizar las mejores prácticas y limitaciones de cada entorno."
       - id: 3.4.4
         name: "Stream API (Readable, Writable, Duplex, Transform Streams, Backpressure)"
         status: "Pendiente"

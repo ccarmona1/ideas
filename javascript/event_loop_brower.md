@@ -1,3 +1,5 @@
+```mermaid
+
 graph TD
 
     %% Este gráfico solo aplica para navegadores
@@ -36,3 +38,4 @@ graph TD
         G -->|Sí| H[Se agrega a la lista de MicroTask]
         G -->|No| X[No se agrega a ningula cola]
     end
+```

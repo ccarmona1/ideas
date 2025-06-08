@@ -289,12 +289,12 @@ topics:
           - "Analizar fragmentos de código estático que mezclen tareas síncronas, macrotasks y microtasks, y predecir el resultado antes de ejecutarlo. Justificar el razonamiento paso a paso."
       - id: 1.5.4
         name: "El 'Tick' del Event Loop"
-        completed: false
+        completed: true
         suggested_practice:
           - "Visualizar el ciclo de ticks del event loop con ejemplos prácticos."
       - id: 1.5.5
         name: "Timers Internals"
-        completed: false
+        completed: true
         suggested_practice:
           - "Investigar cómo se gestionan internamente los timers en el navegador y Node.js."
       - id: 1.5.6
@@ -308,7 +308,7 @@ topics:
           - "Advertencia: El código para Web Workers no es portable directamente a Node.js y viceversa. Analizar cuándo usar cada uno y las mejores prácticas para interoperabilidad."
   - number: 6
     completed: false
-    name: "Patrones Avanzados de Asincronía con ES6+"
+    name: "Patrones Avanzados de Asincronía con ES6+ y su relación con el event loop"
     subtopics:
       - id: 1.6.1
         name: "Promesas (Promise combinators: allSettled, any)"
@@ -316,7 +316,7 @@ topics:
         suggested_practice:
           - "Implementar ejemplos con combinadores de promesas y analizar los resultados."
       - id: 1.6.2
-        name: "async/await avanzado"
+        name: "async/await avanzado y su manejo en el event loop del navegador"
         completed: false
         suggested_practice:
           - "Gestionar errores y flujos complejos usando async/await."
@@ -378,3 +378,39 @@ topics:
           - "Comparar las ventajas y desventajas de diferentes patrones de diseño en JavaScript."
           - "Discutir cuándo es apropiado usar un patrón sobre otro en base a requisitos específicos."
           - "Analizar ejemplos de la vida real donde se hayan aplicado estos patrones."
+  - number: 8
+    completed: false
+    name: "Entendimiento y Manipulación del DOM"
+    subtopics:
+      - id: 1.8.1
+        name: "¿Qué es el DOM? Estructura y Árbol de Nodos"
+        completed: false
+        suggested_practice:
+          - "Visualizar el árbol DOM de una página web simple."
+      - id: 1.8.2
+        name: "Selección y Búsqueda de Elementos (getElementById, querySelector, etc.)"
+        completed: false
+        suggested_practice:
+          - "Practicar la selección de elementos usando diferentes métodos."
+      - id: 1.8.3
+        name: "Manipulación de Elementos: Lectura y Modificación de Propiedades y Atributos"
+        completed: false
+        suggested_practice:
+          - "Modificar el contenido y atributos de elementos desde JavaScript."
+      - id: 1.8.4
+        name: "Creación, Inserción y Eliminación de Nodos"
+        completed: false
+        suggested_practice:
+          - "Crear, insertar y eliminar nodos dinámicamente en el DOM."
+      - id: 1.8.5
+        name: "Eventos y Delegación de Eventos"
+        completed: false
+        suggested_practice:
+          - "Agregar y eliminar listeners de eventos."
+          - "Implementar delegación de eventos para manejar múltiples elementos."
+      - id: 1.8.6
+        name: "Buenas Prácticas y Performance en Manipulación del DOM"
+        completed: false
+        suggested_practice:
+          - "Analizar el impacto de las manipulaciones frecuentes del DOM en el rendimiento."
+          - "Investigar técnicas para minimizar reflows y repaints."

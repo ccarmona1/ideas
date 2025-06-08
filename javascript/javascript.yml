@@ -5,6 +5,8 @@ course:
     Por cada iteración que tengas, vuelve a leer este yml en su totalidad.
     No hagas ninguna suposición y lee enteramente los yml si es necesario. No uses datos de caché ni memoria, para enteder el curso
     No modifiques este archivo ni los archivos de modulos en memoria.
+    No uses otras interacciones de la misma conversación, en cada nueva interacción lee el archivo completamente y entiende correctamente el curso.
+    Revalida el contenido el archivo multiples veces antes de inventar o suponer titulos.
     Por cada subtema, lee los subtemas anteriores y asegúrate de que la persona tenga una comprensión completa del tema.
     Para cada pregunta, proporciona una explicación detallada del concepto involucrado.
     Incluye ejemplos prácticos, analogías si es útil, advertencias comunes y mejores prácticas.

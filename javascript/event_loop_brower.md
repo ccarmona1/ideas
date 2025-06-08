@@ -1,12 +1,10 @@
-```mermaid
-
 graph TD
 
     %% Este gráfico solo aplica para navegadores
     %% Primero se ejecuta el proceso de Código Síncrono, esto bloquea el hilo
     %% Las iteraciones Event Loop y WebApis comenzarán apenas se desbloqueé el hilo (termine la ejecució de código síncrono)
 
-    subgraph 2 - Event Loop
+    subgraph 2 - Event Loop - tick por cada iteracion
         L{¿Hay Algo en CallStack?} -->|Sí| T[Se Ejecuta]
         L -->|No| M{¿Hay algo en MicroTasks?}
         M -->|Sí| S[Se ejecuta Microtask]
@@ -14,7 +12,11 @@ graph TD
         M -->|No| N{¿Hay algo en MacroTasks?}
         N -->|Sí| R[Se ejecuta MacroTask]
         N -->|No| L
-
+        classDef tick fill:#ffd,stroke:#f90,stroke-width:2px;
+        L:::tick
+        M:::tick
+        N:::tick
+        R:::tick
     end
 
     subgraph 2 - WebApis
@@ -34,6 +36,3 @@ graph TD
         G -->|Sí| H[Se agrega a la lista de MicroTask]
         G -->|No| X[No se agrega a ningula cola]
     end
-
-
-```

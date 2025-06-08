@@ -3,6 +3,7 @@ course:
   description: "Curso diseñado para ingenieros de sistemas con experiencia, enfocado en las mecánicas internas, optimización de rendimiento y arquitecturas avanzadas para lograr un dominio experto en JS, TS y Node.js."
   instruccionesIA: >
     Por cada iteración que tengas, vuelve a leer este yml en su totalidad.
+    Por cada subtema, lee los subtemas anteriores y asegúrate de que la persona tenga una comprensión completa del tema.
     Para cada pregunta, proporciona una explicación detallada del concepto involucrado.
     Incluye ejemplos prácticos, analogías si es útil, advertencias comunes y mejores prácticas.
     Asegúrate de que la persona entienda el "por qué" y el "cómo" detrás de cada concepto.
@@ -32,7 +33,6 @@ course:
     - "Ciclos"
     - "Condicionales"
     - "Conceptos básicos de programación"
-
   modules:
     - $include: ./module_1.yml
     - $include: ./module_2.yml

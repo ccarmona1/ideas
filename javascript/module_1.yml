@@ -251,7 +251,7 @@ topics:
           - "Gestionar errores y flujos complejos usando async/await."
       - id: 1.4.5
         name: "Iteradores, Generadores y for-of"
-        status: "Pendiente"
+        status: "Completado"
         suggested_practice:
           - "Implementar ejemplos prácticos usando generadores y for-of."
           - "Crear un generador personalizado y consumirlo con un bucle."

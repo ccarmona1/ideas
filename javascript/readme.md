@@ -1,2 +1,4 @@
 - npm install -g yamlinc
-- yamlinc base.yml
+- yamlinc javascript.yml
+- sudo snap install yq
+- yq -o=json . javascript.inc.yml > course.json

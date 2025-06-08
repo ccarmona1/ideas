@@ -251,17 +251,17 @@ topics:
           - "Gestionar errores y flujos complejos usando async/await."
       - id: 1.4.5
         name: "Iteradores, Generadores y for-of"
-        status: "Completado"
+        status: "Pendiente"
         suggested_practice:
           - "Implementar ejemplos prácticos usando generadores y for-of."
           - "Crear un generador personalizado y consumirlo con un bucle."
       - id: 1.4.6
-        name: "Otras Mejoras: rest/spread, template literals, Map/Set, etc."
+        name: "Otras Mejoras: rest/spread, template literals, Map/Set (todas)."
         status: "Pendiente"
         suggested_practice:
           - "Implementar ejemplos prácticos usando rest/spread, template literals, Map/Set."
       - id: 1.4.7
-        name: "Optional Chaining (?.) y Nullish Coalescing (??)"
+        name: "Optional Chaining (?.) y Nullish Coalescing (??) y otros operadores"
         status: "Pendiente"
         suggested_practice:
           - "Implementar ejemplos prácticos usando optional chaining y nullish coalescing para acceder a propiedades anidadas y valores por defecto."
@@ -272,26 +272,6 @@ topics:
         status: "Pendiente"
         suggested_practice:
           - "Analizar cómo V8 maneja el scope de let/const y su impacto en la optimización y el hoisting."
-      - id: 1.4.9
-        name: "Arrow Functions y optimización en V8 (lexical this, closures)"
-        status: "Pendiente"
-        suggested_practice:
-          - "Comparar el rendimiento y el manejo de closures entre funciones tradicionales y arrow functions en V8."
-      - id: 1.4.10
-        name: "Clases ES6 y su representación interna en V8 (azúcar sintáctico vs. prototipos)"
-        status: "Pendiente"
-        suggested_practice:
-          - "Investigar cómo V8 transpila y optimiza las clases ES6 en comparación con funciones constructoras."
-      - id: 1.4.11
-        name: "TDZ (Temporal Dead Zone) y hoisting avanzado con let/const vs var (ver Scopes)"
-        status: "Pendiente"
-        suggested_practice:
-          - "Visualizar errores y diferencias de acceso a variables en la TDZ usando let/const y var."
-      - id: 1.4.12
-        name: "Lexical Environment y closures modernos con ES6+ (ver Scopes)"
-        status: "Pendiente"
-        suggested_practice:
-          - "Crear ejemplos de closures usando let/const y arrow functions, y analizar el entorno léxico generado."
   - number: 5
     status: "Pendiente"
     name: "Manejo de la Asincronía en JavaScript (Event Loop - Navegador)"

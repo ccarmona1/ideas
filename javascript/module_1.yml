@@ -257,11 +257,11 @@ topics:
           - "Crear un generador personalizado y consumirlo con un bucle."
       - id: 1.4.6
         name: "Otras Mejoras: template literals, Map/Set (todas)."
-        status: "Pendiente"
+        status: "Completado"
         suggested_practice:
           - "Implementar ejemplos prácticos usando rest/spread, template literals, Map/Set."
       - id: 1.4.7
-        name: "Optional Chaining (?.) y Nullish Coalescing (??) y otros operadores"
+        name: "Optional Chaining (?.) y Nullish Coalescing (??) y todos los operadores"
         status: "Pendiente"
         suggested_practice:
           - "Implementar ejemplos prácticos usando optional chaining y nullish coalescing para acceder a propiedades anidadas y valores por defecto."

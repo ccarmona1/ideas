@@ -1,2 +1,2 @@
-npm install -g yamlinc
-yamlinc base.yml
+- npm install -g yamlinc
+- yamlinc base.yml

@@ -274,7 +274,7 @@ topics:
           - "Analizar cómo V8 maneja el scope de let/const y su impacto en la optimización y el hoisting."
   - number: 5
     status: "Pendiente"
-    name: "Manejo de la Asincronía en JavaScript (Event Loop - Navegador)"
+    name: "Manejo de la Asincronía en JavaScript (Event Loop - Navegador) (antes de ES6 y ES6+)"
     subtopics:
       - id: 1.5.1
         name: "Call Stack y Web APIs"
@@ -308,7 +308,7 @@ topics:
           - "Crear un Web Worker y un Service Worker y analizar su ciclo de vida."
   - number: 6
     status: "Pendiente"
-    name: "Patrones Avanzados de Asincronía"
+    name: "Patrones Avanzados de Asincronía con ES6+"
     subtopics:
       - id: 1.6.1
         name: "Promesas (Promise combinators: allSettled, any)"
@@ -342,7 +342,7 @@ topics:
           - "Iterar sobre datos asíncronos usando for-await-of."
   - number: 7
     status: "Pendiente"
-    name: "Diseño de Patrones en JavaScript"
+    name: "Diseño de Patrones en JavaScript con ES6+"
     subtopics:
       - id: 1.7.1
         name: "Patrones Creacionales (Singleton, Factory)"

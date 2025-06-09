@@ -1,4 +1,8 @@
-# Generate a single file
+# Description
+
+This is prompt course for advanced JavaScript topics
+
+## Generate a single prompt file
 
 ```shell
     npm install -g yamlinc

@@ -268,7 +268,7 @@ topics:
           - "Comparar el uso de estos operadores con técnicas tradicionales como && y ||."
           - "Analizar casos donde el uso incorrecto de nullish coalescing puede llevar a errores sutiles."
   - number: 5
-    completed: false
+    completed: true
     name: "Manejo de la Asincronía en JavaScript (Event Loop - Navegador) (antes de ES6 y ES6+)"
     subtopics:
       - id: 1.5.1
@@ -299,7 +299,7 @@ topics:
           - "Investigar cómo se gestionan internamente los timers en el navegador y Node.js."
       - id: 1.5.6
         name: "Web Workers y Service Workers"
-        completed: false
+        completed: true
         suggested_practice:
           - "Crear un Web Worker y un Service Worker y analizar su ciclo de vida."
           - "Comparar Web Workers con worker_threads de Node.js: diferencias de API, casos de uso, limitaciones y advertencias de interoperabilidad."
@@ -312,12 +312,12 @@ topics:
     subtopics:
       - id: 1.6.1
         name: "Promesas (Promise combinators: allSettled, any)"
-        completed: false
+        completed: true
         suggested_practice:
           - "Implementar ejemplos con combinadores de promesas y analizar los resultados."
       - id: 1.6.2
         name: "async/await avanzado y su manejo en el event loop del navegador"
-        completed: false
+        completed: true
         suggested_practice:
           - "Gestionar errores y flujos complejos usando async/await."
       - id: 1.6.3
@@ -414,3 +414,35 @@ topics:
         suggested_practice:
           - "Analizar el impacto de las manipulaciones frecuentes del DOM en el rendimiento."
           - "Investigar técnicas para minimizar reflows y repaints."
+  - number: 9
+    completed: false
+    name: "Operadores y Palabras Clave para Análisis de Tipos y Prototipos"
+    subtopics:
+      - id: 1.9.1
+        name: "typeof: Detección de Tipos Primitivos y Casos Especiales"
+        completed: false
+        suggested_practice:
+          - "Explorar el uso de typeof con diferentes valores (primitivos, null, funciones, arrays, objetos)."
+          - "Analizar el resultado de typeof null y typeof array."
+      - id: 1.9.2
+        name: "instanceof: Herencia, Prototipos y Limitaciones"
+        completed: false
+        suggested_practice:
+          - "Comparar instanceof con typeof y Object.prototype.toString."
+          - "Detectar instancias de clases personalizadas y objetos nativos."
+      - id: 1.9.3
+        name: "constructor y Object.prototype.toString: Detección Avanzada de Tipos"
+        completed: false
+        suggested_practice:
+          - "Usar constructor y Object.prototype.toString para distinguir arrays, objetos, funciones y clases."
+      - id: 1.9.4
+        name: "Comparaciones: ==, ===, null, undefined y Coerción de Tipos"
+        completed: false
+        suggested_practice:
+          - "Analizar diferencias entre == y ===, y los casos especiales con null y undefined."
+          - "Explorar coerción implícita y explícita de tipos."
+      - id: 1.9.5
+        name: "Buenas Prácticas y Errores Comunes en Detección de Tipos"
+        completed: false
+        suggested_practice:
+          - "Identificar patrones seguros para detección de tipos y evitar errores comunes."

@@ -13,3 +13,9 @@ This is prompt course for advanced JavaScript topics
 
     yq -o=json . javascript.inc.yml > course.json
 ```
+
+Single command
+
+```shell
+    yamlinc javascript.yml & yq -o=json . javascript.inc.yml > course.json
+```

@@ -1,0 +1,11 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "yamlinc javascript.yml && yq -o=json . javascript.inc.yml > course.json"
+  },
+  "devDependencies": {
+    "yamlinc": "^0.1.10"
+  }
+}

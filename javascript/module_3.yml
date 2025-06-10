@@ -101,6 +101,13 @@ topics:
         completed: false
         suggested_practice:
           - "Comparar streams nativos y de usuario en Node.js."
+      - id: 3.4.7
+        name: "Diferencia entre .pipe() y .pipeline() en Node.js Streams"
+        completed: false
+        suggested_practice:
+          - "Implementar ejemplos prácticos usando .pipe() y .pipeline(), mostrando diferencias en manejo de errores y composición de streams."
+        notes:
+          - ".pipe() permite encadenar streams de forma sencilla pero no maneja correctamente los errores en cadenas largas. .pipeline() (desde Node.js v10) gestiona el cierre y propagación de errores de forma robusta y es la opción recomendada para flujos complejos."
   - number: 5
     completed: false
     name: "Optimizaciones de Rendimiento y Debugging en Node.js"

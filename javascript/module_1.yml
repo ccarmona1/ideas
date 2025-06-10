@@ -307,7 +307,7 @@ topics:
           - "Diferencias clave entre Web Workers (navegador) y worker_threads (Node.js): los Web Workers están diseñados para entornos de navegador y no tienen acceso directo al sistema de archivos ni a módulos de Node.js, mientras que worker_threads permiten operaciones de bajo nivel y acceso completo al entorno Node.js."
           - "Advertencia: El código para Web Workers no es portable directamente a Node.js y viceversa. Analizar cuándo usar cada uno y las mejores prácticas para interoperabilidad."
   - number: 6
-    completed: false
+    completed: true
     name: "Patrones Avanzados de Asincronía con ES6+ y su relación con el event loop"
     subtopics:
       - id: 1.6.1
@@ -321,59 +321,54 @@ topics:
         suggested_practice:
           - "Gestionar errores y flujos complejos usando async/await."
       - id: 1.6.3
-        name: "Generadores y yield"
-        completed: false
-        suggested_practice:
-          - "Crear un generador personalizado y consumirlo con un bucle."
-      - id: 1.6.4
-        name: "Stream API (Fetch, Node.js Streams, Backpressure)"
-        completed: false
+        name: "Stream API (Only Javascript, Fetch, Backpressure, Duplex, Blob)"
+        completed: true
         suggested_practice:
           - "Consumir datos de una API o archivo usando streams y analizar el flujo y el manejo de backpressure."
-      - id: 1.6.5
+      - id: 1.6.4
         name: "Cancelable Promises y AbortController"
-        completed: false
+        completed: true
         suggested_practice:
           - "Implementar una promesa cancelable usando AbortController."
-      - id: 1.6.6
+      - id: 1.6.5
         name: "Async Iterators y for-await-of"
-        completed: false
+        completed: true
         suggested_practice:
           - "Iterar sobre datos asíncronos usando for-await-of."
   - number: 7
-    completed: false
+    completed: true
     name: "Diseño de Patrones en JavaScript con ES6+"
     subtopics:
       - id: 1.7.1
         name: "Patrones Creacionales (Singleton, Factory)"
-        completed: false
+        completed: true
         suggested_practice:
           - "Implementar un patrón Singleton y un Factory en JavaScript."
           - "Comparar la implementación de estos patrones en JavaScript con otros lenguajes como Java y C#."
       - id: 1.7.2
         name: "Patrones Estructurales (Adapter, Decorator, Proxy)"
-        completed: false
+        completed: true
         suggested_practice:
           - "Implementar un patrón Adapter y analizar cómo transforma la interfaz de un objeto."
           - "Crear un Decorator que añada comportamiento a un objeto en tiempo de ejecución."
           - "Usar un Proxy para interceptar y redefinir operaciones fundamentales en un objeto."
       - id: 1.7.3
         name: "Patrones de Comportamiento (Observer, Strategy, Command)"
-        completed: false
+        completed: true
         suggested_practice:
           - "Implementar el patrón Observer para notificar cambios entre objetos."
           - "Usar el patrón Strategy para definir una familia de algoritmos y hacerlos intercambiables."
           - "Implementar el patrón Command para encapsular acciones como objetos."
       - id: 1.7.4
         name: "Patrones Avanzados (Module, Revealing Module, IIFE)"
-        completed: false
+        completed: true
         suggested_practice:
           - "Implementar el patrón Module para encapsular variables y funciones privadas."
           - "Usar el patrón Revealing Module para exponer solo ciertas partes de un módulo."
           - "Crear una IIFE (Immediately Invoked Function Expression) para crear un ámbito léxico privado."
       - id: 1.7.5
         name: "Comparación y Elección de Patrones de Diseño"
-        completed: false
+        completed: true
         suggested_practice:
           - "Comparar las ventajas y desventajas de diferentes patrones de diseño en JavaScript."
           - "Discutir cuándo es apropiado usar un patrón sobre otro en base a requisitos específicos."

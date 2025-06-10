@@ -38,7 +38,12 @@ course:
     - "Conceptos básicos de programación"
   modules:
     - $include: ./module_1.yml
+      completed: true
     - $include: ./module_2.yml
+      completed: false
     - $include: ./module_3.yml
+      completed: false
     - $include: ./module_4.yml
+      completed: false 
     - $include: ./module_5.yml
+      completed: false

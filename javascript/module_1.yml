@@ -374,70 +374,76 @@ topics:
           - "Discutir cuándo es apropiado usar un patrón sobre otro en base a requisitos específicos."
           - "Analizar ejemplos de la vida real donde se hayan aplicado estos patrones."
   - number: 8
-    completed: false
+    completed: true
     name: "Entendimiento y Manipulación del DOM"
     subtopics:
       - id: 1.8.1
         name: "¿Qué es el DOM? Estructura y Árbol de Nodos"
-        completed: false
+        completed: true
         suggested_practice:
           - "Visualizar el árbol DOM de una página web simple."
       - id: 1.8.2
         name: "Selección y Búsqueda de Elementos (getElementById, querySelector, etc.)"
-        completed: false
+        completed: true
         suggested_practice:
           - "Practicar la selección de elementos usando diferentes métodos."
       - id: 1.8.3
         name: "Manipulación de Elementos: Lectura y Modificación de Propiedades y Atributos"
-        completed: false
+        completed: true
         suggested_practice:
           - "Modificar el contenido y atributos de elementos desde JavaScript."
       - id: 1.8.4
         name: "Creación, Inserción y Eliminación de Nodos"
-        completed: false
+        completed: true
         suggested_practice:
           - "Crear, insertar y eliminar nodos dinámicamente en el DOM."
       - id: 1.8.5
-        name: "Eventos y Delegación de Eventos"
-        completed: false
+        name: "Eventos y Delegación de Eventos (Bubbling, Capturing, Delegation)"
+        completed: true
         suggested_practice:
           - "Agregar y eliminar listeners de eventos."
           - "Implementar delegación de eventos para manejar múltiples elementos."
       - id: 1.8.6
         name: "Buenas Prácticas y Performance en Manipulación del DOM"
-        completed: false
+        completed: true
         suggested_practice:
           - "Analizar el impacto de las manipulaciones frecuentes del DOM en el rendimiento."
           - "Investigar técnicas para minimizar reflows y repaints."
   - number: 9
-    completed: false
+    completed: true
     name: "Operadores y Palabras Clave para Análisis de Tipos y Prototipos"
     subtopics:
       - id: 1.9.1
         name: "typeof: Detección de Tipos Primitivos y Casos Especiales"
-        completed: false
+        completed: true
         suggested_practice:
           - "Explorar el uso de typeof con diferentes valores (primitivos, null, funciones, arrays, objetos)."
           - "Analizar el resultado de typeof null y typeof array."
       - id: 1.9.2
         name: "instanceof: Herencia, Prototipos y Limitaciones"
-        completed: false
+        completed: true
         suggested_practice:
           - "Comparar instanceof con typeof y Object.prototype.toString."
           - "Detectar instancias de clases personalizadas y objetos nativos."
       - id: 1.9.3
+        name: "Realms, iframes y su impacto en la detección de tipos y prototipos"
+        completed: true
+        suggested_practice:
+          - "Crear objetos en diferentes iframes y analizar el resultado de instanceof y Object.prototype.toString."
+          - "Explicar cómo los realms afectan la comparación y detección de tipos en JavaScript."
+      - id: 1.9.4
         name: "constructor y Object.prototype.toString: Detección Avanzada de Tipos"
-        completed: false
+        completed: true
         suggested_practice:
           - "Usar constructor y Object.prototype.toString para distinguir arrays, objetos, funciones y clases."
-      - id: 1.9.4
+      - id: 1.9.5
         name: "Comparaciones: ==, ===, null, undefined y Coerción de Tipos"
-        completed: false
+        completed: true
         suggested_practice:
           - "Analizar diferencias entre == y ===, y los casos especiales con null y undefined."
           - "Explorar coerción implícita y explícita de tipos."
-      - id: 1.9.5
+      - id: 1.9.6
         name: "Buenas Prácticas y Errores Comunes en Detección de Tipos"
-        completed: false
+        completed: true
         suggested_practice:
           - "Identificar patrones seguros para detección de tipos y evitar errores comunes."

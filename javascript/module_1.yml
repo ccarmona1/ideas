@@ -204,17 +204,26 @@ topics:
         suggested_practice:
           - "Implementar proxies para encapsular y controlar el acceso a propiedades y métodos."
       - id: 1.3.15
+        name: "Enumerables y Property Descriptors: Iteración, Definición y Buenas Prácticas"
+        completed: false
+        suggested_practice:
+          - "Comparar el comportamiento de for...in, Object.keys, Object.getOwnPropertyNames y Object.entries."
+          - "Definir propiedades no enumerables usando Object.defineProperty y analizar su impacto en la iteración."
+          - "Modificar y consultar property descriptors con Object.getOwnPropertyDescriptor."
+          - "Analizar cómo la enumerabilidad afecta la herencia, los mixins y la composición."
+          - "Identificar buenas prácticas para evitar errores comunes con propiedades enumerables y no enumerables."
+      - id: 1.3.16
         name: "Interoperabilidad ES5/ES6+ y Migración de Sistemas Legacy"
         completed: true
         suggested_practice:
           - "Ejercicios de interoperabilidad entre código ES5 y ES6+."
           - "Casos de estudio de migración de sistemas legacy basados en prototipos a clases modernas."
-      - id: 1.3.16
+      - id: 1.3.17
         name: "Análisis de Seguridad: Encapsulamiento con Símbolos y Campos Privados"
         completed: true
         suggested_practice:
           - "Analizar cómo evitar fugas de información usando símbolos y campos privados."
-      - id: 1.3.17
+      - id: 1.3.18
         name: "Integración de Patrones de Diseño Clásicos con Clases Modernas"
         completed: true
         suggested_practice:

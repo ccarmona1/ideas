@@ -1,0 +1,80 @@
+Transformación del código fuente
+✔️ Muy bien explicado. Mencionas AST, bytecode, perfiles y TurboFan.
+Puntos: 1/1
+
+Hidden Class y optimización
+✔️ Correcto, explicas el mecanismo y el impacto de cambios dinámicos.
+Puntos: 1/1
+
+TDZ y ReferenceError
+✔️ Preciso, reconoces el error y el motivo.
+Puntos: 1/1
+
+Razones para no optimizar por JIT
+❌ No respondiste. Ejemplos: uso de try/catch, argumentos variables, funciones recursivas no optimizables, acceso inconsistente a propiedades, etc.
+Puntos: 0/1
+
+Eval y with
+✔️ Correcto, mencionas seguridad y performance.
+Puntos: 1/1
+
+Object.defineProperty y enumerabilidad
+✔️ Bien, aunque el for...in sí recorre propiedades enumerables, pero tu explicación es válida para Object.keys.
+Puntos: 1/1
+
+Enumerabilidad, herencia y mixins
+➖ La respuesta es algo confusa. La enumerabilidad afecta si las propiedades aparecen en iteraciones (for...in, Object.keys) y si los mixins copian solo enumerables. Ejemplo: un mixin puede omitir propiedades no enumerables.
+Puntos: 0.5/1
+
+Scope global en scripts vs módulos
+✔️ Correcto, mencionas contaminación y aislamiento.
+Puntos: 1/1
+
+Closures profundos y memory leaks
+✔️ Bien explicado, aunque podrías dar un ejemplo de código.
+Puntos: 1/1
+
+typeof null y detección de objetos
+✔️ Correcto, aunque hay un typo en "typeOf" (debe ser "typeof").
+Puntos: 1/1
+
+Coerción en comparaciones
+➖ La respuesta es incompleta. 0 == null es false, por lo que imprime "B". La coerción no ocurre aquí porque solo undefined y null son iguales entre sí con ==.
+Puntos: 0.5/1
+
+Object.create vs new
+➖ Parcial. Object.create permite crear objetos con un prototipo específico, incluso sin constructor. new invoca un constructor. Ambos pueden usarse para herencia, pero de formas distintas.
+Puntos: 0.5/1
+
+Simular clase abstracta
+✔️ Correcto, mencionas limitaciones y cómo forzar la abstracción.
+Puntos: 1/1
+
+Microtasks y macrotasks
+✔️ Bien explicado, aunque un ejemplo de código sería ideal.
+Puntos: 1/1
+
+this en métodos estáticos y de instancia
+✔️ Correcto, explicas la diferencia y el posible error.
+Puntos: 1/1
+
+Símbolos y campos privados
+✔️ Correcto, aunque un ejemplo de código sería ideal.
+Puntos: 1/1
+
+Coerción de tipos
+✔️ Correcto, mencionas el riesgo de ==.
+Puntos: 1/1
+
+Objetos de otros realms
+✔️ Correcto, mencionas comparación de prototipos.
+Puntos: 1/1
+
+Patrón de diseño
+➖ Muy superficial. Deberías mostrar un ejemplo de código y explicar por qué el patrón builder es útil en ese caso.
+Puntos: 0.5/1
+
+Composición vs herencia
+✔️ Correcto, aunque un ejemplo de código sería ideal.
+Puntos: 1/1
+

@@ -38,24 +38,24 @@ topics:
           - 'Configurar scripts para compilar, limpiar y ejecutar el proyecto.'
           - 'Explicar cómo automatizar tareas comunes con los scripts.'
   - number: 2
-    completed: false
+    completed: true
     name: '¿Cómo Funciona TypeScript? Compilación y Principios Técnicos'
     subtopics:
       - id: 2.2.1
         name: '¿Qué es TypeScript y cómo se transforma en JavaScript?'
-        completed: false
+        completed: true
         suggested_practice:
           - 'Explicar el proceso de compilación de TypeScript a JavaScript.'
           - 'Mostrar ejemplos de código TypeScript y su salida JavaScript.'
       - id: 2.2.2
         name: 'El compilador tsc: flujo, análisis y generación de código'
-        completed: false
+        completed: true
         suggested_practice:
           - 'Describir las fases del compilador: parsing, análisis de tipos y generación de código.'
           - 'Investigar cómo tsc detecta errores y los reporta.'
       - id: 2.2.3
         name: 'Limitaciones y ventajas del enfoque de TypeScript'
-        completed: false
+        completed: true
         suggested_practice:
           - 'Analizar qué puede y qué no puede detectar TypeScript en tiempo de compilación.'
           - 'Comparar el enfoque de TypeScript con otros sistemas de tipado.'

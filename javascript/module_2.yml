@@ -85,21 +85,21 @@ topics:
           - 'Ejercicios prácticos combinando tipos.'
       - id: 2.3.4
         name: 'Conditional Types, Mapped Types y Utility Types'
-        completed: false
+        completed: true
         suggested_practice:
           - 'Crear ejemplos de tipos condicionales, mapped types y utility types para validar tipos en tiempo de compilación.'
           - 'Transformar interfaces usando mapped types y analizar los resultados.'
           - 'Aplicar utility types a tipos personalizados y explicar su utilidad.'
       - id: 2.3.5
         name: 'Template Literal Types, Indexed Access y Recursive Types'
-        completed: false
+        completed: true
         suggested_practice:
           - 'Definir tipos de cadenas dinámicas y usarlos en funciones genéricas.'
           - 'Acceder a tipos anidados en estructuras complejas y documentar los resultados.'
           - 'Implementar tipos recursivos para estructuras como árboles o listas enlazadas.'
       - id: 2.3.6
         name: 'Inferencia de tipos condicionales y distribuidos'
-        completed: false
+        completed: true
         suggested_practice:
           - 'Explorar cómo los tipos condicionales distribuidos afectan la inferencia en arrays y uniones.'
       - id: 2.3.7

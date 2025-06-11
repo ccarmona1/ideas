@@ -61,32 +61,70 @@ topics:
           - 'Comparar el enfoque de TypeScript con otros sistemas de tipado.'
   - number: 3
     completed: false
-    name: 'Tipos Avanzados y Utilidades de TypeScript'
+    name: 'Tipos, Tipos Avanzados y Utilidades de TypeScript'
     subtopics:
       - id: 2.3.1
+        name: 'Tipos Primitivos, Literales y Anotaciones Básicas'
+        completed: true
+        suggested_practice:
+          - 'Identificar y usar tipos primitivos (string, number, boolean, etc.).'
+          - 'Definir y utilizar tipos literales.'
+          - 'Anotar variables, parámetros y funciones con tipos básicos.'
+      - id: 2.3.2
+        name: 'Type Aliases, Interfaces y Enums'
+        completed: true
+        suggested_practice:
+          - 'Crear y diferenciar type aliases e interfaces.'
+          - 'Extender interfaces y combinar type aliases.'
+          - 'Definir y usar enums en TypeScript.'
+      - id: 2.3.3
+        name: 'Tipos de Unión e Intersección'
+        completed: true
+        suggested_practice:
+          - 'Definir y utilizar tipos de unión (union types) y de intersección (intersection types).'
+          - 'Ejercicios prácticos combinando tipos.'
+      - id: 2.3.4
         name: 'Conditional Types, Mapped Types y Utility Types'
         completed: false
         suggested_practice:
           - 'Crear ejemplos de tipos condicionales, mapped types y utility types para validar tipos en tiempo de compilación.'
           - 'Transformar interfaces usando mapped types y analizar los resultados.'
           - 'Aplicar utility types a tipos personalizados y explicar su utilidad.'
-      - id: 2.3.2
+      - id: 2.3.5
         name: 'Template Literal Types, Indexed Access y Recursive Types'
         completed: false
         suggested_practice:
           - 'Definir tipos de cadenas dinámicas y usarlos en funciones genéricas.'
           - 'Acceder a tipos anidados en estructuras complejas y documentar los resultados.'
           - 'Implementar tipos recursivos para estructuras como árboles o listas enlazadas.'
-      - id: 2.3.3
+      - id: 2.3.6
         name: 'Inferencia de tipos condicionales y distribuidos'
         completed: false
         suggested_practice:
           - 'Explorar cómo los tipos condicionales distribuidos afectan la inferencia en arrays y uniones.'
-      - id: 2.3.4
+      - id: 2.3.7
         name: 'Branded Types y Validación Nominal'
         completed: false
         suggested_practice:
           - 'Crear branded types para diferenciar tipos primitivos en validaciones.'
+      - id: 2.3.8
+        name: 'Satisfies Operator en TypeScript'
+        completed: false
+        suggested_practice:
+          - 'Utilizar el operador satisfies para validar objetos literales.'
+          - 'Comparar satisfies con as y type assertions.'
+      - id: 2.3.9
+        name: 'Const Assertions y as const'
+        completed: false
+        suggested_practice:
+          - 'Aplicar const assertions para obtener tipos literales exactos.'
+          - 'Analizar el impacto de as const en la inferencia de tipos.'
+      - id: 2.3.10
+        name: 'Mejoras en Inferencia de Tipos e infer en Condicionales'
+        completed: false
+        suggested_practice:
+          - 'Explorar el uso de infer en tipos condicionales.'
+          - 'Analizar mejoras recientes en la inferencia de tipos.'
   - number: 4
     completed: false
     name: 'Seguridad de Tipos: unknown, any y Type Guards'
@@ -108,6 +146,13 @@ topics:
         completed: false
         suggested_practice:
           - 'Implementar type guards exhaustivos usando never y switch para asegurar el control total de tipos.'
+      - id: 2.4.4
+        name: 'Assertion Functions en TypeScript'
+        completed: false
+        suggested_practice:
+          - 'Implementar assertion functions personalizadas para refinar tipos.'
+          - 'Comparar assertion functions con type guards.'
+          - 'Usar assertion functions para validar datos en funciones y APIs.'
   - number: 5
     completed: false
     name: 'Módulos, Espacios de Nombres y Declaraciones Avanzadas'
@@ -127,6 +172,12 @@ topics:
         completed: false
         suggested_practice:
           - 'Diferenciar entre import/export type y import/export value en ejemplos prácticos.'
+      - id: 2.5.3
+        name: 'Type-Only Imports/Exports y el flag isolatedModules'
+        completed: false
+        suggested_practice:
+          - 'Diferenciar entre import/export type y value en profundidad.'
+          - 'Configurar y analizar el flag isolatedModules.'
   - number: 6
     completed: false
     name: 'Decoradores, Metaprogramación y Configuración Avanzada'
@@ -151,6 +202,12 @@ topics:
           - 'Configurar un monorepo con referencias cruzadas entre paquetes.'
           - 'Integrar TypeScript con una herramienta de build y analizar el resultado.'
           - 'Configurar ESLint en un proyecto TypeScript y corregir advertencias.'
+      - id: 2.6.4
+        name: 'Decorators Stage 3 y Metadata Reflection'
+        completed: false
+        suggested_practice:
+          - 'Comparar la propuesta legacy y Stage 3 de decoradores.'
+          - 'Utilizar metadata reflection con decoradores.'
   - number: 7
     completed: false
     name: 'Diseño y Validación de APIs con TypeScript'
@@ -308,3 +365,19 @@ topics:
           - 'Comparar breaking changes y nuevas características entre versiones principales.'
           - 'Explorar changelogs oficiales y documentar cambios relevantes.'
           - 'Probar migraciones de código entre versiones y documentar problemas comunes.'
+  - number: 16
+    completed: false
+    name: 'TypeScript con React y JSX'
+    subtopics:
+      - id: 2.16.1
+        name: 'Tipado de Props, State y JSX en React'
+        completed: false
+        suggested_practice:
+          - 'Definir tipos para props y state en componentes React.'
+          - 'Utilizar tipos genéricos en componentes funcionales.'
+      - id: 2.16.2
+        name: 'Integración de TypeScript con proyectos React existentes'
+        completed: false
+        suggested_practice:
+          - 'Migrar un proyecto React a TypeScript.'
+          - 'Resolver problemas comunes de tipado en JSX.'

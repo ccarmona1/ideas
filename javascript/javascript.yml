@@ -1,6 +1,6 @@
 course:
-  name: "Especialización Avanzada en JavaScript, TypeScript y Node.js"
-  description: "Curso diseñado para ingenieros de sistemas con experiencia, enfocado en las mecánicas internas, optimización de rendimiento y arquitecturas avanzadas para lograr un dominio experto en JS, TS y Node.js."
+  name: 'Especialización Avanzada en JavaScript, TypeScript, ReactJS y Node.js'
+  description: 'Curso diseñado para ingenieros de sistemas con experiencia, enfocado en las mecánicas internas, optimización de rendimiento y arquitecturas avanzadas para lograr un dominio experto en JS, TS, ReactJS y Node.js.'
   instruccionesIA: >
     Sigue estrictamente la información proporcionada en este JSON.
     No inventes ni añadas información que no esté presente.
@@ -27,15 +27,15 @@ course:
     Traduce términos clave español/inglés entre paréntesis.
     Incluye novedades de ES6+ y diferencias navegador/nodejs por tema.
   target_audience:
-    - "Ingeniero en Sistemas"
-    - "9 años de experiencia en la industria del software"
-    - "3 años de experiencia específica en JavaScript/TypeScript/Node.js"
-  learning_goal: "Convertirse en un experto demostrable en estas tecnologías, capaz de diseñar, desarrollar y optimizar aplicaciones de alto rendimiento, entender el funcionamiento interno y demostrar este conocimiento en entornos profesionales exigentes y entrevistas."
+    - 'Ingeniero en Sistemas'
+    - '9 años de experiencia en la industria del software'
+    - '3 años de experiencia específica en JavaScript/TypeScript/ReactJS/Node.js'
+  learning_goal: 'Convertirse en un experto demostrable en estas tecnologías, capaz de diseñar, desarrollar y optimizar aplicaciones de alto rendimiento, entender el funcionamiento interno y demostrar este conocimiento en entornos profesionales exigentes y entrevistas.'
   prerequisites_excluded:
-    - "Variables"
-    - "Ciclos"
-    - "Condicionales"
-    - "Conceptos básicos de programación"
+    - 'Variables'
+    - 'Ciclos'
+    - 'Condicionales'
+    - 'Conceptos básicos de programación'
   modules:
     - $include: ./module_1.yml
       completed: true
@@ -44,6 +44,8 @@ course:
     - $include: ./module_3.yml
       completed: false
     - $include: ./module_4.yml
-      completed: false 
+      completed: false
     - $include: ./module_5.yml
+      completed: false
+    - $include: ./module_6.yml
       completed: false

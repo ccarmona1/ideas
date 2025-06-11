@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "strict": true,
+    "target": "es2023",
+    "module": "esnext"
+  },
+  "include": ["src/**/*"]
+}

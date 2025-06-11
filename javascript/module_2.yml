@@ -3,58 +3,87 @@ title: 'TypeScript para Aplicaciones Robustas y Escalables'
 topics:
   - number: 1
     completed: false
-    name: 'Tipos Avanzados y Utilidades de TypeScript'
+    name: 'Inicialización y Configuración de TypeScript'
     subtopics:
       - id: 2.1.1
+        name: 'Instalación de TypeScript y herramientas modernas (npm, yarn, pnpm)'
+        completed: false
+        suggested_practice:
+          - 'Instalar TypeScript global y localmente usando npm, yarn y pnpm.'
+          - 'Comparar ventajas y desventajas de cada gestor de paquetes.'
+      - id: 2.1.2
+        name: 'Inicialización y explicación de tsconfig.json'
+        completed: false
+        suggested_practice:
+          - 'Crear un proyecto TypeScript desde cero con tsc --init.'
+          - 'Explicar las opciones más importantes de tsconfig.json.'
+          - 'Configurar paths, outDir, rootDir y strict flags.'
+      - id: 2.1.3
+        name: 'Estructura de carpetas y mejores prácticas de organización'
+        completed: false
+        suggested_practice:
+          - 'Organizar src, dist y tipos en un proyecto real.'
+          - 'Agregar scripts útiles en package.json para build, start y test.'
+      - id: 2.1.4
+        name: 'Integración de TypeScript con scripts de npm/yarn/pnpm'
+        completed: false
+        suggested_practice:
+          - 'Configurar scripts para compilar, limpiar y ejecutar el proyecto.'
+          - 'Explicar cómo automatizar tareas comunes con los scripts.'
+  - number: 2
+    completed: false
+    name: 'Tipos Avanzados y Utilidades de TypeScript'
+    subtopics:
+      - id: 2.2.1
         name: 'Conditional Types, Mapped Types y Utility Types'
         completed: false
         suggested_practice:
           - 'Crear ejemplos de tipos condicionales, mapped types y utility types para validar tipos en tiempo de compilación.'
           - 'Transformar interfaces usando mapped types y analizar los resultados.'
           - 'Aplicar utility types a tipos personalizados y explicar su utilidad.'
-      - id: 2.1.2
+      - id: 2.2.2
         name: 'Template Literal Types, Indexed Access y Recursive Types'
         completed: false
         suggested_practice:
           - 'Definir tipos de cadenas dinámicas y usarlos en funciones genéricas.'
           - 'Acceder a tipos anidados en estructuras complejas y documentar los resultados.'
           - 'Implementar tipos recursivos para estructuras como árboles o listas enlazadas.'
-      - id: 2.1.3
+      - id: 2.2.3
         name: 'Inferencia de tipos condicionales y distribuidos'
         completed: false
         suggested_practice:
           - 'Explorar cómo los tipos condicionales distribuidos afectan la inferencia en arrays y uniones.'
-      - id: 2.1.4
+      - id: 2.2.4
         name: 'Branded Types y Validación Nominal'
         completed: false
         suggested_practice:
           - 'Crear branded types para diferenciar tipos primitivos en validaciones.'
-  - number: 2
+  - number: 3
     completed: false
     name: 'Seguridad de Tipos: unknown, any y Type Guards'
     subtopics:
-      - id: 2.2.1
+      - id: 2.3.1
         name: "Uso apropiado de 'unknown' vs. 'any' y refinamiento seguro"
         completed: false
         suggested_practice:
           - "Comparar el comportamiento de 'unknown' y 'any' en funciones genéricas."
           - "Implementar type guards para refinar valores de tipo 'unknown'."
-      - id: 2.2.2
+      - id: 2.3.2
         name: 'Type Guards personalizados y predicados de tipo'
         completed: false
         suggested_practice:
           - 'Crear una jerarquía de clases e implementar type guards personalizados.'
           - 'Filtrar arrays usando predicados de tipo y documentar los resultados.'
-      - id: 2.2.3
+      - id: 2.3.3
         name: 'Exhaustividad con type guards y discriminated unions'
         completed: false
         suggested_practice:
           - 'Implementar type guards exhaustivos usando never y switch para asegurar el control total de tipos.'
-  - number: 3
+  - number: 4
     completed: false
     name: 'Módulos, Espacios de Nombres y Declaraciones Avanzadas'
     subtopics:
-      - id: 2.3.1
+      - id: 2.4.1
         name: 'Módulos, Namespaces y Declaraciones (.d.ts, declare global, module augmentation)'
         completed: false
         suggested_practice:
@@ -64,28 +93,28 @@ topics:
           - 'Explorar cómo extender tipos de módulos existentes en TypeScript utilizando la sintaxis de module augmentation.'
           - 'Implementar aumentos de módulos para añadir funcionalidad a módulos de terceros.'
           - 'Combinar aumentos de módulos con declaration merging para extender clases o interfaces.'
-      - id: 2.3.2
+      - id: 2.4.2
         name: 'Importación y exportación de tipos vs. valores'
         completed: false
         suggested_practice:
           - 'Diferenciar entre import/export type y import/export value en ejemplos prácticos.'
-  - number: 4
+  - number: 5
     completed: false
     name: 'Decoradores, Metaprogramación y Configuración Avanzada'
     subtopics:
-      - id: 2.4.3
+      - id: 2.5.3
         name: 'Decoradores de clase, propiedad, parámetro y acceso'
         completed: false
         suggested_practice:
           - 'Implementar decoradores en diferentes niveles y analizar sus diferencias y limitaciones.'
-      - id: 2.4.1
+      - id: 2.5.1
         name: 'Decoradores, Reflect-metadata y Limitaciones'
         completed: false
         suggested_practice:
           - 'Implementar un decorador de logging para métodos de una clase.'
           - 'Utilizar reflect-metadata para almacenar y recuperar metadatos en clases.'
           - 'Investigar y documentar limitaciones de los decoradores en TypeScript.'
-      - id: 2.4.2
+      - id: 2.5.2
         name: 'Configuración avanzada de tsconfig.json, Monorepos y Herramientas'
         completed: false
         suggested_practice:
@@ -93,151 +122,151 @@ topics:
           - 'Configurar un monorepo con referencias cruzadas entre paquetes.'
           - 'Integrar TypeScript con una herramienta de build y analizar el resultado.'
           - 'Configurar ESLint en un proyecto TypeScript y corregir advertencias.'
-  - number: 5
+  - number: 6
     completed: false
     name: 'Diseño y Validación de APIs con TypeScript'
     subtopics:
-      - id: 2.5.1
+      - id: 2.6.1
         name: 'Tipificación de Entidades, DTOs y Validación de Esquemas'
         completed: false
         suggested_practice:
           - 'Definir DTOs tipados para una API REST y validar su uso.'
           - 'Integrar Zod o Yup para validar datos en tiempo de ejecución.'
-      - id: 2.5.2
+      - id: 2.6.2
         name: 'Validación de tipos en tiempo de ejecución vs. compilación'
         completed: false
         suggested_practice:
           - 'Comparar la validación de tipos en tiempo de ejecución usando Zod/Yup y en tiempo de compilación con TypeScript puro.'
-      - id: 2.5.3
+      - id: 2.6.3
         name: 'Generación de Tipos y Documentación Automática'
         completed: false
         suggested_practice:
           - 'Generar tipos TypeScript a partir de una especificación OpenAPI.'
           - 'Comparar validaciones en tiempo de ejecución y compilación en un ejemplo práctico.'
           - 'Explorar herramientas para documentar y generar tipos automáticamente.'
-  - number: 6
+  - number: 7
     completed: false
     name: 'Inferencia de Tipos y Strictness en TypeScript'
     subtopics:
-      - id: 2.6.1
+      - id: 2.7.1
         name: 'Inferencia de Tipos y Migración Progresiva'
         completed: false
         suggested_practice:
           - 'Analizar cómo TypeScript infiere tipos en variables, funciones y objetos.'
           - 'Migrar código JavaScript a TypeScript usando inferencia y JSDoc.'
-      - id: 2.6.2
+      - id: 2.7.2
         name: 'Limitaciones de la inferencia y cómo solucionarlas'
         completed: false
         suggested_practice:
           - 'Identificar casos donde la inferencia falla y cómo solucionarlo con anotaciones explícitas.'
-      - id: 2.6.3
+      - id: 2.7.3
         name: 'Strictness Flags y Control de Errores'
         completed: false
         suggested_practice:
           - 'Configurar strictNullChecks, noImplicitAny y otras flags en tsconfig.json.'
           - 'Ejercicios de debugging de errores de strictness.'
-  - number: 7
+  - number: 8
     completed: false
     name: 'Funciones Avanzadas y Tipos de Callbacks'
     subtopics:
-      - id: 2.7.1
+      - id: 2.8.1
         name: 'Sobrecarga de Funciones y Polimorfismo'
         completed: false
         suggested_practice:
           - 'Implementar funciones sobrecargadas y analizar su tipado.'
-      - id: 2.7.2
+      - id: 2.8.2
         name: 'Callbacks, Eventos y Tipos Genéricos'
         completed: false
         suggested_practice:
           - 'Definir tipos para callbacks y eventos en aplicaciones reales.'
-      - id: 2.7.3
+      - id: 2.8.3
         name: 'Funciones genéricas con restricciones'
         completed: false
         suggested_practice:
           - 'Crear funciones genéricas que acepten restricciones de tipos usando extends.'
-  - number: 8
+  - number: 9
     completed: false
     name: 'Integración con JavaScript y Migración Progresiva'
     subtopics:
-      - id: 2.8.1
+      - id: 2.9.1
         name: 'Tipado Gradual y JSDoc'
         completed: false
         suggested_practice:
           - 'Usar @ts-check y JSDoc para tipar archivos JS.'
-      - id: 2.8.2
+      - id: 2.9.2
         name: 'Interoperabilidad con Librerías JavaScript'
         completed: false
         suggested_practice:
           - 'Importar y tipar librerías JS puras en proyectos TS.'
-      - id: 2.8.3
+      - id: 2.9.3
         name: 'Conversión de proyectos grandes a TypeScript'
         completed: false
         suggested_practice:
           - 'Planificar y ejecutar la migración progresiva de un proyecto JS grande a TS.'
-  - number: 9
+  - number: 10
     completed: false
     name: 'Testing y TypeScript'
     subtopics:
-      - id: 2.9.1
+      - id: 2.10.1
         name: 'Testing con TypeScript (Jest, Vitest, etc.)'
         completed: false
         suggested_practice:
           - 'Configurar un entorno de testing con TypeScript.'
           - 'Tipar mocks y pruebas unitarias.'
-      - id: 2.9.2
+      - id: 2.10.2
         name: 'Testing de tipos (type tests)'
         completed: false
         suggested_practice:
           - 'Utilizar herramientas como tsd o expect-type para validar tipos en pruebas automatizadas.'
-  - number: 10
+  - number: 11
     completed: false
     name: 'Performance, Limitaciones y Workarounds'
     subtopics:
-      - id: 2.10.1
+      - id: 2.11.1
         name: 'Performance del Compilador y Tipos Complejos'
         completed: false
         suggested_practice:
           - 'Analizar el impacto de tipos complejos en el tiempo de compilación.'
           - 'Investigar workarounds para limitaciones conocidas.'
-      - id: 2.10.2
+      - id: 2.11.2
         name: 'Optimización de tipos para mejorar el performance del compilador'
         completed: false
         suggested_practice:
           - 'Refactorizar tipos complejos para reducir el tiempo de compilación.'
-  - number: 11
+  - number: 12
     completed: false
     name: 'Patrones de Diseño y TypeScript'
     subtopics:
-      - id: 2.11.1
+      - id: 2.12.1
         name: 'Patrones Clásicos y Enforcing con Tipos'
         completed: false
         suggested_practice:
           - 'Implementar patrones como Singleton, Factory y Observer usando TS.'
-      - id: 2.11.2
+      - id: 2.12.2
         name: 'Patrones de diseño funcionales con TypeScript'
         completed: false
         suggested_practice:
           - 'Implementar patrones como Option, Either y Pipe usando tipos avanzados.'
-  - number: 12
+  - number: 13
     completed: false
     name: 'Integración con Herramientas Modernas'
     subtopics:
-      - id: 2.12.1
+      - id: 2.13.1
         name: 'Build Tools, Monorepos y Workspaces'
         completed: false
         suggested_practice:
           - 'Integrar TypeScript con Vite, esbuild o SWC.'
           - 'Configurar monorepos con pnpm o yarn workspaces.'
-      - id: 2.12.2
+      - id: 2.13.2
         name: 'Integración con CI/CD y herramientas de análisis estático'
         completed: false
         suggested_practice:
           - 'Configurar pipelines de CI/CD para validar tipos y linting en proyectos TypeScript.'
-  - number: 13
+  - number: 14
     completed: false
     name: 'Ecosistema, Comunidad y Futuro de TypeScript'
     subtopics:
-      - id: 2.13.1
+      - id: 2.14.1
         name: 'Propuestas Futuras y Herramientas de Generación de Tipos'
         completed: false
         suggested_practice:

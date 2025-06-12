@@ -519,58 +519,87 @@
 ### 5.1 - Debugging y Resolución de Problemas (Troubleshooting) Avanzado (INCOMPLETO)
 
 - 5.1.1 - Estrategias para depurar aplicaciones complejas (INCOMPLETO)
-
 - 5.1.2 - Uso de herramientas de monitoreo y logs (INCOMPLETO)
-
 - 5.1.3 - Análisis de 'post-mortems' (INCOMPLETO)
-
 - 5.1.4 - Análisis de core dumps y crash dumps (INCOMPLETO)
+- 5.1.5 - Debugging remoto y en producción (Node.js Inspector, Chrome DevTools, VSCode) (INCOMPLETO)
+- 5.1.6 - Análisis de memory leaks y profiling avanzado (INCOMPLETO)
+- 5.1.7 - Herramientas de tracing y observabilidad (OpenTelemetry, Jaeger) (INCOMPLETO)
 
-### 5.2 - Revisión de Código (Code Review) y Buenas Prácticas (INCOMPLETO)
+### 5.2 - Revisión de Código y Principios de Ingeniería de Software (INCOMPLETO)
 
 - 5.2.1 - Cómo realizar code reviews efectivos (INCOMPLETO)
+- 5.2.2 - Principios SOLID: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion (INCOMPLETO)
+- 5.2.3 - Principios DRY, KISS, Clean Code y Clean Architecture en Node.js/TypeScript (INCOMPLETO)
+- 5.2.4 - Automatización de code reviews (herramientas y bots) (INCOMPLETO)
+- 5.2.5 - Code smells y refactorización avanzada (INCOMPLETO)
+- 5.2.6 - Pair programming y revisión colaborativa (INCOMPLETO)
+- 5.2.7 - Documentación efectiva en code reviews (INCOMPLETO)
 
-- 5.2.2 - Principios SOLID, DRY, KISS, Clean Code y Clean Architecture en Node.js/TypeScript (INCOMPLETO)
+### 5.3 - Seguridad en Aplicaciones y APIs (INCOMPLETO)
 
-- 5.2.3 - Automatización de code reviews (herramientas y bots) (INCOMPLETO)
+- 5.3.1 - Cross Site Scripting (XSS) e input validation (INCOMPLETO)
+- 5.3.2 - CORS: Cross-Origin Resource Sharing (INCOMPLETO)
+- 5.3.3 - HTTPS y Seguridad en Node.js (INCOMPLETO)
+- 5.3.4 - JWT (JSON Web Token): Uso y mejores prácticas (INCOMPLETO)
+- 5.3.5 - DDoS y cómo prevenirlo (INCOMPLETO)
+- 5.3.6 - Seguridad en dependencias y supply chain (npm audit, Snyk) (INCOMPLETO)
+- 5.3.7 - CSRF y protección en APIs REST (INCOMPLETO)
+- 5.3.8 - Seguridad en autenticación OAuth2/OpenID Connect (INCOMPLETO)
+- 5.3.9 - Seguridad en almacenamiento de secretos y variables de entorno (INCOMPLETO)
 
-### 5.3 - Diseño de Sistemas (System Design) con Node.js (INCOMPLETO)
+### 5.4 - Diseño y Evolución de APIs (INCOMPLETO)
 
-- 5.3.1 - Preparación para entrevistas de System Design (INCOMPLETO)
+- 5.4.1 - REST: Principios y buenas prácticas (INCOMPLETO)
+- 5.4.2 - Breaking changes en APIs y librerías (INCOMPLETO)
+- 5.4.3 - Diseño de APIs/microservicios/seguridad (INCOMPLETO)
+- 5.4.4 - AWS: API Gateway y Lambda (INCOMPLETO)
+- 5.4.5 - Versionado de APIs (semver, URI versioning, header versioning) (INCOMPLETO)
+- 5.4.6 - API documentation (OpenAPI/Swagger, Postman) (INCOMPLETO)
+- 5.4.7 - API testing y contract testing (Pact, Dredd) (INCOMPLETO)
+- 5.4.8 - API rate limiting y throttling (INCOMPLETO)
 
-- 5.3.2 - Patrones de Diseño Comunes en System Design (INCOMPLETO)
+### 5.5 - Diseño de Sistemas (System Design) y Arquitecturas (INCOMPLETO)
 
-- 5.3.3 - Escalabilidad, disponibilidad, consistencia, tolerancia a fallos (INCOMPLETO)
+- 5.5.1 - Preparación para entrevistas de System Design (INCOMPLETO)
+- 5.5.2 - Patrones de Diseño Comunes en System Design (INCOMPLETO)
+- 5.5.3 - Escalabilidad, disponibilidad, consistencia, tolerancia a fallos (INCOMPLETO)
+- 5.5.4 - Casos de estudio (INCOMPLETO)
+- 5.5.5 - Consistencia eventual y patrones CAP (INCOMPLETO)
+- 5.5.6 - Microservicios vs. monolitos: ventajas y desventajas (INCOMPLETO)
+- 5.5.7 - Event-driven architecture y CQRS (INCOMPLETO)
+- 5.5.8 - Service discovery y balanceo de carga (INCOMPLETO)
+- 5.5.9 - Observabilidad y monitoreo en arquitecturas distribuidas (INCOMPLETO)
 
-- 5.3.4 - Casos de estudio (INCOMPLETO)
+### 5.6 - Algoritmos y Estructuras de Datos (INCOMPLETO)
 
-- 5.3.5 - Consistencia eventual y patrones CAP (INCOMPLETO)
+- 5.6.1 - Repaso de estructuras de datos clave (Arrays, Linked Lists, Trees, Graphs, Hash Tables) (INCOMPLETO)
+- 5.6.2 - Algoritmos de búsqueda y ordenamiento (INCOMPLETO)
+- 5.6.3 - Complejidad Big O y optimización de algoritmos (INCOMPLETO)
+- 5.6.4 - Resolución de problemas algorítmicos comunes (INCOMPLETO)
+- 5.6.5 - Algoritmos concurrentes y estructuras lock-free (INCOMPLETO)
+- 5.6.6 - Algoritmos de grafos (BFS, DFS, Dijkstra) (INCOMPLETO)
+- 5.6.7 - Algoritmos de hashing y tablas hash avanzadas (INCOMPLETO)
+- 5.6.8 - Algoritmos de concurrencia y paralelismo en JavaScript/Node.js (INCOMPLETO)
 
-### 5.4 - Algoritmos y Estructuras de Datos Relevantes para JavaScript/Node.js (INCOMPLETO)
+### 5.7 - Patrones de Diseño y Manejo de Estado en Node.js y React (INCOMPLETO)
 
-- 5.4.1 - Repaso de estructuras de datos clave (Arrays, Linked Lists, Trees, Graphs, Hash Tables) (INCOMPLETO)
+- 5.7.1 - Patrones de diseño: Node.js vs React (INCOMPLETO)
+- 5.7.2 - Manejo de estado en React (Redux y alternativas) (INCOMPLETO)
+- 5.7.3 - Patrones de middleware en Node.js (Express, Koa) (INCOMPLETO)
+- 5.7.4 - Patrones de hooks avanzados en React (INCOMPLETO)
+- 5.7.5 - State machines y XState en React (INCOMPLETO)
 
-- 5.4.2 - Algoritmos de búsqueda y ordenamiento (INCOMPLETO)
+### 5.8 - Preparación para Entrevistas Técnicas Avanzadas (INCOMPLETO)
 
-- 5.4.3 - Complejidad Big O y optimización de algoritmos (INCOMPLETO)
-
-- 5.4.4 - Resolución de problemas algorítmicos comunes (INCOMPLETO)
-
-- 5.4.5 - Algoritmos concurrentes y estructuras lock-free (INCOMPLETO)
-
-### 5.5 - Preparación para Entrevistas Técnicas Avanzadas (INCOMPLETO)
-
-- 5.5.1 - Preguntas profundas sobre JavaScript (Event Loop, V8, closures) (INCOMPLETO)
-
-- 5.5.2 - TypeScript (tipos complejos, decorators) (INCOMPLETO)
-
-- 5.5.3 - Node.js (Event Loop, libuv, Thread Pool) (INCOMPLETO)
-
-- 5.5.4 - Diseño de APIs/microservicios/seguridad (INCOMPLETO)
-
-- 5.5.5 - Estrategias para responder preguntas de comportamiento y liderazgo técnico (INCOMPLETO)
-
-- 5.5.6 - Preguntas de diseño de sistemas distribuidos y cloud-native (INCOMPLETO)
+- 5.8.1 - Preguntas profundas sobre JavaScript (Event Loop, V8, closures) (INCOMPLETO)
+- 5.8.2 - TypeScript (tipos complejos, decorators) (INCOMPLETO)
+- 5.8.3 - Node.js (Event Loop, libuv, Thread Pool) (INCOMPLETO)
+- 5.8.4 - Estrategias para responder preguntas de comportamiento y liderazgo técnico (INCOMPLETO)
+- 5.8.5 - Preguntas de diseño de sistemas distribuidos y cloud-native (INCOMPLETO)
+- 5.8.6 - Whiteboard coding y comunicación efectiva en entrevistas (INCOMPLETO)
+- 5.8.7 - Estrategias para resolver problemas algorítmicos bajo presión (INCOMPLETO)
+- 5.8.8 - Mock interviews y feedback estructurado (INCOMPLETO)
 
 # 6 - ReactJS: Fundamentos, Arquitectura y Optimización Avanzada (INCOMPLETO)
 

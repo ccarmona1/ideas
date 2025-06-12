@@ -18,6 +18,7 @@
 - Cada subtema debe incluir un análisis de funcionamiento interno, optimización y mejores prácticas.
 - Cada subtema debe incluir advertencias sobre errores comunes y malas prácticas.
 - Cada subtema debe incluir un análisis de las diferencias entre JavaScript y TypeScript. - Sigue estrictamente la estructura del yml o txt proporcionado.
+- Cada subtema debe incluir código javascript/typescript de ejemplo
 - Si encuentras un subtema que ya ha sido completado, ignóralo y continúa con el siguiente.
 - Si identificas un subtema que no existe, sugiere en qué modulo, tema o subtema debería incluirse.
 - Para cada subtema, revisa los anteriores para asegurar comprensión.
@@ -214,7 +215,7 @@
 
 - 1.9.6 - Buenas Prácticas y Errores Comunes en Detección de Tipos (COMPLETADO)
 
-### 1.1 - Versiones de ECMAScript: Evolución y Diferencias (ES3, ES5, ES6/2015, ES7, etc.) (INCOMPLETO)
+### 1.10 - Versiones de ECMAScript: Evolución y Diferencias (ES3, ES5, ES6/2015, ES7, etc.) (COMPLETADO)
 
 - 1.10.1 - Historia y evolución de ECMAScript (COMPLETADO)
 
@@ -222,7 +223,7 @@
 
 - 1.10.3 - Compatibilidad y soporte en navegadores y entornos de ejecución (COMPLETADO)
 
-- 1.10.4 - Impacto de las diferencias de versión en el desarrollo y mantenimiento de proyectos (INCOMPLETO)
+- 1.10.4 - Impacto de las diferencias de versión en el desarrollo y mantenimiento de proyectos (COMPLETADO)
 
 # 2 - TypeScript para Aplicaciones Robustas y Escalables (INCOMPLETO)
 
@@ -266,13 +267,13 @@
 
 - 2.3.9 - Const Assertions y as const (COMPLETADO)
 
-### 2.4 - Seguridad de Tipos: unknown, any y Type Guards (INCOMPLETO)
+### 2.4 - Seguridad de Tipos: unknown, any y Type Guards (COMPLETADO)
 
-- 2.4.1 - Uso apropiado de 'unknown' vs. 'any' y refinamiento seguro (INCOMPLETO)
+- 2.4.1 - Uso apropiado de 'unknown' vs. 'any' y refinamiento seguro (COMPLETADO)
 
-- 2.4.2 - Type Guards personalizados y predicados de tipo (INCOMPLETO)
+- 2.4.2 - Type Guards personalizados y predicados de tipo (COMPLETADO)
 
-- 2.4.3 - Exhaustividad con type guards y discriminated unions (INCOMPLETO)
+- 2.4.3 - Exhaustividad con type guards y discriminated unions (COMPLETADO)
 
 - 2.4.4 - Assertion Functions en TypeScript (INCOMPLETO)
 
@@ -318,7 +319,7 @@
 
 - 2.9.3 - Funciones genéricas con restricciones (INCOMPLETO)
 
-### 2.1 - Integración con JavaScript y Migración Progresiva (INCOMPLETO)
+### 2.10 - Integración con JavaScript y Migración Progresiva (INCOMPLETO)
 
 - 2.10.1 - Tipado Gradual y JSDoc (INCOMPLETO)
 

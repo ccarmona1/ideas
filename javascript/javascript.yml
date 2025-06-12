@@ -3,6 +3,9 @@ course:
   description: 'Curso diseñado para ingenieros de sistemas con experiencia, enfocado en las mecánicas internas, optimización de rendimiento y arquitecturas avanzadas para lograr un dominio experto en JS, TS, ReactJS y Node.js.'
   instruccionesIA: >
     Este es un curso dividido en modulos, temas y subtopicos.
+    Los modulos tienen un id único consecutivo y un nombre descriptivo.
+    Cada tema tiene un id único consecutivo y un nombre descriptivo.
+    Cada subtopico tiene un id único consecutivo y un nombre descriptivo
     Cada módulo contiene temas y cada tema tiene subtopicos.
     Cada subtopico debe ser explicado en profundidad, cubriendo todos los aspectos relevantes.
     Cada subtopico debe incluir ejemplos prácticos, mejores prácticas, advertencias y código de ejemplo.

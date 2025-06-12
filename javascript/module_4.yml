@@ -1,7 +1,8 @@
 id: 4
 title: "Desarrollo de Aplicaciones Avanzadas con Node.js y TypeScript"
 topics:
-  - number: 1
+  - id: 4.1
+    number: 1
     completed: false
     name: "Arquitecturas de Microservicios con Node.js y TypeScript"
     subtopics:
@@ -45,7 +46,8 @@ topics:
         completed: false
         suggested_practice:
           - "Integrar RabbitMQ o Kafka para comunicación asíncrona."
-  - number: 2
+  - id: 4.2
+    number: 2
     completed: false
     name: "Bases de Datos Avanzadas con Node.js"
     subtopics:
@@ -77,7 +79,8 @@ topics:
           - "Implementar el patrón Saga para manejar transacciones distribuidas en una arquitectura de microservicios, utilizando un orquestador o coreografía."
           - "Diseñar e implementar mecanismos de compensación y reversión (rollbacks) para los pasos de una Saga."
           - "Analizar las implicaciones de la consistencia eventual en sistemas basados en Sagas."
-  - number: 3
+  - id: 4.3
+    number: 3
     completed: false
     name: "Testing Avanzado de Aplicaciones Node.js y TypeScript"
     subtopics:
@@ -111,7 +114,8 @@ topics:
         completed: false
         suggested_practice:
           - "Validar contratos de APIs con Pact o Dredd."
-  - number: 4
+  - id: 4.4
+    number: 4
     completed: false
     name: "GraphQL con Node.js y TypeScript"
     subtopics:
@@ -140,7 +144,8 @@ topics:
         completed: false
         suggested_practice:
           - "Implementar persisted queries y analizar riesgos de seguridad."
-  - number: 5
+  - id: 4.5
+    number: 5
     completed: false
     name: "Despliegue y CI/CD para Aplicaciones Node.js"
     subtopics:

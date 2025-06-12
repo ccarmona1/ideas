@@ -1,7 +1,7 @@
 id: 6
 title: 'ReactJS: Fundamentos, Arquitectura y Optimización Avanzada'
 topics:
-  - id: 1
+  - id: 6.1
     completed: false
     name: 'Introducción y Fundamentos de ReactJS'
     subtopics:
@@ -84,7 +84,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Comparar diferentes estructuras de carpetas y justificar la elección para un proyecto grande.'
-  - id: 3
+  - id: 6.3
     completed: false
     name: 'Estilos y UI en React'
     subtopics:
@@ -113,7 +113,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Hacer una app React completamente responsive usando styled-components o Tailwind.'
-  - id: 4
+  - id: 6.4
     completed: false
     name: 'Routing y Navegación en React'
     subtopics:
@@ -142,7 +142,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Agregar animaciones de transición entre rutas usando Framer Motion.'
-  - id: 5
+  - id: 6.5
     completed: false
     name: 'Fundamentos Internos y Avanzados de ReactJS'
     subtopics:
@@ -180,7 +180,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Persistir el estado de una app en localStorage y sincronizarlo con una API.'
-  - id: 7
+  - id: 6.7
     completed: false
     name: 'Data Fetching y Side Effects'
     subtopics:
@@ -199,7 +199,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Mostrar diferentes estados de carga y error en componentes de data fetching.'
-  - id: 8
+  - id: 6.8
     completed: false
     name: 'Accesibilidad (a11y) en React'
     subtopics:
@@ -232,7 +232,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Usar React DevTools Profiler para identificar cuellos de botella en una app.'
-  - id: 10
+  - id: 6.10
     completed: false
     name: 'Testing en React: Unitario, Integración y E2E'
     subtopics:
@@ -251,7 +251,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Testear componentes que dependen de Redux o Context API.'
-  - id: 11
+  - id: 6.11
     completed: false
     name: 'Mejores Prácticas y Patrones Avanzados'
     subtopics:
@@ -270,7 +270,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Diseñar pruebas unitarias y de integración para hooks y componentes complejos.'
-  - id: 12
+  - id: 6.12
     completed: false
     name: 'Renderizado Avanzado, SSR y SSG'
     subtopics:
@@ -303,7 +303,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Mostrar fechas y monedas en diferentes formatos regionales usando Intl.'
-  - id: 14
+  - id: 6.14
     completed: false
     name: 'Animaciones en React'
     subtopics:
@@ -322,7 +322,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Implementar animaciones de transición entre rutas usando React Router y Framer Motion.'
-  - id: 15
+  - id: 6.15
     completed: false
     name: 'Seguridad en Aplicaciones React'
     subtopics:
@@ -341,7 +341,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Auditar dependencias con npm audit y corregir vulnerabilidades.'
-  - id: 16
+  - id: 6.16
     completed: false
     name: 'Integración con APIs externas y WebSockets'
     subtopics:
@@ -355,7 +355,7 @@ topics:
         completed: false
         suggested_practice:
           - 'Implementar un chat en tiempo real usando WebSockets.'
-  - id: 17
+  - id: 6.17
     completed: false
     name: 'Migraciones y Actualización de Versiones en React'
     subtopics:

@@ -60,7 +60,7 @@ topics:
           - 'Analizar qué puede y qué no puede detectar TypeScript en tiempo de compilación.'
           - 'Comparar el enfoque de TypeScript con otros sistemas de tipado.'
   - number: 3
-    completed: false
+    completed: true
     name: 'Tipos, Tipos Avanzados y Utilidades de TypeScript'
     subtopics:
       - id: 2.3.1
@@ -104,27 +104,21 @@ topics:
           - 'Explorar cómo los tipos condicionales distribuidos afectan la inferencia en arrays y uniones.'
       - id: 2.3.7
         name: 'Branded Types y Validación Nominal'
-        completed: false
+        completed: true
         suggested_practice:
           - 'Crear branded types para diferenciar tipos primitivos en validaciones.'
       - id: 2.3.8
         name: 'Satisfies Operator en TypeScript'
-        completed: false
+        completed: true
         suggested_practice:
           - 'Utilizar el operador satisfies para validar objetos literales.'
           - 'Comparar satisfies con as y type assertions.'
       - id: 2.3.9
         name: 'Const Assertions y as const'
-        completed: false
+        completed: true
         suggested_practice:
           - 'Aplicar const assertions para obtener tipos literales exactos.'
           - 'Analizar el impacto de as const en la inferencia de tipos.'
-      - id: 2.3.10
-        name: 'Mejoras en Inferencia de Tipos e infer en Condicionales'
-        completed: false
-        suggested_practice:
-          - 'Explorar el uso de infer en tipos condicionales.'
-          - 'Analizar mejoras recientes en la inferencia de tipos.'
   - number: 4
     completed: false
     name: 'Seguridad de Tipos: unknown, any y Type Guards'

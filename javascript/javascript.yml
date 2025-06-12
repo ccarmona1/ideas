@@ -2,15 +2,21 @@ course:
   name: 'Especialización Avanzada en JavaScript, TypeScript, ReactJS y Node.js'
   description: 'Curso diseñado para ingenieros de sistemas con experiencia, enfocado en las mecánicas internas, optimización de rendimiento y arquitecturas avanzadas para lograr un dominio experto en JS, TS, ReactJS y Node.js.'
   instruccionesIA: >
-    Sigue estrictamente la información proporcionada en este JSON.
-    No inventes ni añadas información que no esté presente.
-    Si se te pregunta algo que no está en el JSON, responde explícitamente indicando que 'La información solicitada no está disponible en este archivo JSON'.
-    No uses tu conocimiento general externo.
-    Lee este yml completo en cada iteración, sin suposiciones ni caché.
-    No modifiques este archivo ni los módulos en memoria.
-    No uses otras interacciones de la conversación, solo este archivo.
-    Revalida el contenido antes de sugerir títulos o temas.
-    Para cada subtema, revisa los anteriores para asegurar comprensión.
+    Este es un curso dividido en modulos, temas y subtopicos.
+    Cada módulo contiene temas y cada tema tiene subtopicos.
+    Cada subtopico debe ser explicado en profundidad, cubriendo todos los aspectos relevantes.
+    Cada subtopico debe incluir ejemplos prácticos, mejores prácticas, advertencias y código de ejemplo.
+    Cada subtopico debe incluir preguntas de examen profundas y explicaciones detalladas.
+    Cada subtopico debe incluir prácticas sugeridas y código de ejemplo.
+    Cada subtopico debe incluir novedades de ES6+ y diferencias entre navegador y Node.js.
+    Cada subtopico debe incluir términos clave traducidos entre español e inglés.
+    Cada subtopico debe incluir un análisis de funcionamiento interno, optimización y mejores prácticas.
+    Cada subtopico debe incluir advertencias sobre errores comunes y malas prácticas.
+    Cada subtopico debe incluir un análisis de las diferencias entre JavaScript y TypeScript.
+    Sigue estrictamente la estructura del yml o txt proporcionado.
+    Si encuentras un subtopico que ya ha sido completado, ignóralo y continúa con el siguiente.
+    Si identificas un subtopico que no existe, sugiere en qué modulo, tema o subtopico debería incluirse.
+    Para cada subtopico, revisa los anteriores para asegurar comprensión.
     Explica cada pregunta a fondo, con ejemplos, analogías y advertencias.
     Asegura comprensión del "por qué" y "cómo" de cada concepto.
     Adapta el lenguaje según el nivel técnico solicitado.
@@ -20,12 +26,8 @@ course:
       - Pregunta abierta (ejemplo, análisis, explicación de "por qué").
     Cubre funcionamiento interno, optimización, mejores prácticas y advertencias.
     Da siempre la respuesta correcta y una explicación completa.
-    Menciona prácticas sugeridas y código de ejemplo por subtema.
-    Ignora topics/subtopics completados.
+    Menciona prácticas sugeridas y código de ejemplo por subtopico.
     Sigue la hoja de ruta, no adelantes temas.
-    Si falta contenido, sugiere en qué tema incluirlo.
-    Traduce términos clave español/inglés entre paréntesis.
-    Incluye novedades de ES6+ y diferencias navegador/nodejs por tema.
   target_audience:
     - 'Ingeniero en Sistemas'
     - '9 años de experiencia en la industria del software'

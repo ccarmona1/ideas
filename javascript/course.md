@@ -193,15 +193,15 @@
 - 2.4.3 - Exhaustividad con type guards y discriminated unions (COMPLETADO)
 - 2.4.4 - Assertion Functions en TypeScript (COMPLETADO)
 
-### 2.5 - Clases, Interfaces y Programación Orientada a Objetos en TypeScript (INCOMPLETO)
+### 2.5 - Clases, Interfaces y Programación Orientada a Objetos en TypeScript (COMPLETADO)
 
-- 2.5.1 - Clases en TypeScript: definición, herencia, constructores, inicialización (INCOMPLETO)
-- 2.5.2 - Modificadores de acceso: public, private, protected, readonly (INCOMPLETO)
-- 2.5.3 - Métodos y propiedades estáticas (INCOMPLETO)
-- 2.5.4 - Interfaces: definición, extensión, implementación múltiple, diferencias con types, merging (INCOMPLETO)
-- 2.5.5 - Clases abstractas: definición, uso, diferencias con interfaces (INCOMPLETO)
-- 2.5.6 - Mixins y composición en TypeScript (INCOMPLETO)
-- 2.5.7 - Migración y diferencias entre clases JS y TS (INCOMPLETO)
+- 2.5.1 - Clases en TypeScript (clases, interfaces, clases abstractas y estáticas): definición, herencia, constructores, inicialización (COMPLETADO)
+- 2.5.2 - Modificadores de acceso: public, private, protected, readonly (COMPLETADO)
+- 2.5.3 - Métodos y propiedades estáticas (COMPLETADO)
+- 2.5.4 - Interfaces: definición, extensión, implementación múltiple, diferencias con types, merging (COMPLETADO)
+- 2.5.5 - Clases abstractas: definición, uso, diferencias con interfaces (COMPLETADO)
+- 2.5.6 - Mixins y composición en TypeScript (COMPLETADO)
+- 2.5.7 - Migración y diferencias entre clases JS y TS (COMPLETADO)
 
 ### 2.6 - Módulos, Espacios de Nombres y Declaraciones Avanzadas (COMPLETADO)
 
@@ -226,27 +226,21 @@
 - 2.9.2 - Limitaciones de la inferencia y cómo solucionarlas (COMPLETADO)
 - 2.9.3 - Strictness Flags y Control de Errores (COMPLETADO)
 
-### 2.10 - Funciones Avanzadas y Tipos de Callbacks (INCOMPLETO)
+### 2.10 - Funciones Avanzadas y Tipos de Callbacks (COMPLETADO)
 
-- 2.10.1 - Sobrecarga de Funciones y Polimorfismo (INCOMPLETO)
-- 2.10.2 - Callbacks, Eventos y Tipos Genéricos (INCOMPLETO)
-- 2.10.3 - Funciones genéricas con restricciones (INCOMPLETO)
+- 2.10.1 - Sobrecarga de Funciones y Polimorfismo (COMPLETADO)
+- 2.10.2 - Callbacks, Eventos y Tipos Genéricos (COMPLETADO)
+- 2.10.3 - Funciones genéricas con restricciones (COMPLETADO)
 
-### 2.11 - Integración con JavaScript y Migración Progresiva (INCOMPLETO)
+### 2.12 - Testing y TypeScript (COMPLETADO)
 
-- 2.11.1 - Tipado Gradual y JSDoc (INCOMPLETO)
-- 2.11.2 - Interoperabilidad con Librerías JavaScript (INCOMPLETO)
-- 2.11.3 - Conversión de proyectos grandes a TypeScript (INCOMPLETO)
+- 2.12.1 - Testing con TypeScript (Jest, Vitest, etc.) (COMPLETADO)
+- 2.12.2 - Testing de tipos (type tests) (COMPLETADO)
 
-### 2.12 - Testing y TypeScript (INCOMPLETO)
+### 2.13 - Performance, Limitaciones y Workarounds (COMPLETADO)
 
-- 2.12.1 - Testing con TypeScript (Jest, Vitest, etc.) (INCOMPLETO)
-- 2.12.2 - Testing de tipos (type tests) (INCOMPLETO)
-
-### 2.13 - Performance, Limitaciones y Workarounds (INCOMPLETO)
-
-- 2.13.1 - Performance del Compilador y Tipos Complejos (INCOMPLETO)
-- 2.13.2 - Optimización de tipos para mejorar el performance del compilador (INCOMPLETO)
+- 2.13.1 - Performance del Compilador y Tipos Complejos (COMPLETADO)
+- 2.13.2 - Optimización de tipos para mejorar el performance del compilador (COMPLETADO)
 
 ### 2.14 - Patrones de Diseño y TypeScript (INCOMPLETO)
 

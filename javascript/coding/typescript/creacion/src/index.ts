@@ -47,3 +47,29 @@ const estado = {
   mensaje: 'Listo',
 } as const;
 // Tipo: { readonly ok: true; readonly mensaje: 'Listo' }
+
+// decorador
+
+function Log() {
+  return function (
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor
+  ) {
+    const original = descriptor.value;
+    descriptor.value = function (...args: any[]) {
+      console.log(`Llamando ${propertyKey} con`, args);
+      return original.apply(this, args);
+    };
+  };
+}
+
+class Calculadora {
+  @Log()
+  suma(a: number, b: number) {
+    return a + b;
+  }
+}
+
+const calc = new Calculadora();
+console.log(calc.suma(2, 3)); // Llamando suma con [2, 3] \n 5

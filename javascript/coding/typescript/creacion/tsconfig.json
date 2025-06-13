@@ -5,7 +5,8 @@
     "strict": true,
     "target": "es2023",
     "module": "esnext",
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "experimentalDecorators": true
   },
   "include": ["src/**/*"]
 }

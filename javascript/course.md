@@ -193,70 +193,80 @@
 - 2.4.3 - Exhaustividad con type guards y discriminated unions (COMPLETADO)
 - 2.4.4 - Assertion Functions en TypeScript (COMPLETADO)
 
-### 2.5 - Módulos, Espacios de Nombres y Declaraciones Avanzadas (COMPLETADO)
+### 2.5 - Clases, Interfaces y Programación Orientada a Objetos en TypeScript (INCOMPLETO)
 
-- 2.5.1 - Módulos, Namespaces y Declaraciones (.d.ts, declare global, module augmentation) (COMPLETADO)
-- 2.5.2 - Importación y exportación de tipos vs. valores (COMPLETADO)
+- 2.5.1 - Clases en TypeScript: definición, herencia, constructores, inicialización (INCOMPLETO)
+- 2.5.2 - Modificadores de acceso: public, private, protected, readonly (INCOMPLETO)
+- 2.5.3 - Métodos y propiedades estáticas (INCOMPLETO)
+- 2.5.4 - Interfaces: definición, extensión, implementación múltiple, diferencias con types, merging (INCOMPLETO)
+- 2.5.5 - Clases abstractas: definición, uso, diferencias con interfaces (INCOMPLETO)
+- 2.5.6 - Mixins y composición en TypeScript (INCOMPLETO)
+- 2.5.7 - Migración y diferencias entre clases JS y TS (INCOMPLETO)
 
-### 2.6 - Decoradores, Metaprogramación y Configuración Avanzada (COMPLETADO)
+### 2.6 - Módulos, Espacios de Nombres y Declaraciones Avanzadas (COMPLETADO)
 
-- 2.6.1 - Decoradores de clase, propiedad, parámetro y acceso (COMPLETADO)
-- 2.6.2 - Decoradores, Reflect-metadata y Limitaciones (COMPLETADO)
-- 2.6.3 - Configuración avanzada de tsconfig.json, Monorepos y Herramientas (COMPLETADO)
+- 2.6.1 - Módulos, Namespaces y Declaraciones (.d.ts, declare global, module augmentation) (COMPLETADO)
+- 2.6.2 - Importación y exportación de tipos vs. valores (COMPLETADO)
 
-### 2.7 - Diseño y Validación de APIs con TypeScript (COMPLETADO)
+### 2.7 - Decoradores, Metaprogramación y Configuración Avanzada (COMPLETADO)
 
-- 2.7.1 - Tipificación de Entidades, DTOs y Validación de Esquemas (COMPLETADO)
-- 2.7.2 - Validación de tipos en tiempo de ejecución vs. compilación (COMPLETADO)
-- 2.7.3 - Generación de Tipos y Documentación Automática (COMPLETADO)
+- 2.7.1 - Decoradores de clase, propiedad, parámetro y acceso (COMPLETADO)
+- 2.7.2 - Decoradores, Reflect-metadata y Limitaciones (COMPLETADO)
+- 2.7.3 - Configuración avanzada de tsconfig.json, Monorepos y Herramientas (COMPLETADO)
 
-### 2.8 - Inferencia de Tipos y Strictness en TypeScript (COMPLETADO)
+### 2.8 - Diseño y Validación de APIs con TypeScript (COMPLETADO)
 
-- 2.8.1 - Inferencia de Tipos y Migración Progresiva (COMPLETADO)
-- 2.8.2 - Limitaciones de la inferencia y cómo solucionarlas (COMPLETADO)
-- 2.8.3 - Strictness Flags y Control de Errores (COMPLETADO)
+- 2.8.1 - Tipificación de Entidades, DTOs y Validación de Esquemas (COMPLETADO)
+- 2.8.2 - Validación de tipos en tiempo de ejecución vs. compilación (COMPLETADO)
+- 2.8.3 - Generación de Tipos y Documentación Automática (COMPLETADO)
 
-### 2.9 - Funciones Avanzadas y Tipos de Callbacks (INCOMPLETO)
+### 2.9 - Inferencia de Tipos y Strictness en TypeScript (COMPLETADO)
 
-- 2.9.1 - Sobrecarga de Funciones y Polimorfismo (INCOMPLETO)
-- 2.9.2 - Callbacks, Eventos y Tipos Genéricos (INCOMPLETO)
-- 2.9.3 - Funciones genéricas con restricciones (INCOMPLETO)
+- 2.9.1 - Inferencia de Tipos y Migración Progresiva (COMPLETADO)
+- 2.9.2 - Limitaciones de la inferencia y cómo solucionarlas (COMPLETADO)
+- 2.9.3 - Strictness Flags y Control de Errores (COMPLETADO)
 
-### 2.10 - Integración con JavaScript y Migración Progresiva (INCOMPLETO)
+### 2.10 - Funciones Avanzadas y Tipos de Callbacks (INCOMPLETO)
 
-- 2.10.1 - Tipado Gradual y JSDoc (INCOMPLETO)
-- 2.10.2 - Interoperabilidad con Librerías JavaScript (INCOMPLETO)
-- 2.10.3 - Conversión de proyectos grandes a TypeScript (INCOMPLETO)
+- 2.10.1 - Sobrecarga de Funciones y Polimorfismo (INCOMPLETO)
+- 2.10.2 - Callbacks, Eventos y Tipos Genéricos (INCOMPLETO)
+- 2.10.3 - Funciones genéricas con restricciones (INCOMPLETO)
 
-### 2.11 - Testing y TypeScript (INCOMPLETO)
+### 2.11 - Integración con JavaScript y Migración Progresiva (INCOMPLETO)
 
-- 2.11.1 - Testing con TypeScript (Jest, Vitest, etc.) (INCOMPLETO)
-- 2.11.2 - Testing de tipos (type tests) (INCOMPLETO)
+- 2.11.1 - Tipado Gradual y JSDoc (INCOMPLETO)
+- 2.11.2 - Interoperabilidad con Librerías JavaScript (INCOMPLETO)
+- 2.11.3 - Conversión de proyectos grandes a TypeScript (INCOMPLETO)
 
-### 2.12 - Performance, Limitaciones y Workarounds (INCOMPLETO)
+### 2.12 - Testing y TypeScript (INCOMPLETO)
 
-- 2.12.1 - Performance del Compilador y Tipos Complejos (INCOMPLETO)
-- 2.12.2 - Optimización de tipos para mejorar el performance del compilador (INCOMPLETO)
+- 2.12.1 - Testing con TypeScript (Jest, Vitest, etc.) (INCOMPLETO)
+- 2.12.2 - Testing de tipos (type tests) (INCOMPLETO)
 
-### 2.13 - Patrones de Diseño y TypeScript (INCOMPLETO)
+### 2.13 - Performance, Limitaciones y Workarounds (INCOMPLETO)
 
-- 2.13.1 - Patrones Clásicos y Enforcing con Tipos (INCOMPLETO)
-- 2.13.2 - Patrones de diseño funcionales con TypeScript (INCOMPLETO)
+- 2.13.1 - Performance del Compilador y Tipos Complejos (INCOMPLETO)
+- 2.13.2 - Optimización de tipos para mejorar el performance del compilador (INCOMPLETO)
 
-### 2.14 - Integración con Herramientas Modernas (INCOMPLETO)
+### 2.14 - Patrones de Diseño y TypeScript (INCOMPLETO)
 
-- 2.14.1 - Build Tools, Monorepos y Workspaces (INCOMPLETO)
-- 2.14.2 - Integración con CI/CD y herramientas de análisis estático (INCOMPLETO)
+- 2.14.1 - Patrones Clásicos y Enforcing con Tipos (INCOMPLETO)
+- 2.14.2 - Patrones de diseño funcionales con TypeScript (INCOMPLETO)
 
-### 2.15 - Ecosistema, Comunidad y Futuro de TypeScript (INCOMPLETO)
+### 2.15 - Integración con Herramientas Modernas (INCOMPLETO)
 
-- 2.15.1 - Propuestas Futuras y Herramientas de Generación de Tipos (INCOMPLETO)
-- 2.15.2 - Diferencias y cambios entre versiones de TypeScript (INCOMPLETO)
+- 2.15.1 - Build Tools, Monorepos y Workspaces (INCOMPLETO)
+- 2.15.2 - Integración con CI/CD y herramientas de análisis estático (INCOMPLETO)
 
-### 2.16 - TypeScript con React y JSX (INCOMPLETO)
+### 2.16 - Ecosistema, Comunidad y Futuro de TypeScript (INCOMPLETO)
 
-- 2.16.1 - Tipado de Props, State y JSX en React (INCOMPLETO)
-- 2.16.2 - Integración de TypeScript con proyectos React existentes (INCOMPLETO)
+- 2.16.1 - Propuestas Futuras y Herramientas de Generación de Tipos (INCOMPLETO)
+- 2.16.2 - Diferencias y cambios entre versiones de TypeScript (INCOMPLETO)
+
+### 2.17 - TypeScript con React y JSX (INCOMPLETO)
+
+- 2.17.1 - Tipado de Props, State y JSX en React (INCOMPLETO)
+- 2.17.2 - Integración de TypeScript con proyectos React existentes (INCOMPLETO)
 
 ## 3 - Node.js Internals y Arquitecturas de Alto Rendimiento (INCOMPLETO)
 

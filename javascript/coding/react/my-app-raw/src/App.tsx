@@ -3,6 +3,8 @@ import './App.css'
 import TimerClass from './components/ClassComponent'
 import FunctionalComponent from './components/FunctionalComponent'
 import Padre from './components/MemoCallback'
+import Hermanos from './components/Hermanos';
+import Context from './components/ApiContext';
 
 function App() {
 
@@ -14,6 +16,8 @@ function App() {
       <TimerClass></TimerClass>
       <Padre initialCount={count}></Padre>
       <button onClick={() => setCount(c => c + 1)}></button>
+      <Hermanos></Hermanos>
+      <Context></Context>
     </>
   )
 }

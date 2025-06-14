@@ -462,7 +462,7 @@
 - 6.1.3 - Componentes funcionales y de clase (COMPLETADO)
 - 6.1.4 - Props y state (COMPLETADO)
 - 6.1.5 - Ciclo de vida de componentes (COMPLETADO)
-- 6.1.6 - Manejo de eventos (INCOMPLETO)
+- 6.1.6 - Manejo de eventos (COMPLETADO)
 - 6.1.7 - Renderizado condicional y listas (INCOMPLETO)
 - 6.1.8 - Formularios y control de inputs (INCOMPLETO)
 - 6.1.9 - Comunicación entre componentes (props drilling, lifting state up) (INCOMPLETO)

@@ -34,7 +34,7 @@
 - Da siempre la respuesta correcta del examen y una explicación completa.
 - Menciona prácticas sugeridas y código de ejemplo por subtema.
 - Sigue la hoja de ruta, no adelantes temas.
-- Genera la respuesta en un formato de texto plano con el código en bloque de código válido según el contexto
+- Todo código que generes debe estar encapsulado en bloques de triple backticks para su correcta visualización y renderizado.
 
 **Público objetivo:**
 
@@ -477,8 +477,8 @@
 
 ### 6.3 - Estilos y UI en React (INCOMPLETO)
 
-- 6.3.1 - CSS Modules, Styled Components, Emotion, Tailwind, CSS-in-JS (INCOMPLETO)
-- 6.3.2 - Buenas prácticas para estructurar y escalar estilos en React (INCOMPLETO)
+- 6.3.1 - CSS Modules, Styled Components, Emotion, Tailwind, CSS-in-JS (COMPLETADO)
+- 6.3.2 - Buenas prácticas para estructurar y escalar estilos en React (COMPLETADO)
 - 6.3.3 - Integración con frameworks de diseño: Material UI, Ant Design, Chakra UI (INCOMPLETO)
 - 6.3.4 - Dark mode, theming y personalización de estilos globales (INCOMPLETO)
 - 6.3.5 - Responsive design y mobile first en React (INCOMPLETO)

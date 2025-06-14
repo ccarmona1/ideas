@@ -470,9 +470,9 @@
 
 ### 6.2 - Estructura de Proyecto y Herramientas Iniciales (INCOMPLETO)
 
-- 6.2.1 - SPA vs MPA, estructura de carpetas y herramientas de scaffolding (Create React App, Vite, Next.js) (INCOMPLETO)
-- 6.2.2 - Integración de TypeScript en React desde cero (INCOMPLETO)
-- 6.2.3 - Monorepos y microfrontends en React (INCOMPLETO)
+- 6.2.1 - SPA vs MPA, estructura de carpetas y herramientas de scaffolding (Create React App, Vite, Next.js) (COMPLETADO)
+- 6.2.2 - Integración de TypeScript en React desde cero (COMPLETADO)
+- 6.2.3 - Monorepos y microfrontends en React (COMPLETADO)
 - 6.2.4 - Estructuración de carpetas para escalabilidad y mantenibilidad (INCOMPLETO)
 
 ### 6.3 - Estilos y UI en React (INCOMPLETO)

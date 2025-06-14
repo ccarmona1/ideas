@@ -455,7 +455,7 @@
 
 ## 6 - ReactJS: Fundamentos, Arquitectura y Optimización Avanzada (INCOMPLETO)
 
-### 6.1 - Introducción y Fundamentos de ReactJS (INCOMPLETO)
+### 6.1 - Introducción y Fundamentos de ReactJS (COMPLETADO)
 
 - 6.1.1 - ¿Qué es ReactJS? Ventajas, casos de uso y diferencias con otros frameworks (COMPLETADO)
 - 6.1.2 - JSX y renderizado básico (COMPLETADO)
@@ -463,11 +463,10 @@
 - 6.1.4 - Props y state (COMPLETADO)
 - 6.1.5 - Ciclo de vida de componentes (COMPLETADO)
 - 6.1.6 - Manejo de eventos (COMPLETADO)
-- 6.1.7 - Renderizado condicional y listas (INCOMPLETO)
-- 6.1.8 - Formularios y control de inputs (INCOMPLETO)
-- 6.1.9 - Comunicación entre componentes (props drilling, lifting state up) (INCOMPLETO)
-- 6.1.10 - Hooks básicos: useState, useEffect (INCOMPLETO)
-- 6.1.11 - Buenas prácticas y advertencias comunes para principiantes (INCOMPLETO)
+- 6.1.7 - Renderizado condicional y listas (COMPLETADO)
+- 6.1.8 - Formularios y control de inputs (COMPLETADO)
+- 6.1.9 - Comunicación entre componentes (props drilling, lifting state up) (COMPLETADO)
+- 6.1.10 - Buenas prácticas y advertencias comunes para principiantes (COMPLETADO)
 
 ### 6.2 - Estructura de Proyecto y Herramientas Iniciales (INCOMPLETO)
 

@@ -568,7 +568,7 @@
 
 ### 6.18 - Arquitectura y Patrones de Diseño en React (INCOMPLETO)
 
-- 6.18.1 - Atomic Design, Presentational vs Container Components, Hooks composition, HOC, Compound Components, Render Props, Controlled vs Uncontrolled Components (INCOMPLETO)
+- 6.18.1 - Atomic Desig n, Presentational vs Container Components, Hooks composition, HOC, Compound Components, Render Props, Controlled vs Uncontrolled Components (INCOMPLETO)
 - 6.18.2 - Monorepos, microfrontends y separación de dominios en React (INCOMPLETO)
 - 6.18.3 - Testing y validación de arquitectura en proyectos React grandes (INCOMPLETO)
 

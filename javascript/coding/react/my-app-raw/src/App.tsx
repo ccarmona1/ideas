@@ -1,18 +1,21 @@
-import React from 'react';
-import './App.css';
-import Bienvenida from './components/basic/Bienvenida';
-import Contador from './components/state/Contador';
-import Clase from './components/clase/Clase';
+import { useState } from 'react';
+import './App.css'
+import TimerClass from './components/ClassComponent'
+import FunctionalComponent from './components/FunctionalComponent'
+import Padre from './components/MemoCallback'
 
 function App() {
+
+  const [count, setCount] = useState(0);
+
   return (
     <>
-      <Bienvenida></Bienvenida>
-      <Bienvenida></Bienvenida>
-      <Contador initialCount={10}></Contador>
-      <Clase></Clase>
+      <FunctionalComponent initialSeconds={10}></FunctionalComponent>
+      <TimerClass></TimerClass>
+      <Padre initialCount={count}></Padre>
+      <button onClick={() => setCount(c => c + 1)}></button>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

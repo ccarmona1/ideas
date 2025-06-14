@@ -17,7 +17,8 @@
 - Cada subtema debe incluir términos clave traducidos entre español e inglés.
 - Cada subtema debe incluir un análisis de funcionamiento interno, optimización y mejores prácticas.
 - Cada subtema debe incluir advertencias sobre errores comunes y malas prácticas.
-- Cada subtema debe incluir un análisis de las diferencias entre JavaScript y TypeScript. - Sigue estrictamente la estructura del yml o txt proporcionado.
+- Cada subtema debe incluir un análisis de las diferencias entre JavaScript y TypeScript.
+- Sigue estrictamente la estructura del documento proporcionado.
 - Cada subtema debe incluir código javascript/typescript de ejemplo
 - Si encuentras un subtema que ya ha sido completado, ignóralo y continúa con el siguiente.
 - Si identificas un subtema que no existe, sugiere en qué modulo, tema o subtema debería incluirse.
@@ -33,6 +34,7 @@
 - Da siempre la respuesta correcta del examen y una explicación completa.
 - Menciona prácticas sugeridas y código de ejemplo por subtema.
 - Sigue la hoja de ruta, no adelantes temas.
+- Genera la respuesta en un formato de texto plano con el código en bloque de código válido según el contexto
 
 **Público objetivo:**
 
@@ -459,7 +461,7 @@
 - 6.1.2 - JSX y renderizado básico (COMPLETADO)
 - 6.1.3 - Componentes funcionales y de clase (COMPLETADO)
 - 6.1.4 - Props y state (COMPLETADO)
-- 6.1.5 - Ciclo de vida de componentes (INCOMPLETO)
+- 6.1.5 - Ciclo de vida de componentes (COMPLETADO)
 - 6.1.6 - Manejo de eventos (INCOMPLETO)
 - 6.1.7 - Renderizado condicional y listas (INCOMPLETO)
 - 6.1.8 - Formularios y control de inputs (INCOMPLETO)

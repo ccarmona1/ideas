@@ -1,0 +1,84 @@
+{
+  "name": "react-fundamentals",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@reduxjs/toolkit": "1.9.5",
+    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "13.5.0",
+    "@types/jest": "27.5.2",
+    "@types/node": "16.18.40",
+    "@types/react": "18.2.20",
+    "@types/react-dom": "18.2.7",
+    "jest-junit": "16.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-redux": "8.1.2",
+    "react-router-dom": "6.15.0",
+    "react-scripts": "5.0.1",
+    "redux": "4.2.1",
+    "redux-mock-store": "1.5.4",
+    "redux-thunk": "2.4.2",
+    "typescript": "4.9.5",
+    "web-vitals": "2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll=false --reporters=jest-junit",
+    "test:local:m1": "react-scripts test --watchAll ./src/__tests__/module-1",
+    "test:local:m2": "react-scripts test --watchAll ./src/__tests__/module-2",
+    "test:local:m3": "react-scripts test --watchAll ./src/__tests__/module-3",
+    "test:local:m4": "react-scripts test --watchAll ./src/__tests__/module-4",
+    "eject": "react-scripts eject",
+    "eslint": "eslint --ext .js --ext .jsx src",
+    "eslint:fix": "eslint --fix --ext .js --ext .jsx src --max-warnings=0",
+    "prepare": "husky install",
+    "prepublish": "npm run eslint:fix",
+    "postinstall": "husky install"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "5.17.0",
+    "@testing-library/react": "14.0.0",
+    "@testing-library/user-event": "14.4.3",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^7.0.4",
+    "prettier": "2.5.1"
+  },
+  "jest-junit": {
+    "suiteName": "jest tests",
+    "outputDirectory": ".",
+    "outputName": "junit.xml",
+    "uniqueOutputName": "false",
+    "classNameTemplate": "{classname}-{title}",
+    "titleTemplate": "{classname}-{title}",
+    "ancestorSeparator": " › ",
+    "usePathForSuiteName": "true"
+  }
+}

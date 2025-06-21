@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import './Question.css';
 import type { QuestionMetadata } from '../course/Course';
+import FeedbackModal from './FeedbackModal';
 
 export const Question: React.FunctionComponent<{
   question: QuestionMetadata;
@@ -12,6 +13,7 @@ export const Question: React.FunctionComponent<{
     undefined
   );
   const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [dragY, setDragY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartY = useRef<number | null>(null);
@@ -27,13 +29,15 @@ export const Question: React.FunctionComponent<{
       if (['a', 'b', 'c', 'd'][index] === question.answer) {
         setAnsweredCorrectly(true);
         if (onCorrect) onCorrect();
+      } else {
+        setShowModal(true);
       }
     }
   };
 
   // Handlers para drag
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (selectedOption !== undefined && isCorrect === false) {
+    if (selectedOption !== undefined && isCorrect === false && !showModal) {
       setIsDragging(true);
       dragStartY.current = e.clientY;
     }
@@ -49,7 +53,7 @@ export const Question: React.FunctionComponent<{
   const handlePointerUp = () => {
     if (isDragging) {
       setIsDragging(false);
-      if (dragY < -100) {
+      if (dragY < -200) {
         // Si se arrastró suficiente hacia arriba
         setDragY(-500); // animar fuera de pantalla
         setTimeout(() => {
@@ -99,20 +103,19 @@ export const Question: React.FunctionComponent<{
         })}
       </ul>
 
-      {selectedOption !== undefined && isCorrect === false && (
-        <div>
-          Correct answer: {question.answer} <br />
-          Explanation: {question.explanation} <br />
-          {Object.entries(question.invalidOptions).map(([key, value]) => (
-            <div key={key}>
-              {key}: {value}
-            </div>
-          ))}
-          <div className="question-feedback">
-            Arrastra hacia arriba para continuar con la siguiente pregunta.
-          </div>
+      {selectedOption !== undefined && !isCorrect && (
+        <div className="question-feedback" style={{ marginTop: '1.5em' }}>
+          Arrastra hacia arriba para continuar con la siguiente pregunta.
         </div>
       )}
+
+      <FeedbackModal
+        open={showModal}
+        onClose={() => setShowModal(false)}
+        answer={question.answer}
+        explanation={question.explanation}
+        invalidOptions={question.invalidOptions}
+      />
     </div>
   );
 };

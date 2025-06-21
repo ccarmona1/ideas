@@ -1,0 +1,211 @@
+[
+  {
+    "question": "¿Cuál es el propósito principal del Abstract Syntax Tree (AST) en el motor V8 de JavaScript?",
+    "options": [
+      "a) Ejecutar directamente el código fuente sin transformaciones.",
+      "b) Representar la estructura sintáctica del código para posteriores fases de interpretación y optimización.",
+      "c) Optimizar el uso de memoria durante la ejecución.",
+      "d) Controlar el acceso a variables globales."
+    ],
+    "answer": "b",
+    "explanation": "El AST es una representación estructurada del código fuente que permite al motor analizar, interpretar y optimizar el código antes de su ejecución."
+  },
+  {
+    "question": "¿Qué componente de V8 es responsable de la compilación optimizada de código JavaScript?",
+    "options": [
+      "a) Ignition",
+      "b) TurboFan",
+      "c) Snapshot Serializer",
+      "d) Mark-Sweep Collector"
+    ],
+    "answer": "b",
+    "explanation": "TurboFan es el compilador optimizador de V8, encargado de generar código máquina altamente optimizado a partir del código JavaScript."
+  },
+  {
+    "question": "¿Cuál de las siguientes afirmaciones sobre el Garbage Collector generacional en V8 es correcta?",
+    "options": [
+      "a) Todos los objetos se recolectan en una sola fase sin distinción de antigüedad.",
+      "b) Los objetos jóvenes y viejos se gestionan en espacios separados para optimizar la recolección.",
+      "c) Solo los objetos globales son recolectados.",
+      "d) El GC solo se ejecuta al cerrar el navegador."
+    ],
+    "answer": "b",
+    "explanation": "El GC generacional separa objetos jóvenes y viejos, permitiendo recolecciones más rápidas y eficientes."
+  },
+  {
+    "question": "¿Qué técnica utiliza V8 para acelerar el acceso a propiedades de objetos repetidamente accedidas?",
+    "options": [
+      "a) Inline Caching",
+      "b) Hoisting",
+      "c) Temporal Dead Zone",
+      "d) Closure Binding"
+    ],
+    "answer": "a",
+    "explanation": "Inline Caching almacena información sobre accesos previos a propiedades, acelerando futuras búsquedas."
+  },
+  {
+    "question": "¿Cuál es el efecto de la desoptimización (deopt) en el pipeline de V8?",
+    "options": [
+      "a) Mejora el rendimiento del código optimizado.",
+      "b) Reconvierte el código optimizado a una versión menos optimizada ante ciertos patrones de ejecución.",
+      "c) Elimina el código fuente del heap.",
+      "d) Incrementa el tamaño del AST."
+    ],
+    "answer": "b",
+    "explanation": "La desoptimización ocurre cuando el motor detecta que las suposiciones hechas durante la optimización ya no son válidas, por lo que regresa a una versión menos optimizada del código."
+  },
+  {
+    "question": "¿Qué diferencia clave existe entre el contexto de ejecución global y el de función en JavaScript?",
+    "options": [
+      "a) El contexto global no tiene acceso a variables locales.",
+      "b) El contexto de función crea un nuevo Lexical Environment para cada invocación.",
+      "c) Ambos comparten el mismo Variable Environment.",
+      "d) El contexto global se destruye tras cada llamada de función."
+    ],
+    "answer": "b",
+    "explanation": "Cada función invocada genera su propio Lexical Environment, aislando variables locales y parámetros."
+  },
+  {
+    "question": "¿Cuál es el resultado de acceder a una variable declarada con let antes de su inicialización dentro de su scope?",
+    "options": [
+      "a) undefined",
+      "b) ReferenceError",
+      "c) null",
+      "d) 0"
+    ],
+    "answer": "b",
+    "explanation": "El acceso a variables en la Temporal Dead Zone (TDZ) antes de su inicialización produce ReferenceError."
+  },
+  {
+    "question": "¿Qué ocurre si se utiliza 'this' dentro de una función flecha definida en el contexto global?",
+    "options": [
+      "a) 'this' apunta al objeto global.",
+      "b) 'this' es undefined en modo estricto.",
+      "c) 'this' se hereda léxicamente del contexto de declaración.",
+      "d) 'this' siempre apunta a window."
+    ],
+    "answer": "c",
+    "explanation": "Las arrow functions no tienen su propio 'this', lo heredan léxicamente del contexto donde fueron declaradas."
+  },
+  {
+    "question": "¿Cuál es el propósito de los Hidden Classes en V8?",
+    "options": [
+      "a) Mejorar la seguridad de los objetos.",
+      "b) Optimizar el acceso a propiedades mediante la creación de estructuras internas de clases ocultas.",
+      "c) Permitir la herencia múltiple.",
+      "d) Facilitar la serialización de objetos."
+    ],
+    "answer": "b",
+    "explanation": "Los Hidden Classes permiten a V8 optimizar el acceso a propiedades creando estructuras internas similares a clases."
+  },
+  {
+    "question": "¿Qué sucede si se usa 'eval' en modo estricto?",
+    "options": [
+      "a) Puede crear variables en el scope local de la función que lo invoca.",
+      "b) Solo puede crear variables en su propio scope, no en el scope local de la función invocadora.",
+      "c) Eval no está permitido en modo estricto.",
+      "d) Eval ejecuta código en el contexto global siempre."
+    ],
+    "answer": "b",
+    "explanation": "En modo estricto, eval crea variables solo en su propio scope, no en el scope local de la función invocadora."
+  },
+  {
+    "question": "¿Cuál es la diferencia principal entre 'Object.create()' y el operador 'new' en la creación de objetos?",
+    "options": [
+      "a) 'Object.create()' permite especificar el prototipo del nuevo objeto explícitamente.",
+      "b) Ambos crean objetos con el mismo prototipo por defecto.",
+      "c) 'new' no puede inicializar propiedades.",
+      "d) 'Object.create()' ejecuta el constructor automáticamente."
+    ],
+    "answer": "a",
+    "explanation": "'Object.create()' permite definir explícitamente el prototipo del nuevo objeto, mientras que 'new' utiliza el prototipo de la función constructora."
+  },
+  {
+    "question": "¿Qué patrón de diseño permite la composición de funcionalidades en JavaScript sin herencia múltiple?",
+    "options": [
+      "a) Mixins",
+      "b) Decorators",
+      "c) Singleton",
+      "d) Factory"
+    ],
+    "answer": "a",
+    "explanation": "Los mixins permiten componer funcionalidades en objetos sin recurrir a la herencia múltiple."
+  },
+  {
+    "question": "¿Cuál es la diferencia entre un método enumerable y uno no enumerable en JavaScript?",
+    "options": [
+      "a) Los métodos enumerables pueden ser iterados en bucles for...in, los no enumerables no.",
+      "b) Los métodos no enumerables son accesibles solo desde el prototipo.",
+      "c) Los métodos enumerables no pueden ser sobrescritos.",
+      "d) No existe diferencia."
+    ],
+    "answer": "a",
+    "explanation": "Las propiedades enumerables aparecen en iteraciones for...in, mientras que las no enumerables no."
+  },
+  {
+    "question": "¿Qué ocurre si se define una propiedad en un objeto con writable: false y configurable: false?",
+    "options": [
+      "a) La propiedad puede ser eliminada pero no modificada.",
+      "b) La propiedad no puede ser modificada ni eliminada.",
+      "c) La propiedad puede ser modificada pero no eliminada.",
+      "d) La propiedad es enumerable por defecto."
+    ],
+    "answer": "b",
+    "explanation": "Una propiedad con writable: false y configurable: false no puede ser modificada ni eliminada."
+  },
+  {
+    "question": "¿Cuál es el propósito de los Proxies en JavaScript moderno?",
+    "options": [
+      "a) Permitir la interceptación y redefinición de operaciones fundamentales sobre objetos.",
+      "b) Mejorar la performance de los iteradores.",
+      "c) Serializar objetos complejos.",
+      "d) Implementar herencia múltiple."
+    ],
+    "answer": "a",
+    "explanation": "Los Proxies permiten interceptar y redefinir operaciones como lectura, escritura y enumeración de propiedades."
+  },
+  {
+    "question": "¿Qué sucede si se utiliza 'with' en modo estricto?",
+    "options": [
+      "a) 'with' es ignorado por el motor.",
+      "b) Lanza un SyntaxError.",
+      "c) Solo afecta al scope global.",
+      "d) Permite redefinir variables globales."
+    ],
+    "answer": "b",
+    "explanation": "El uso de 'with' en modo estricto está prohibido y lanza un SyntaxError."
+  },
+  {
+    "question": "¿Cuál es la diferencia entre el scope de una variable declarada con var y una con let?",
+    "options": [
+      "a) 'var' tiene scope de bloque, 'let' tiene scope de función.",
+      "b) 'var' tiene scope de función, 'let' tiene scope de bloque.",
+      "c) Ambas tienen scope global.",
+      "d) No existe diferencia."
+    ],
+    "answer": "b",
+    "explanation": "'var' tiene scope de función, mientras que 'let' tiene scope de bloque."
+  },
+  {
+    "question": "¿Qué ocurre si se define una función con el mismo nombre dos veces en el mismo scope en modo estricto?",
+    "options": [
+      "a) La última definición sobrescribe la anterior sin advertencia.",
+      "b) Lanza un SyntaxError.",
+      "c) Ambas funciones coexisten.",
+      "d) Solo la primera definición es válida."
+    ],
+    "answer": "b",
+    "explanation": "En modo estricto, definir dos funciones con el mismo nombre en el mismo scope lanza un SyntaxError."
+  },
+  {
+    "question": "¿Cuál es la diferencia entre el event loop del navegador y el de Node.js?",
+    "options": [
+      "a) El navegador no tiene event loop.",
+      "b) Node.js tiene fases adicionales como timers y poll.",
+      "c) Ambos funcionan exactamente igual.",
+      "d) El event loop de Node.js no soporta microtasks."
+    ],
+    "answer": "b",
+    "explanation": "El event loop de Node.js tiene fases adicionales como timers, poll, check, etc., a diferencia del navegador."
+  }
+]

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import Courses from './features/components/courses/Courses';
 import Header from './features/components/header/Header';
@@ -7,17 +8,42 @@ import {
   Route,
   RouterProvider,
   Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
 } from 'react-router-dom';
+import Course from './features/components/course/Course';
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Outlet />}>
-      <Route index element={<Courses />} />
-    </Route>
-  )
-);
+export interface CourseMetadata {
+  id: string;
+  title: string;
+}
 
 function App() {
+  const [courses, setCourses] = useState<CourseMetadata[]>([
+    {
+      id: '1',
+      title: 'Pure JavaScript',
+    },
+    {
+      id: '2',
+      title: 'Typescript',
+    },
+  ]);
+
+  // El router debe crearse dentro del componente para acceder a courses
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route>
+        <Route path="/" element={<Courses courses={courses} />}></Route>
+        <Route
+          path="/course/:courseId"
+          element={<Course courses={courses} />}
+        ></Route>
+      </Route>
+    )
+  );
+
   return (
     <div
       style={{

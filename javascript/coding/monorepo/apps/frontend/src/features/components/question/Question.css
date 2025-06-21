@@ -1,6 +1,13 @@
 .question-container {
   touch-action: none;
   transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  .question-container {
+    padding: 1rem 4vw;
+  }
 }
 .question-container.dragging {
   transition: none;

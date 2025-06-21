@@ -22,19 +22,16 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const courseId = params.courseId;
   const selectedCourse = courses.find((course) => course.id === courseId);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [showCheck, setShowCheck] = useState(false);
   const preguntas: QuestionMetadata[] =
     selectedCourse?.id === '1' ? preguntasModulo1 : [];
 
   const handleCorrect = (index: number) => {
-    setShowCheck(true);
     const questionDiv = document.getElementById(`question-${index}`);
     if (questionDiv) {
       questionDiv.style.transition = 'opacity 3s';
       questionDiv.style.opacity = '0';
     }
     setTimeout(() => {
-      setShowCheck(false);
       if (index < preguntas.length - 1) {
         setCurrentQuestionIndex(index + 1);
         setTimeout(() => {
@@ -65,11 +62,6 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
             onCorrect={() => handleCorrect(currentQuestionIndex)}
             onNext={() => setCurrentQuestionIndex((idx) => idx + 1)}
           />
-          {showCheck && (
-            <div className="course-check" aria-live="polite">
-              ✓
-            </div>
-          )}
         </div>
       )}
       <Link to="/">Volver a cursos</Link>

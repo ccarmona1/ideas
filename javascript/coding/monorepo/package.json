@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
+  "scripts": {
+     "start": "concurrently \"yarn workspace backend start\" \"yarn workspace frontend dev\""
+  },
   "workspaces": [
     "apps/*",
     "packages/*"

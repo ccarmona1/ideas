@@ -1,24 +1,17 @@
 .question-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  flex-direction: column;
   touch-action: none;
-  user-select: none;
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1);
 }
-
+.question-container.dragging {
+  transition: none;
+  cursor: grab;
+}
 .question-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 1rem 0;
 }
-
-.question-list li {
-  margin-bottom: 0.5rem;
-}
-
 .question-feedback {
-  color: #888;
-  margin-top: 8px;
+  margin-top: 1em;
+  color: #d9534f;
+  font-weight: bold;
 }

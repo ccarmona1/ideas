@@ -63,7 +63,7 @@ export const Course: React.FunctionComponent<{ courses: CourseMetadata[] }> = ({
           <Question
             question={preguntas[currentQuestionIndex]}
             onCorrect={() => handleCorrect(currentQuestionIndex)}
-            onNext={() => setCurrentQuestionIndex(currentQuestionIndex + 1)}
+            onNext={() => setCurrentQuestionIndex((idx) => idx + 1)}
           />
           {showCheck && <div className="course-check">✓</div>}
         </div>

@@ -45,21 +45,8 @@ function App() {
   );
 
   return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateRows: 'auto 1fr',
-        minHeight: '100vh',
-      }}
-    >
-      <Header />
-      <main
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
+    <div className="app-root">
+      <main className="app-main">
         <RouterProvider router={router} />
       </main>
     </div>

@@ -1,0 +1,32 @@
+.course-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.course-question-box {
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem 0;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 2rem;
+  background: #fff;
+  transition: opacity 0.5s;
+  opacity: 1;
+  position: relative;
+}
+
+.course-check {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 32px;
+  color: green;
+  transition: opacity 0.5s;
+}

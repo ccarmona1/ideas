@@ -1,8 +1,9 @@
 import { Link, useParams } from 'react-router-dom';
 import type { CourseMetadata } from '../../../App';
-import examenModulo1 from './examen_modulo1.json';
 import { Question } from '../question/Question';
 import { useState } from 'react';
+import preguntasModulo1 from './examen_modulo1.json';
+import './Course.css';
 
 export interface QuestionMetadata {
   question: string;
@@ -19,35 +20,53 @@ export const Course: React.FunctionComponent<{ courses: CourseMetadata[] }> = ({
   const courseId = params.courseId;
   const seletedCourse = courses.find((course) => course.id === courseId);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [showCheck, setShowCheck] = useState(false);
+  const preguntas: QuestionMetadata[] =
+    seletedCourse?.id === '1' ? preguntasModulo1 : [];
 
-  const preguntas: QuestionMetadata[] = examenModulo1.map((pregunta) => {
-    return {
-      question: pregunta.question,
-      options: pregunta.options,
-      answer: pregunta.answer,
-      explanation: pregunta.explanation,
-      invalidOptions: pregunta.invalidOptions,
-    };
-  });
-
-  const currentQuestion = preguntas[currentQuestionIndex];
+  // Scroll automático a la siguiente pregunta si fue contestada correctamente
+  const handleCorrect = (index: number) => {
+    setShowCheck(true);
+    // Fade out animación
+    const questionDiv = document.getElementById(`question-${index}`);
+    if (questionDiv) {
+      questionDiv.style.transition = 'opacity 3s';
+      questionDiv.style.opacity = '0';
+    }
+    setTimeout(() => {
+      setShowCheck(false);
+      if (index < preguntas.length - 1) {
+        setCurrentQuestionIndex(index + 1);
+        setTimeout(() => {
+          const next = document.getElementById(`question-${index + 1}`);
+          if (next) {
+            next.style.opacity = '0';
+            next.style.transition = 'opacity 0.5s';
+            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+              next.style.opacity = '1';
+            }, 50);
+          }
+        }, 100);
+      }
+    }, 3000);
+  };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100%',
-        flexDirection: 'column',
-      }}
-    >
-      <h1>{seletedCourse?.title}</h1>
-      {currentQuestion && (
-        <Question
-          question={currentQuestion}
-          handleNext={() => setCurrentQuestionIndex(currentQuestionIndex + 1)}
-        ></Question>
+    <div className="course-container">
+      {preguntas.length > 0 && (
+        <div
+          key={currentQuestionIndex}
+          id={`question-${currentQuestionIndex}`}
+          className="course-question-box"
+        >
+          <Question
+            question={preguntas[currentQuestionIndex]}
+            onCorrect={() => handleCorrect(currentQuestionIndex)}
+            onNext={() => setCurrentQuestionIndex(currentQuestionIndex + 1)}
+          />
+          {showCheck && <div className="course-check">✓</div>}
+        </div>
       )}
       <Link to="/">Back to courses</Link>
     </div>

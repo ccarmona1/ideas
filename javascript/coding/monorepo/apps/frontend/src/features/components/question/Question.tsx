@@ -1,14 +1,21 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import './Question.css';
 import type { QuestionMetadata } from '../course/Course';
 import FeedbackModal from './FeedbackModal';
 
-export const Question: React.FunctionComponent<{
+export interface QuestionProps {
   question: QuestionMetadata;
   onCorrect: () => void;
   onNext?: () => void;
   disabled?: boolean;
-}> = ({ question, onCorrect, onNext, disabled }) => {
+}
+
+export const Question: React.FC<QuestionProps> = ({
+  question,
+  onCorrect,
+  onNext,
+  disabled,
+}) => {
   const [selectedOption, setSelectedOption] = useState<number | undefined>(
     undefined
   );
@@ -22,20 +29,18 @@ export const Question: React.FunctionComponent<{
     selectedOption !== undefined &&
     ['a', 'b', 'c', 'd'][selectedOption] === question.answer;
 
-  // Lógica para manejar respuesta correcta
   const handleSelectOption = (index: number) => {
     if (!answeredCorrectly && !disabled) {
       setSelectedOption(index);
       if (['a', 'b', 'c', 'd'][index] === question.answer) {
         setAnsweredCorrectly(true);
-        if (onCorrect) onCorrect();
+        onCorrect();
       } else {
         setShowModal(true);
       }
     }
   };
 
-  // Handlers para drag
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (selectedOption !== undefined && isCorrect === false && !showModal) {
       setIsDragging(true);
@@ -46,7 +51,7 @@ export const Question: React.FunctionComponent<{
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (isDragging && dragStartY.current !== null) {
       const deltaY = e.clientY - dragStartY.current;
-      setDragY(deltaY < 0 ? deltaY : 0); // Solo permitir arrastre hacia arriba
+      setDragY(deltaY < 0 ? deltaY : 0);
     }
   };
 
@@ -54,15 +59,14 @@ export const Question: React.FunctionComponent<{
     if (isDragging) {
       setIsDragging(false);
       if (dragY < -200) {
-        // Si se arrastró suficiente hacia arriba
-        setDragY(-500); // animar fuera de pantalla
+        setDragY(-500);
         setTimeout(() => {
           setDragY(0);
           setSelectedOption(undefined);
           if (onNext) onNext();
         }, 300);
       } else {
-        setDragY(0); // volver a posición original
+        setDragY(0);
       }
     }
   };
@@ -70,13 +74,13 @@ export const Question: React.FunctionComponent<{
   return (
     <div
       className={`question-container${isDragging ? ' dragging' : ''}`}
-      style={{
-        transform: `translateY(${dragY}px)`,
-      }}
+      style={{ transform: `translateY(${dragY}px)` }}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
+      role="region"
+      aria-label="Pregunta"
     >
       <h1>{question.question}</h1>
       <ul className="question-list">
@@ -94,7 +98,11 @@ export const Question: React.FunctionComponent<{
                 type="button"
                 className={btnClass}
                 onClick={() => handleSelectOption(index)}
-                disabled={disabled || answeredCorrectly}
+                disabled={answeredCorrectly || disabled}
+                aria-pressed={selectedOption === index}
+                aria-label={`Opción ${String.fromCharCode(
+                  65 + index
+                )}: ${option}`}
               >
                 {option}
               </button>
@@ -102,13 +110,6 @@ export const Question: React.FunctionComponent<{
           );
         })}
       </ul>
-
-      {selectedOption !== undefined && !isCorrect && (
-        <div className="question-feedback" style={{ marginTop: '1.5em' }}>
-          Arrastra hacia arriba para continuar con la siguiente pregunta.
-        </div>
-      )}
-
       <FeedbackModal
         open={showModal}
         onClose={() => setShowModal(false)}
@@ -119,3 +120,5 @@ export const Question: React.FunctionComponent<{
     </div>
   );
 };
+
+export default Question;

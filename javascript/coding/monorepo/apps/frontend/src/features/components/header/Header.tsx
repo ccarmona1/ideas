@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Header: React.FunctionComponent = () => {
+export const Header: React.FC = () => {
   return (
     <header
       style={{
@@ -11,9 +11,12 @@ export const Header: React.FunctionComponent = () => {
         fontSize: '1.5rem',
         fontWeight: 'bold',
       }}
+      role="banner"
+      aria-label="Encabezado principal"
     >
       Tester app
     </header>
   );
 };
+
 export default Header;

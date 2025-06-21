@@ -1,7 +1,7 @@
+import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { CourseMetadata } from '../../../App';
 import { Question } from '../question/Question';
-import { useState } from 'react';
 import preguntasModulo1 from './examen_modulo1.json';
 import './Course.css';
 
@@ -13,21 +13,21 @@ export interface QuestionMetadata {
   invalidOptions: Partial<Record<'a' | 'b' | 'c' | 'd', string>>;
 }
 
-export const Course: React.FunctionComponent<{ courses: CourseMetadata[] }> = ({
-  courses,
-}) => {
+export interface CourseProps {
+  courses: CourseMetadata[];
+}
+
+export const Course: React.FC<CourseProps> = ({ courses }) => {
   const params = useParams();
   const courseId = params.courseId;
-  const seletedCourse = courses.find((course) => course.id === courseId);
+  const selectedCourse = courses.find((course) => course.id === courseId);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [showCheck, setShowCheck] = useState(false);
   const preguntas: QuestionMetadata[] =
-    seletedCourse?.id === '1' ? preguntasModulo1 : [];
+    selectedCourse?.id === '1' ? preguntasModulo1 : [];
 
-  // Scroll automático a la siguiente pregunta si fue contestada correctamente
   const handleCorrect = (index: number) => {
     setShowCheck(true);
-    // Fade out animación
     const questionDiv = document.getElementById(`question-${index}`);
     if (questionDiv) {
       questionDiv.style.transition = 'opacity 3s';
@@ -65,11 +65,16 @@ export const Course: React.FunctionComponent<{ courses: CourseMetadata[] }> = ({
             onCorrect={() => handleCorrect(currentQuestionIndex)}
             onNext={() => setCurrentQuestionIndex((idx) => idx + 1)}
           />
-          {showCheck && <div className="course-check">✓</div>}
+          {showCheck && (
+            <div className="course-check" aria-live="polite">
+              ✓
+            </div>
+          )}
         </div>
       )}
-      <Link to="/">Back to courses</Link>
+      <Link to="/">Volver a cursos</Link>
     </div>
   );
 };
+
 export default Course;

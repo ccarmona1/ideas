@@ -1,6 +1,7 @@
 import React from 'react';
+import './FeedbackModal.css';
 
-interface FeedbackModalProps {
+export interface FeedbackModalProps {
   open: boolean;
   onClose: () => void;
   answer: string;
@@ -17,17 +18,26 @@ const FeedbackModal: React.FC<FeedbackModalProps> = ({
 }) => {
   if (!open) return null;
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div
+      className="modal-overlay"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>
+        <button
+          className="modal-close"
+          onClick={onClose}
+          aria-label="Cerrar modal"
+        >
           &times;
         </button>
         <h2>Respuesta incorrecta</h2>
         <div>
-          <strong>Correct answer:</strong> {answer}
+          <strong>Respuesta correcta:</strong> {answer}
         </div>
         <div>
-          <strong>Explanation:</strong> {explanation}
+          <strong>Explicación:</strong> {explanation}
         </div>
         <div style={{ marginTop: '1em' }}>
           <strong>Opciones inválidas:</strong>

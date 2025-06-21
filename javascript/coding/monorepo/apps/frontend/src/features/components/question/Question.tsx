@@ -76,21 +76,27 @@ export const Question: React.FunctionComponent<{
     >
       <h1>{question.question}</h1>
       <ul className="question-list">
-        {question.options.map((option, index) => (
-          <li key={index}>
-            <label>
-              <input
-                type="radio"
-                name="question-option"
-                value={option}
-                checked={selectedOption === index}
-                onChange={() => handleSelectOption(index)}
+        {question.options.map((option, index) => {
+          let btnClass = 'option-btn';
+          if (selectedOption === index) {
+            if (selectedOption !== undefined) {
+              btnClass += isCorrect ? ' correct' : ' incorrect';
+            }
+            btnClass += ' selected';
+          }
+          return (
+            <li key={index}>
+              <button
+                type="button"
+                className={btnClass}
+                onClick={() => handleSelectOption(index)}
                 disabled={disabled || answeredCorrectly}
-              />
-              {option}
-            </label>
-          </li>
-        ))}
+              >
+                {option}
+              </button>
+            </li>
+          );
+        })}
       </ul>
 
       {selectedOption !== undefined && isCorrect === false && (

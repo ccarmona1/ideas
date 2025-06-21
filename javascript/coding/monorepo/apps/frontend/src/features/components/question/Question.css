@@ -9,6 +9,45 @@
 .question-list {
   list-style: none;
   padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.option-btn {
+  width: 100%;
+  padding: 0.75em 1.5em;
+  font-size: 1.1em;
+  border: 2px solid #000000;
+  border-radius: 0.7em;
+  background: #fff;
+  color: #000000;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.option-btn:hover:not(:disabled),
+.option-btn:focus:not(:disabled) {
+  background: #e6f0ff;
+  color: #0056b3;
+  box-shadow: 0 4px 16px rgba(0,123,255,0.08);
+}
+.option-btn.selected {
+  border-width: 3px;
+}
+.option-btn.correct {
+  background: #28a745;
+  color: #fff;
+  border-color: #218838;
+}
+.option-btn.incorrect {
+  background: #dc3545;
+  color: #fff;
+  border-color: #b52a37;
+}
+.option-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 .question-feedback {
   margin-top: 1em;

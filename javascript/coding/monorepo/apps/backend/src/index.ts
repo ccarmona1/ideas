@@ -1,7 +1,7 @@
 async function init() {
   setInterval(() => {
     console.log('Backend is running');
-  }, 1000);
+  }, 10000);
 }
 
 await init();

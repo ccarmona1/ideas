@@ -50,6 +50,24 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const dragStartY = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [canDrag, setCanDrag] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  // Detectar dispositivos táctiles
+  React.useEffect(() => {
+    const checkTouchSupport = () => {
+      setIsTouchDevice(
+        'ontouchstart' in window || navigator.maxTouchPoints > 0
+      );
+    };
+    checkTouchSupport();
+  }, []);
+
+  // Limpieza del estado de arrastre al desmontar el componente
+  React.useEffect(() => {
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   const handleCorrect = (index: number) => {
     setCorrectCount((c) => c + 1);
@@ -147,7 +165,13 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   };
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (canDrag && !isAnimating) {
+    // Solo usar pointer events en dispositivos no táctiles
+    if (
+      canDrag &&
+      !isAnimating &&
+      !isTouchDevice &&
+      e.pointerType !== 'touch'
+    ) {
       e.preventDefault();
       e.stopPropagation();
       setIsDragging(true);
@@ -161,7 +185,12 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (isDragging && dragStartY.current !== null) {
+    if (
+      isDragging &&
+      dragStartY.current !== null &&
+      !isTouchDevice &&
+      e.pointerType !== 'touch'
+    ) {
       e.preventDefault();
       e.stopPropagation();
       const deltaY = e.clientY - dragStartY.current;
@@ -171,7 +200,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   };
 
   const handlePointerUp = (e?: React.PointerEvent<HTMLDivElement>) => {
-    if (isDragging) {
+    if (isDragging && (!e || (!isTouchDevice && e.pointerType !== 'touch'))) {
       if (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -241,6 +270,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
         containerRef.current.style.willChange = 'transform';
         containerRef.current.style.touchAction = 'none';
       }
+
+      // Asegurar que el evento no sea cancelado por scroll
+      document.body.style.overflow = 'hidden';
     }
   };
 
@@ -263,12 +295,15 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
       setIsDragging(false);
       setIsAnimating(true);
 
+      // Restaurar el scroll del body
+      document.body.style.overflow = '';
+
       if (containerRef.current) {
         containerRef.current.style.willChange = 'auto';
         containerRef.current.style.touchAction = 'auto';
       }
 
-      const threshold = -100;
+      const threshold = -80; // Threshold más sensible para móviles
 
       if (dragY < threshold) {
         setDragY(-window.innerHeight);

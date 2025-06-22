@@ -142,24 +142,41 @@
   line-height: var(--line-height-relaxed);
 }
 
+/* Mejoras específicas para dispositivos táctiles */
+.course-question-box {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+}
+
+.course-question-box.dragging {
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Mejorar la sensibilidad táctil en móviles */
 @media (max-width: 768px) {
+  .course-question-box {
+    cursor: grab;
+  }
+  
+  .course-question-box.dragging {
+    cursor: grabbing;
+  }
+  
   .course-container {
     padding: var(--spacing-lg) var(--spacing-sm);
   }
   
   .course-scoreboard {
-    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
     padding: var(--spacing-base) var(--spacing-lg);
-    font-size: var(--font-size-sm);
-  }
-  
-  .course-question-box {
-    padding: var(--spacing-xl);
-  }
-  
-  .course-back-button {
-    width: 100%;
-    justify-content: center;
-    margin-top: var(--spacing-xl);
   }
 }

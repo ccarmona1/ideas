@@ -18,12 +18,31 @@ const Explanation: React.FC<ExplanationProps> = ({
   const [isAnimating, setIsAnimating] = useState(false);
   const dragStartY = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  // Detectar dispositivos táctiles
+  React.useEffect(() => {
+    const checkTouchSupport = () => {
+      setIsTouchDevice(
+        'ontouchstart' in window || navigator.maxTouchPoints > 0
+      );
+    };
+    checkTouchSupport();
+  }, []);
+
+  // Limpieza del estado de arrastre al desmontar el componente
+  React.useEffect(() => {
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   const correctIndex = ['a', 'b', 'c', 'd'].indexOf(question.answer);
   const selectedLetter = ['a', 'b', 'c', 'd'][selectedOption];
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!isAnimating) {
+    // Solo usar pointer events en dispositivos no táctiles
+    if (!isAnimating && !isTouchDevice && e.pointerType !== 'touch') {
       e.preventDefault();
       e.stopPropagation();
       setIsDragging(true);
@@ -37,7 +56,12 @@ const Explanation: React.FC<ExplanationProps> = ({
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (isDragging && dragStartY.current !== null) {
+    if (
+      isDragging &&
+      dragStartY.current !== null &&
+      !isTouchDevice &&
+      e.pointerType !== 'touch'
+    ) {
       e.preventDefault();
       e.stopPropagation();
       const deltaY = e.clientY - dragStartY.current;
@@ -47,7 +71,7 @@ const Explanation: React.FC<ExplanationProps> = ({
   };
 
   const handlePointerUp = (e?: React.PointerEvent<HTMLDivElement>) => {
-    if (isDragging) {
+    if (isDragging && (!e || (!isTouchDevice && e.pointerType !== 'touch'))) {
       if (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -87,6 +111,9 @@ const Explanation: React.FC<ExplanationProps> = ({
         containerRef.current.style.willChange = 'transform';
         containerRef.current.style.touchAction = 'none';
       }
+
+      // Prevenir el scroll del body durante el arrastre
+      document.body.style.overflow = 'hidden';
     }
   };
 
@@ -109,12 +136,15 @@ const Explanation: React.FC<ExplanationProps> = ({
       setIsDragging(false);
       setIsAnimating(true);
 
+      // Restaurar el scroll del body
+      document.body.style.overflow = '';
+
       if (containerRef.current) {
         containerRef.current.style.willChange = 'auto';
         containerRef.current.style.touchAction = 'auto';
       }
 
-      const threshold = -100; // Threshold más sensible para touch
+      const threshold = -60; // Threshold más sensible para móviles
 
       if (dragY < threshold) {
         setDragY(-window.innerHeight);

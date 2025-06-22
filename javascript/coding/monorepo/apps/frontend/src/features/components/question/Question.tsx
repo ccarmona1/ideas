@@ -6,6 +6,7 @@ import FeedbackModal from './FeedbackModal';
 export interface QuestionProps {
   question: QuestionMetadata;
   onCorrect: () => void;
+  onIncorrect?: () => void;
   onNext?: () => void;
   disabled?: boolean;
 }
@@ -13,6 +14,7 @@ export interface QuestionProps {
 export const Question: React.FC<QuestionProps> = ({
   question,
   onCorrect,
+  onIncorrect,
   onNext,
   disabled,
 }) => {
@@ -36,6 +38,7 @@ export const Question: React.FC<QuestionProps> = ({
         setAnsweredCorrectly(true);
         onCorrect();
       } else {
+        if (onIncorrect) onIncorrect();
         setShowModal(true);
       }
     }

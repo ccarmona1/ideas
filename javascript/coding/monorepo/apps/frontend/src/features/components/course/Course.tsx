@@ -22,10 +22,13 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const courseId = params.courseId;
   const selectedCourse = courses.find((course) => course.id === courseId);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [incorrectCount, setIncorrectCount] = useState(0);
   const preguntas: QuestionMetadata[] =
     selectedCourse?.id === '1' ? preguntasModulo1 : [];
 
   const handleCorrect = (index: number) => {
+    setCorrectCount((c) => c + 1);
     const questionDiv = document.getElementById(`question-${index}`);
     if (questionDiv) {
       questionDiv.style.transition = 'opacity 1.5s';
@@ -49,8 +52,19 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     }, 1500);
   };
 
+  const handleIncorrect = () => {
+    setIncorrectCount((c) => c + 1);
+  };
+
   return (
     <div className="course-container">
+      <div className="course-scoreboard">
+        <span className="score-correct">✔ {correctCount}</span>
+        <span className="score-incorrect">✖ {incorrectCount}</span>
+        <span className="score-total">
+          Restantes: {preguntas.length - currentQuestionIndex}
+        </span>
+      </div>
       {preguntas.length > 0 ? (
         <div
           key={currentQuestionIndex}
@@ -61,6 +75,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
             question={preguntas[currentQuestionIndex]}
             onCorrect={() => handleCorrect(currentQuestionIndex)}
             onNext={() => setCurrentQuestionIndex((idx) => idx + 1)}
+            onIncorrect={handleIncorrect}
           />
         </div>
       ) : (

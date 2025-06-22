@@ -45,20 +45,23 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
   const handleCorrect = (index: number) => {
     setCorrectCount((c) => c + 1);
-    setQuestionTransition('exiting');
-
+    // Delay más largo para que se vea la animación de éxito
     setTimeout(() => {
-      if (index < questionQueue.length - 1) {
-        setCurrentQuestionIndex(index + 1);
-        setQuestionTransition('entering');
+      setQuestionTransition('exiting');
 
-        setTimeout(() => {
+      setTimeout(() => {
+        if (index < questionQueue.length - 1) {
+          setCurrentQuestionIndex(index + 1);
+          setQuestionTransition('entering');
+
+          setTimeout(() => {
+            setQuestionTransition('idle');
+          }, 150); // Tiempo ligeramente mayor para entrada más suave
+        } else {
           setQuestionTransition('idle');
-        }, 100);
-      } else {
-        setQuestionTransition('idle');
-      }
-    }, 400);
+        }
+      }, 350); // Tiempo de salida más rápido
+    }, 200); // Delay inicial para mostrar feedback
   };
 
   const handleIncorrect = () => {

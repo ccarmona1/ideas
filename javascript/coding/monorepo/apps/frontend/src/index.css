@@ -99,8 +99,8 @@
   --transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
   
   /* Animaciones específicas */
-  --animation-fade-in: fadeIn 0.5s ease-out;
-  --animation-fade-out: fadeOut 0.3s ease-in;
+  --animation-fade-in: fadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --animation-fade-out: fadeOut 0.35s cubic-bezier(0.55, 0.085, 0.68, 0.53);
   --animation-slide-up: slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --animation-slide-down: slideDown 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --animation-scale-in: scaleIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -180,6 +180,29 @@
   0%, 100% { transform: translateX(0); }
   10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
   20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+/* Animación adicional para respuesta correcta */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
 }
 
 /* ===== CLASES DE ANIMACIÓN ===== */

@@ -46,7 +46,16 @@ export const Question: React.FC<QuestionProps> = ({
       setSelectedOption(index);
       if (['a', 'b', 'c', 'd'][index] === question.answer) {
         setAnsweredCorrectly(true);
-        onCorrect();
+
+        // Agregar clase de feedback visual inmediatamente
+        if (containerRef.current) {
+          containerRef.current.classList.add('success-feedback');
+        }
+
+        // Agregar un delay para mostrar el feedback visual antes de la transición
+        setTimeout(() => {
+          onCorrect();
+        }, 800); // Dar tiempo para que se vea la animación de éxito
       } else {
         if (onIncorrect) onIncorrect();
         // No mostramos modal, solo marcamos como incorrecta

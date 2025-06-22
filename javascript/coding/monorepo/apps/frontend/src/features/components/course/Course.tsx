@@ -50,55 +50,22 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
   // Estados para el arrastre simplificado
   const [canDrag, setCanDrag] = useState(false);
+  const [isProcessingAction, setIsProcessingAction] = useState(false);
   const [lastQuestionState, setLastQuestionState] = useState<{
     hasSelectedOption: boolean;
     isCorrect: boolean;
     selectedOptionIndex: number;
   } | null>(null);
 
-  // Hook personalizado para manejar el arrastre
-  const {
-    containerRef,
-    dragY,
-    isDragging,
-    isAnimating,
-    resetPosition,
-    handlers: dragHandlers,
-  } = useDragGesture({
-    canDrag: true, // Simplificar: siempre permitir intentar arrastrar, la lógica se decide en onSwipeUp
-    onSwipeUp: () => {
-      console.log('SwipeUp triggered', { currentViewMode, lastQuestionState });
+  // Función centralizada para ejecutar acciones de arrastre (evita ejecuciones múltiples)
+  const executeAction = React.useCallback(() => {
+    if (isProcessingAction) {
+      console.log('Action already processing, skipping...');
+      return;
+    }
 
-      if (currentViewMode === 'explanation') {
-        handleNextFromExplanation();
-      } else if (currentViewMode === 'question') {
-        // Lógica para modo pregunta usando estado en lugar de DOM
-        const currentQuestion = questionQueue[currentQuestionIndex];
-
-        if (lastQuestionState) {
-          if (
-            lastQuestionState.hasSelectedOption &&
-            !lastQuestionState.isCorrect
-          ) {
-            // Respuesta incorrecta -> mostrar explicación
-            handleShowExplanation(
-              currentQuestion,
-              lastQuestionState.selectedOptionIndex
-            );
-          } else if (!lastQuestionState.hasSelectedOption) {
-            // Sin respuesta -> saltar pregunta
-            handleSkipQuestion();
-          }
-          // Si la respuesta es correcta, no hacer nada (el usuario debe esperar la transición automática)
-        } else {
-          // Fallback: si no hay estado, saltar pregunta
-          handleSkipQuestion();
-        }
-      }
-    },
-  }); // Función para manejar acciones desde los elementos de arrastre
-  const handleDragAction = React.useCallback(() => {
-    console.log('DragAction triggered', { currentViewMode, lastQuestionState });
+    setIsProcessingAction(true);
+    console.log('Action triggered', { currentViewMode, lastQuestionState });
 
     if (currentViewMode === 'explanation') {
       handleNextFromExplanation();
@@ -124,7 +91,34 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
         handleSkipQuestion();
       }
     }
-  }, [currentViewMode, lastQuestionState, questionQueue, currentQuestionIndex]);
+
+    // Limpiar el estado después de un delay
+    setTimeout(() => {
+      setIsProcessingAction(false);
+    }, 500);
+  }, [
+    currentViewMode,
+    lastQuestionState,
+    questionQueue,
+    currentQuestionIndex,
+    isProcessingAction,
+  ]);
+
+  // Hook personalizado para manejar el arrastre
+  const {
+    containerRef,
+    dragY,
+    isDragging,
+    isAnimating,
+    resetPosition,
+    handlers: dragHandlers,
+  } = useDragGesture({
+    canDrag: true, // Simplificar: siempre permitir intentar arrastrar, la lógica se decide en onSwipeUp
+    onSwipeUp: executeAction,
+  });
+
+  // Función para manejar acciones desde los elementos de arrastre (usa la función centralizada)
+  const handleDragAction = executeAction;
 
   // Limpieza del estado de arrastre al desmontar el componente
   React.useEffect(() => {
@@ -265,6 +259,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   React.useEffect(() => {
     setLastQuestionState(null);
     setCanDrag(false);
+    setIsProcessingAction(false); // También limpiar el estado de procesamiento
   }, [currentQuestionIndex, currentViewMode]);
 
   return (
@@ -293,12 +288,14 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
               : ''
           }${isDragging ? ' dragging' : ''}${isAnimating ? ' animating' : ''}`}
           style={{
-            transform: `translateY(${dragY}px)`,
+            transform: isDragging
+              ? `translateY(${dragY}px)`
+              : 'translateY(0px)',
             transition:
-              isDragging || isAnimating || dragY !== 0
+              isDragging || isAnimating
                 ? 'none'
                 : `transform ${DRAG_CONFIG.CSS.TRANSFORM_DURATION} ${DRAG_CONFIG.CSS.EASING}, opacity ${DRAG_CONFIG.CSS.TRANSFORM_DURATION} ${DRAG_CONFIG.CSS.EASING}`,
-            opacity: calculateDragOpacity(dragY), // Usar función de configuración gradual
+            opacity: isDragging ? calculateDragOpacity(dragY) : 1,
           }}
         >
           {currentViewMode === 'completed' ? (

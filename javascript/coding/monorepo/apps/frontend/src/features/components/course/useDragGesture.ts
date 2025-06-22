@@ -63,10 +63,10 @@ export const useDragGesture = ({
       // Arrastrar hacia arriba suficiente - ejecutar acción inmediatamente
       onSwipeUp();
 
-      // Animar elemento fuera de pantalla y mantenerlo ahí
-      setDragY(-window.innerHeight);
+      // Resetear posición inmediatamente después de la acción
+      setDragY(0);
 
-      // Mantener fuera de pantalla hasta que el padre resetee
+      // Limpiar estado de animación
       setTimeout(() => {
         setIsAnimating(false);
       }, DRAG_CONFIG.ANIMATION.CLEANUP_DELAY);
@@ -151,6 +151,8 @@ export const useDragGesture = ({
 
   const resetPosition = useCallback(() => {
     setDragY(0);
+    setIsDragging(false);
+    setIsAnimating(false);
   }, []);
 
   return {

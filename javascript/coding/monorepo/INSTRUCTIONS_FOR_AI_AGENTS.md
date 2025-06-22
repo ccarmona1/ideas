@@ -114,10 +114,11 @@ const scrollToTop = useCallback(() => {
 
 ### useDragGesture.ts
 
-- **Vertical drag detection** with resistance
-- **Threshold-based actions** (SWIPE_THRESHOLD: -180px)
-- **Opacity fade** during drag
+- **Two-phase drag detection**: 8px threshold to start, 250px threshold to execute
+- **Vertical drag with resistance** for downward movement
+- **Opacity fade** during drag (starts at -80px, full fade at -160px)
 - **Scroll prevention** during active drag only
+- **Mobile optimization**: Reduced thresholds (-200px execution threshold)
 
 ### DragHint.tsx
 
@@ -140,6 +141,32 @@ const scrollToTop = useCallback(() => {
   --transition-normal: 200ms ease-in-out;
 }
 ```
+
+## Enhanced Drag Configuration
+
+### Two-Phase Drag System
+
+1. **Initialization Phase**: Touch/click detected, no visual feedback
+2. **Drag Threshold**: 8px movement required to start visual drag
+3. **Execution Threshold**: 250px upward movement required to execute action
+
+### Drag Configuration Values
+
+```typescript
+const DRAG_CONFIG = {
+  SWIPE_THRESHOLD: -250, // Execution threshold (desktop)
+  DRAG_START_THRESHOLD: 8, // Minimum movement to start drag
+  DOWNWARD_RESISTANCE: 0.3, // Resistance for downward movement
+  OPACITY_FADE_START: -80, // Start fading opacity
+  OPACITY_FADE_END: -160, // Full opacity fade
+};
+```
+
+### Mobile Optimizations
+
+- **Reduced execution threshold**: -200px (vs -250px on desktop)
+- **Same start threshold**: 8px (consistent across devices)
+- **Enhanced touch handling**: Prevents accidental triggers
 
 ## TypeScript Interfaces
 
@@ -167,6 +194,8 @@ interface QuestionMetadata {
 3. **Auto-scroll missing**: Verify `scrollToTop()` called in all state transitions
 4. **Mobile card styles**: Should be flat (transparent background, no shadows)
 5. **Drag not working**: Verify `useDragGesture({ canDrag: canDrag })` uses dynamic state, not `canDrag: true`
+6. **Drag too sensitive**: Check DRAG_START_THRESHOLD (8px) and SWIPE_THRESHOLD (-250px) values
+7. **Accidental triggers**: Ensure two-phase drag system is properly implemented
 
 ## Critical Drag System Requirements
 
@@ -199,4 +228,4 @@ const handleDragStart = useCallback((selectedOption, isCorrect) => {
 5. **Explanation shows** → `canDrag = true` (to allow continuing)
 6. **Mode changes** → Only explanation/completed modes override canDrag
 
-**Version**: 2.3 - Fixed First Question Drag Issue
+**Version**: 3.0 - Enhanced Drag Sensitivity & Two-Phase System

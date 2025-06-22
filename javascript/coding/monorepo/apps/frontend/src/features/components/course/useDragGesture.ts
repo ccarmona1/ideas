@@ -15,14 +15,37 @@ export const useDragGesture = ({
   const [dragY, setDragY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isPotentialDrag, setIsPotentialDrag] = useState(false); // Nuevo estado
   const dragStartY = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const startDrag = useCallback(
     (clientY: number) => {
-      if (canDrag && !isAnimating) {
-        setIsDragging(true);
+      if (canDrag && !isAnimating && !isDragging) {
+        setIsPotentialDrag(true);
         dragStartY.current = clientY;
+        return true;
+      }
+      return false;
+    },
+    [canDrag, isAnimating, isDragging]
+  );
+
+  const updateDrag = useCallback(
+    (clientY: number) => {
+      if (dragStartY.current === null) return;
+
+      const deltaY = clientY - dragStartY.current;
+      const absDeltaY = Math.abs(deltaY);
+
+      // Si estamos en estado potencial y superamos el umbral, iniciar arrastre real
+      if (
+        isPotentialDrag &&
+        !isDragging &&
+        absDeltaY >= DRAG_CONFIG.DRAG_START_THRESHOLD
+      ) {
+        setIsPotentialDrag(false);
+        setIsDragging(true);
 
         if (containerRef.current) {
           containerRef.current.style.willChange = 'transform';
@@ -30,25 +53,25 @@ export const useDragGesture = ({
 
         // Prevenir scroll durante el arrastre
         document.body.style.overflow = 'hidden';
-        return true;
       }
-      return false;
-    },
-    [canDrag, isAnimating]
-  );
 
-  const updateDrag = useCallback(
-    (clientY: number) => {
-      if (isDragging && dragStartY.current !== null) {
-        const deltaY = clientY - dragStartY.current;
+      // Solo actualizar posición si ya estamos arrastrando
+      if (isDragging) {
         setDragY(calculateDragResistance(deltaY));
       }
     },
-    [isDragging]
+    [isDragging, isPotentialDrag]
   );
 
   const endDrag = useCallback(() => {
-    if (!isDragging) return;
+    // Limpiar estados de arrastre
+    setIsPotentialDrag(false);
+    dragStartY.current = null;
+
+    if (!isDragging) {
+      // Si no estábamos arrastrando realmente, solo limpiar
+      return;
+    }
 
     setIsDragging(false);
     setIsAnimating(true);
@@ -93,18 +116,18 @@ export const useDragGesture = ({
 
   const handlePointerMove = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
-      if (isDragging) {
+      if (isDragging || isPotentialDrag) {
         e.preventDefault();
         e.stopPropagation();
         updateDrag(e.clientY);
       }
     },
-    [isDragging, updateDrag]
+    [isDragging, isPotentialDrag, updateDrag]
   );
 
   const handlePointerUp = useCallback(
     (e?: React.PointerEvent<HTMLDivElement>) => {
-      if (isDragging) {
+      if (isDragging || isPotentialDrag) {
         if (e) {
           e.preventDefault();
           e.stopPropagation();
@@ -112,7 +135,7 @@ export const useDragGesture = ({
         endDrag();
       }
     },
-    [isDragging, endDrag]
+    [isDragging, isPotentialDrag, endDrag]
   );
 
   const handleTouchStart = useCallback(
@@ -128,31 +151,33 @@ export const useDragGesture = ({
 
   const handleTouchMove = useCallback(
     (e: React.TouchEvent<HTMLDivElement>) => {
-      if (isDragging) {
+      if (isDragging || isPotentialDrag) {
         e.preventDefault();
         e.stopPropagation();
         const touch = e.touches[0];
         updateDrag(touch.clientY);
       }
     },
-    [isDragging, updateDrag]
+    [isDragging, isPotentialDrag, updateDrag]
   );
 
   const handleTouchEnd = useCallback(
     (e: React.TouchEvent<HTMLDivElement>) => {
-      if (isDragging) {
+      if (isDragging || isPotentialDrag) {
         e.preventDefault();
         e.stopPropagation();
         endDrag();
       }
     },
-    [isDragging, endDrag]
+    [isDragging, isPotentialDrag, endDrag]
   );
 
   const resetPosition = useCallback(() => {
     setDragY(0);
     setIsDragging(false);
     setIsAnimating(false);
+    setIsPotentialDrag(false);
+    dragStartY.current = null;
   }, []);
 
   return {

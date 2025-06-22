@@ -153,4 +153,18 @@
     margin-bottom: var(--spacing-lg);
     padding: var(--spacing-base) var(--spacing-lg);
   }
+  
+  /* Remover estilos de "card" en dispositivos móviles */
+  .course-question-box {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    padding: var(--spacing-lg) 0;
+    max-width: none;
+  }
+  
+  .course-question-box::before {
+    display: none;
+  }
 }

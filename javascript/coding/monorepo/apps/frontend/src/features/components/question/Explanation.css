@@ -68,7 +68,6 @@
   padding: var(--spacing-lg);
   background: var(--color-gray-50);
   border-radius: var(--radius-md);
-  border-left: 4px solid var(--color-primary);
 }
 
 .explanation-content h3 {

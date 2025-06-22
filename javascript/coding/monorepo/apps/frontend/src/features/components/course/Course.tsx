@@ -66,7 +66,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     resetPosition,
     handlers: dragHandlers,
   } = useDragGesture({
-    canDrag: true,
+    canDrag: canDrag,
     onSwipeUp: () => executeActionRef.current?.(),
   });
 
@@ -234,7 +234,12 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
   useEffect(() => {
     setLastQuestionState(null);
-    setCanDrag(false);
+    if (currentViewMode === 'explanation') {
+      setCanDrag(true);
+    } else if (currentViewMode === 'completed') {
+      setCanDrag(false);
+    }
+    // Para 'question' mode, canDrag se maneja por handleDragStart
     setIsProcessingAction(false);
   }, [currentQuestionIndex, currentViewMode]);
 

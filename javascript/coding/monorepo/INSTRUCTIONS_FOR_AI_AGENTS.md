@@ -166,13 +166,37 @@ interface QuestionMetadata {
 2. **Drag conflicts**: Ensure `touch-action: none` only on `.drag-hint-interactive`
 3. **Auto-scroll missing**: Verify `scrollToTop()` called in all state transitions
 4. **Mobile card styles**: Should be flat (transparent background, no shadows)
+5. **Drag not working**: Verify `useDragGesture({ canDrag: canDrag })` uses dynamic state, not `canDrag: true`
 
-## Development Rules
+## Critical Drag System Requirements
 
-- Use CSS variables for all colors/spacing
-- Keep components focused (single responsibility)
-- Maintain TypeScript strict typing
-- Test scroll/drag on mobile devices
-- Preserve accessibility features
+### State Management
 
-**Version**: 2.0 - Simplified & Clean Codebase
+```typescript
+// ✅ CORRECT - Use dynamic canDrag state
+const [canDrag, setCanDrag] = useState(false);
+
+const { dragHandlers } = useDragGesture({
+  canDrag: canDrag, // ❌ NOT canDrag: true
+  onSwipeUp: executeAction,
+});
+
+// ✅ CORRECT - Set canDrag based on question state
+const handleDragStart = useCallback((selectedOption, isCorrect) => {
+  const shouldAllowDrag =
+    (selectedOption !== undefined && !isCorrect) ||
+    selectedOption === undefined;
+  setCanDrag(shouldAllowDrag);
+}, []);
+```
+
+### Flow Requirements
+
+1. **Question loads** → `canDrag = false` (initial state)
+2. **User selects wrong answer** → `handleDragStart()` → `canDrag = true`
+3. **User skips question** → `handleDragStart()` → `canDrag = true`
+4. **User selects correct answer** → `handleDragStart()` → `canDrag = false`
+5. **Explanation shows** → `canDrag = true` (to allow continuing)
+6. **Mode changes** → Only explanation/completed modes override canDrag
+
+**Version**: 2.3 - Fixed First Question Drag Issue

@@ -234,6 +234,21 @@
   animation: shake 0.5s ease-in-out;
 }
 
+/* ===== ESTILOS GLOBALES PARA SCROLL ===== */
+#root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Asegurar que todos los contenedores permitan flujo natural */
+.app-root, .app-main {
+  /* Prevenir overflow horizontal inesperado */
+  overflow-x: hidden;
+  /* Permitir que el contenido determine la altura total */
+}
+
 /* ===== RESET Y ESTILOS BASE ===== */
 * {
   box-sizing: border-box;
@@ -252,6 +267,10 @@ html {
   font-family: var(--font-family-primary);
   font-feature-settings: normal;
   font-variation-settings: normal;
+  /* Configurar altura para scroll de aplicación */
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto; /* Asegurar scroll vertical a nivel raíz */
 }
 
 body {
@@ -261,6 +280,11 @@ body {
   color: var(--color-gray-900);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
+  /* Asegurar scroll suave a nivel global */
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scroll global a nivel de body */
+  scroll-behavior: smooth;
 }
 
 /* ===== COMPONENTES REUTILIZABLES ===== */
@@ -575,14 +599,10 @@ body {
 /* Mejoras específicas para touch/móvil */
 .question-container {
   /* Prevenir zoom inadecuado en móvil */
-  touch-action: manipulation;
+  touch-action: auto; /* Cambio: permitir scroll normal */
   /* Mejorar rendimiento de scroll */
   -webkit-overflow-scrolling: touch;
-  /* Prevenir selección de texto durante drag */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  /* NO prevenir selección de texto - removido para permitir scroll */
   /* Mejorar respuesta táctil */
   -webkit-tap-highlight-color: transparent;
 }

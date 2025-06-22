@@ -1,11 +1,11 @@
 .question-container {
-  touch-action: auto; /* Permitir scroll normal en el contenedor */
+  /* Solo permitir scroll normal fuera del arrastre */
+  touch-action: auto;
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0); /* Force hardware acceleration */
-  overflow-y: auto; /* Permitir scroll vertical explícitamente */
-  height: 100%; /* Tomar toda la altura disponible del contenedor padre */
+  /* Sin restricciones de altura ni overflow para permitir scroll global */
   display: flex;
   flex-direction: column;
 }

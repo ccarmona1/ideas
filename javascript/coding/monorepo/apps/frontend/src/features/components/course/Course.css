@@ -8,6 +8,7 @@
   padding: var(--spacing-xl) var(--spacing-md);
   max-width: 800px;
   margin: 0 auto;
+  /* Remover overflow para que el scroll sea global */
 }
 
 .course-scoreboard {
@@ -68,9 +69,8 @@
   border: 1px solid var(--color-gray-200);
   padding: var(--spacing-2xl);
   position: relative;
-  overflow-y: auto; /* Permitir scroll vertical */
   overflow-x: hidden; /* Mantener scroll horizontal bloqueado */
-  max-height: 80vh; /* Limitar altura para forzar scroll si es necesario */
+  /* Removido: overflow-y y max-height para no generar scroll interno */
   will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;

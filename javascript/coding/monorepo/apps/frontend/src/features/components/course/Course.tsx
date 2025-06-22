@@ -42,6 +42,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const [questionTransition, setQuestionTransition] = useState<
     'entering' | 'exiting' | 'idle'
   >('idle');
+  const [currentViewMode, setCurrentViewMode] = useState<
+    'question' | 'explanation' | 'completed'
+  >('question');
 
   // Estados para el arrastre en el course-question-box
   const [dragY, setDragY] = useState(0);
@@ -127,28 +130,36 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     question: QuestionMetadata,
     selectedOption: number
   ) => {
+    // Establecer primero los datos de explicación mientras la pregunta está saliendo
+    setExplanationData({ question, selectedOption });
     setQuestionTransition('exiting');
+
     setTimeout(() => {
-      setExplanationData({ question, selectedOption });
+      // Cambiar a modo explicación de forma sincronizada
+      setCurrentViewMode('explanation');
       setShowingExplanation(true);
       setQuestionTransition('entering');
       setTimeout(() => setQuestionTransition('idle'), 100);
-    }, 200);
+    }, 300); // Tiempo sincronizado con la animación CSS
   };
 
   const handleNextFromExplanation = () => {
     setQuestionTransition('exiting');
+
     setTimeout(() => {
+      // Primero limpiar los datos de explicación y cambiar modo
+      setCurrentViewMode('question');
       setShowingExplanation(false);
       setExplanationData(null);
+
+      // Luego avanzar a la siguiente pregunta si existe
       if (currentQuestionIndex < questionQueue.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setQuestionTransition('entering');
-        setTimeout(() => setQuestionTransition('idle'), 100);
-      } else {
-        setQuestionTransition('idle');
       }
-    }, 200);
+
+      setQuestionTransition('entering');
+      setTimeout(() => setQuestionTransition('idle'), 100);
+    }, 300); // Tiempo consistente con handleShowExplanation
   };
 
   // Handlers de arrastre para el course-question-box
@@ -165,9 +176,12 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   };
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    // Solo usar pointer events en dispositivos no táctiles
+    // Para preguntas, usar la lógica existente de canDrag
+    // Para explicaciones, siempre permitir arrastre
+    const shouldAllowDrag = currentViewMode === 'explanation' || canDrag;
+
     if (
-      canDrag &&
+      shouldAllowDrag &&
       !isAnimating &&
       !isTouchDevice &&
       e.pointerType !== 'touch'
@@ -224,29 +238,34 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
           setIsAnimating(false);
           setCanDrag(false);
 
-          // Obtener el estado actual de la pregunta
-          const currentQuestion = questionQueue[currentQuestionIndex];
-          const questionRef = containerRef.current?.querySelector(
-            '.question-container'
-          );
-
-          // Determinar la acción basándose en el estado
-          if (questionRef) {
-            const hasIncorrectAnswer =
-              questionRef.querySelector('.answer-incorrect');
-            const hasSelectedOption = questionRef.querySelector(
-              '.option-btn.selected'
+          // Determinar la acción basándose en el modo de vista
+          if (currentViewMode === 'explanation') {
+            // En modo explicación, ir a la siguiente pregunta
+            handleNextFromExplanation();
+          } else {
+            // En modo pregunta, lógica existente
+            const currentQuestion = questionQueue[currentQuestionIndex];
+            const questionRef = containerRef.current?.querySelector(
+              '.question-container'
             );
 
-            if (hasIncorrectAnswer && hasSelectedOption) {
-              // Hay respuesta incorrecta -> mostrar explicación
-              const selectedOptionIndex = Array.from(
-                questionRef.querySelectorAll('.option-btn')
-              ).findIndex((btn) => btn.classList.contains('selected'));
-              handleShowExplanation(currentQuestion, selectedOptionIndex);
-            } else if (!hasSelectedOption) {
-              // No hay respuesta -> saltar pregunta
-              handleSkipQuestion();
+            if (questionRef) {
+              const hasIncorrectAnswer =
+                questionRef.querySelector('.answer-incorrect');
+              const hasSelectedOption = questionRef.querySelector(
+                '.option-btn.selected'
+              );
+
+              if (hasIncorrectAnswer && hasSelectedOption) {
+                // Hay respuesta incorrecta -> mostrar explicación
+                const selectedOptionIndex = Array.from(
+                  questionRef.querySelectorAll('.option-btn')
+                ).findIndex((btn) => btn.classList.contains('selected'));
+                handleShowExplanation(currentQuestion, selectedOptionIndex);
+              } else if (!hasSelectedOption) {
+                // No hay respuesta -> saltar pregunta
+                handleSkipQuestion();
+              }
             }
           }
         }, 350);
@@ -259,7 +278,11 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (canDrag && !isAnimating) {
+    // Para preguntas, usar la lógica existente de canDrag
+    // Para explicaciones, siempre permitir arrastre
+    const shouldAllowDrag = currentViewMode === 'explanation' || canDrag;
+
+    if (shouldAllowDrag && !isAnimating) {
       e.preventDefault();
       e.stopPropagation();
       const touch = e.touches[0];
@@ -312,29 +335,34 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
           setIsAnimating(false);
           setCanDrag(false);
 
-          // Obtener el estado actual de la pregunta
-          const currentQuestion = questionQueue[currentQuestionIndex];
-          const questionRef = containerRef.current?.querySelector(
-            '.question-container'
-          );
-
-          // Determinar la acción basándose en el estado
-          if (questionRef) {
-            const hasIncorrectAnswer =
-              questionRef.querySelector('.answer-incorrect');
-            const hasSelectedOption = questionRef.querySelector(
-              '.option-btn.selected'
+          // Determinar la acción basándose en el modo de vista
+          if (currentViewMode === 'explanation') {
+            // En modo explicación, ir a la siguiente pregunta
+            handleNextFromExplanation();
+          } else {
+            // En modo pregunta, lógica existente
+            const currentQuestion = questionQueue[currentQuestionIndex];
+            const questionRef = containerRef.current?.querySelector(
+              '.question-container'
             );
 
-            if (hasIncorrectAnswer && hasSelectedOption) {
-              // Hay respuesta incorrecta -> mostrar explicación
-              const selectedOptionIndex = Array.from(
-                questionRef.querySelectorAll('.option-btn')
-              ).findIndex((btn) => btn.classList.contains('selected'));
-              handleShowExplanation(currentQuestion, selectedOptionIndex);
-            } else if (!hasSelectedOption) {
-              // No hay respuesta -> saltar pregunta
-              handleSkipQuestion();
+            if (questionRef) {
+              const hasIncorrectAnswer =
+                questionRef.querySelector('.answer-incorrect');
+              const hasSelectedOption = questionRef.querySelector(
+                '.option-btn.selected'
+              );
+
+              if (hasIncorrectAnswer && hasSelectedOption) {
+                // Hay respuesta incorrecta -> mostrar explicación
+                const selectedOptionIndex = Array.from(
+                  questionRef.querySelectorAll('.option-btn')
+                ).findIndex((btn) => btn.classList.contains('selected'));
+                handleShowExplanation(currentQuestion, selectedOptionIndex);
+              } else if (!hasSelectedOption) {
+                // No hay respuesta -> saltar pregunta
+                handleSkipQuestion();
+              }
             }
           }
         }, 350);
@@ -351,6 +379,17 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const accuracy =
     totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
 
+  // Actualizar el modo de vista basándose en el estado
+  React.useEffect(() => {
+    if (isCompleted) {
+      setCurrentViewMode('completed');
+    } else if (showingExplanation) {
+      setCurrentViewMode('explanation');
+    } else {
+      setCurrentViewMode('question');
+    }
+  }, [isCompleted, showingExplanation]);
+
   return (
     <div className="course-container">
       <div className="course-scoreboard">
@@ -364,8 +403,45 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
         )}
       </div>
       {questionQueue.length > 0 ? (
-        isCompleted ? (
-          <div className="course-question-box">
+        <div
+          ref={containerRef}
+          key={`${currentViewMode}-${currentQuestionIndex}`}
+          className={`course-question-box ${
+            questionTransition === 'entering'
+              ? 'animate-fade-in'
+              : questionTransition === 'exiting'
+              ? 'animate-fade-out'
+              : ''
+          }${isDragging ? ' dragging' : ''}${isAnimating ? ' animating' : ''}`}
+          style={{
+            transform: `translateY(${dragY}px)`,
+            transition: isDragging
+              ? 'none'
+              : 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+          }}
+          onPointerDown={
+            currentViewMode !== 'completed' ? handlePointerDown : undefined
+          }
+          onPointerMove={
+            currentViewMode !== 'completed' ? handlePointerMove : undefined
+          }
+          onPointerUp={
+            currentViewMode !== 'completed' ? handlePointerUp : undefined
+          }
+          onPointerLeave={
+            currentViewMode !== 'completed' ? handlePointerUp : undefined
+          }
+          onTouchStart={
+            currentViewMode !== 'completed' ? handleTouchStart : undefined
+          }
+          onTouchMove={
+            currentViewMode !== 'completed' ? handleTouchMove : undefined
+          }
+          onTouchEnd={
+            currentViewMode !== 'completed' ? handleTouchEnd : undefined
+          }
+        >
+          {currentViewMode === 'completed' ? (
             <div className="course-completion">
               <h2>¡Cuestionario Completado!</h2>
               <p>
@@ -403,52 +479,12 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
                 </p>
               )}
             </div>
-          </div>
-        ) : showingExplanation && explanationData ? (
-          <div
-            key={`explanation-${currentQuestionIndex}`}
-            className={`course-question-box ${
-              questionTransition === 'entering'
-                ? 'animate-fade-in'
-                : questionTransition === 'exiting'
-                ? 'animate-fade-out'
-                : ''
-            }`}
-          >
+          ) : currentViewMode === 'explanation' && explanationData ? (
             <Explanation
               question={explanationData.question}
               selectedOption={explanationData.selectedOption}
-              onNext={handleNextFromExplanation}
             />
-          </div>
-        ) : (
-          <div
-            ref={containerRef}
-            key={currentQuestionIndex}
-            id={`question-${currentQuestionIndex}`}
-            className={`course-question-box ${
-              questionTransition === 'entering'
-                ? 'animate-fade-in'
-                : questionTransition === 'exiting'
-                ? 'animate-fade-out'
-                : ''
-            }${isDragging ? ' dragging' : ''}${
-              isAnimating ? ' animating' : ''
-            }`}
-            style={{
-              transform: `translateY(${dragY}px)`,
-              transition: isDragging
-                ? 'none'
-                : 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-            }}
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            onPointerLeave={handlePointerUp}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
+          ) : (
             <Question
               question={questionQueue[currentQuestionIndex]}
               onCorrect={() => handleCorrect(currentQuestionIndex)}
@@ -456,8 +492,8 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
               onSkip={handleSkipQuestion}
               onDragStart={handleDragStart}
             />
-          </div>
-        )
+          )}
+        </div>
       ) : (
         <div
           className="course-question-box"

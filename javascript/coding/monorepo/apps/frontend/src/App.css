@@ -4,16 +4,14 @@
   min-height: 100vh;
   width: 100%;
   background: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-primary-bg) 100%);
-  /* Permitir que el contenido crezca más allá de la ventana */
 }
 
 .app-main {
   display: flex;
-  align-items: flex-start; /* Cambio: flex-start en lugar de stretch */
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-height: 100vh;
   padding: var(--spacing-lg);
-  /* Permitir que el contenido determine la altura */
   flex: 1;
 }

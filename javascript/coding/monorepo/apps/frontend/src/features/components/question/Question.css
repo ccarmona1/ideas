@@ -1,42 +1,17 @@
 .question-container {
-  /* Permitir scroll normal en toda la superficie */
   touch-action: auto;
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0); /* Force hardware acceleration */
-  /* Sin restricciones de altura ni overflow para permitir scroll global */
   display: flex;
   flex-direction: column;
-  /* Mejorar rendimiento de scroll */
   -webkit-overflow-scrolling: touch;
-  /* Permitir interacción táctil normal */
-  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
-  /* Permitir selección de texto normal */
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
 }
 
 .question-container.dragging {
-  /* Solo aplicar restricciones durante arrastre activo */
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  /* NO cambiar touch-action aquí - debe mantenerse en auto para scroll */
-  /* Mejorar fluidez de animación */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 .question-container.animating {
   pointer-events: none;
-  /* Optimizar transiciones */
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 .question-container h1 {
@@ -63,7 +38,7 @@
   padding: var(--spacing-lg) var(--spacing-xl);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
-  border: 3px solid var(--color-gray-300); /* Cambio: siempre 3px para evitar saltos */
+  border: 3px solid var(--color-gray-300);
   border-radius: var(--radius-md);
   background: white;
   color: var(--color-gray-900);
@@ -77,12 +52,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  will-change: transform, background-color, border-color, box-shadow;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-  box-sizing: border-box; /* Asegurar que border no afecte el tamaño total */
-  /* Permitir scroll normal sobre los botones */
+  box-sizing: border-box;
   touch-action: auto;
 }
 
@@ -103,7 +73,6 @@
   background: var(--color-primary-bg);
   border-color: var(--color-primary-light);
   box-shadow: var(--shadow-md);
-  /* Removido transform para evitar cambios de layout */
 }
 
 .option-btn:hover:not(:disabled)::before {
@@ -116,10 +85,8 @@
 }
 
 .option-btn.selected {
-  /* border-width ya es 3px por defecto, no cambiar */
   box-shadow: var(--shadow-lg);
   animation: pulse 0.4s ease-in-out;
-  /* Removido transform para evitar cambios de layout */
 }
 
 .option-btn.answer-correct {
@@ -129,7 +96,6 @@
   font-weight: var(--font-weight-semibold);
   box-shadow: 0 0 0 3px rgb(16 185 129 / 0.2);
   animation: successCelebration 0.6s ease-out;
-  /* Removido transform scale para evitar overflow */
 }
 
 .option-btn.answer-correct::before {
@@ -137,17 +103,10 @@
   transform: scaleY(1);
 }
 
-/* Animación de celebración para respuesta correcta - sin cambios de escala */
 @keyframes successCelebration {
-  0% {
-    box-shadow: 0 0 0 0 rgb(16 185 129 / 0.4);
-  }
-  50% {
-    box-shadow: 0 0 0 6px rgb(16 185 129 / 0.3);
-  }
-  100% {
-    box-shadow: 0 0 0 3px rgb(16 185 129 / 0.2);
-  }
+  0% { box-shadow: 0 0 0 0 rgb(16 185 129 / 0.4); }
+  50% { box-shadow: 0 0 0 6px rgb(16 185 129 / 0.3); }
+  100% { box-shadow: 0 0 0 3px rgb(16 185 129 / 0.2); }
 }
 
 .option-btn.answer-incorrect {
@@ -184,17 +143,5 @@
     padding: var(--spacing-base) var(--spacing-lg);
     font-size: var(--font-size-base);
     min-height: 3rem;
-    /* Asegurar scroll táctil suave en móviles */
-    -webkit-overflow-scrolling: touch;
-    /* Mejorar área táctil */
-    -webkit-tap-highlight-color: rgba(37, 99, 235, 0.1);
-  }
-  
-  .question-container {
-    /* Optimización específica para móviles */
-    -webkit-overflow-scrolling: touch;
-    /* Mejorar rendimiento en dispositivos móviles */
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
   }
 }

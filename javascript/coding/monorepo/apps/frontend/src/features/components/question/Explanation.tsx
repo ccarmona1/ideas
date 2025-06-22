@@ -27,11 +27,13 @@ const Explanation: React.FC<ExplanationProps> = ({
 
       <div className="answer-summary">
         <div className="selected-answer incorrect">
-          <strong>Tu respuesta:</strong> {question.options[selectedOption]}
+          <strong>Tu respuesta:</strong>
+          <div>{question.options[selectedOption]}</div>
         </div>
 
         <div className="correct-answer">
-          <strong>Respuesta correcta:</strong> {question.options[correctIndex]}
+          <strong>Respuesta correcta:</strong>
+          <div>{question.options[correctIndex]}</div>
         </div>
       </div>
 

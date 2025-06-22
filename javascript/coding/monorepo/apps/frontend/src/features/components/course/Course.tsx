@@ -119,6 +119,14 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     };
   }, []);
 
+  // Función para scroll automático hacia arriba
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
   const handleCorrect = (index: number) => {
     setCorrectCount((c) => c + 1);
 
@@ -133,6 +141,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
       // Resetear posición de arrastre
       resetPosition();
+
+      // Scroll automático hacia arriba
+      scrollToTop();
 
       setTimeout(
         () => setQuestionTransition('idle'),
@@ -171,6 +182,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     // Resetear posición de arrastre
     resetPosition();
 
+    // Scroll automático hacia arriba
+    scrollToTop();
+
     setTimeout(() => setQuestionTransition('idle'), 100);
   };
 
@@ -186,6 +200,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
     // Resetear posición de arrastre
     resetPosition();
+
+    // Scroll automático hacia arriba
+    scrollToTop();
 
     setTimeout(() => setQuestionTransition('idle'), 100);
   };
@@ -205,6 +222,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
     // Resetear posición de arrastre
     resetPosition();
+
+    // Scroll automático hacia arriba
+    scrollToTop();
 
     setTimeout(() => setQuestionTransition('idle'), 100);
   };

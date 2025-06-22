@@ -13,6 +13,7 @@ Esta es una aplicación **React + TypeScript + Vite** de aprendizaje interactivo
 - **Sistema de puntuación** con estadísticas en tiempo real
 - **Arquitectura modular** con tipos TypeScript estrictos
 - **Diseño responsivo** con card solo en pantallas grandes (≥768px)
+- **Scroll automático** hacia arriba en todas las transiciones de estado
 
 ## Arquitectura y Estructura de Archivos
 
@@ -210,6 +211,70 @@ const {
 }
 ```
 
+## Sistema de Scroll Automático
+
+### Filosofía del Scroll Automático
+
+La aplicación implementa scroll automático hacia arriba en todas las transiciones de estado para garantizar que el usuario siempre vea el contenido nuevo sin necesidad de hacer scroll manual.
+
+### Escenarios de Activación
+
+El scroll automático se activa en los siguientes casos:
+
+1. **Respuesta Correcta → Nueva Pregunta**: Después del feedback de éxito
+2. **Respuesta Incorrecta → Explicación**: Al mostrar la explicación
+3. **Explicación → Nueva Pregunta**: Al continuar desde la explicación
+4. **Saltar Pregunta → Nueva Pregunta**: Al saltar una pregunta
+
+### Implementación Técnica
+
+```typescript
+// Función helper para scroll suave hacia arriba
+const scrollToTop = useCallback(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}, []);
+```
+
+### Integración en Transiciones
+
+El scroll automático se ejecuta después de:
+
+- Actualizar el estado de la aplicación
+- Resetear la posición de arrastre
+- Antes de las animaciones de transición
+
+```typescript
+// Ejemplo en handleCorrect
+setTimeout(() => {
+  // Cambios de estado...
+  setCurrentQuestionIndex(index + 1);
+  setQuestionTransition('entering');
+  resetPosition();
+
+  // Scroll automático
+  scrollToTop();
+
+  setTimeout(() => setQuestionTransition('idle'), 100);
+}, DRAG_CONFIG.ANIMATION.SUCCESS_FEEDBACK_DELAY);
+```
+
+### Reglas para el Scroll Automático
+
+#### ✅ PERMITIDO
+
+- Ajustar el comportamiento del scroll (smooth vs instant)
+- Modificar el timing del scroll en relación a las animaciones
+- Agregar condiciones específicas para activar/desactivar el scroll
+
+#### ❌ PROHIBIDO
+
+- Remover el scroll automático de las transiciones principales
+- Cambiar el destino del scroll (siempre debe ir a top: 0)
+- Interferir con el scroll global de la aplicación
+
 ## Diseño Responsivo
 
 ### Filosofía de Diseño Responsivo
@@ -357,6 +422,14 @@ const executeAction = useCallback(() => {
 
   setTimeout(() => setIsProcessingAction(false), 500);
 }, [currentViewMode, lastQuestionState]);
+
+// Función helper para scroll automático
+const scrollToTop = useCallback(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}, []);
 ```
 
 ## Componentes Clave
@@ -436,6 +509,15 @@ console.log('Drag state', { dragY, isDragging, canDrag });
 - [ ] Estadísticas actualizadas correctamente
 - [ ] Reordenamiento de preguntas saltadas
 - [ ] Vista de completado muestra datos correctos
+
+#### Scroll Automático
+
+- [ ] Scroll hacia arriba al responder correctamente y pasar a la siguiente pregunta
+- [ ] Scroll hacia arriba al responder incorrectamente y mostrar explicación
+- [ ] Scroll hacia arriba al continuar desde explicación a nueva pregunta
+- [ ] Scroll hacia arriba al saltar pregunta y mostrar siguiente
+- [ ] Scroll suave (behavior: 'smooth') funciona correctamente
+- [ ] No hay conflicto entre scroll automático y scroll manual del usuario
 
 #### Diseño Responsivo
 
@@ -530,6 +612,6 @@ Para preguntas específicas sobre implementación o dudas arquitectónicas, refe
 2. **Código existente** como referencia de patrones
 3. **Comentarios en el código** para contexto específico
 
-**Versión del documento**: 1.1  
-**Última actualización**: Implementación de diseño responsivo - card solo en pantallas grandes  
+**Versión del documento**: 1.2  
+**Última actualización**: Implementación de scroll automático en transiciones de estado  
 **Compatibilidad**: React 19.x, TypeScript 5.x, Vite 6.x

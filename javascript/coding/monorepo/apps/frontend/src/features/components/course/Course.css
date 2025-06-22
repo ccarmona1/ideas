@@ -6,18 +6,8 @@
   min-height: 100vh;
   width: 100%;
   padding: 2rem 0.5rem;
+  overflow-x: hidden;
   box-sizing: border-box;
-}
-
-@media (max-width: 600px) {
-  .course-container {
-    padding: 1rem 4vw;
-  }
-  .course-question-box {
-    padding: 1rem 0.5rem;
-    margin: 1rem 0;
-    border-radius: 6px;
-  }
 }
 
 .course-question-box {
@@ -34,6 +24,17 @@
   position: relative;
 }
 
+@media (max-width: 600px) {
+  .course-container {
+    padding: 0 4vw;
+  }
+  .course-question-box {
+    padding: 0 0.5rem;
+    margin: 0 0;
+    border-radius: 6px;
+  }
+}
+
 .course-check {
   position: absolute;
   top: 10px;
@@ -41,4 +42,42 @@
   font-size: 32px;
   color: green;
   transition: opacity 0.5s;
+}
+
+.course-back-button {
+  display: block;
+  margin: 2rem auto 0 auto;
+  padding: 0.75em 1.5em;
+  font-size: 1.1em;
+  border: 2px solid #000000;
+  border-radius: 0.7em;
+  background: #fff;
+  color: #000000;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  text-decoration: none;
+  font-weight: 500;
+  max-width: 350px;
+  min-width: 120px;
+  width: auto;
+  text-align: center;
+}
+
+.course-back-button:hover,
+.course-back-button:focus {
+  background: #e6f0ff;
+  color: #0056b3;
+  box-shadow: 0 4px 16px rgba(0,123,255,0.08);
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .course-back-button {
+    width: 90%;
+    min-width: 0;
+    max-width: 98vw;
+    padding: 0.75em 0.5em;
+    font-size: 1em;
+  }
 }

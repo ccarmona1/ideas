@@ -28,7 +28,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const handleCorrect = (index: number) => {
     const questionDiv = document.getElementById(`question-${index}`);
     if (questionDiv) {
-      questionDiv.style.transition = 'opacity 3s';
+      questionDiv.style.transition = 'opacity 1.5s';
       questionDiv.style.opacity = '0';
     }
     setTimeout(() => {
@@ -46,7 +46,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
           }
         }, 100);
       }
-    }, 3000);
+    }, 1500);
   };
 
   return (
@@ -64,7 +64,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
           />
         </div>
       )}
-      <Link to="/">Volver a cursos</Link>
+      <Link to="/" className="course-back-button">
+        Atrás
+      </Link>
     </div>
   );
 };

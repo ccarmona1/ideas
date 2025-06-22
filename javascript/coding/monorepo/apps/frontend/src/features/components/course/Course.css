@@ -68,7 +68,9 @@
   border: 1px solid var(--color-gray-200);
   padding: var(--spacing-2xl);
   position: relative;
-  overflow: hidden;
+  overflow-y: auto; /* Permitir scroll vertical */
+  overflow-x: hidden; /* Mantener scroll horizontal bloqueado */
+  max-height: 80vh; /* Limitar altura para forzar scroll si es necesario */
   will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;

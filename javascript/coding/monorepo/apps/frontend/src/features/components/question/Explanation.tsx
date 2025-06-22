@@ -34,13 +34,11 @@ const Explanation: React.FC<ExplanationProps> = ({
 
       <div className="answer-summary">
         <div className="selected-answer incorrect">
-          <strong>Tu respuesta:</strong> {selectedLetter.toUpperCase()}){' '}
-          {question.options[selectedOption]}
+          <strong>Tu respuesta:</strong> {question.options[selectedOption]}
         </div>
 
         <div className="correct-answer">
-          <strong>Respuesta correcta:</strong> {question.answer.toUpperCase()}){' '}
-          {question.options[correctIndex]}
+          <strong>Respuesta correcta:</strong> {question.options[correctIndex]}
         </div>
       </div>
 

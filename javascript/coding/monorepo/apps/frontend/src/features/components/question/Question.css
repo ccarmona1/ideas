@@ -1,9 +1,13 @@
 .question-container {
-  touch-action: pan-y;
+  touch-action: auto; /* Permitir scroll normal en el contenedor */
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0); /* Force hardware acceleration */
+  overflow-y: auto; /* Permitir scroll vertical explícitamente */
+  height: 100%; /* Tomar toda la altura disponible del contenedor padre */
+  display: flex;
+  flex-direction: column;
 }
 
 .question-container.dragging {
@@ -31,6 +35,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+  overflow-x: hidden; /* Prevenir scroll horizontal */
 }
 
 .option-btn {
@@ -38,7 +43,7 @@
   padding: var(--spacing-lg) var(--spacing-xl);
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
-  border: 2px solid var(--color-gray-300);
+  border: 3px solid var(--color-gray-300); /* Cambio: siempre 3px para evitar saltos */
   border-radius: var(--radius-md);
   background: white;
   color: var(--color-gray-900);
@@ -56,6 +61,7 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
+  box-sizing: border-box; /* Asegurar que border no afecte el tamaño total */
 }
 
 .option-btn::before {
@@ -75,7 +81,7 @@
   background: var(--color-primary-bg);
   border-color: var(--color-primary-light);
   box-shadow: var(--shadow-md);
-  transform: translateY(-1px) translateZ(0);
+  /* Removido transform para evitar cambios de layout */
 }
 
 .option-btn:hover:not(:disabled)::before {
@@ -88,10 +94,10 @@
 }
 
 .option-btn.selected {
-  border-width: 3px;
-  transform: translateY(-1px) translateZ(0);
+  /* border-width ya es 3px por defecto, no cambiar */
   box-shadow: var(--shadow-lg);
   animation: pulse 0.4s ease-in-out;
+  /* Removido transform para evitar cambios de layout */
 }
 
 .option-btn.answer-correct {
@@ -101,7 +107,7 @@
   font-weight: var(--font-weight-semibold);
   box-shadow: 0 0 0 3px rgb(16 185 129 / 0.2);
   animation: successCelebration 0.6s ease-out;
-  transform: scale(1.02);
+  /* Removido transform scale para evitar overflow */
 }
 
 .option-btn.answer-correct::before {
@@ -109,18 +115,15 @@
   transform: scaleY(1);
 }
 
-/* Animación de celebración para respuesta correcta */
+/* Animación de celebración para respuesta correcta - sin cambios de escala */
 @keyframes successCelebration {
   0% {
-    transform: scale(1);
     box-shadow: 0 0 0 0 rgb(16 185 129 / 0.4);
   }
   50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 8px rgb(16 185 129 / 0.2);
+    box-shadow: 0 0 0 6px rgb(16 185 129 / 0.3);
   }
   100% {
-    transform: scale(1.02);
     box-shadow: 0 0 0 3px rgb(16 185 129 / 0.2);
   }
 }
@@ -151,6 +154,7 @@
   text-align: center;
   border-top: 1px solid var(--color-gray-200);
   background: var(--color-gray-50);
+  /* touch-action se maneja individualmente en .drag-hint-interactive */
 }
 
 @media (max-width: 768px) {

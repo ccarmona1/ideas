@@ -169,10 +169,10 @@
 
 @keyframes pulse {
   0%, 100% {
-    transform: scale(1);
+    box-shadow: var(--shadow-lg);
   }
   50% {
-    transform: scale(1.05);
+    box-shadow: var(--shadow-xl);
   }
 }
 
@@ -487,7 +487,7 @@ body {
 /* Hint de arrastre interactivo - funciona como botón */
 .drag-hint-interactive {
   /* Mantener los estilos base del drag-hint */
-  cursor: pointer;
+  cursor: grab;
   
   /* Estilo de botón sutil */
   background: var(--color-gray-100);
@@ -503,12 +503,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Estilos de arrastre para los hints interactivos */
-.drag-hint-interactive {
-  /* Agregar cursor de arrastre específico */
-  cursor: grab;
+  
+  /* IMPORTANTE: Capturar todos los eventos de touch para arrastre */
+  touch-action: none;
 }
 
 .drag-hint-interactive:active,

@@ -50,6 +50,11 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
   // Estados para el arrastre simplificado
   const [canDrag, setCanDrag] = useState(false);
+  const [lastQuestionState, setLastQuestionState] = useState<{
+    hasSelectedOption: boolean;
+    isCorrect: boolean;
+    selectedOptionIndex: number;
+  } | null>(null);
 
   // Hook personalizado para manejar el arrastre
   const {
@@ -66,30 +71,28 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
       if (currentViewMode === 'explanation') {
         handleNextFromExplanation();
-      } else {
-        // Lógica para modo pregunta
+      } else if (currentViewMode === 'question') {
+        // Lógica para modo pregunta usando estado en lugar de DOM
         const currentQuestion = questionQueue[currentQuestionIndex];
-        const questionRef = containerRef.current?.querySelector(
-          '.question-container'
-        );
 
-        if (questionRef) {
-          const hasIncorrectAnswer =
-            questionRef.querySelector('.answer-incorrect');
-          const hasSelectedOption = questionRef.querySelector(
-            '.option-btn.selected'
-          );
-
-          if (hasIncorrectAnswer && hasSelectedOption) {
+        if (lastQuestionState) {
+          if (
+            lastQuestionState.hasSelectedOption &&
+            !lastQuestionState.isCorrect
+          ) {
             // Respuesta incorrecta -> mostrar explicación
-            const selectedOptionIndex = Array.from(
-              questionRef.querySelectorAll('.option-btn')
-            ).findIndex((btn) => btn.classList.contains('selected'));
-            handleShowExplanation(currentQuestion, selectedOptionIndex);
-          } else if (!hasSelectedOption) {
+            handleShowExplanation(
+              currentQuestion,
+              lastQuestionState.selectedOptionIndex
+            );
+          } else if (!lastQuestionState.hasSelectedOption) {
             // Sin respuesta -> saltar pregunta
             handleSkipQuestion();
           }
+          // Si la respuesta es correcta, no hacer nada (el usuario debe esperar la transición automática)
+        } else {
+          // Fallback: si no hay estado, saltar pregunta
+          handleSkipQuestion();
         }
       }
     },
@@ -187,6 +190,14 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
       selectedOption === undefined; // Sin respuesta (para saltar)
 
     setCanDrag(shouldAllowDrag);
+
+    // Actualizar el estado de la última pregunta
+    setLastQuestionState({
+      hasSelectedOption: selectedOption !== undefined,
+      isCorrect: isCorrect,
+      selectedOptionIndex: selectedOption ?? -1,
+    });
+
     return shouldAllowDrag;
   };
 
@@ -221,6 +232,12 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     showingExplanation,
     resetPosition,
   ]);
+
+  // Limpiar el estado de la última pregunta cuando cambiamos de pregunta o vista
+  React.useEffect(() => {
+    setLastQuestionState(null);
+    setCanDrag(false);
+  }, [currentQuestionIndex, currentViewMode]);
 
   return (
     <div className="course-container">

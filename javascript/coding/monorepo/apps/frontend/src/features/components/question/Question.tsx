@@ -110,6 +110,14 @@ export const Question: React.FC<QuestionProps> = ({
           );
         })}
       </ul>
+      {selectedOption !== undefined && !isCorrect && !showModal && (
+        <div
+          className="question-feedback"
+          style={{ marginTop: '1.5em', textAlign: 'center' }}
+        >
+          Arrastra hacia arriba para la siguiente pregunta
+        </div>
+      )}
       <FeedbackModal
         open={showModal}
         onClose={() => setShowModal(false)}

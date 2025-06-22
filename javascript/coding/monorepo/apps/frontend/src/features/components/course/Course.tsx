@@ -51,7 +51,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
   return (
     <div className="course-container">
-      {preguntas.length > 0 && (
+      {preguntas.length > 0 ? (
         <div
           key={currentQuestionIndex}
           id={`question-${currentQuestionIndex}`}
@@ -62,6 +62,13 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
             onCorrect={() => handleCorrect(currentQuestionIndex)}
             onNext={() => setCurrentQuestionIndex((idx) => idx + 1)}
           />
+        </div>
+      ) : (
+        <div
+          className="course-question-box"
+          style={{ textAlign: 'center', padding: '2rem' }}
+        >
+          No hay preguntas disponibles.
         </div>
       )}
       <Link to="/" className="course-back-button">

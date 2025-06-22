@@ -402,10 +402,6 @@ body {
   opacity: 1;
 }
 
-.drag-hint:hover::before {
-  color: var(--color-primary);
-}
-
 /* Hint de arrastre interactivo - funciona como botón */
 .drag-hint-interactive {
   /* Mantener los estilos base del drag-hint */
@@ -437,8 +433,6 @@ body {
 
 .drag-hint-interactive:hover {
   background: var(--color-gray-200);
-  border-color: var(--color-primary);
-  color: var(--color-primary);
   transform: translateY(-1px);
   box-shadow: var(--shadow-sm);
 }

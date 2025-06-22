@@ -4,6 +4,7 @@ import type { CourseMetadata } from '../../../App';
 import { Question } from '../question/Question';
 import Explanation from '../question/Explanation';
 import { useDragGesture } from './useDragGesture';
+import { DRAG_CONFIG, calculateDragOpacity } from './dragConfig';
 import preguntasModulo1 from './examen_modulo1.json';
 import preguntasModule2 from './examen_modulo2.json';
 import './Course.css';
@@ -56,6 +57,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     dragY,
     isDragging,
     isAnimating,
+    resetPosition,
     handlers: dragHandlers,
   } = useDragGesture({
     canDrag: currentViewMode === 'explanation' || canDrag,
@@ -102,23 +104,20 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
   const handleCorrect = (index: number) => {
     setCorrectCount((c) => c + 1);
-    // Delay más largo para que se vea la animación de éxito
+
+    // Delay corto para mostrar la animación de éxito, luego cambio inmediato
     setTimeout(() => {
-      setQuestionTransition('exiting');
+      // Cambio inmediato sin timeouts anidados
+      if (index < questionQueue.length - 1) {
+        setCurrentQuestionIndex(index + 1);
+      }
 
-      setTimeout(() => {
-        if (index < questionQueue.length - 1) {
-          setCurrentQuestionIndex(index + 1);
-          setQuestionTransition('entering');
-
-          setTimeout(() => {
-            setQuestionTransition('idle');
-          }, 150); // Tiempo ligeramente mayor para entrada más suave
-        } else {
-          setQuestionTransition('idle');
-        }
-      }, 350); // Tiempo de salida más rápido
-    }, 200); // Delay inicial para mostrar feedback
+      setQuestionTransition('entering');
+      setTimeout(
+        () => setQuestionTransition('idle'),
+        DRAG_CONFIG.ANIMATION.CLEANUP_DELAY
+      );
+    }, DRAG_CONFIG.ANIMATION.SUCCESS_FEEDBACK_DELAY); // Usar configuración centralizada
   };
 
   const handleIncorrect = () => {
@@ -208,6 +207,21 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     }
   }, [isCompleted, showingExplanation]);
 
+  // Resetear posición del arrastre después de cambios de contenido
+  React.useEffect(() => {
+    // Usar requestAnimationFrame para asegurar que el DOM se actualice primero
+    const frame = requestAnimationFrame(() => {
+      resetPosition();
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [
+    currentViewMode,
+    currentQuestionIndex,
+    showingExplanation,
+    resetPosition,
+  ]);
+
   return (
     <div className="course-container">
       <div className="course-scoreboard">
@@ -223,7 +237,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
       {questionQueue.length > 0 ? (
         <div
           ref={containerRef}
-          key={`${currentViewMode}-${currentQuestionIndex}-${
+          key={`${currentViewMode}-${currentQuestionIndex}-${correctCount}-${
             showingExplanation ? explanationData?.selectedOption : ''
           }`}
           className={`course-question-box ${
@@ -236,9 +250,10 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
           style={{
             transform: `translateY(${dragY}px)`,
             transition:
-              isDragging || isAnimating
+              isDragging || isAnimating || dragY !== 0
                 ? 'none'
-                : 'transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                : `transform ${DRAG_CONFIG.CSS.TRANSFORM_DURATION} ${DRAG_CONFIG.CSS.EASING}`,
+            opacity: calculateDragOpacity(dragY), // Usar función de configuración
           }}
           onPointerDown={
             currentViewMode !== 'completed'

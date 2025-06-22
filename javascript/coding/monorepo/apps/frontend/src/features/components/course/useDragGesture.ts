@@ -1,15 +1,16 @@
 import { useState, useRef, useCallback } from 'react';
+import { DRAG_CONFIG, calculateDragResistance } from './dragConfig';
 
 interface UseDragGestureProps {
   onSwipeUp: () => void;
   canDrag: boolean;
-  threshold?: number;
+  threshold?: number; // Opcional, usa DRAG_CONFIG.SWIPE_THRESHOLD por defecto
 }
 
 export const useDragGesture = ({
   onSwipeUp,
   canDrag,
-  threshold = -100,
+  threshold = DRAG_CONFIG.SWIPE_THRESHOLD, // Usar configuración centralizada
 }: UseDragGestureProps) => {
   const [dragY, setDragY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -40,8 +41,7 @@ export const useDragGesture = ({
     (clientY: number) => {
       if (isDragging && dragStartY.current !== null) {
         const deltaY = clientY - dragStartY.current;
-        const resistanceFactor = deltaY > 0 ? 0.3 : 1;
-        setDragY(deltaY * resistanceFactor < 0 ? deltaY * resistanceFactor : 0);
+        setDragY(calculateDragResistance(deltaY));
       }
     },
     [isDragging]
@@ -60,21 +60,23 @@ export const useDragGesture = ({
     }
 
     if (dragY < threshold) {
-      // Arrastrar hacia arriba suficiente - ejecutar acción
-      setDragY(-window.innerHeight);
-
-      // Ejecutar la acción inmediatamente para evitar el flash
+      // Arrastrar hacia arriba suficiente - ejecutar acción inmediatamente
       onSwipeUp();
 
-      // Resetear después de que la animación del componente termine
+      // Animar elemento fuera de pantalla y mantenerlo ahí
+      setDragY(-window.innerHeight);
+
+      // Mantener fuera de pantalla hasta que el padre resetee
       setTimeout(() => {
-        setDragY(0);
         setIsAnimating(false);
-      }, 400); // Tiempo mayor para dar espacio a la transición del componente
+      }, DRAG_CONFIG.ANIMATION.CLEANUP_DELAY);
     } else {
       // Volver a la posición original
       setDragY(0);
-      setTimeout(() => setIsAnimating(false), 300);
+      setTimeout(
+        () => setIsAnimating(false),
+        DRAG_CONFIG.ANIMATION.RESET_DELAY
+      );
     }
   }, [isDragging, dragY, threshold, onSwipeUp]);
 
@@ -147,11 +149,16 @@ export const useDragGesture = ({
     [isDragging, endDrag]
   );
 
+  const resetPosition = useCallback(() => {
+    setDragY(0);
+  }, []);
+
   return {
     containerRef,
     dragY,
     isDragging,
     isAnimating,
+    resetPosition, // Nueva función para resetear desde el padre
     handlers: {
       onPointerDown: handlePointerDown,
       onPointerMove: handlePointerMove,

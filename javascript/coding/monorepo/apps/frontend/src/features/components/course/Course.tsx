@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { CourseMetadata } from '../../../App';
 import { Question } from '../question/Question';
@@ -42,6 +42,14 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const [questionTransition, setQuestionTransition] = useState<
     'entering' | 'exiting' | 'idle'
   >('idle');
+
+  // Estados para el arrastre en el course-question-box
+  const [dragY, setDragY] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const dragStartY = useRef<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [canDrag, setCanDrag] = useState(false);
 
   const handleCorrect = (index: number) => {
     setCorrectCount((c) => c + 1);
@@ -125,6 +133,183 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     }, 200);
   };
 
+  // Handlers de arrastre para el course-question-box
+  const handleDragStart = (
+    selectedOption: number | undefined,
+    isCorrect: boolean
+  ) => {
+    const shouldAllowDrag =
+      (selectedOption !== undefined && !isCorrect) || // Respuesta incorrecta
+      selectedOption === undefined; // Sin respuesta (para saltar)
+
+    setCanDrag(shouldAllowDrag);
+    return shouldAllowDrag;
+  };
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (canDrag && !isAnimating) {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsDragging(true);
+      dragStartY.current = e.clientY;
+
+      if (containerRef.current) {
+        containerRef.current.style.willChange = 'transform';
+        containerRef.current.style.touchAction = 'none';
+      }
+    }
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (isDragging && dragStartY.current !== null) {
+      e.preventDefault();
+      e.stopPropagation();
+      const deltaY = e.clientY - dragStartY.current;
+      const resistanceFactor = deltaY > 0 ? 0.3 : 1;
+      setDragY(deltaY * resistanceFactor < 0 ? deltaY * resistanceFactor : 0);
+    }
+  };
+
+  const handlePointerUp = (e?: React.PointerEvent<HTMLDivElement>) => {
+    if (isDragging) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
+      setIsDragging(false);
+      setIsAnimating(true);
+
+      if (containerRef.current) {
+        containerRef.current.style.willChange = 'auto';
+        containerRef.current.style.touchAction = 'auto';
+      }
+
+      const threshold = -120;
+
+      if (dragY < threshold) {
+        // Animación de salida
+        setDragY(-window.innerHeight);
+        setTimeout(() => {
+          setDragY(0);
+          setIsAnimating(false);
+          setCanDrag(false);
+
+          // Obtener el estado actual de la pregunta
+          const currentQuestion = questionQueue[currentQuestionIndex];
+          const questionRef = containerRef.current?.querySelector(
+            '.question-container'
+          );
+
+          // Determinar la acción basándose en el estado
+          if (questionRef) {
+            const hasIncorrectAnswer =
+              questionRef.querySelector('.answer-incorrect');
+            const hasSelectedOption = questionRef.querySelector(
+              '.option-btn.selected'
+            );
+
+            if (hasIncorrectAnswer && hasSelectedOption) {
+              // Hay respuesta incorrecta -> mostrar explicación
+              const selectedOptionIndex = Array.from(
+                questionRef.querySelectorAll('.option-btn')
+              ).findIndex((btn) => btn.classList.contains('selected'));
+              handleShowExplanation(currentQuestion, selectedOptionIndex);
+            } else if (!hasSelectedOption) {
+              // No hay respuesta -> saltar pregunta
+              handleSkipQuestion();
+            }
+          }
+        }, 350);
+      } else {
+        // Animación de vuelta
+        setDragY(0);
+        setTimeout(() => setIsAnimating(false), 300);
+      }
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (canDrag && !isAnimating) {
+      e.preventDefault();
+      e.stopPropagation();
+      const touch = e.touches[0];
+      setIsDragging(true);
+      dragStartY.current = touch.clientY;
+
+      if (containerRef.current) {
+        containerRef.current.style.willChange = 'transform';
+        containerRef.current.style.touchAction = 'none';
+      }
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (isDragging && dragStartY.current !== null) {
+      e.preventDefault();
+      e.stopPropagation();
+      const touch = e.touches[0];
+      const deltaY = touch.clientY - dragStartY.current;
+      const resistanceFactor = deltaY > 0 ? 0.3 : 1;
+      setDragY(deltaY * resistanceFactor < 0 ? deltaY * resistanceFactor : 0);
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (isDragging) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      setIsDragging(false);
+      setIsAnimating(true);
+
+      if (containerRef.current) {
+        containerRef.current.style.willChange = 'auto';
+        containerRef.current.style.touchAction = 'auto';
+      }
+
+      const threshold = -100;
+
+      if (dragY < threshold) {
+        setDragY(-window.innerHeight);
+        setTimeout(() => {
+          setDragY(0);
+          setIsAnimating(false);
+          setCanDrag(false);
+
+          // Obtener el estado actual de la pregunta
+          const currentQuestion = questionQueue[currentQuestionIndex];
+          const questionRef = containerRef.current?.querySelector(
+            '.question-container'
+          );
+
+          // Determinar la acción basándose en el estado
+          if (questionRef) {
+            const hasIncorrectAnswer =
+              questionRef.querySelector('.answer-incorrect');
+            const hasSelectedOption = questionRef.querySelector(
+              '.option-btn.selected'
+            );
+
+            if (hasIncorrectAnswer && hasSelectedOption) {
+              // Hay respuesta incorrecta -> mostrar explicación
+              const selectedOptionIndex = Array.from(
+                questionRef.querySelectorAll('.option-btn')
+              ).findIndex((btn) => btn.classList.contains('selected'));
+              handleShowExplanation(currentQuestion, selectedOptionIndex);
+            } else if (!hasSelectedOption) {
+              // No hay respuesta -> saltar pregunta
+              handleSkipQuestion();
+            }
+          }
+        }, 350);
+      } else {
+        setDragY(0);
+        setTimeout(() => setIsAnimating(false), 300);
+      }
+    }
+  };
+
   // Verificar si el cuestionario está completado
   const isCompleted = currentQuestionIndex >= questionQueue.length;
   const totalAnswered = correctCount + incorrectCount;
@@ -203,6 +388,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
           </div>
         ) : (
           <div
+            ref={containerRef}
             key={currentQuestionIndex}
             id={`question-${currentQuestionIndex}`}
             className={`course-question-box ${
@@ -211,15 +397,29 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
                 : questionTransition === 'exiting'
                 ? 'animate-fade-out'
                 : ''
+            }${isDragging ? ' dragging' : ''}${
+              isAnimating ? ' animating' : ''
             }`}
+            style={{
+              transform: `translateY(${dragY}px)`,
+              transition: isDragging
+                ? 'none'
+                : 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            }}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerLeave={handlePointerUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             <Question
               question={questionQueue[currentQuestionIndex]}
               onCorrect={() => handleCorrect(currentQuestionIndex)}
-              onNext={() => setCurrentQuestionIndex((idx) => idx + 1)}
               onIncorrect={handleIncorrect}
-              onShowExplanation={handleShowExplanation}
               onSkip={handleSkipQuestion}
+              onDragStart={handleDragStart}
             />
           </div>
         )

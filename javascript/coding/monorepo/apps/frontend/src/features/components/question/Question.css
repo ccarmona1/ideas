@@ -1,5 +1,5 @@
 .question-container {
-  /* Solo permitir scroll normal fuera del arrastre */
+  /* Permitir scroll normal por defecto */
   touch-action: auto;
   will-change: transform;
   backface-visibility: hidden;
@@ -8,15 +8,28 @@
   /* Sin restricciones de altura ni overflow para permitir scroll global */
   display: flex;
   flex-direction: column;
+  /* Mejorar rendimiento de scroll */
+  -webkit-overflow-scrolling: touch;
+  /* Mejorar respuesta táctil */
+  -webkit-tap-highlight-color: transparent;
 }
 
 .question-container.dragging {
   user-select: none;
   -webkit-user-select: none;
+  /* Desactivar touch action durante arrastre */
+  touch-action: none;
+  /* Mejorar fluidez de animación */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .question-container.animating {
   pointer-events: none;
+  /* Optimizar transiciones */
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .question-container h1 {
@@ -148,15 +161,6 @@
   pointer-events: none;
 }
 
-.explanation-footer {
-  margin-top: auto;
-  padding: var(--spacing-xl);
-  text-align: center;
-  border-top: 1px solid var(--color-gray-200);
-  background: var(--color-gray-50);
-  /* touch-action se maneja individualmente en .drag-hint-interactive */
-}
-
 @media (max-width: 768px) {
   .question-container h1 {
     font-size: var(--font-size-xl);
@@ -171,9 +175,5 @@
     padding: var(--spacing-base) var(--spacing-lg);
     font-size: var(--font-size-base);
     min-height: 3rem;
-  }
-  
-  .explanation-footer {
-    padding: var(--spacing-lg);
   }
 }

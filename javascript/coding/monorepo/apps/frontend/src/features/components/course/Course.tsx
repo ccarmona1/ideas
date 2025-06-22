@@ -1,21 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import type { CourseMetadata } from '../../../App';
 import { Question } from '../question/Question';
 import Explanation from '../question/Explanation';
 import { useDragGesture } from './useDragGesture';
 import { DRAG_CONFIG, calculateDragOpacity } from './dragConfig';
 import preguntasModulo1 from './examen_modulo1.json';
 import preguntasModule2 from './examen_modulo2.json';
+import type { QuestionMetadata, CourseMetadata } from '../../../types';
 import './Course.css';
-
-export interface QuestionMetadata {
-  question: string;
-  options: string[];
-  answer: string;
-  explanation: string;
-  invalidOptions: Partial<Record<'a' | 'b' | 'c' | 'd', string>>;
-}
 
 export interface CourseProps {
   courses: CourseMetadata[];
@@ -58,7 +50,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   } | null>(null);
 
   // Función centralizada para ejecutar acciones de arrastre (evita ejecuciones múltiples)
-  const executeAction = React.useCallback(() => {
+  const executeAction = useCallback(() => {
     if (isProcessingAction) {
       console.log('Action already processing, skipping...');
       return;
@@ -121,7 +113,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const handleDragAction = executeAction;
 
   // Limpieza del estado de arrastre al desmontar el componente
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       document.body.style.overflow = '';
     };
@@ -218,7 +210,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   };
 
   // Handlers de arrastre simplificados
-  const handleDragStart = React.useCallback(
+  const handleDragStart = useCallback(
     (selectedOption: number | undefined, isCorrect: boolean) => {
       const shouldAllowDrag =
         (selectedOption !== undefined && !isCorrect) || // Respuesta incorrecta
@@ -245,7 +237,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
 
   // Actualizar el modo de vista basándose en el estado
-  React.useEffect(() => {
+  useEffect(() => {
     if (isCompleted) {
       setCurrentViewMode('completed');
     } else if (showingExplanation) {
@@ -256,7 +248,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   }, [isCompleted, showingExplanation]);
 
   // Limpiar el estado de la última pregunta cuando cambiamos de pregunta o vista
-  React.useEffect(() => {
+  useEffect(() => {
     setLastQuestionState(null);
     setCanDrag(false);
     setIsProcessingAction(false); // También limpiar el estado de procesamiento

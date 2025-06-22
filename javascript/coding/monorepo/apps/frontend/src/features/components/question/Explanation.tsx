@@ -1,20 +1,13 @@
 import React from 'react';
 import './Explanation.css';
-import type { QuestionMetadata } from '../course/Course';
+import { DragHint } from '../common/DragHint';
+import type { QuestionMetadata, DragHandlers } from '../../../types';
 
 export interface ExplanationProps {
   question: QuestionMetadata;
   selectedOption: number;
   onDragAction?: () => void;
-  dragHandlers?: {
-    onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
-    onPointerMove: (e: React.PointerEvent<HTMLDivElement>) => void;
-    onPointerUp: (e?: React.PointerEvent<HTMLDivElement>) => void;
-    onPointerLeave: (e?: React.PointerEvent<HTMLDivElement>) => void;
-    onTouchStart: (e: React.TouchEvent<HTMLDivElement>) => void;
-    onTouchMove: (e: React.TouchEvent<HTMLDivElement>) => void;
-    onTouchEnd: (e: React.TouchEvent<HTMLDivElement>) => void;
-  };
+  dragHandlers?: DragHandlers;
   canDrag?: boolean;
 }
 
@@ -61,41 +54,12 @@ const Explanation: React.FC<ExplanationProps> = ({
       </div>
 
       <div className="explanation-footer">
-        <div
-          className="drag-hint drag-hint-interactive"
-          onClick={onDragAction}
-          onPointerDown={
-            canDrag && dragHandlers ? dragHandlers.onPointerDown : undefined
-          }
-          onPointerMove={
-            canDrag && dragHandlers ? dragHandlers.onPointerMove : undefined
-          }
-          onPointerUp={
-            canDrag && dragHandlers ? dragHandlers.onPointerUp : undefined
-          }
-          onPointerLeave={
-            canDrag && dragHandlers ? dragHandlers.onPointerLeave : undefined
-          }
-          onTouchStart={
-            canDrag && dragHandlers ? dragHandlers.onTouchStart : undefined
-          }
-          onTouchMove={
-            canDrag && dragHandlers ? dragHandlers.onTouchMove : undefined
-          }
-          onTouchEnd={
-            canDrag && dragHandlers ? dragHandlers.onTouchEnd : undefined
-          }
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              onDragAction?.();
-            }
-          }}
-        >
-          Arrastra o haz click aquí para continuar
-        </div>
+        <DragHint
+          text="Arrastra o haz click aquí para continuar"
+          onAction={onDragAction}
+          dragHandlers={dragHandlers}
+          canDrag={canDrag}
+        />
       </div>
     </div>
   );

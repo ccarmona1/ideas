@@ -8,11 +8,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import Course from './features/components/course/Course';
-
-export interface CourseMetadata {
-  id: string;
-  title: string;
-}
+import type { CourseMetadata } from './types';
 
 function App() {
   const [courses] = useState<CourseMetadata[]>([

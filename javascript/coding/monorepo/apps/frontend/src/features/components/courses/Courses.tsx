@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Courses.css';
-import type { CourseMetadata } from '../../../App';
+import type { CourseMetadata } from '../../../types';
 
 export interface CoursesProps {
   courses: CourseMetadata[];

@@ -596,41 +596,6 @@ body {
   }
 }
 
-/* Mejoras específicas para touch/móvil */
-.question-container {
-  /* Prevenir zoom inadecuado en móvil */
-  touch-action: auto; /* Cambio: permitir scroll normal */
-  /* Mejorar rendimiento de scroll */
-  -webkit-overflow-scrolling: touch;
-  /* NO prevenir selección de texto - removido para permitir scroll */
-  /* Mejorar respuesta táctil */
-  -webkit-tap-highlight-color: transparent;
-}
-
-.question-container.dragging {
-  /* Desactivar touch action durante arrastre */
-  touch-action: none;
-  /* Mejorar fluidez de animación */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-.question-container.animating {
-  /* Optimizar transiciones */
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-/* Optimizaciones específicas para webkit/móvil */
-@media (max-width: 768px) {
-  .question-container {
-    /* Mejorar rendimiento en dispositivos móviles */
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-  }
-}
-
 /* Utilidades de espaciado */
 .mb-xs { margin-bottom: var(--spacing-xs); }
 .mb-sm { margin-bottom: var(--spacing-sm); }

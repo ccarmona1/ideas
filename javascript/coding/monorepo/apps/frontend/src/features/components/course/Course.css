@@ -60,10 +60,12 @@
   box-shadow: var(--shadow-base);
   border: 1px solid var(--color-gray-200);
   padding: var(--spacing-2xl);
-  transition: all var(--transition-slow);
-  opacity: 1;
   position: relative;
   overflow: hidden;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .course-question-box::before {

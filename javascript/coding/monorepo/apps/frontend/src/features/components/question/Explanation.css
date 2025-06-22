@@ -1,59 +1,19 @@
-.explanation-container {
-  background: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-base);
-  border: 1px solid var(--color-gray-200);
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  transition: transform var(--transition-slow);
-  cursor: grab;
-  position: relative;
-  overflow: hidden;
-}
-
-.explanation-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-error), var(--color-error-light));
-}
-
-.explanation-container.dragging {
-  cursor: grabbing;
-  transition: none;
-}
-
-.explanation-header {
-  text-align: center;
-  padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-lg);
-  border-bottom: 2px solid var(--color-gray-100);
-  background: var(--color-error-bg);
-}
-
-.explanation-header h2 {
-  color: var(--color-error-dark);
+/* Usamos los mismos estilos que Question para consistencia */
+.question-container h1 {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  margin: 0;
+  color: var(--color-error-dark);
   line-height: var(--line-height-tight);
+  margin: 0 0 var(--spacing-xl) 0;
+  text-align: center;
 }
 
-.explanation-content {
-  flex: 1;
-  padding: var(--spacing-xl);
-  overflow-y: auto;
-}
-
-.explanation-content h3 {
-  color: var(--color-gray-900);
+.question-container h2 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-medium);
-  margin: 0 0 var(--spacing-xl) 0;
+  color: var(--color-gray-900);
   line-height: var(--line-height-snug);
+  margin: 0 0 var(--spacing-xl) 0;
   text-align: center;
 }
 
@@ -134,39 +94,13 @@
   font-size: var(--font-size-base);
 }
 
-.explanation-footer {
-  margin-top: auto;
-  padding: var(--spacing-xl);
-  text-align: center;
-  border-top: 1px solid var(--color-gray-200);
-  background: var(--color-gray-50);
-}
-
-.swipe-hint {
-  color: var(--color-gray-600);
-  font-size: var(--font-size-sm);
-  font-style: italic;
-  padding: var(--spacing-base) var(--spacing-lg);
-  background: white;
-  border-radius: var(--radius-full);
-  border: 1px dashed var(--color-gray-300);
-  display: inline-block;
-}
-
 @media (max-width: 768px) {
-  .explanation-content {
-    padding: var(--spacing-lg);
-  }
-  
-  .explanation-header {
-    padding: var(--spacing-lg);
-  }
-  
-  .explanation-header h2 {
+  .question-container h1 {
     font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
   }
   
-  .explanation-content h3 {
+  .question-container h2 {
     font-size: var(--font-size-lg);
   }
   
@@ -174,9 +108,5 @@
   .correct-answer {
     padding: var(--spacing-base);
     font-size: var(--font-size-sm);
-  }
-  
-  .explanation-footer {
-    padding: var(--spacing-lg);
   }
 }

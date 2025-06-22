@@ -31,32 +31,28 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     question: QuestionMetadata;
     selectedOption: number;
   } | null>(null);
+  const [questionTransition, setQuestionTransition] = useState<
+    'entering' | 'exiting' | 'idle'
+  >('idle');
   const preguntas: QuestionMetadata[] =
     selectedCourse?.id === '1' ? preguntasModulo1 : preguntasModule2;
 
   const handleCorrect = (index: number) => {
     setCorrectCount((c) => c + 1);
-    const questionDiv = document.getElementById(`question-${index}`);
-    if (questionDiv) {
-      questionDiv.style.transition = 'opacity 1.5s';
-      questionDiv.style.opacity = '0';
-    }
+    setQuestionTransition('exiting');
+
     setTimeout(() => {
       if (index < preguntas.length - 1) {
         setCurrentQuestionIndex(index + 1);
+        setQuestionTransition('entering');
+
         setTimeout(() => {
-          const next = document.getElementById(`question-${index + 1}`);
-          if (next) {
-            next.style.opacity = '0';
-            next.style.transition = 'opacity 0.5s';
-            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => {
-              next.style.opacity = '1';
-            }, 50);
-          }
+          setQuestionTransition('idle');
         }, 100);
+      } else {
+        setQuestionTransition('idle');
       }
-    }, 1500);
+    }, 400);
   };
 
   const handleIncorrect = () => {
@@ -67,16 +63,28 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     question: QuestionMetadata,
     selectedOption: number
   ) => {
-    setExplanationData({ question, selectedOption });
-    setShowingExplanation(true);
+    setQuestionTransition('exiting');
+    setTimeout(() => {
+      setExplanationData({ question, selectedOption });
+      setShowingExplanation(true);
+      setQuestionTransition('entering');
+      setTimeout(() => setQuestionTransition('idle'), 100);
+    }, 200);
   };
 
   const handleNextFromExplanation = () => {
-    setShowingExplanation(false);
-    setExplanationData(null);
-    if (currentQuestionIndex < preguntas.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    }
+    setQuestionTransition('exiting');
+    setTimeout(() => {
+      setShowingExplanation(false);
+      setExplanationData(null);
+      if (currentQuestionIndex < preguntas.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setQuestionTransition('entering');
+        setTimeout(() => setQuestionTransition('idle'), 100);
+      } else {
+        setQuestionTransition('idle');
+      }
+    }, 200);
   };
 
   // Verificar si el cuestionario está completado
@@ -138,7 +146,13 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
         ) : showingExplanation && explanationData ? (
           <div
             key={`explanation-${currentQuestionIndex}`}
-            className="course-question-box"
+            className={`course-question-box ${
+              questionTransition === 'entering'
+                ? 'animate-fade-in'
+                : questionTransition === 'exiting'
+                ? 'animate-fade-out'
+                : ''
+            }`}
           >
             <Explanation
               question={explanationData.question}
@@ -150,7 +164,13 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
           <div
             key={currentQuestionIndex}
             id={`question-${currentQuestionIndex}`}
-            className="course-question-box"
+            className={`course-question-box ${
+              questionTransition === 'entering'
+                ? 'animate-fade-in'
+                : questionTransition === 'exiting'
+                ? 'animate-fade-out'
+                : ''
+            }`}
           >
             <Question
               question={preguntas[currentQuestionIndex]}

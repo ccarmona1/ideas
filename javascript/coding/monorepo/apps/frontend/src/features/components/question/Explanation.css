@@ -2,7 +2,7 @@
 .question-container h1 {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-error-dark);
+  color: var(--color-incorrect-dark);
   line-height: var(--line-height-tight);
   margin: 0 0 var(--spacing-xl) 0;
   text-align: center;
@@ -36,9 +36,9 @@
 }
 
 .selected-answer.incorrect {
-  background-color: var(--color-error-bg);
-  border-color: var(--color-error);
-  color: var(--color-error-dark);
+  background-color: var(--color-incorrect-bg);
+  border-color: var(--color-incorrect);
+  color: var(--color-incorrect-dark);
 }
 
 .selected-answer.incorrect::before {
@@ -48,7 +48,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: var(--font-size-lg);
-  color: var(--color-error);
+  color: var(--color-incorrect);
 }
 
 .correct-answer {

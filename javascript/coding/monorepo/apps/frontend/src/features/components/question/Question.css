@@ -111,16 +111,16 @@
 }
 
 .option-btn.answer-incorrect {
-  background: var(--color-error-bg);
-  color: var(--color-error-dark);
-  border-color: var(--color-error);
+  background: var(--color-incorrect-bg);
+  color: var(--color-incorrect-dark);
+  border-color: var(--color-incorrect);
   font-weight: var(--font-weight-semibold);
-  box-shadow: 0 0 0 3px rgb(239 68 68 / 0.2);
+  box-shadow: 0 0 0 3px rgb(99 102 241 / 0.2);
   animation: shake 0.5s ease-in-out;
 }
 
 .option-btn.answer-incorrect::before {
-  background: var(--color-error);
+  background: var(--color-incorrect);
   transform: scaleY(1);
 }
 

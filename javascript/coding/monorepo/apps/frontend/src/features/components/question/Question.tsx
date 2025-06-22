@@ -11,6 +11,7 @@ export interface QuestionProps {
     question: QuestionMetadata,
     selectedOption: number
   ) => void;
+  onSkip?: () => void;
   disabled?: boolean;
 }
 
@@ -20,6 +21,7 @@ export const Question: React.FC<QuestionProps> = ({
   onIncorrect,
   onNext,
   onShowExplanation,
+  onSkip,
   disabled,
 }) => {
   const [selectedOption, setSelectedOption] = useState<number | undefined>(
@@ -53,14 +55,22 @@ export const Question: React.FC<QuestionProps> = ({
   };
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (selectedOption !== undefined && isCorrect === false && !isAnimating) {
-      e.preventDefault();
-      setIsDragging(true);
-      dragStartY.current = e.clientY;
+    // Permitir arrastre cuando hay una respuesta incorrecta O cuando no hay respuesta seleccionada (para saltar)
+    if (
+      (selectedOption !== undefined && isCorrect === false) ||
+      (selectedOption === undefined && onSkip)
+    ) {
+      if (!isAnimating) {
+        e.preventDefault();
+        e.stopPropagation();
+        setIsDragging(true);
+        dragStartY.current = e.clientY;
 
-      // Optimización para móvil
-      if (containerRef.current) {
-        containerRef.current.style.willChange = 'transform';
+        // Optimización para móvil
+        if (containerRef.current) {
+          containerRef.current.style.willChange = 'transform';
+          containerRef.current.style.touchAction = 'none'; // Prevenir scroll
+        }
       }
     }
   };
@@ -68,6 +78,7 @@ export const Question: React.FC<QuestionProps> = ({
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (isDragging && dragStartY.current !== null) {
       e.preventDefault();
+      e.stopPropagation();
       const deltaY = e.clientY - dragStartY.current;
       // Añadir resistencia al arrastre hacia abajo
       const resistanceFactor = deltaY > 0 ? 0.3 : 1;
@@ -75,31 +86,46 @@ export const Question: React.FC<QuestionProps> = ({
     }
   };
 
-  const handlePointerUp = () => {
+  const handlePointerUp = (e?: React.PointerEvent<HTMLDivElement>) => {
     if (isDragging) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+
       setIsDragging(false);
       setIsAnimating(true);
 
       // Limpiar optimización
       if (containerRef.current) {
         containerRef.current.style.willChange = 'auto';
+        containerRef.current.style.touchAction = 'auto';
       }
 
-      const threshold = -150; // Reducir threshold para mejor UX
+      const threshold = -120; // Threshold más sensible para móvil
 
       if (dragY < threshold) {
         // Animación de salida
         setDragY(-window.innerHeight);
         setTimeout(() => {
           setDragY(0);
-          setSelectedOption(undefined);
           setIsAnimating(false);
 
-          // Cuando hay una respuesta incorrecta, mostrar explicación
+          // Determinar qué acción tomar basado en el estado
           if (selectedOption !== undefined && !isCorrect && onShowExplanation) {
+            // Hay respuesta incorrecta -> mostrar explicación
             onShowExplanation(question, selectedOption);
+          } else if (selectedOption === undefined && onSkip) {
+            // No hay respuesta -> saltar pregunta
+            onSkip();
           } else if (onNext) {
+            // Caso por defecto
             onNext();
+          }
+
+          // Resetear estado si es skip
+          if (selectedOption === undefined) {
+            setSelectedOption(undefined);
           }
         }, 350);
       } else {
@@ -110,15 +136,24 @@ export const Question: React.FC<QuestionProps> = ({
     }
   };
 
-  // Manejo de touch events para mejor soporte móvil
+  // Manejo de touch events mejorado para móvil
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (selectedOption !== undefined && isCorrect === false && !isAnimating) {
-      const touch = e.touches[0];
-      setIsDragging(true);
-      dragStartY.current = touch.clientY;
+    // Permitir arrastre cuando hay una respuesta incorrecta O cuando no hay respuesta seleccionada (para saltar)
+    if (
+      (selectedOption !== undefined && isCorrect === false) ||
+      (selectedOption === undefined && onSkip)
+    ) {
+      if (!isAnimating) {
+        e.preventDefault();
+        e.stopPropagation();
+        const touch = e.touches[0];
+        setIsDragging(true);
+        dragStartY.current = touch.clientY;
 
-      if (containerRef.current) {
-        containerRef.current.style.willChange = 'transform';
+        if (containerRef.current) {
+          containerRef.current.style.willChange = 'transform';
+          containerRef.current.style.touchAction = 'none';
+        }
       }
     }
   };
@@ -126,10 +161,59 @@ export const Question: React.FC<QuestionProps> = ({
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (isDragging && dragStartY.current !== null) {
       e.preventDefault();
+      e.stopPropagation();
       const touch = e.touches[0];
       const deltaY = touch.clientY - dragStartY.current;
       const resistanceFactor = deltaY > 0 ? 0.3 : 1;
       setDragY(deltaY * resistanceFactor < 0 ? deltaY * resistanceFactor : 0);
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (isDragging) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      setIsDragging(false);
+      setIsAnimating(true);
+
+      // Limpiar optimización
+      if (containerRef.current) {
+        containerRef.current.style.willChange = 'auto';
+        containerRef.current.style.touchAction = 'auto';
+      }
+
+      const threshold = -100; // Threshold más sensible para touch
+
+      if (dragY < threshold) {
+        // Animación de salida
+        setDragY(-window.innerHeight);
+        setTimeout(() => {
+          setDragY(0);
+          setIsAnimating(false);
+
+          // Determinar qué acción tomar basado en el estado
+          if (selectedOption !== undefined && !isCorrect && onShowExplanation) {
+            // Hay respuesta incorrecta -> mostrar explicación
+            onShowExplanation(question, selectedOption);
+          } else if (selectedOption === undefined && onSkip) {
+            // No hay respuesta -> saltar pregunta
+            onSkip();
+          } else if (onNext) {
+            // Caso por defecto
+            onNext();
+          }
+
+          // Resetear estado si es skip
+          if (selectedOption === undefined) {
+            setSelectedOption(undefined);
+          }
+        }, 350);
+      } else {
+        // Animación de vuelta (spring back)
+        setDragY(0);
+        setTimeout(() => setIsAnimating(false), 300);
+      }
     }
   };
 
@@ -151,7 +235,7 @@ export const Question: React.FC<QuestionProps> = ({
       onPointerLeave={handlePointerUp}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
-      onTouchEnd={handlePointerUp}
+      onTouchEnd={handleTouchEnd}
       role="region"
       aria-label="Pregunta"
     >
@@ -195,10 +279,19 @@ export const Question: React.FC<QuestionProps> = ({
           );
         })}
       </ul>
+      {/* Mostrar hint de arrastre basado en el estado */}
       {selectedOption !== undefined && !isCorrect && (
         <div className="explanation-footer">
           <div className="drag-hint">
             Arrastra hacia arriba para ver la explicación
+          </div>
+        </div>
+      )}
+
+      {selectedOption === undefined && onSkip && (
+        <div className="explanation-footer">
+          <div className="drag-hint">
+            Arrastra hacia arriba para responder después
           </div>
         </div>
       )}

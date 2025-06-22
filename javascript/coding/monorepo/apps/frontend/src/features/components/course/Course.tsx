@@ -23,9 +23,17 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const params = useParams();
   const courseId = params.courseId;
   const selectedCourse = courses.find((course) => course.id === courseId);
+
+  // Estado para manejar la cola de preguntas
+  const initialQuestions: QuestionMetadata[] =
+    selectedCourse?.id === '1' ? preguntasModulo1 : preguntasModule2;
+
+  const [questionQueue, setQuestionQueue] =
+    useState<QuestionMetadata[]>(initialQuestions);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
+  const [skippedCount, setSkippedCount] = useState(0);
   const [showingExplanation, setShowingExplanation] = useState(false);
   const [explanationData, setExplanationData] = useState<{
     question: QuestionMetadata;
@@ -34,15 +42,13 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const [questionTransition, setQuestionTransition] = useState<
     'entering' | 'exiting' | 'idle'
   >('idle');
-  const preguntas: QuestionMetadata[] =
-    selectedCourse?.id === '1' ? preguntasModulo1 : preguntasModule2;
 
   const handleCorrect = (index: number) => {
     setCorrectCount((c) => c + 1);
     setQuestionTransition('exiting');
 
     setTimeout(() => {
-      if (index < preguntas.length - 1) {
+      if (index < questionQueue.length - 1) {
         setCurrentQuestionIndex(index + 1);
         setQuestionTransition('entering');
 
@@ -57,6 +63,35 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
   const handleIncorrect = () => {
     setIncorrectCount((c) => c + 1);
+  };
+
+  // Nueva función para manejar saltar pregunta
+  const handleSkipQuestion = () => {
+    setSkippedCount((c) => c + 1);
+    setQuestionTransition('exiting');
+
+    setTimeout(() => {
+      // Mover la pregunta actual al final de la cola
+      const currentQuestion = questionQueue[currentQuestionIndex];
+      const newQueue = [
+        ...questionQueue.slice(0, currentQuestionIndex),
+        ...questionQueue.slice(currentQuestionIndex + 1),
+        currentQuestion,
+      ];
+
+      setQuestionQueue(newQueue);
+
+      // Si no hay más preguntas en la posición actual, reiniciar
+      if (currentQuestionIndex >= newQueue.length - 1) {
+        // Si era la última pregunta, no avanzar el índice
+        setCurrentQuestionIndex(
+          Math.min(currentQuestionIndex, newQueue.length - 1)
+        );
+      }
+
+      setQuestionTransition('entering');
+      setTimeout(() => setQuestionTransition('idle'), 100);
+    }, 400);
   };
 
   const handleShowExplanation = (
@@ -77,7 +112,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     setTimeout(() => {
       setShowingExplanation(false);
       setExplanationData(null);
-      if (currentQuestionIndex < preguntas.length - 1) {
+      if (currentQuestionIndex < questionQueue.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setQuestionTransition('entering');
         setTimeout(() => setQuestionTransition('idle'), 100);
@@ -88,7 +123,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   };
 
   // Verificar si el cuestionario está completado
-  const isCompleted = currentQuestionIndex >= preguntas.length;
+  const isCompleted = currentQuestionIndex >= questionQueue.length;
   const totalAnswered = correctCount + incorrectCount;
   const accuracy =
     totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
@@ -99,10 +134,13 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
         <span className="score-correct">✔ {correctCount}</span>
         <span className="score-incorrect">✖ {incorrectCount}</span>
         <span className="score-total">
-          Restantes: {preguntas.length - currentQuestionIndex}
+          Restantes: {questionQueue.length - currentQuestionIndex}
         </span>
+        {skippedCount > 0 && (
+          <span className="score-skipped">⏭ {skippedCount}</span>
+        )}
       </div>
-      {preguntas.length > 0 ? (
+      {questionQueue.length > 0 ? (
         isCompleted ? (
           <div className="course-question-box">
             <div className="course-completion">
@@ -173,11 +211,12 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
             }`}
           >
             <Question
-              question={preguntas[currentQuestionIndex]}
+              question={questionQueue[currentQuestionIndex]}
               onCorrect={() => handleCorrect(currentQuestionIndex)}
               onNext={() => setCurrentQuestionIndex((idx) => idx + 1)}
               onIncorrect={handleIncorrect}
               onShowExplanation={handleShowExplanation}
+              onSkip={handleSkipQuestion}
             />
           </div>
         )

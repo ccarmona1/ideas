@@ -128,7 +128,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   // Nueva función para manejar saltar pregunta
   const handleSkipQuestion = () => {
     setSkippedCount((c) => c + 1);
-    
+
     // Mover la pregunta actual al final de la cola
     const currentQuestion = questionQueue[currentQuestionIndex];
     const newQueue = [
@@ -159,7 +159,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     setCurrentViewMode('explanation');
     setShowingExplanation(true);
     setQuestionTransition('entering');
-    
+
     setTimeout(() => setQuestionTransition('idle'), 100);
   };
 
@@ -223,7 +223,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
       {questionQueue.length > 0 ? (
         <div
           ref={containerRef}
-          key={`${currentViewMode}-${currentQuestionIndex}-${showingExplanation ? explanationData?.selectedOption : ''}`}
+          key={`${currentViewMode}-${currentQuestionIndex}-${
+            showingExplanation ? explanationData?.selectedOption : ''
+          }`}
           className={`course-question-box ${
             questionTransition === 'entering'
               ? 'animate-fade-in'
@@ -233,9 +235,10 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
           }${isDragging ? ' dragging' : ''}${isAnimating ? ' animating' : ''}`}
           style={{
             transform: `translateY(${dragY}px)`,
-            transition: isDragging || isAnimating
-              ? 'none'
-              : 'transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            transition:
+              isDragging || isAnimating
+                ? 'none'
+                : 'transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
           }}
           onPointerDown={
             currentViewMode !== 'completed'

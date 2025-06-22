@@ -62,10 +62,10 @@ export const useDragGesture = ({
     if (dragY < threshold) {
       // Arrastrar hacia arriba suficiente - ejecutar acción
       setDragY(-window.innerHeight);
-      
+
       // Ejecutar la acción inmediatamente para evitar el flash
       onSwipeUp();
-      
+
       // Resetear después de que la animación del componente termine
       setTimeout(() => {
         setDragY(0);

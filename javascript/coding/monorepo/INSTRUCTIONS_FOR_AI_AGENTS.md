@@ -231,34 +231,72 @@ El scroll automático se activa en los siguientes casos:
 ```typescript
 // Función helper para scroll suave hacia arriba
 const scrollToTop = useCallback(() => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }, []);
 ```
 
 ### Integración en Transiciones
 
-El scroll automático se ejecuta después de:
-
-- Actualizar el estado de la aplicación
-- Resetear la posición de arrastre
-- Antes de las animaciones de transición
+El scroll automático se ejecuta en cada transición de estado dentro del componente Course.tsx:
 
 ```typescript
-// Ejemplo en handleCorrect
-setTimeout(() => {
-  // Cambios de estado...
-  setCurrentQuestionIndex(index + 1);
+// 1. Respuesta correcta → Nueva pregunta
+const handleCorrect = useCallback(
+  (index: number) => {
+    setCorrectCount((c) => c + 1);
+    setTimeout(() => {
+      if (index < questionQueue.length - 1) {
+        setCurrentQuestionIndex(index + 1);
+      }
+      setQuestionTransition('entering');
+      resetPosition();
+      scrollToTop(); // ✅ Scroll automático
+      setTimeout(
+        () => setQuestionTransition('idle'),
+        DRAG_CONFIG.ANIMATION.CLEANUP_DELAY
+      );
+    }, DRAG_CONFIG.ANIMATION.SUCCESS_FEEDBACK_DELAY);
+  },
+  [questionQueue.length, resetPosition, scrollToTop]
+);
+
+// 2. Respuesta incorrecta → Explicación
+const handleShowExplanation = useCallback(
+  (question: QuestionMetadata, selectedOption: number) => {
+    setExplanationData({ question, selectedOption });
+    setCurrentViewMode('explanation');
+    setShowingExplanation(true);
+    setQuestionTransition('entering');
+    resetPosition();
+    scrollToTop(); // ✅ Scroll automático
+    setTimeout(() => setQuestionTransition('idle'), 100);
+  },
+  []
+);
+
+// 3. Explicación → Nueva pregunta
+const handleNextFromExplanation = useCallback(() => {
+  setCurrentViewMode('question');
+  setShowingExplanation(false);
+  setExplanationData(null);
+  if (currentQuestionIndex < questionQueue.length - 1) {
+    setCurrentQuestionIndex(currentQuestionIndex + 1);
+  }
   setQuestionTransition('entering');
   resetPosition();
-
-  // Scroll automático
-  scrollToTop();
-
+  scrollToTop(); // ✅ Scroll automático
   setTimeout(() => setQuestionTransition('idle'), 100);
-}, DRAG_CONFIG.ANIMATION.SUCCESS_FEEDBACK_DELAY);
+}, [currentQuestionIndex, questionQueue.length]);
+
+// 4. Saltar pregunta → Nueva pregunta
+const handleSkipQuestion = useCallback(() => {
+  setSkippedCount((c) => c + 1);
+  // Lógica de reordenamiento de preguntas...
+  setQuestionTransition('entering');
+  resetPosition();
+  scrollToTop(); // ✅ Scroll automático
+  setTimeout(() => setQuestionTransition('idle'), 100);
+}, [questionQueue, currentQuestionIndex]);
 ```
 
 ### Reglas para el Scroll Automático
@@ -364,16 +402,51 @@ La aplicación implementa un diseño adaptativo que distingue entre:
 #### Cambios en Sistema de Scroll
 
 ```css
-/* NUNCA hacer esto */
-.question-container {
+/* NUNCA hacer esto - BLOQUEA el scroll global */
+html,
+body {
+  height: 100%; /* ❌ Limita contenido */
+  overflow-y: auto; /* ❌ Crea scroll contenedor */
+}
+
+.question-container,
+.course-question-box {
   overflow-y: auto; /* ❌ */
   max-height: 100vh; /* ❌ */
+  height: 100%; /* ❌ */
   touch-action: none; /* ❌ */
 }
 
 /* NUNCA cambiar esto */
 .drag-hint-interactive {
   touch-action: auto; /* ❌ */
+}
+```
+
+#### CSS Correcto para Scroll Global
+
+```css
+/* ✅ CORRECTO - Permite scroll global */
+html,
+body {
+  min-height: 100%; /* ✅ Altura mínima flexible */
+  overflow-x: hidden; /* ✅ Solo ocultar scroll horizontal */
+  /* NO overflow-y - dejar que el scroll sea natural */
+}
+
+.app-root,
+.app-main {
+  min-height: 100vh; /* ✅ Altura mínima, no máxima */
+}
+
+.question-container,
+.course-question-box {
+  /* ✅ Sin restricciones de altura o overflow */
+  touch-action: auto; /* ✅ Permitir scroll normal */
+}
+
+.drag-hint-interactive {
+  touch-action: none; /* ✅ Solo para hints de arrastre */
 }
 ```
 
@@ -465,6 +538,57 @@ Componente reutilizable que encapsula:
 2. Revisar que no hay `overflow-y: hidden` en ancestros
 3. Confirmar que no hay `max-height` restrictivo
 
+#### El scroll automático no funciona
+
+1. **PROBLEMA CRÍTICO RESUELTO EN v1.6**: Verificar CSS global en `index.css`:
+
+   ```css
+   /* ❌ INCORRECTO - Bloquea el scroll global */
+   html,
+   body {
+     height: 100%;
+     overflow-y: auto;
+   }
+
+   /* ✅ CORRECTO - Permite scroll global */
+   html,
+   body {
+     min-height: 100%;
+     overflow-x: hidden;
+     /* NO overflow-y */
+   }
+   ```
+
+2. **Verificar logs de debug en la consola del navegador**:
+
+   - `🔄 Ejecutando scrollToTop()` - Confirma que scrollToTop() se ejecuta
+   - `📊 Posición actual del scroll` - Estado antes del scroll con métricas detalladas
+   - `✅ Scroll ejecutado - posición después` - Confirmación de que window.scrollY cambió a 0
+   - `✅ Respuesta correcta, haciendo scroll` - handleCorrect se ejecuta
+   - `📖 Mostrando explicación y haciendo scroll` - handleShowExplanation se ejecuta
+   - `➡️ Continuando desde explicación y haciendo scroll` - handleNextFromExplanation se ejecuta
+   - `⏭️ Saltando pregunta y haciendo scroll` - handleSkipQuestion se ejecuta
+
+3. **Verificar el timing**: El scroll debe ejecutarse después de los cambios de estado
+
+4. **Confirmar que resetPosition() se llame antes**: El orden correcto es:
+
+   - Cambios de estado
+   - `resetPosition()`
+   - `scrollToTop()`
+   - Animaciones de transición
+
+5. **Verificar dependencias circulares**: Asegurarse de que no hay referencias a variables antes de su declaración
+
+6. **Verificar CSS que puede bloquear scroll**:
+
+   - Buscar `overflow-y: auto` en contenedores principales
+   - Buscar `height: 100%` que limite el contenido
+   - Buscar `max-height: 100vh` que restrinja altura
+   - Verificar que `html` y `body` usen `min-height` en lugar de `height`
+
+7. **Verificar que no haya conflictos con el arrastre**: El scroll automático debe funcionar independientemente del sistema de arrastre
+
 #### El arrastre no funciona
 
 1. Verificar `touch-action: none` en `.drag-hint-interactive`
@@ -480,9 +604,46 @@ Componente reutilizable que encapsula:
 ### Herramientas para Debug
 
 ```typescript
-// Agregar logs temporalmente
+// Logs de debug incluidos en v1.6 para diagnóstico de scroll automático
+console.log('🔄 Ejecutando scrollToTop()'); // En la función scrollToTop
+console.log('📊 Posición actual del scroll:', {
+  scrollY: window.scrollY,
+  documentHeight: document.documentElement.scrollHeight,
+  windowHeight: window.innerHeight,
+}); // Estado detallado del scroll
+console.log('✅ Scroll ejecutado - posición después:', window.scrollY); // Confirmación
+console.log('✅ Respuesta correcta, haciendo scroll'); // En handleCorrect
+console.log('📖 Mostrando explicación y haciendo scroll'); // En handleShowExplanation
+console.log('➡️ Continuando desde explicación y haciendo scroll'); // En handleNextFromExplanation
+console.log('⏭️ Saltando pregunta y haciendo scroll'); // En handleSkipQuestion
+console.log('🎯 Ejecutando acción:', { currentViewMode, lastQuestionState }); // En executeAction
+
+// Logs adicionales para debugging personalizado
 console.log('Action triggered', { currentViewMode, lastQuestionState });
 console.log('Drag state', { dragY, isDragging, canDrag });
+```
+
+### Cómo usar los logs de debug para diagnosticar scroll automático:
+
+1. **Abrir la consola del navegador** (F12 → Console)
+2. **Interactuar con la aplicación** (responder preguntas, ver explicaciones)
+3. **Verificar que aparezcan los emojis** en el orden correcto:
+   - Al responder correctamente: `✅` → `🔄` → `📊` → `✅ Scroll ejecutado`
+   - Al responder incorrectamente: `📖` → `🔄` → `📊` → `✅ Scroll ejecutado`
+   - Al continuar desde explicación: `➡️` → `🔄` → `📊` → `✅ Scroll ejecutado`
+   - Al saltar pregunta: `⏭️` → `🔄` → `📊` → `✅ Scroll ejecutado`
+4. **Si no aparece `🔄`**: El problema está en que scrollToTop no se ejecuta
+5. **Si aparece `🔄` pero no `📊`**: Hay un error en la función scrollToTop
+6. **Si aparece `📊` pero scrollY no cambia a 0**: El problema está en el CSS (overflow bloqueado)
+7. **Si aparece todo pero no hay scroll visual**: Verificar CSS de contenedores principales
+
+### Comando para verificar CSS problemático:
+
+```bash
+# Buscar reglas CSS que pueden bloquear scroll
+grep -r "overflow-y.*auto" apps/frontend/src/
+grep -r "height.*100%" apps/frontend/src/
+grep -r "max-height.*100vh" apps/frontend/src/
 ```
 
 ## Testing y Validación
@@ -612,11 +773,47 @@ Para preguntas específicas sobre implementación o dudas arquitectónicas, refe
 2. **Código existente** como referencia de patrones
 3. **Comentarios en el código** para contexto específico
 
-**Versión del documento**: 1.3  
-**Última actualización**: Refactorización completa del frontend - código limpio y mantenible  
+**Versión del documento**: 1.6  
+**Última actualización**: Solución definitiva del scroll automático - CSS global corregido  
 **Compatibilidad**: React 19.x, TypeScript 5.x, Vite 6.x
 
 ## Historial de Cambios
+
+### Versión 1.6 - Solución Definitiva del Scroll Automático
+
+- **Problema crítico identificado y corregido**: El CSS global en `index.css` tenía `overflow-y: auto` y `height: 100%` en `html` y `body`, bloqueando completamente el scroll global
+- **Corrección aplicada**: Cambiado a `min-height: 100%` y eliminado `overflow-y: auto` de html y body
+- **Función scrollToTop mejorada**: Implementado scroll doble (inmediato + suave) para mayor confiabilidad
+- **Logs de debug expandidos**: Agregada información detallada sobre la posición del scroll:
+  - `📊 Posición actual del scroll` - Estado antes del scroll
+  - `✅ Scroll ejecutado - posición después` - Confirmación de que el scroll funcionó
+- **Validación CSS**: Verificado que no hay más reglas CSS que bloqueen el scroll global
+- **Problema raíz**: Las reglas CSS heredadas estaban violando las reglas arquitectónicas establecidas
+
+### Versión 1.5 - Corrección Crítica del Scroll Automático
+
+- **Problema crítico resuelto**: Corregidas las dependencias circulares en Course.tsx que impedían el scroll automático
+- **useRef para executeAction**: Implementado patrón con useRef para evitar dependencias circulares en useDragGesture
+- **Logs de debug agregados**: Incluidos console.log temporales para diagnóstico del scroll automático:
+  - `🔄 Ejecutando scrollToTop()` - Confirma que se llama la función scroll
+  - `✅ Respuesta correcta, haciendo scroll` - handleCorrect ejecutándose
+  - `📖 Mostrando explicación y haciendo scroll` - handleShowExplanation ejecutándose
+  - `➡️ Continuando desde explicación y haciendo scroll` - handleNextFromExplanation ejecutándose
+  - `⏭️ Saltando pregunta y haciendo scroll` - handleSkipQuestion ejecutándose
+  - `🎯 Ejecutando acción:` - executeAction con estado actual
+- **Estructura corregida**: Reorganizado el componente para evitar el uso de variables antes de su declaración
+- **Dependencias corregidas**: Todos los useCallback ahora incluyen las dependencias correctas (resetPosition, scrollToTop)
+
+### Versión 1.4 - Corrección del Scroll Automático
+
+- **Scroll automático reparado**: Restablecido el componente Course.tsx con la implementación completa del scroll automático
+- **Sistema de arrastre restaurado**: Reintegrado el hook useDragGesture y la funcionalidad de arrastre vertical
+- **Estados de transición**: Restablecidos todos los estados de transición entre preguntas y explicaciones
+- **Scroll en todas las transiciones**: Confirmado que scrollToTop() se ejecuta en:
+  - Respuesta correcta → Nueva pregunta (handleCorrect)
+  - Respuesta incorrecta → Explicación (handleShowExplanation)
+  - Explicación → Nueva pregunta (handleNextFromExplanation)
+  - Saltar pregunta → Nueva pregunta (handleSkipQuestion)
 
 ### Versión 1.3 - Refactorización Completa del Frontend
 

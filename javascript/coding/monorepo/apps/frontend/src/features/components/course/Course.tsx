@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Question } from '../question/Question';
 import Explanation from '../question/Explanation';
@@ -47,13 +47,102 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     selectedOptionIndex: number;
   } | null>(null);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  // Ref para usar con executeAction antes de definirlo
+  const executeActionRef = useRef<(() => void) | undefined>(undefined);
+
+  const scrollToTop = useCallback(() => {
+    console.log('🔄 Ejecutando scrollToTop()');
+    console.log('📊 Posición actual del scroll:', {
+      scrollY: window.scrollY,
+      documentHeight: document.documentElement.scrollHeight,
+      windowHeight: window.innerHeight,
+    });
+
+    // Forzar scroll inmediato primero, luego suave
+    window.scrollTo(0, 0);
+
+    // Scroll suave adicional para asegurar
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      console.log('✅ Scroll ejecutado - posición después:', window.scrollY);
+    }, 10);
+  }, []);
+
+  // Hook de arrastre
+  const {
+    containerRef,
+    dragY,
+    isDragging,
+    isAnimating,
+    resetPosition,
+    handlers: dragHandlers,
+  } = useDragGesture({
+    canDrag: true,
+    onSwipeUp: () => executeActionRef.current?.(),
+  });
+
+  const handleSkipQuestion = useCallback(() => {
+    console.log('⏭️ Saltando pregunta y haciendo scroll'); // Debug log
+    setSkippedCount((c) => c + 1);
+
+    const currentQuestion = questionQueue[currentQuestionIndex];
+    const newQueue = [
+      ...questionQueue.slice(0, currentQuestionIndex),
+      ...questionQueue.slice(currentQuestionIndex + 1),
+      currentQuestion,
+    ];
+
+    setQuestionQueue(newQueue);
+
+    if (currentQuestionIndex >= newQueue.length - 1) {
+      setCurrentQuestionIndex(
+        Math.min(currentQuestionIndex, newQueue.length - 1)
+      );
+    }
+
+    setQuestionTransition('entering');
+    resetPosition();
+    scrollToTop();
+    setTimeout(() => setQuestionTransition('idle'), 100);
+  }, [questionQueue, currentQuestionIndex, scrollToTop, resetPosition]);
+
+  const handleShowExplanation = useCallback(
+    (question: QuestionMetadata, selectedOption: number) => {
+      console.log('📖 Mostrando explicación y haciendo scroll'); // Debug log
+      setExplanationData({ question, selectedOption });
+      setCurrentViewMode('explanation');
+      setShowingExplanation(true);
+      setQuestionTransition('entering');
+      resetPosition();
+      scrollToTop();
+      setTimeout(() => setQuestionTransition('idle'), 100);
+    },
+    [scrollToTop, resetPosition]
+  );
+
+  const handleNextFromExplanation = useCallback(() => {
+    console.log('➡️ Continuando desde explicación y haciendo scroll'); // Debug log
+    setCurrentViewMode('question');
+    setShowingExplanation(false);
+    setExplanationData(null);
+
+    if (currentQuestionIndex < questionQueue.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    }
+
+    setQuestionTransition('entering');
+    resetPosition();
+    scrollToTop();
+    setTimeout(() => setQuestionTransition('idle'), 100);
+  }, [currentQuestionIndex, questionQueue.length, scrollToTop, resetPosition]);
 
   const executeAction = useCallback(() => {
     if (isProcessingAction) return;
 
+    console.log('🎯 Ejecutando acción:', {
+      currentViewMode,
+      lastQuestionState,
+    }); // Debug log
     setIsProcessingAction(true);
 
     if (currentViewMode === 'explanation') {
@@ -85,20 +174,15 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     questionQueue,
     currentQuestionIndex,
     isProcessingAction,
+    handleNextFromExplanation,
+    handleShowExplanation,
+    handleSkipQuestion,
   ]);
 
-  // Hook personalizado para manejar el arrastre
-  const {
-    containerRef,
-    dragY,
-    isDragging,
-    isAnimating,
-    resetPosition,
-    handlers: dragHandlers,
-  } = useDragGesture({
-    canDrag: true, // Simplificar: siempre permitir intentar arrastrar, la lógica se decide en onSwipeUp
-    onSwipeUp: executeAction,
-  });
+  // Actualizar el ref cuando executeAction cambie
+  useEffect(() => {
+    executeActionRef.current = executeAction;
+  }, [executeAction]);
 
   const handleDragAction = executeAction;
 
@@ -108,78 +192,30 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     };
   }, []);
 
-  const handleCorrect = (index: number) => {
-    setCorrectCount((c) => c + 1);
+  const handleCorrect = useCallback(
+    (index: number) => {
+      console.log('✅ Respuesta correcta, haciendo scroll'); // Debug log
+      setCorrectCount((c) => c + 1);
 
-    setTimeout(() => {
-      if (index < questionQueue.length - 1) {
-        setCurrentQuestionIndex(index + 1);
-      }
-      setQuestionTransition('entering');
-      resetPosition();
-      scrollToTop();
-      setTimeout(
-        () => setQuestionTransition('idle'),
-        DRAG_CONFIG.ANIMATION.CLEANUP_DELAY
-      );
-    }, DRAG_CONFIG.ANIMATION.SUCCESS_FEEDBACK_DELAY);
-  };
+      setTimeout(() => {
+        if (index < questionQueue.length - 1) {
+          setCurrentQuestionIndex(index + 1);
+        }
+        setQuestionTransition('entering');
+        resetPosition();
+        scrollToTop();
+        setTimeout(
+          () => setQuestionTransition('idle'),
+          DRAG_CONFIG.ANIMATION.CLEANUP_DELAY
+        );
+      }, DRAG_CONFIG.ANIMATION.SUCCESS_FEEDBACK_DELAY);
+    },
+    [questionQueue.length, scrollToTop, resetPosition]
+  );
 
-  const handleIncorrect = () => {
+  const handleIncorrect = useCallback(() => {
     setIncorrectCount((c) => c + 1);
-  };
-
-  const handleSkipQuestion = () => {
-    setSkippedCount((c) => c + 1);
-
-    const currentQuestion = questionQueue[currentQuestionIndex];
-    const newQueue = [
-      ...questionQueue.slice(0, currentQuestionIndex),
-      ...questionQueue.slice(currentQuestionIndex + 1),
-      currentQuestion,
-    ];
-
-    setQuestionQueue(newQueue);
-
-    if (currentQuestionIndex >= newQueue.length - 1) {
-      setCurrentQuestionIndex(
-        Math.min(currentQuestionIndex, newQueue.length - 1)
-      );
-    }
-
-    setQuestionTransition('entering');
-    resetPosition();
-    scrollToTop();
-    setTimeout(() => setQuestionTransition('idle'), 100);
-  };
-
-  const handleShowExplanation = (
-    question: QuestionMetadata,
-    selectedOption: number
-  ) => {
-    setExplanationData({ question, selectedOption });
-    setCurrentViewMode('explanation');
-    setShowingExplanation(true);
-    setQuestionTransition('entering');
-    resetPosition();
-    scrollToTop();
-    setTimeout(() => setQuestionTransition('idle'), 100);
-  };
-
-  const handleNextFromExplanation = () => {
-    setCurrentViewMode('question');
-    setShowingExplanation(false);
-    setExplanationData(null);
-
-    if (currentQuestionIndex < questionQueue.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    }
-
-    setQuestionTransition('entering');
-    resetPosition();
-    scrollToTop();
-    setTimeout(() => setQuestionTransition('idle'), 100);
-  };
+  }, []);
 
   const handleDragStart = useCallback(
     (selectedOption: number | undefined, isCorrect: boolean) => {
@@ -221,6 +257,19 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     setIsProcessingAction(false);
   }, [currentQuestionIndex, currentViewMode]);
 
+  if (!selectedCourse) {
+    return (
+      <div className="course-container">
+        <div className="course-not-found">
+          <h1>Curso no encontrado</h1>
+          <Link to="/" className="course-back-button">
+            Volver a cursos
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="course-container">
       <div className="course-scoreboard">
@@ -240,93 +289,77 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
             showingExplanation ? explanationData?.selectedOption : ''
           }`}
           className={`course-question-box ${
-            questionTransition === 'entering'
-              ? 'animate-fade-in'
-              : questionTransition === 'exiting'
-              ? 'animate-fade-out'
-              : ''
-          }${isDragging ? ' dragging' : ''}${isAnimating ? ' animating' : ''}`}
+            questionTransition === 'entering' ? 'entering' : ''
+          } ${isDragging ? 'dragging' : ''}`}
           style={{
-            transform: isDragging
-              ? `translateY(${dragY}px)`
-              : 'translateY(0px)',
-            transition:
-              isDragging || isAnimating
-                ? 'none'
-                : `transform ${DRAG_CONFIG.CSS.TRANSFORM_DURATION} ${DRAG_CONFIG.CSS.EASING}, opacity ${DRAG_CONFIG.CSS.TRANSFORM_DURATION} ${DRAG_CONFIG.CSS.EASING}`,
-            opacity: isDragging ? calculateDragOpacity(dragY) : 1,
+            transform: `translateY(${dragY}px)`,
+            opacity: calculateDragOpacity(dragY),
+            willChange: isDragging || isAnimating ? 'transform' : 'auto',
           }}
         >
           {currentViewMode === 'completed' ? (
             <div className="course-completion">
-              <h2>¡Cuestionario Completado!</h2>
+              <h2>🎉 ¡Cuestionario completado!</h2>
               <p>
-                Has respondido correctamente {correctCount} de {totalAnswered}{' '}
-                preguntas.
-                <br />
-                Tu precisión es del {accuracy}%.
+                Has terminado todas las preguntas de{' '}
+                <strong>{selectedCourse.title}</strong>
               </p>
-              {accuracy >= 80 ? (
-                <p
-                  style={{
-                    color: 'var(--color-success)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                  }}
-                >
-                  ¡Excelente trabajo! 🎉
-                </p>
-              ) : accuracy >= 60 ? (
-                <p
-                  style={{
-                    color: 'var(--color-warning)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                  }}
-                >
-                  Buen trabajo, pero puedes mejorar 💪
-                </p>
-              ) : (
-                <p
-                  style={{
-                    color: 'var(--color-error)',
-                    fontWeight: 'var(--font-weight-semibold)',
-                  }}
-                >
-                  Sigue practicando para mejorar 📚
-                </p>
-              )}
+              <div className="completion-stats">
+                <div className="stat-item">
+                  <span className="stat-value">{correctCount}</span>
+                  <span className="stat-label">Correctas</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-value">{incorrectCount}</span>
+                  <span className="stat-label">Incorrectas</span>
+                </div>
+                <div className="stat-item">
+                  <span className="stat-value">{skippedCount}</span>
+                  <span className="stat-label">Saltadas</span>
+                </div>
+                <div className="stat-item accuracy">
+                  <span className="stat-value">{accuracy}%</span>
+                  <span className="stat-label">Precisión</span>
+                </div>
+              </div>
+              <Link to="/" className="course-back-button">
+                Volver a cursos
+              </Link>
             </div>
-          ) : currentViewMode === 'explanation' && explanationData ? (
+          ) : showingExplanation && explanationData ? (
             <Explanation
               question={explanationData.question}
               selectedOption={explanationData.selectedOption}
-              onDragAction={handleDragAction}
               dragHandlers={dragHandlers}
-              canDrag={true}
+              onDragAction={handleDragAction}
+              canDrag={canDrag}
             />
           ) : (
-            <Question
-              question={questionQueue[currentQuestionIndex]}
-              onCorrect={() => handleCorrect(currentQuestionIndex)}
-              onIncorrect={handleIncorrect}
-              onSkip={handleSkipQuestion}
-              onDragStart={handleDragStart}
-              onDragAction={handleDragAction}
-              dragHandlers={dragHandlers}
-              canDrag={canDrag || !lastQuestionState?.hasSelectedOption}
-            />
+            questionQueue[currentQuestionIndex] && (
+              <Question
+                question={questionQueue[currentQuestionIndex]}
+                onCorrect={() => handleCorrect(currentQuestionIndex)}
+                onIncorrect={handleIncorrect}
+                onSkip={handleSkipQuestion}
+                onDragStart={handleDragStart}
+                onDragAction={handleDragAction}
+                dragHandlers={dragHandlers}
+                canDrag={canDrag}
+                disabled={false}
+              />
+            )
           )}
         </div>
       ) : (
-        <div
-          className="course-question-box"
-          style={{ textAlign: 'center', padding: '2rem' }}
-        >
-          No hay preguntas disponibles.
+        <div className="course-question-box">
+          <div className="course-loading">
+            <h2>Cargando preguntas...</h2>
+            <Link to="/" className="course-back-button">
+              Volver a cursos
+            </Link>
+          </div>
         </div>
       )}
-      <Link to="/" className="course-back-button">
-        Atrás
-      </Link>
     </div>
   );
 };

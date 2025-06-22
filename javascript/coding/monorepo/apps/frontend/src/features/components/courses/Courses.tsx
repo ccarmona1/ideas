@@ -11,15 +11,18 @@ export const Courses: React.FC<CoursesProps> = ({ courses }) => {
   return (
     <div className="courses-container">
       {courses.map((course) => (
-        <Link to={`/course/${course.id}`} key={course.id}>
-          <div
-            className="course-card"
-            tabIndex={0}
-            role="button"
-            aria-label={`Ir al curso ${course.title}`}
-          >
-            {course.title}
-          </div>
+        <Link
+          to={`/course/${course.id}`}
+          key={course.id}
+          className="course-card"
+          role="button"
+          aria-label={`Ir al curso ${course.title}`}
+        >
+          <h3>{course.title}</h3>
+          <p>
+            Explora los conceptos fundamentales y pon a prueba tus conocimientos
+          </p>
+          <span className="course-arrow">→</span>
         </Link>
       ))}
     </div>

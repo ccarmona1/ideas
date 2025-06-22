@@ -1,16 +1,11 @@
 import { useState } from 'react';
 import './App.css';
 import Courses from './features/components/courses/Courses';
-import Header from './features/components/header/Header';
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
-  Outlet,
-  useLocation,
-  useNavigate,
-  useParams,
 } from 'react-router-dom';
 import Course from './features/components/course/Course';
 
@@ -20,7 +15,7 @@ export interface CourseMetadata {
 }
 
 function App() {
-  const [courses, setCourses] = useState<CourseMetadata[]>([
+  const [courses] = useState<CourseMetadata[]>([
     {
       id: '1',
       title: 'Pure JavaScript',

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { CourseMetadata } from '../../../App';
 import { Question } from '../question/Question';
+import Explanation from '../question/Explanation';
 import preguntasModulo1 from './examen_modulo1.json';
 import preguntasModule2 from './examen_modulo2.json';
 import './Course.css';
@@ -25,6 +26,11 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
+  const [showingExplanation, setShowingExplanation] = useState(false);
+  const [explanationData, setExplanationData] = useState<{
+    question: QuestionMetadata;
+    selectedOption: number;
+  } | null>(null);
   const preguntas: QuestionMetadata[] =
     selectedCourse?.id === '1' ? preguntasModulo1 : preguntasModule2;
 
@@ -57,6 +63,28 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     setIncorrectCount((c) => c + 1);
   };
 
+  const handleShowExplanation = (
+    question: QuestionMetadata,
+    selectedOption: number
+  ) => {
+    setExplanationData({ question, selectedOption });
+    setShowingExplanation(true);
+  };
+
+  const handleNextFromExplanation = () => {
+    setShowingExplanation(false);
+    setExplanationData(null);
+    if (currentQuestionIndex < preguntas.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    }
+  };
+
+  // Verificar si el cuestionario está completado
+  const isCompleted = currentQuestionIndex >= preguntas.length;
+  const totalAnswered = correctCount + incorrectCount;
+  const accuracy =
+    totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
+
   return (
     <div className="course-container">
       <div className="course-scoreboard">
@@ -67,18 +95,72 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
         </span>
       </div>
       {preguntas.length > 0 ? (
-        <div
-          key={currentQuestionIndex}
-          id={`question-${currentQuestionIndex}`}
-          className="course-question-box"
-        >
-          <Question
-            question={preguntas[currentQuestionIndex]}
-            onCorrect={() => handleCorrect(currentQuestionIndex)}
-            onNext={() => setCurrentQuestionIndex((idx) => idx + 1)}
-            onIncorrect={handleIncorrect}
-          />
-        </div>
+        isCompleted ? (
+          <div className="course-question-box">
+            <div className="course-completion">
+              <h2>¡Cuestionario Completado!</h2>
+              <p>
+                Has respondido correctamente {correctCount} de {totalAnswered}{' '}
+                preguntas.
+                <br />
+                Tu precisión es del {accuracy}%.
+              </p>
+              {accuracy >= 80 ? (
+                <p
+                  style={{
+                    color: 'var(--color-success)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                  }}
+                >
+                  ¡Excelente trabajo! 🎉
+                </p>
+              ) : accuracy >= 60 ? (
+                <p
+                  style={{
+                    color: 'var(--color-warning)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                  }}
+                >
+                  Buen trabajo, pero puedes mejorar 💪
+                </p>
+              ) : (
+                <p
+                  style={{
+                    color: 'var(--color-error)',
+                    fontWeight: 'var(--font-weight-semibold)',
+                  }}
+                >
+                  Sigue practicando para mejorar 📚
+                </p>
+              )}
+            </div>
+          </div>
+        ) : showingExplanation && explanationData ? (
+          <div
+            key={`explanation-${currentQuestionIndex}`}
+            className="course-question-box"
+          >
+            <Explanation
+              question={explanationData.question}
+              selectedOption={explanationData.selectedOption}
+              onNext={handleNextFromExplanation}
+            />
+          </div>
+        ) : (
+          <div
+            key={currentQuestionIndex}
+            id={`question-${currentQuestionIndex}`}
+            className="course-question-box"
+          >
+            <Question
+              question={preguntas[currentQuestionIndex]}
+              onCorrect={() => handleCorrect(currentQuestionIndex)}
+              onNext={() => setCurrentQuestionIndex((idx) => idx + 1)}
+              onIncorrect={handleIncorrect}
+              onShowExplanation={handleShowExplanation}
+            />
+          </div>
+        )
       ) : (
         <div
           className="course-question-box"

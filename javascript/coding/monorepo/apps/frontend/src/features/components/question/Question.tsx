@@ -1,13 +1,16 @@
 import React, { useState, useRef } from 'react';
 import './Question.css';
 import type { QuestionMetadata } from '../course/Course';
-import FeedbackModal from './FeedbackModal';
 
 export interface QuestionProps {
   question: QuestionMetadata;
   onCorrect: () => void;
   onIncorrect?: () => void;
   onNext?: () => void;
+  onShowExplanation?: (
+    question: QuestionMetadata,
+    selectedOption: number
+  ) => void;
   disabled?: boolean;
 }
 
@@ -16,13 +19,13 @@ export const Question: React.FC<QuestionProps> = ({
   onCorrect,
   onIncorrect,
   onNext,
+  onShowExplanation,
   disabled,
 }) => {
   const [selectedOption, setSelectedOption] = useState<number | undefined>(
     undefined
   );
   const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [dragY, setDragY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartY = useRef<number | null>(null);
@@ -42,13 +45,13 @@ export const Question: React.FC<QuestionProps> = ({
         onCorrect();
       } else {
         if (onIncorrect) onIncorrect();
-        setShowModal(true);
+        // No mostramos modal, solo marcamos como incorrecta
       }
     }
   };
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (selectedOption !== undefined && isCorrect === false && !showModal) {
+    if (selectedOption !== undefined && isCorrect === false) {
       setIsDragging(true);
       dragStartY.current = e.clientY;
     }
@@ -69,7 +72,12 @@ export const Question: React.FC<QuestionProps> = ({
         setTimeout(() => {
           setDragY(0);
           setSelectedOption(undefined);
-          if (onNext) onNext();
+          // Cuando hay una respuesta incorrecta, mostrar explicación
+          if (selectedOption !== undefined && !isCorrect && onShowExplanation) {
+            onShowExplanation(question, selectedOption);
+          } else if (onNext) {
+            onNext();
+          }
         }, 300);
       } else {
         setDragY(0);
@@ -92,21 +100,24 @@ export const Question: React.FC<QuestionProps> = ({
       <ul className="question-list">
         {question.options.map((option, index) => {
           let btnClass = 'option-btn';
+
           // Si la opción es la seleccionada
           if (selectedOption === index) {
-            if (selectedOption !== undefined) {
-              btnClass += isCorrect ? ' correct' : ' incorrect';
-            }
             btnClass += ' selected';
+            if (selectedOption !== undefined) {
+              btnClass += isCorrect ? ' answer-correct' : ' answer-incorrect';
+            }
           }
+
           // Si la opción es la correcta y el usuario seleccionó una incorrecta
           if (
             selectedOption !== undefined &&
             !isCorrect &&
             index === correctIndex
           ) {
-            btnClass += ' correct';
+            btnClass += ' answer-correct';
           }
+
           return (
             <li key={index}>
               <button
@@ -125,21 +136,11 @@ export const Question: React.FC<QuestionProps> = ({
           );
         })}
       </ul>
-      {selectedOption !== undefined && !isCorrect && !showModal && (
-        <div
-          className="question-feedback"
-          style={{ marginTop: '1.5em', textAlign: 'center' }}
-        >
-          Arrastra hacia arriba para la siguiente pregunta
+      {selectedOption !== undefined && !isCorrect && (
+        <div className="question-feedback">
+          Arrastra hacia arriba para ver la explicación
         </div>
       )}
-      <FeedbackModal
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        answer={question.answer}
-        explanation={question.explanation}
-        invalidOptions={question.invalidOptions}
-      />
     </div>
   );
 };

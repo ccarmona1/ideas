@@ -51,20 +51,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const executeActionRef = useRef<(() => void) | undefined>(undefined);
 
   const scrollToTop = useCallback(() => {
-    console.log('🔄 Ejecutando scrollToTop()');
-    console.log('📊 Posición actual del scroll:', {
-      scrollY: window.scrollY,
-      documentHeight: document.documentElement.scrollHeight,
-      windowHeight: window.innerHeight,
-    });
-
-    // Forzar scroll inmediato primero, luego suave
     window.scrollTo(0, 0);
-
-    // Scroll suave adicional para asegurar
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      console.log('✅ Scroll ejecutado - posición después:', window.scrollY);
     }, 10);
   }, []);
 
@@ -82,7 +71,6 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   });
 
   const handleSkipQuestion = useCallback(() => {
-    console.log('⏭️ Saltando pregunta y haciendo scroll'); // Debug log
     setSkippedCount((c) => c + 1);
 
     const currentQuestion = questionQueue[currentQuestionIndex];
@@ -108,7 +96,6 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
   const handleShowExplanation = useCallback(
     (question: QuestionMetadata, selectedOption: number) => {
-      console.log('📖 Mostrando explicación y haciendo scroll'); // Debug log
       setExplanationData({ question, selectedOption });
       setCurrentViewMode('explanation');
       setShowingExplanation(true);
@@ -121,7 +108,6 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   );
 
   const handleNextFromExplanation = useCallback(() => {
-    console.log('➡️ Continuando desde explicación y haciendo scroll'); // Debug log
     setCurrentViewMode('question');
     setShowingExplanation(false);
     setExplanationData(null);
@@ -139,10 +125,6 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const executeAction = useCallback(() => {
     if (isProcessingAction) return;
 
-    console.log('🎯 Ejecutando acción:', {
-      currentViewMode,
-      lastQuestionState,
-    }); // Debug log
     setIsProcessingAction(true);
 
     if (currentViewMode === 'explanation') {
@@ -194,7 +176,6 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
   const handleCorrect = useCallback(
     (index: number) => {
-      console.log('✅ Respuesta correcta, haciendo scroll'); // Debug log
       setCorrectCount((c) => c + 1);
 
       setTimeout(() => {

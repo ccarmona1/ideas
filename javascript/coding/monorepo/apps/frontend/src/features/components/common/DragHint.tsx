@@ -1,4 +1,5 @@
 import React from 'react';
+import './DragHint.css';
 import type { DragHandlers } from '../../../types';
 
 export interface DragHintProps {

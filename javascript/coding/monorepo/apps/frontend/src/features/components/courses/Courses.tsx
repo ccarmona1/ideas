@@ -19,9 +19,7 @@ export const Courses: React.FC<CoursesProps> = ({ courses }) => {
           aria-label={`Ir al curso ${course.title}`}
         >
           <h3>{course.title}</h3>
-          <p>
-            Explora los conceptos fundamentales y pon a prueba tus conocimientos
-          </p>
+          <p>Advanced questions</p>
           <span className="course-arrow">→</span>
         </Link>
       ))}

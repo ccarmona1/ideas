@@ -28,32 +28,20 @@
 }
 
 .score-correct {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
   color: var(--color-success);
   font-weight: var(--font-weight-semibold);
 }
 
 .score-incorrect {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
   color: var(--color-incorrect);
   font-weight: var(--font-weight-semibold);
 }
 
 .score-total {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
   color: var(--color-gray-600);
 }
 
 .score-skipped {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
   color: var(--color-warning);
   font-weight: var(--font-weight-semibold);
 }
@@ -138,9 +126,7 @@
   line-height: var(--line-height-relaxed);
 }
 
-/* Configuración de arrastre */
 .course-question-box.dragging {
-  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -154,7 +140,6 @@
     padding: var(--spacing-base) var(--spacing-lg);
   }
   
-  /* Remover estilos de "card" en dispositivos móviles */
   .course-question-box {
     background: transparent;
     border-radius: 0;

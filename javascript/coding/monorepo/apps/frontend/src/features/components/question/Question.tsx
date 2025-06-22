@@ -37,36 +37,27 @@ export const Question: React.FC<QuestionProps> = ({
   const isCorrect =
     selectedOption !== undefined &&
     ['a', 'b', 'c', 'd'][selectedOption] === question.answer;
-
-  // NUEVO: obtener el índice de la respuesta correcta
   const correctIndex = ['a', 'b', 'c', 'd'].indexOf(question.answer);
 
-  // Resetear estado cuando cambia la pregunta
   useEffect(() => {
     setSelectedOption(undefined);
     setAnsweredCorrectly(false);
   }, [question.question]);
 
-  // Notificar al componente padre sobre el estado de arrastre
   useEffect(() => {
     if (onDragStart) {
       onDragStart(selectedOption, isCorrect);
     }
-  }, [selectedOption, isCorrect]); // Remover onDragStart de dependencias para evitar bucles
+  }, [selectedOption, isCorrect]);
 
   const handleSelectOption = (index: number) => {
     if (!answeredCorrectly && !disabled) {
       setSelectedOption(index);
       if (['a', 'b', 'c', 'd'][index] === question.answer) {
         setAnsweredCorrectly(true);
-
-        // Agregar un delay para mostrar el feedback visual antes de la transición
-        setTimeout(() => {
-          onCorrect();
-        }, 800); // Dar tiempo para que se vea la animación de éxito
+        setTimeout(() => onCorrect(), 800);
       } else {
         if (onIncorrect) onIncorrect();
-        // No mostramos modal, solo marcamos como incorrecta
       }
     }
   };
@@ -78,7 +69,6 @@ export const Question: React.FC<QuestionProps> = ({
         {question.options.map((option, index) => {
           let btnClass = 'option-btn';
 
-          // Si la opción es la seleccionada
           if (selectedOption === index) {
             btnClass += ' selected';
             if (selectedOption !== undefined) {
@@ -86,7 +76,6 @@ export const Question: React.FC<QuestionProps> = ({
             }
           }
 
-          // Si la opción es la correcta y el usuario seleccionó una incorrecta
           if (
             selectedOption !== undefined &&
             !isCorrect &&
@@ -114,7 +103,6 @@ export const Question: React.FC<QuestionProps> = ({
         })}
       </ul>
 
-      {/* Mostrar hint de arrastre basado en el estado */}
       {selectedOption !== undefined && !isCorrect && (
         <div className="explanation-footer">
           <DragHint

@@ -1,4 +1,3 @@
-/* Estilos específicos para Explanation - sin duplicar question-container */
 .explanation-container h1 {
   color: var(--color-incorrect-dark);
 }

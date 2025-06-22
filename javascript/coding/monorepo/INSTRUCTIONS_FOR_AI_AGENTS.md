@@ -612,6 +612,128 @@ Para preguntas específicas sobre implementación o dudas arquitectónicas, refe
 2. **Código existente** como referencia de patrones
 3. **Comentarios en el código** para contexto específico
 
-**Versión del documento**: 1.2  
-**Última actualización**: Implementación de scroll automático en transiciones de estado  
+**Versión del documento**: 1.3  
+**Última actualización**: Refactorización completa del frontend - código limpio y mantenible  
 **Compatibilidad**: React 19.x, TypeScript 5.x, Vite 6.x
+
+## Historial de Cambios
+
+### Versión 1.3 - Refactorización Completa del Frontend
+
+- **Código limpio**: Eliminación de todos los comentarios redundantes y código obsoleto
+- **Consolidación de estilos**: Unificación de variables CSS y eliminación de duplicaciones
+- **Optimización de componentes**: Refactorización de Question.tsx, Explanation.tsx, Header.tsx y todos los archivos CSS
+- **Separación de responsabilidades**: Extracción de estilos inline a archivos CSS dedicados
+- **Mejora de legibilidad**: Simplificación de lógica condicional y estructuras de código
+- **Mantenibilidad**: Código más limpio y estructurado sin pérdida de funcionalidad
+
+### Versión 1.2 - Sistema de Scroll Automático
+
+- Implementación de scroll automático en todas las transiciones de estado
+- Integración con el sistema de arrastre existente
+- Casos de prueba actualizados para validar scroll automático
+
+### Versión 1.1 - Diseño Responsivo
+
+- Implementación de cards responsivas (desktop/móvil)
+- Media queries para diferentes breakpoints
+- Optimización de interfaz táctil
+
+## Estándares de Código Limpio
+
+### Principios Implementados
+
+El frontend ha sido refactorizado siguiendo principios de código limpio para mejorar la mantenibilidad y legibilidad:
+
+#### Eliminación de Comentarios Redundantes
+
+```typescript
+// ❌ ANTES - Comentarios obvios
+// Estado para manejar la cola de preguntas
+const [questionQueue, setQuestionQueue] = useState<QuestionMetadata[]>();
+
+// ✅ DESPUÉS - Código autoexplicativo
+const [questionQueue, setQuestionQueue] = useState<QuestionMetadata[]>();
+```
+
+#### Consolidación de Lógica
+
+```typescript
+// ❌ ANTES - Lógica verbosa con comentarios
+if (lastQuestionState.hasSelectedOption && !lastQuestionState.isCorrect) {
+  // Respuesta incorrecta -> mostrar explicación
+  handleShowExplanation(currentQuestion, lastQuestionState.selectedOptionIndex);
+}
+
+// ✅ DESPUÉS - Lógica concisa y clara
+if (lastQuestionState.hasSelectedOption && !lastQuestionState.isCorrect) {
+  handleShowExplanation(currentQuestion, lastQuestionState.selectedOptionIndex);
+}
+```
+
+#### Separación de Responsabilidades
+
+```typescript
+// ❌ ANTES - Estilos inline mezclados con lógica
+<header style={{
+  background: '#222',
+  color: '#fff',
+  padding: '1rem'
+}}>
+
+// ✅ DESPUÉS - Estilos en archivos CSS dedicados
+<header className="header">
+```
+
+#### Funciones Concisas
+
+```typescript
+// ❌ ANTES - Funciones largas con muchos comentarios
+const handleCorrect = (index: number) => {
+  setCorrectCount((c) => c + 1);
+  // Delay corto para mostrar la animación de éxito, luego cambio inmediato
+  setTimeout(() => {
+    // Cambio inmediato sin timeouts anidados
+    if (index < questionQueue.length - 1) {
+      setCurrentQuestionIndex(index + 1);
+    }
+    // Resetear posición de arrastre
+    resetPosition();
+  }, 800);
+};
+
+// ✅ DESPUÉS - Función limpia y directa
+const handleCorrect = (index: number) => {
+  setCorrectCount((c) => c + 1);
+  setTimeout(() => {
+    if (index < questionQueue.length - 1) {
+      setCurrentQuestionIndex(index + 1);
+    }
+    setQuestionTransition('entering');
+    resetPosition();
+    scrollToTop();
+    setTimeout(
+      () => setQuestionTransition('idle'),
+      DRAG_CONFIG.ANIMATION.CLEANUP_DELAY
+    );
+  }, DRAG_CONFIG.ANIMATION.SUCCESS_FEEDBACK_DELAY);
+};
+```
+
+### Reglas de Mantenimiento de Código Limpio
+
+#### ✅ MANTENER
+
+- **Nombres descriptivos**: Variables y funciones que explican su propósito
+- **Funciones pequeñas**: Una responsabilidad por función
+- **Consistencia**: Patrones uniformes en toda la aplicación
+- **Tipos explícitos**: TypeScript estricto para mejor mantenibilidad
+- **Separación CSS**: Estilos en archivos dedicados, no inline
+
+#### ❌ EVITAR
+
+- **Comentarios obvios**: El código debe ser autoexplicativo
+- **Funciones largas**: Dividir en funciones más pequeñas
+- **Lógica duplicada**: Consolidar en funciones reutilizables
+- **Estilos inline**: Usar clases CSS en su lugar
+- **Variables con nombres genéricos**: Usar nombres descriptivos

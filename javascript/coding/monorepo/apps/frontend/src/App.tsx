@@ -22,7 +22,6 @@ function App() {
     },
   ]);
 
-  // El router debe crearse dentro del componente para acceder a courses
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route>

@@ -18,7 +18,6 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const courseId = params.courseId;
   const selectedCourse = courses.find((course) => course.id === courseId);
 
-  // Estado para manejar la cola de preguntas
   const initialQuestions: QuestionMetadata[] =
     selectedCourse?.id === '1' ? preguntasModulo1 : preguntasModule2;
 
@@ -40,7 +39,6 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     'question' | 'explanation' | 'completed'
   >('question');
 
-  // Estados para el arrastre simplificado
   const [canDrag, setCanDrag] = useState(false);
   const [isProcessingAction, setIsProcessingAction] = useState(false);
   const [lastQuestionState, setLastQuestionState] = useState<{
@@ -49,15 +47,14 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     selectedOptionIndex: number;
   } | null>(null);
 
-  // Función centralizada para ejecutar acciones de arrastre (evita ejecuciones múltiples)
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const executeAction = useCallback(() => {
-    if (isProcessingAction) {
-      console.log('Action already processing, skipping...');
-      return;
-    }
+    if (isProcessingAction) return;
 
     setIsProcessingAction(true);
-    console.log('Action triggered', { currentViewMode, lastQuestionState });
 
     if (currentViewMode === 'explanation') {
       handleNextFromExplanation();
@@ -69,25 +66,19 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
           lastQuestionState.hasSelectedOption &&
           !lastQuestionState.isCorrect
         ) {
-          // Respuesta incorrecta -> mostrar explicación
           handleShowExplanation(
             currentQuestion,
             lastQuestionState.selectedOptionIndex
           );
         } else if (!lastQuestionState.hasSelectedOption) {
-          // Sin respuesta -> saltar pregunta
           handleSkipQuestion();
         }
       } else {
-        // Fallback: si no hay estado, saltar pregunta
         handleSkipQuestion();
       }
     }
 
-    // Limpiar el estado después de un delay
-    setTimeout(() => {
-      setIsProcessingAction(false);
-    }, 500);
+    setTimeout(() => setIsProcessingAction(false), 500);
   }, [
     currentViewMode,
     lastQuestionState,
@@ -109,58 +100,38 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     onSwipeUp: executeAction,
   });
 
-  // Función para manejar acciones desde los elementos de arrastre (usa la función centralizada)
   const handleDragAction = executeAction;
 
-  // Limpieza del estado de arrastre al desmontar el componente
   useEffect(() => {
     return () => {
       document.body.style.overflow = '';
     };
   }, []);
 
-  // Función para scroll automático hacia arriba
-  const scrollToTop = useCallback(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  }, []);
-
   const handleCorrect = (index: number) => {
     setCorrectCount((c) => c + 1);
 
-    // Delay corto para mostrar la animación de éxito, luego cambio inmediato
     setTimeout(() => {
-      // Cambio inmediato sin timeouts anidados
       if (index < questionQueue.length - 1) {
         setCurrentQuestionIndex(index + 1);
       }
-
       setQuestionTransition('entering');
-
-      // Resetear posición de arrastre
       resetPosition();
-
-      // Scroll automático hacia arriba
       scrollToTop();
-
       setTimeout(
         () => setQuestionTransition('idle'),
         DRAG_CONFIG.ANIMATION.CLEANUP_DELAY
       );
-    }, DRAG_CONFIG.ANIMATION.SUCCESS_FEEDBACK_DELAY); // Usar configuración centralizada
+    }, DRAG_CONFIG.ANIMATION.SUCCESS_FEEDBACK_DELAY);
   };
 
   const handleIncorrect = () => {
     setIncorrectCount((c) => c + 1);
   };
 
-  // Nueva función para manejar saltar pregunta
   const handleSkipQuestion = () => {
     setSkippedCount((c) => c + 1);
 
-    // Mover la pregunta actual al final de la cola
     const currentQuestion = questionQueue[currentQuestionIndex];
     const newQueue = [
       ...questionQueue.slice(0, currentQuestionIndex),
@@ -170,7 +141,6 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
 
     setQuestionQueue(newQueue);
 
-    // Si no hay más preguntas en la posición actual, reiniciar
     if (currentQuestionIndex >= newQueue.length - 1) {
       setCurrentQuestionIndex(
         Math.min(currentQuestionIndex, newQueue.length - 1)
@@ -178,13 +148,8 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     }
 
     setQuestionTransition('entering');
-
-    // Resetear posición de arrastre
     resetPosition();
-
-    // Scroll automático hacia arriba
     scrollToTop();
-
     setTimeout(() => setQuestionTransition('idle'), 100);
   };
 
@@ -192,53 +157,38 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     question: QuestionMetadata,
     selectedOption: number
   ) => {
-    // Establecer datos de explicación inmediatamente
     setExplanationData({ question, selectedOption });
     setCurrentViewMode('explanation');
     setShowingExplanation(true);
     setQuestionTransition('entering');
-
-    // Resetear posición de arrastre
     resetPosition();
-
-    // Scroll automático hacia arriba
     scrollToTop();
-
     setTimeout(() => setQuestionTransition('idle'), 100);
   };
 
   const handleNextFromExplanation = () => {
-    // Cambiar estado inmediatamente
     setCurrentViewMode('question');
     setShowingExplanation(false);
     setExplanationData(null);
 
-    // Avanzar a la siguiente pregunta si existe
     if (currentQuestionIndex < questionQueue.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
 
     setQuestionTransition('entering');
-
-    // Resetear posición de arrastre
     resetPosition();
-
-    // Scroll automático hacia arriba
     scrollToTop();
-
     setTimeout(() => setQuestionTransition('idle'), 100);
   };
 
-  // Handlers de arrastre simplificados
   const handleDragStart = useCallback(
     (selectedOption: number | undefined, isCorrect: boolean) => {
       const shouldAllowDrag =
-        (selectedOption !== undefined && !isCorrect) || // Respuesta incorrecta
-        selectedOption === undefined; // Sin respuesta (para saltar)
+        (selectedOption !== undefined && !isCorrect) ||
+        selectedOption === undefined;
 
       setCanDrag(shouldAllowDrag);
 
-      // Actualizar el estado de la última pregunta
       setLastQuestionState({
         hasSelectedOption: selectedOption !== undefined,
         isCorrect: isCorrect,
@@ -248,15 +198,13 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
       return shouldAllowDrag;
     },
     []
-  ); // Sin dependencias para evitar re-creación
+  );
 
-  // Verificar si el cuestionario está completado
   const isCompleted = currentQuestionIndex >= questionQueue.length;
   const totalAnswered = correctCount + incorrectCount;
   const accuracy =
     totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0;
 
-  // Actualizar el modo de vista basándose en el estado
   useEffect(() => {
     if (isCompleted) {
       setCurrentViewMode('completed');
@@ -267,11 +215,10 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     }
   }, [isCompleted, showingExplanation]);
 
-  // Limpiar el estado de la última pregunta cuando cambiamos de pregunta o vista
   useEffect(() => {
     setLastQuestionState(null);
     setCanDrag(false);
-    setIsProcessingAction(false); // También limpiar el estado de procesamiento
+    setIsProcessingAction(false);
   }, [currentQuestionIndex, currentViewMode]);
 
   return (

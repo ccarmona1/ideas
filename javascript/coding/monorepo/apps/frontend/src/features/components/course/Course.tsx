@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import type { CourseMetadata } from '../../../App';
 import { Question } from '../question/Question';
 import preguntasModulo1 from './examen_modulo1.json';
+import preguntasModule2 from './examen_modulo2.json';
 import './Course.css';
 
 export interface QuestionMetadata {
@@ -25,7 +26,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
   const preguntas: QuestionMetadata[] =
-    selectedCourse?.id === '1' ? preguntasModulo1 : [];
+    selectedCourse?.id === '1' ? preguntasModulo1 : preguntasModule2;
 
   const handleCorrect = (index: number) => {
     setCorrectCount((c) => c + 1);

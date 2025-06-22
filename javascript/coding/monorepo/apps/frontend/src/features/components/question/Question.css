@@ -46,11 +46,16 @@
   background: #28a745;
   color: #fff;
   border-color: #218838;
+  /* Asegura que la opción correcta siempre destaque, incluso si no es la seleccionada */
+  font-weight: bold;
+  box-shadow: 0 0 0 2px #28a74533;
 }
 .option-btn.incorrect {
   background: #dc3545;
   color: #fff;
   border-color: #b52a37;
+  font-weight: bold;
+  box-shadow: 0 0 0 2px #dc354533;
 }
 .option-btn:disabled {
   opacity: 0.6;

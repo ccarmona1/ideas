@@ -31,6 +31,9 @@ export const Question: React.FC<QuestionProps> = ({
     selectedOption !== undefined &&
     ['a', 'b', 'c', 'd'][selectedOption] === question.answer;
 
+  // NUEVO: obtener el índice de la respuesta correcta
+  const correctIndex = ['a', 'b', 'c', 'd'].indexOf(question.answer);
+
   const handleSelectOption = (index: number) => {
     if (!answeredCorrectly && !disabled) {
       setSelectedOption(index);
@@ -89,11 +92,20 @@ export const Question: React.FC<QuestionProps> = ({
       <ul className="question-list">
         {question.options.map((option, index) => {
           let btnClass = 'option-btn';
+          // Si la opción es la seleccionada
           if (selectedOption === index) {
             if (selectedOption !== undefined) {
               btnClass += isCorrect ? ' correct' : ' incorrect';
             }
             btnClass += ' selected';
+          }
+          // Si la opción es la correcta y el usuario seleccionó una incorrecta
+          if (
+            selectedOption !== undefined &&
+            !isCorrect &&
+            index === correctIndex
+          ) {
+            btnClass += ' correct';
           }
           return (
             <li key={index}>

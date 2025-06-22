@@ -2,7 +2,12 @@
 
 ## Overview
 
-React + TypeScript + Vite interactive learning app with multiple-choice questions, vertical drag navigation, and responsive design.
+React + TypeScript + Vite interactive learning app with multiple-choice questions, vertical### Two-Phase Drag System
+
+1. **Touch Detection**: Touch/click starts tracking but doesn't prevent scroll
+2. **Movement Threshold**: 25px movement required to enter "real drag" mode
+3. **Execution Threshold**: 300px upward movement required to execute action
+4. **Click vs Drag**: Smart detection prevents click events during drag operations navigation, and responsive design.
 
 ## Key Features
 
@@ -114,15 +119,16 @@ const scrollToTop = useCallback(() => {
 
 ### useDragGesture.ts
 
-- **Two-phase drag detection**: 8px threshold to start, 250px threshold to execute
-- **Vertical drag with resistance** for downward movement
-- **Opacity fade** during drag (starts at -80px, full fade at -160px)
+- **Two-phase drag detection**: 25px threshold to start, 300px threshold to execute
+- **Vertical drag with high resistance** for downward movement (0.1x)
+- **Opacity fade** during drag (starts at -100px, full fade at -200px)
 - **Scroll prevention** during active drag only
-- **Mobile optimization**: Reduced thresholds (-200px execution threshold)
+- **Mobile optimization**: Reduced thresholds (-220px execution threshold)
 
 ### DragHint.tsx
 
 - **Interactive drag target** with touch-action: none
+- **Click vs Drag separation** prevents accidental triggers
 - **Keyboard accessibility** (Enter/Space)
 - **Visual feedback** with hover states
 
@@ -146,26 +152,26 @@ const scrollToTop = useCallback(() => {
 
 ### Two-Phase Drag System
 
-1. **Initialization Phase**: Touch/click detected, no visual feedback
-2. **Drag Threshold**: 8px movement required to start visual drag
-3. **Execution Threshold**: 250px upward movement required to execute action
+1. **Immediate Response**: Touch/click immediately starts drag state
+2. **Visual Threshold**: 25px movement required for visual feedback
+3. **Execution Threshold**: 300px upward movement required to execute action
 
 ### Drag Configuration Values
 
 ```typescript
 const DRAG_CONFIG = {
-  SWIPE_THRESHOLD: -250, // Execution threshold (desktop)
-  DRAG_START_THRESHOLD: 8, // Minimum movement to start drag
-  DOWNWARD_RESISTANCE: 0.3, // Resistance for downward movement
-  OPACITY_FADE_START: -80, // Start fading opacity
-  OPACITY_FADE_END: -160, // Full opacity fade
+  SWIPE_THRESHOLD: -300, // Execution threshold (desktop)
+  DRAG_START_THRESHOLD: 25, // Minimum movement to start drag (increased)
+  DOWNWARD_RESISTANCE: 0.1, // High resistance for downward movement
+  OPACITY_FADE_START: -100, // Start fading opacity
+  OPACITY_FADE_END: -200, // Full opacity fade
 };
 ```
 
 ### Mobile Optimizations
 
-- **Reduced execution threshold**: -200px (vs -250px on desktop)
-- **Same start threshold**: 8px (consistent across devices)
+- **Reduced execution threshold**: -220px (vs -300px on desktop)
+- **Same start threshold**: 25px (consistent across devices)
 - **Enhanced touch handling**: Prevents accidental triggers
 
 ## TypeScript Interfaces
@@ -194,8 +200,10 @@ interface QuestionMetadata {
 3. **Auto-scroll missing**: Verify `scrollToTop()` called in all state transitions
 4. **Mobile card styles**: Should be flat (transparent background, no shadows)
 5. **Drag not working**: Verify `useDragGesture({ canDrag: canDrag })` uses dynamic state, not `canDrag: true`
-6. **Drag too sensitive**: Check DRAG_START_THRESHOLD (8px) and SWIPE_THRESHOLD (-250px) values
-7. **Accidental triggers**: Ensure two-phase drag system is properly implemented
+6. **Drag too sensitive**: Check DRAG_START_THRESHOLD (25px) and SWIPE_THRESHOLD (-300px) values
+7. **Accidental triggers**: Ensure visual feedback only starts after 25px movement
+8. **Second click required**: Check that drag state activates immediately on first touch
+9. **Click vs Drag conflicts**: Ensure click events are cancelled when drag is detected
 
 ## Critical Drag System Requirements
 
@@ -228,4 +236,4 @@ const handleDragStart = useCallback((selectedOption, isCorrect) => {
 5. **Explanation shows** → `canDrag = true` (to allow continuing)
 6. **Mode changes** → Only explanation/completed modes override canDrag
 
-**Version**: 3.0 - Enhanced Drag Sensitivity & Two-Phase System
+**Version**: 3.3 - Fixed Click vs Drag Conflicts & Improved Threshold Detection

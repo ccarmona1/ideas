@@ -1,9 +1,9 @@
 export const DRAG_CONFIG = {
-  SWIPE_THRESHOLD: -250, // Aumentado de -180 a -250px (más movimiento necesario)
-  DRAG_START_THRESHOLD: 8, // Nuevo: mínimo movimiento para iniciar arrastre
-  DOWNWARD_RESISTANCE: 0.3,
-  OPACITY_FADE_START: -80, // Ajustado para el nuevo umbral
-  OPACITY_FADE_END: -160, // Ajustado para el nuevo umbral
+  SWIPE_THRESHOLD: -300, // Aumentado aún más para requerir más movimiento
+  DRAG_START_THRESHOLD: 25, // Aumentado significativamente de 8 a 25px
+  DOWNWARD_RESISTANCE: 0.1, // Aumentada resistencia hacia abajo (de 0.3 a 0.1)
+  OPACITY_FADE_START: -100, // Ajustado para el nuevo umbral
+  OPACITY_FADE_END: -200, // Ajustado para el nuevo umbral
   ANIMATION: {
     CLEANUP_DELAY: 100,
     RESET_DELAY: 300,
@@ -17,7 +17,7 @@ export const DRAG_CONFIG = {
 
 export const getSwipeThreshold = (isMobile = false): number => {
   return isMobile
-    ? DRAG_CONFIG.SWIPE_THRESHOLD + 50 // Aumentado de +30 a +50px para móvil
+    ? DRAG_CONFIG.SWIPE_THRESHOLD + 80 // Aumentado de +50 a +80px para móvil (-220px)
     : DRAG_CONFIG.SWIPE_THRESHOLD;
 };
 

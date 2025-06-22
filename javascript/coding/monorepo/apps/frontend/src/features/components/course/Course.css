@@ -144,35 +144,22 @@
   line-height: var(--line-height-relaxed);
 }
 
-/* Mejoras específicas para dispositivos táctiles */
+/* Configuración de arrastre - solo elementos específicos */
 .course-question-box {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: none;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .course-question-box.dragging {
-  touch-action: none;
-  -webkit-touch-callout: none;
   -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
-/* Mejorar la sensibilidad táctil en móviles */
 @media (max-width: 768px) {
-  .course-question-box {
-    cursor: grab;
-  }
-  
-  .course-question-box.dragging {
-    cursor: grabbing;
-  }
-  
   .course-container {
     padding: var(--spacing-lg) var(--spacing-sm);
   }

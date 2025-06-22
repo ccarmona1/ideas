@@ -22,7 +22,7 @@ const Explanation: React.FC<ExplanationProps> = ({
   const selectedLetter = ['a', 'b', 'c', 'd'][selectedOption];
 
   return (
-    <div className="question-container">
+    <div className="question-container explanation-container">
       <h1>Respuesta incorrecta</h1>
 
       <div className="answer-summary">

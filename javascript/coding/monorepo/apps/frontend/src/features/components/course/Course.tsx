@@ -252,8 +252,8 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
             transition:
               isDragging || isAnimating || dragY !== 0
                 ? 'none'
-                : `transform ${DRAG_CONFIG.CSS.TRANSFORM_DURATION} ${DRAG_CONFIG.CSS.EASING}`,
-            opacity: calculateDragOpacity(dragY), // Usar función de configuración
+                : `transform ${DRAG_CONFIG.CSS.TRANSFORM_DURATION} ${DRAG_CONFIG.CSS.EASING}, opacity ${DRAG_CONFIG.CSS.TRANSFORM_DURATION} ${DRAG_CONFIG.CSS.EASING}`,
+            opacity: calculateDragOpacity(dragY), // Usar función de configuración gradual
           }}
           onPointerDown={
             currentViewMode !== 'completed'

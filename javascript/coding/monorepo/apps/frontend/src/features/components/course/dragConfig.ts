@@ -12,9 +12,12 @@ export const DRAG_CONFIG = {
   // 0.1 = muy resistente, 1.0 = sin resistencia
   DOWNWARD_RESISTANCE: 0.3,
 
-  // Punto donde el elemento se vuelve invisible durante el arrastre
-  // Útil para feedback visual
-  OPACITY_THRESHOLD: -80, // Era -50, ahora espera más antes de desaparecer
+  // Punto donde el elemento EMPIEZA a desaparecer durante el arrastre
+  // La opacidad será gradual desde este punto hasta OPACITY_FADE_END
+  OPACITY_FADE_START: -60, // Empieza a desaparecer a los -60px
+
+  // Punto donde el elemento está completamente invisible
+  OPACITY_FADE_END: -120, // Completamente invisible a los -120px
 
   // Velocidad de las animaciones (en ms)
   ANIMATION: {
@@ -52,7 +55,24 @@ export const calculateDragResistance = (deltaY: number): number => {
   return deltaY * resistanceFactor < 0 ? deltaY * resistanceFactor : 0;
 };
 
-// Función helper para determinar la opacidad durante el arrastre
+// Función helper para determinar la opacidad durante el arrastre (gradual)
 export const calculateDragOpacity = (dragY: number): number => {
-  return dragY < DRAG_CONFIG.OPACITY_THRESHOLD ? 0 : 1;
+  // Si está por encima del punto de inicio, opacidad completa
+  if (dragY >= DRAG_CONFIG.OPACITY_FADE_START) {
+    return 1;
+  }
+
+  // Si está por debajo del punto final, opacidad cero
+  if (dragY <= DRAG_CONFIG.OPACITY_FADE_END) {
+    return 0;
+  }
+
+  // En el rango intermedio, calcular opacidad gradual
+  const fadeRange =
+    DRAG_CONFIG.OPACITY_FADE_START - DRAG_CONFIG.OPACITY_FADE_END;
+  const currentPosition = dragY - DRAG_CONFIG.OPACITY_FADE_END;
+  const opacity = currentPosition / fadeRange;
+
+  // Asegurar que esté entre 0 y 1, y aplicar una curva suave
+  return Math.max(0, Math.min(1, opacity * opacity)); // Curva cuadrática para transición más suave
 };

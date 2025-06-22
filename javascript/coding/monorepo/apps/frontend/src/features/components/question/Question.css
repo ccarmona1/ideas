@@ -1,5 +1,5 @@
 .question-container {
-  /* Permitir scroll normal por defecto */
+  /* Permitir scroll normal en toda la superficie */
   touch-action: auto;
   will-change: transform;
   backface-visibility: hidden;
@@ -10,15 +10,22 @@
   flex-direction: column;
   /* Mejorar rendimiento de scroll */
   -webkit-overflow-scrolling: touch;
-  /* Mejorar respuesta táctil */
-  -webkit-tap-highlight-color: transparent;
+  /* Permitir interacción táctil normal */
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+  /* Permitir selección de texto normal */
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 .question-container.dragging {
-  user-select: none;
+  /* Solo aplicar restricciones durante arrastre activo */
   -webkit-user-select: none;
-  /* Desactivar touch action durante arrastre */
-  touch-action: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* NO cambiar touch-action aquí - debe mantenerse en auto para scroll */
   /* Mejorar fluidez de animación */
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -75,6 +82,8 @@
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
   box-sizing: border-box; /* Asegurar que border no afecte el tamaño total */
+  /* Permitir scroll normal sobre los botones */
+  touch-action: auto;
 }
 
 .option-btn::before {
@@ -175,5 +184,17 @@
     padding: var(--spacing-base) var(--spacing-lg);
     font-size: var(--font-size-base);
     min-height: 3rem;
+    /* Asegurar scroll táctil suave en móviles */
+    -webkit-overflow-scrolling: touch;
+    /* Mejorar área táctil */
+    -webkit-tap-highlight-color: rgba(37, 99, 235, 0.1);
+  }
+  
+  .question-container {
+    /* Optimización específica para móviles */
+    -webkit-overflow-scrolling: touch;
+    /* Mejorar rendimiento en dispositivos móviles */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 }

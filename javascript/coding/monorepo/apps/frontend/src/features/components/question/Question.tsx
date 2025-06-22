@@ -11,6 +11,17 @@ export interface QuestionProps {
     selectedOption: number | undefined,
     isCorrect: boolean
   ) => boolean;
+  onDragAction?: () => void;
+  dragHandlers?: {
+    onPointerDown: (e: React.PointerEvent<HTMLDivElement>) => void;
+    onPointerMove: (e: React.PointerEvent<HTMLDivElement>) => void;
+    onPointerUp: (e?: React.PointerEvent<HTMLDivElement>) => void;
+    onPointerLeave: (e?: React.PointerEvent<HTMLDivElement>) => void;
+    onTouchStart: (e: React.TouchEvent<HTMLDivElement>) => void;
+    onTouchMove: (e: React.TouchEvent<HTMLDivElement>) => void;
+    onTouchEnd: (e: React.TouchEvent<HTMLDivElement>) => void;
+  };
+  canDrag?: boolean;
   disabled?: boolean;
 }
 
@@ -20,6 +31,9 @@ export const Question: React.FC<QuestionProps> = ({
   onIncorrect,
   onSkip,
   onDragStart,
+  onDragAction,
+  dragHandlers,
+  canDrag,
   disabled,
 }) => {
   const [selectedOption, setSelectedOption] = useState<number | undefined>(
@@ -34,12 +48,18 @@ export const Question: React.FC<QuestionProps> = ({
   // NUEVO: obtener el índice de la respuesta correcta
   const correctIndex = ['a', 'b', 'c', 'd'].indexOf(question.answer);
 
+  // Resetear estado cuando cambia la pregunta
+  React.useEffect(() => {
+    setSelectedOption(undefined);
+    setAnsweredCorrectly(false);
+  }, [question.question]);
+
   // Notificar al componente padre sobre el estado de arrastre
   React.useEffect(() => {
     if (onDragStart) {
       onDragStart(selectedOption, isCorrect);
     }
-  }, [selectedOption, isCorrect, onDragStart]);
+  }, [selectedOption, isCorrect]); // Remover onDragStart de dependencias para evitar bucles
 
   const handleSelectOption = (index: number) => {
     if (!answeredCorrectly && !disabled) {
@@ -104,16 +124,80 @@ export const Question: React.FC<QuestionProps> = ({
       {/* Mostrar hint de arrastre basado en el estado */}
       {selectedOption !== undefined && !isCorrect && (
         <div className="explanation-footer">
-          <div className="drag-hint">
-            Arrastra hacia arriba para ver la explicación
+          <div
+            className="drag-hint drag-hint-interactive"
+            onClick={onDragAction}
+            onPointerDown={
+              canDrag && dragHandlers ? dragHandlers.onPointerDown : undefined
+            }
+            onPointerMove={
+              canDrag && dragHandlers ? dragHandlers.onPointerMove : undefined
+            }
+            onPointerUp={
+              canDrag && dragHandlers ? dragHandlers.onPointerUp : undefined
+            }
+            onPointerLeave={
+              canDrag && dragHandlers ? dragHandlers.onPointerLeave : undefined
+            }
+            onTouchStart={
+              canDrag && dragHandlers ? dragHandlers.onTouchStart : undefined
+            }
+            onTouchMove={
+              canDrag && dragHandlers ? dragHandlers.onTouchMove : undefined
+            }
+            onTouchEnd={
+              canDrag && dragHandlers ? dragHandlers.onTouchEnd : undefined
+            }
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onDragAction?.();
+              }
+            }}
+          >
+            Arrastra o haz click aquí para ver la explicación
           </div>
         </div>
       )}
 
       {selectedOption === undefined && onSkip && (
         <div className="explanation-footer">
-          <div className="drag-hint">
-            Arrastra hacia arriba para responder después
+          <div
+            className="drag-hint drag-hint-interactive"
+            onClick={onDragAction}
+            onPointerDown={
+              canDrag && dragHandlers ? dragHandlers.onPointerDown : undefined
+            }
+            onPointerMove={
+              canDrag && dragHandlers ? dragHandlers.onPointerMove : undefined
+            }
+            onPointerUp={
+              canDrag && dragHandlers ? dragHandlers.onPointerUp : undefined
+            }
+            onPointerLeave={
+              canDrag && dragHandlers ? dragHandlers.onPointerLeave : undefined
+            }
+            onTouchStart={
+              canDrag && dragHandlers ? dragHandlers.onTouchStart : undefined
+            }
+            onTouchMove={
+              canDrag && dragHandlers ? dragHandlers.onTouchMove : undefined
+            }
+            onTouchEnd={
+              canDrag && dragHandlers ? dragHandlers.onTouchEnd : undefined
+            }
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onDragAction?.();
+              }
+            }}
+          >
+            Arrastra o haz click aquí para responder después
           </div>
         </div>
       )}

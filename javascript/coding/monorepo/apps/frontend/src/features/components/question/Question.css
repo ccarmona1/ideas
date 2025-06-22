@@ -1,6 +1,5 @@
 .question-container {
   touch-action: pan-y;
-  cursor: grab;
   will-change: transform;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -8,7 +7,6 @@
 }
 
 .question-container.dragging {
-  cursor: grabbing;
   user-select: none;
   -webkit-user-select: none;
 }

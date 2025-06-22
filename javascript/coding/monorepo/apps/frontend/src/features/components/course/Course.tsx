@@ -65,9 +65,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     resetPosition,
     handlers: dragHandlers,
   } = useDragGesture({
-    canDrag: currentViewMode === 'explanation' || canDrag,
+    canDrag: true, // Simplificar: siempre permitir intentar arrastrar, la lógica se decide en onSwipeUp
     onSwipeUp: () => {
-      setCanDrag(false);
+      console.log('SwipeUp triggered', { currentViewMode, lastQuestionState });
 
       if (currentViewMode === 'explanation') {
         handleNextFromExplanation();
@@ -96,7 +96,35 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
         }
       }
     },
-  });
+  }); // Función para manejar acciones desde los elementos de arrastre
+  const handleDragAction = React.useCallback(() => {
+    console.log('DragAction triggered', { currentViewMode, lastQuestionState });
+
+    if (currentViewMode === 'explanation') {
+      handleNextFromExplanation();
+    } else if (currentViewMode === 'question') {
+      const currentQuestion = questionQueue[currentQuestionIndex];
+
+      if (lastQuestionState) {
+        if (
+          lastQuestionState.hasSelectedOption &&
+          !lastQuestionState.isCorrect
+        ) {
+          // Respuesta incorrecta -> mostrar explicación
+          handleShowExplanation(
+            currentQuestion,
+            lastQuestionState.selectedOptionIndex
+          );
+        } else if (!lastQuestionState.hasSelectedOption) {
+          // Sin respuesta -> saltar pregunta
+          handleSkipQuestion();
+        }
+      } else {
+        // Fallback: si no hay estado, saltar pregunta
+        handleSkipQuestion();
+      }
+    }
+  }, [currentViewMode, lastQuestionState, questionQueue, currentQuestionIndex]);
 
   // Limpieza del estado de arrastre al desmontar el componente
   React.useEffect(() => {
@@ -116,6 +144,10 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
       }
 
       setQuestionTransition('entering');
+
+      // Resetear posición de arrastre
+      resetPosition();
+
       setTimeout(
         () => setQuestionTransition('idle'),
         DRAG_CONFIG.ANIMATION.CLEANUP_DELAY
@@ -149,6 +181,10 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     }
 
     setQuestionTransition('entering');
+
+    // Resetear posición de arrastre
+    resetPosition();
+
     setTimeout(() => setQuestionTransition('idle'), 100);
   };
 
@@ -161,6 +197,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     setCurrentViewMode('explanation');
     setShowingExplanation(true);
     setQuestionTransition('entering');
+
+    // Resetear posición de arrastre
+    resetPosition();
 
     setTimeout(() => setQuestionTransition('idle'), 100);
   };
@@ -177,29 +216,33 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     }
 
     setQuestionTransition('entering');
+
+    // Resetear posición de arrastre
+    resetPosition();
+
     setTimeout(() => setQuestionTransition('idle'), 100);
   };
 
   // Handlers de arrastre simplificados
-  const handleDragStart = (
-    selectedOption: number | undefined,
-    isCorrect: boolean
-  ) => {
-    const shouldAllowDrag =
-      (selectedOption !== undefined && !isCorrect) || // Respuesta incorrecta
-      selectedOption === undefined; // Sin respuesta (para saltar)
+  const handleDragStart = React.useCallback(
+    (selectedOption: number | undefined, isCorrect: boolean) => {
+      const shouldAllowDrag =
+        (selectedOption !== undefined && !isCorrect) || // Respuesta incorrecta
+        selectedOption === undefined; // Sin respuesta (para saltar)
 
-    setCanDrag(shouldAllowDrag);
+      setCanDrag(shouldAllowDrag);
 
-    // Actualizar el estado de la última pregunta
-    setLastQuestionState({
-      hasSelectedOption: selectedOption !== undefined,
-      isCorrect: isCorrect,
-      selectedOptionIndex: selectedOption ?? -1,
-    });
+      // Actualizar el estado de la última pregunta
+      setLastQuestionState({
+        hasSelectedOption: selectedOption !== undefined,
+        isCorrect: isCorrect,
+        selectedOptionIndex: selectedOption ?? -1,
+      });
 
-    return shouldAllowDrag;
-  };
+      return shouldAllowDrag;
+    },
+    []
+  ); // Sin dependencias para evitar re-creación
 
   // Verificar si el cuestionario está completado
   const isCompleted = currentQuestionIndex >= questionQueue.length;
@@ -217,21 +260,6 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
       setCurrentViewMode('question');
     }
   }, [isCompleted, showingExplanation]);
-
-  // Resetear posición del arrastre después de cambios de contenido
-  React.useEffect(() => {
-    // Usar requestAnimationFrame para asegurar que el DOM se actualice primero
-    const frame = requestAnimationFrame(() => {
-      resetPosition();
-    });
-
-    return () => cancelAnimationFrame(frame);
-  }, [
-    currentViewMode,
-    currentQuestionIndex,
-    showingExplanation,
-    resetPosition,
-  ]);
 
   // Limpiar el estado de la última pregunta cuando cambiamos de pregunta o vista
   React.useEffect(() => {
@@ -272,41 +300,6 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
                 : `transform ${DRAG_CONFIG.CSS.TRANSFORM_DURATION} ${DRAG_CONFIG.CSS.EASING}, opacity ${DRAG_CONFIG.CSS.TRANSFORM_DURATION} ${DRAG_CONFIG.CSS.EASING}`,
             opacity: calculateDragOpacity(dragY), // Usar función de configuración gradual
           }}
-          onPointerDown={
-            currentViewMode !== 'completed'
-              ? dragHandlers.onPointerDown
-              : undefined
-          }
-          onPointerMove={
-            currentViewMode !== 'completed'
-              ? dragHandlers.onPointerMove
-              : undefined
-          }
-          onPointerUp={
-            currentViewMode !== 'completed'
-              ? dragHandlers.onPointerUp
-              : undefined
-          }
-          onPointerLeave={
-            currentViewMode !== 'completed'
-              ? dragHandlers.onPointerLeave
-              : undefined
-          }
-          onTouchStart={
-            currentViewMode !== 'completed'
-              ? dragHandlers.onTouchStart
-              : undefined
-          }
-          onTouchMove={
-            currentViewMode !== 'completed'
-              ? dragHandlers.onTouchMove
-              : undefined
-          }
-          onTouchEnd={
-            currentViewMode !== 'completed'
-              ? dragHandlers.onTouchEnd
-              : undefined
-          }
         >
           {currentViewMode === 'completed' ? (
             <div className="course-completion">
@@ -350,6 +343,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
             <Explanation
               question={explanationData.question}
               selectedOption={explanationData.selectedOption}
+              onDragAction={handleDragAction}
+              dragHandlers={dragHandlers}
+              canDrag={true}
             />
           ) : (
             <Question
@@ -358,6 +354,9 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
               onIncorrect={handleIncorrect}
               onSkip={handleSkipQuestion}
               onDragStart={handleDragStart}
+              onDragAction={handleDragAction}
+              dragHandlers={dragHandlers}
+              canDrag={canDrag || !lastQuestionState?.hasSelectedOption}
             />
           )}
         </div>

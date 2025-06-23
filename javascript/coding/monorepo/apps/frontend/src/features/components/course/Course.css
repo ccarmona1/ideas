@@ -160,6 +160,7 @@
   .course-back-button {
     /* Convertir en botón compacto solo con flecha */
     padding: var(--spacing-sm);
+    padding-top: 5px;
     min-width: 40px;
     height: 40px;
     justify-content: center;

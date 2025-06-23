@@ -1,17 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import type { CourseMetadata } from '../../../types';
 import './Courses.css';
-import { useGetCourses } from './getCoursesHook';
+import { useGetCourses } from '../../hooks/useGetCourses';
+import BlockingSpinner from '../common/BlockingSpinner';
 
 export const Courses: React.FC = () => {
-  const [courses, setCourses] = useState<CourseMetadata[]>([]);
+  const { data: courses, loading, error } = useGetCourses();
 
-  useGetCourses(setCourses);
+  if (loading) {
+    return <BlockingSpinner message="Loading courses..." overlay={false} />;
+  }
+
+  if (error) {
+    return (
+      <div className="courses-error">
+        <h2>Error loading courses</h2>
+        <p>{error}</p>
+        <button onClick={() => window.location.reload()}>Retry</button>
+      </div>
+    );
+  }
+
+  if (!courses || courses.length === 0) {
+    return (
+      <div className="courses-empty">
+        <h2>No courses available</h2>
+        <p>Please check back later.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="courses-container">
-      {courses.map((course) => (
+      {courses.map((course: CourseMetadata) => (
         <Link
           to={`/course/${course.name}`}
           key={course.sha}

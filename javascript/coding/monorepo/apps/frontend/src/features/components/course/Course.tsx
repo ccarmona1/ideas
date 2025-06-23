@@ -1,18 +1,29 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { QuestionMetadata } from '../../../types';
-import { useGetQuestions } from '../courses/getCourseHook';
+import { useGetQuestions } from '../../hooks/useGetQuestions';
 import Explanation from '../question/Explanation';
 import { Question } from '../question/Question';
+import BlockingSpinner from '../common/BlockingSpinner';
 import './Course.css';
 
 export const Course: React.FC = () => {
   const params = useParams();
   const courseName = params.courseName ?? '';
 
+  const {
+    data: questionsData,
+    loading: questionsLoading,
+    error: questionsError,
+  } = useGetQuestions(courseName);
   const [questionQueue, setQuestionQueue] = useState<QuestionMetadata[]>([]);
 
-  useGetQuestions(setQuestionQueue, courseName);
+  // Initialize question queue when data is loaded
+  useEffect(() => {
+    if (questionsData && questionsData.length > 0) {
+      setQuestionQueue(questionsData);
+    }
+  }, [questionsData]);
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
@@ -263,6 +274,39 @@ export const Course: React.FC = () => {
         <div className="course-not-found">
           <h1>Cargando...</h1>
         </div>
+      </div>
+    );
+  }
+
+  // Show loading spinner while fetching questions
+  if (questionsLoading) {
+    return (
+      <BlockingSpinner message="Loading course questions..." overlay={false} />
+    );
+  }
+
+  // Show error state if questions failed to load
+  if (questionsError) {
+    return (
+      <div className="course-error">
+        <h2>Error loading course</h2>
+        <p>{questionsError}</p>
+        <Link to="/" className="course-error__back-button">
+          ← Back to courses
+        </Link>
+      </div>
+    );
+  }
+
+  // Show empty state if no questions available
+  if (!questionsData || questionsData.length === 0) {
+    return (
+      <div className="course-empty">
+        <h2>No questions available</h2>
+        <p>This course doesn't have any questions yet.</p>
+        <Link to="/" className="course-empty__back-button">
+          ← Back to courses
+        </Link>
       </div>
     );
   }

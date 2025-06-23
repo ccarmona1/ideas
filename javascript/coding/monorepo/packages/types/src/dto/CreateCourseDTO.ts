@@ -4,4 +4,5 @@ export interface CreateCourseDTO {
   courseDifficulty: string;
   courseNumOfQuestions: number;
   description?: string;
+  content?: string;
 }

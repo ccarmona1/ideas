@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './NewCourse.css';
 import type { CreateCourseDTO } from '@tester/types';
+import { createCourse } from './useCreateCourse';
 
 export const NewCourse: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<CreateCourseDTO>({
     courseName: '',
     courseKeywords: '',
@@ -60,19 +62,9 @@ export const NewCourse: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // TODO: Implement actual course creation API call
-      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate API call
-      console.log('Creating new course with data:', formData);
+      await createCourse(formData);
 
-      // Reset form on success
-      setFormData({
-        courseName: '',
-        courseKeywords: '',
-        courseDifficulty: '',
-        courseNumOfQuestions: 5,
-      });
-
-      // TODO: Show success message or redirect
+      navigate('/');
     } catch (error) {
       console.error('Error creating course:', error);
     } finally {

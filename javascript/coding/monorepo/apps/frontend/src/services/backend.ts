@@ -78,28 +78,12 @@ export class BackendService {
     }
   }
 
-  /**
-   * Get all courses
-   */
   async getCourses(): Promise<any[]> {
-    return this.apiRequest<any[]>('/api/github/courses');
+    return this.apiRequest<any[]>('/api/course/all');
   }
 
-  /**
-   * Get questions for a specific course
-   */
   async getQuestions(courseName: string): Promise<any[]> {
-    return this.apiRequest<any[]>(`/api/github/course/${courseName}`);
-  }
-
-  /**
-   * Submit quiz answers (if needed for future functionality)
-   */
-  async submitAnswers(courseName: string, answers: any): Promise<any> {
-    return this.apiRequest<any>(`/api/quiz/${courseName}/submit`, {
-      method: 'POST',
-      body: JSON.stringify(answers),
-    });
+    return this.apiRequest<any[]>(`/api/course/content/${courseName}`);
   }
 }
 

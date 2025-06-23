@@ -1,12 +1,16 @@
-import { useEffect } from 'react';
+import type { CreateCourseDTO } from '@tester/types';
 
-export const useCreateCourse = () => {
-  useEffect(() => {
-    async function createCourse() {
-      const apiUrl = import.meta.env.VITE_API_URL;
-      const url = `${apiUrl}/api/questions/generate`;
-      console.log(url);
-    }
-    createCourse();
-  }, []);
+export const createCourse = async (createCourseDto: CreateCourseDTO) => {
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const url = `${apiUrl}/api/course/create`;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(createCourseDto),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to create course');
+  }
 };

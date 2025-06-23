@@ -1,7 +1,13 @@
-import express from 'express';
 import cors from 'cors';
-import { githubRoutes } from './routes/github.js';
-import { questionsRoutes } from './routes/questions.js';
+import express, { Router } from 'express';
+import { CourseController } from './routes/CourseController.js';
+import { QuestionController } from './routes/QuestionController.js';
+import { GeminiGenerator } from './services/aiGenerator/GeminiGenerator.js';
+import { CourseService } from './services/domain/CourseService.js';
+import { QuestionService } from './services/domain/QuestionService.js';
+import { GitHubRepository } from './services/repository/GitHubRepository.js';
+import configureDI from './core/DependencyInjection.js';
+import { configureRoutes } from './core/ConfigureRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -10,9 +16,7 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// Routes
-app.use('/api/github', githubRoutes);
-app.use('/api/questions', questionsRoutes);
+configureRoutes(app);
 
 // Health check
 app.get('/health', (req, res) => {
@@ -21,10 +25,7 @@ app.get('/health', (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📊 Health check: http://localhost:${PORT}/health`);
-  console.log(`📂 GitHub API: http://localhost:${PORT}/api/github`);
-  console.log(`❓ Questions API: http://localhost:${PORT}/api/questions`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
 
 export default app;

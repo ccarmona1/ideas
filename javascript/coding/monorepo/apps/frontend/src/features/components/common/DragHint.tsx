@@ -27,13 +27,13 @@ export const DragHint: React.FC<DragHintProps> = ({
 
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
-      console.log('DragHint click handler called', { 
-        isDragging: isDraggingRef.current, 
+      console.log('DragHint click handler called', {
+        isDragging: isDraggingRef.current,
         hasHandlers: !!dragHandlers,
         canDrag,
-        onAction: !!onAction 
+        onAction: !!onAction,
       });
-      
+
       // Solo ejecutar click si no se ha iniciado un drag
       const clickTime = Date.now();
       const timeSinceStart = dragStartTimeRef.current

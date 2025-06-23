@@ -21,10 +21,11 @@ export const NewCourse: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    
+
     // Remove spaces from courseName
-    const processedValue = name === 'courseName' ? value.replace(/\s/g, '') : value;
-    
+    const processedValue =
+      name === 'courseName' ? value.replace(/\s/g, '') : value;
+
     setFormData((prev: CreateCourseDTO) => ({
       ...prev,
       [name]: processedValue,
@@ -75,8 +76,8 @@ export const NewCourse: React.FC = () => {
     } catch (error) {
       console.error('Error creating course:', error);
       setServerError(
-        error instanceof Error 
-          ? error.message 
+        error instanceof Error
+          ? error.message
           : 'Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.'
       );
     } finally {
@@ -88,7 +89,7 @@ export const NewCourse: React.FC = () => {
     <div className="new-course-container">
       {/* Loading State with AI Thinking Animation */}
       {isSubmitting && (
-        <BlockingSpinner 
+        <BlockingSpinner
           message="La IA está pensando y creando tu curso..."
           overlay={true}
         />
@@ -100,7 +101,7 @@ export const NewCourse: React.FC = () => {
           <div className="error-content">
             <span className="error-icon">⚠️</span>
             <p>{serverError}</p>
-            <button 
+            <button
               className="error-close-button"
               onClick={() => setServerError(null)}
               aria-label="Cerrar mensaje de error"

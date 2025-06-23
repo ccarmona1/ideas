@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "tsx watch --env-file=.env src/index.ts",
     "start:dev": "yarn build && node --env-file=.env dist/src/index.js",
-    "start": "yarn build && node dist/src/index.js",
+    "start": "tsc --skipLibCheck && node dist/src/index.js",
     "build": "tsc -b",
     "lint": "eslint ."
   },

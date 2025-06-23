@@ -32,7 +32,6 @@
   box-shadow: var(--shadow-sm); /* Misma sombra que el botón */
   border: 2px solid var(--color-gray-200); /* Border similar al botón */
   font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-sm);
   flex: 1;
   min-width: 0; /* Permite que se encoja si es necesario */
   height: fit-content; /* Altura automática basada en contenido */

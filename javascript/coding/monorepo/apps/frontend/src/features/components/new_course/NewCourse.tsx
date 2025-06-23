@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './NewCourse.css';
 import type { CreateCourseDTO } from '@tester/types';
 import { createCourse } from './useCreateCourse';
+import BlockingSpinner from '../common/BlockingSpinner';
 
 export const NewCourse: React.FC = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ export const NewCourse: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Partial<CreateCourseDTO>>({});
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -64,6 +66,7 @@ export const NewCourse: React.FC = () => {
     }
 
     setIsSubmitting(true);
+    setServerError(null); // Clear any previous errors
 
     try {
       await createCourse(formData);
@@ -71,6 +74,11 @@ export const NewCourse: React.FC = () => {
       navigate('/');
     } catch (error) {
       console.error('Error creating course:', error);
+      setServerError(
+        error instanceof Error 
+          ? error.message 
+          : 'Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -78,6 +86,31 @@ export const NewCourse: React.FC = () => {
 
   return (
     <div className="new-course-container">
+      {/* Loading State with AI Thinking Animation */}
+      {isSubmitting && (
+        <BlockingSpinner 
+          message="La IA está pensando y creando tu curso..."
+          overlay={true}
+        />
+      )}
+
+      {/* Server Error Message */}
+      {serverError && (
+        <div className="error-notification">
+          <div className="error-content">
+            <span className="error-icon">⚠️</span>
+            <p>{serverError}</p>
+            <button 
+              className="error-close-button"
+              onClick={() => setServerError(null)}
+              aria-label="Cerrar mensaje de error"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+
       <Link to="/" className="course-back-button">
         <span className="back-button-text">Volver a cursos</span>
       </Link>

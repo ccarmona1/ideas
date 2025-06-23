@@ -254,7 +254,7 @@ export const Course: React.FC = () => {
       <div className="course-container">
         <div className="course-header">
           <Link to="/" className="course-back-button">
-            Volver a cursos
+            <span className="back-button-text">Volver a cursos</span>
           </Link>
         </div>
         <div className="course-not-found">
@@ -263,24 +263,23 @@ export const Course: React.FC = () => {
       </div>
     );
   }
-
   return (
     <div className="course-container">
       <div className="course-header">
         <Link to="/" className="course-back-button">
-          Volver a cursos
+          <span className="back-button-text">Volver a cursos</span>
         </Link>
-      </div>
 
-      <div className="course-scoreboard">
-        <span className="score-correct">✔ {correctCount}</span>
-        <span className="score-incorrect">✖ {incorrectCount}</span>
-        <span className="score-total">
-          Restantes: {questionQueue.length - currentQuestionIndex}
-        </span>
-        {skippedCount > 0 && (
-          <span className="score-skipped">⏭ {skippedCount}</span>
-        )}
+        <div className="course-scoreboard">
+          <span className="score-correct">✔ {correctCount}</span>
+          <span className="score-incorrect">✖ {incorrectCount}</span>
+          <span className="score-total">
+            Restantes: {questionQueue.length - currentQuestionIndex}
+          </span>
+          {skippedCount > 0 && (
+            <span className="score-skipped">⏭ {skippedCount}</span>
+          )}
+        </div>
       </div>
       {questionQueue.length > 0 ? (
         <div

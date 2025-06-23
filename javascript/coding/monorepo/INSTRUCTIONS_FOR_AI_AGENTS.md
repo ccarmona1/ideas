@@ -32,9 +32,9 @@ src/
 
 ```
 Course Container
-├── Header (always visible)
-│   └── Back Button → "Volver a cursos"
-├── Scoreboard (progress tracking)
+├── Header (unified, always visible)
+│   ├── Back Button → "Volver a cursos"
+│   └── Scoreboard → Progress stats in same row
 └── Question Box (draggable container)
     ├── Question Component
     ├── Explanation Component
@@ -159,7 +159,8 @@ const scrollToTop = useCallback(() => {
 - **Simplified logic** without complex drag hooks
 - **Auto scroll** on every state change
 - **Question queue** with skip reordering
-- **Always visible back button** in header for easy navigation
+- **Unified header** with back button and stats in single row
+- **Mobile-optimized back button** (circular arrow icon)
 - **Clean state transitions** to prevent phantom selections
 
 ### SimpleDragHint.tsx

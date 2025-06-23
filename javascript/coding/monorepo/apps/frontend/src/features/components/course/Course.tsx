@@ -101,9 +101,9 @@ export const Course: React.FC = () => {
       setExplanationData({ question, selectedOption });
       setCurrentViewMode('explanation');
       setShowingExplanation(true);
-      
+
       // No limpiar lastQuestionState aquí porque lo necesitamos para la explicación
-      
+
       setQuestionTransition('entering');
       scrollToTop();
       setTimeout(() => setQuestionTransition('idle'), 100);
@@ -239,7 +239,7 @@ export const Course: React.FC = () => {
     setLastQuestionState(null);
     setCanDrag(false);
     setIsProcessingAction(false);
-    
+
     // Configurar canDrag basado en el modo actual
     if (currentViewMode === 'explanation') {
       setCanDrag(true);

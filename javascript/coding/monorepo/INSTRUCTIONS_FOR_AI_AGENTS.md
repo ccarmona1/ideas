@@ -264,13 +264,14 @@ const handleContainerDragEnd = () => {
 1. **Question loads** → `canDrag = false` (initial state, cleaned from previous question)
 2. **User selects wrong answer** → `handleDragStart()` triggered → `canDrag = true`
 3. **User skips question** → No automatic drag state change (prevents phantom selections)
-4. **User selects correct answer** → `handleDragStart()` triggered → `canDrag = false` 
+4. **User selects correct answer** → `handleDragStart()` triggered → `canDrag = false`
 5. **Explanation shows** → `canDrag = true` (to allow continuing)
 6. **Mode changes** → State completely cleared to prevent phantom selections
 
 ### State Management Improvements
 
 **Prevents phantom selections by:**
+
 - Only calling `onDragStart` when user actually selects an option (not on component mount)
 - Clearing `lastQuestionState` on all transitions (correct, skip, explanation → next)
 - Resetting `canDrag` to `false` on question changes

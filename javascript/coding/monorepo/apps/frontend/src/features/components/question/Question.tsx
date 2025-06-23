@@ -59,12 +59,12 @@ export const Question: React.FC<QuestionProps> = ({
     if (!answeredCorrectly && !disabled) {
       setSelectedOption(index);
       const isOptionCorrect = ['a', 'b', 'c', 'd'][index] === question.answer;
-      
+
       // Llamar a onDragStart solo después de que el usuario seleccione
       if (onDragStart) {
         onDragStart(index, isOptionCorrect);
       }
-      
+
       if (isOptionCorrect) {
         setAnsweredCorrectly(true);
         setTimeout(() => onCorrect(), 800);

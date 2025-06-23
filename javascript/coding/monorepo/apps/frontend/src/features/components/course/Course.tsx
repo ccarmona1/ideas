@@ -87,6 +87,10 @@ export const Course: React.FC = () => {
       );
     }
 
+    // Limpiar el estado de la pregunta anterior
+    setLastQuestionState(null);
+    setCanDrag(false);
+
     setQuestionTransition('entering');
     scrollToTop();
     setTimeout(() => setQuestionTransition('idle'), 100);
@@ -97,6 +101,9 @@ export const Course: React.FC = () => {
       setExplanationData({ question, selectedOption });
       setCurrentViewMode('explanation');
       setShowingExplanation(true);
+      
+      // No limpiar lastQuestionState aquí porque lo necesitamos para la explicación
+      
       setQuestionTransition('entering');
       scrollToTop();
       setTimeout(() => setQuestionTransition('idle'), 100);
@@ -108,6 +115,10 @@ export const Course: React.FC = () => {
     setCurrentViewMode('question');
     setShowingExplanation(false);
     setExplanationData(null);
+
+    // Limpiar el estado de la pregunta anterior al avanzar
+    setLastQuestionState(null);
+    setCanDrag(false);
 
     if (currentQuestionIndex < questionQueue.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -169,6 +180,10 @@ export const Course: React.FC = () => {
     (index: number) => {
       setCorrectCount((c) => c + 1);
 
+      // Limpiar el estado de la pregunta anterior
+      setLastQuestionState(null);
+      setCanDrag(false);
+
       setTimeout(() => {
         if (index < questionQueue.length - 1) {
           setCurrentQuestionIndex(index + 1);
@@ -220,14 +235,18 @@ export const Course: React.FC = () => {
   }, [isCompleted, showingExplanation]);
 
   useEffect(() => {
+    // Limpiar completamente el estado de la pregunta anterior
     setLastQuestionState(null);
+    setCanDrag(false);
+    setIsProcessingAction(false);
+    
+    // Configurar canDrag basado en el modo actual
     if (currentViewMode === 'explanation') {
       setCanDrag(true);
     } else if (currentViewMode === 'completed') {
       setCanDrag(false);
     }
-    // Para 'question' mode, canDrag se maneja por handleDragStart
-    setIsProcessingAction(false);
+    // Para 'question' mode, canDrag se maneja por handleDragStart cuando el usuario selecciona
   }, [currentQuestionIndex, currentViewMode]);
 
   if (!questionQueue) {

@@ -46,18 +46,26 @@ export const Question: React.FC<QuestionProps> = ({
   useEffect(() => {
     setSelectedOption(undefined);
     setAnsweredCorrectly(false);
-  }, [question.question]);
-
-  useEffect(() => {
+    // Limpiar el estado de drag cuando cambia la pregunta
     if (onDragStart) {
-      onDragStart(selectedOption, isCorrect);
+      onDragStart(undefined, false);
     }
-  }, [selectedOption, isCorrect]);
+  }, [question.question, onDragStart]);
+
+  // Remover el useEffect que llamaba automáticamente onDragStart
+  // Ahora solo se llamará cuando el usuario seleccione una opción
 
   const handleSelectOption = (index: number) => {
     if (!answeredCorrectly && !disabled) {
       setSelectedOption(index);
-      if (['a', 'b', 'c', 'd'][index] === question.answer) {
+      const isOptionCorrect = ['a', 'b', 'c', 'd'][index] === question.answer;
+      
+      // Llamar a onDragStart solo después de que el usuario seleccione
+      if (onDragStart) {
+        onDragStart(index, isOptionCorrect);
+      }
+      
+      if (isOptionCorrect) {
         setAnsweredCorrectly(true);
         setTimeout(() => onCorrect(), 800);
       } else {

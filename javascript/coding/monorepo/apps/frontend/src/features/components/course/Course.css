@@ -10,6 +10,14 @@
   margin: 0 auto;
 }
 
+.course-header {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: var(--spacing-lg);
+}
+
 .course-scoreboard {
   display: flex;
   justify-content: center;
@@ -135,6 +143,10 @@
 @media (max-width: 768px) {
   .course-container {
     padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  .course-header {
+    margin-bottom: var(--spacing-base);
   }
   
   .course-scoreboard {

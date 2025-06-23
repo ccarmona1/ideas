@@ -252,11 +252,13 @@ export const Course: React.FC = () => {
   if (!questionQueue) {
     return (
       <div className="course-container">
-        <div className="course-not-found">
-          <h1>Cargando...</h1>
+        <div className="course-header">
           <Link to="/" className="course-back-button">
             Volver a cursos
           </Link>
+        </div>
+        <div className="course-not-found">
+          <h1>Cargando...</h1>
         </div>
       </div>
     );
@@ -264,6 +266,12 @@ export const Course: React.FC = () => {
 
   return (
     <div className="course-container">
+      <div className="course-header">
+        <Link to="/" className="course-back-button">
+          Volver a cursos
+        </Link>
+      </div>
+
       <div className="course-scoreboard">
         <span className="score-correct">✔ {correctCount}</span>
         <span className="score-incorrect">✖ {incorrectCount}</span>
@@ -317,9 +325,6 @@ export const Course: React.FC = () => {
                   <span className="stat-label">Precisión</span>
                 </div>
               </div>
-              <Link to="/" className="course-back-button">
-                Volver a cursos
-              </Link>
             </div>
           ) : showingExplanation && explanationData ? (
             <Explanation
@@ -353,9 +358,6 @@ export const Course: React.FC = () => {
         <div className="course-question-box">
           <div className="course-loading">
             <h2>Cargando preguntas...</h2>
-            <Link to="/" className="course-back-button">
-              Volver a cursos
-            </Link>
           </div>
         </div>
       )}

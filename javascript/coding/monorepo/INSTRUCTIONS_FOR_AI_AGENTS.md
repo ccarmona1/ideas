@@ -28,6 +28,19 @@ src/
     └── common/            # Shared components (SimpleDragHint)
 ```
 
+## UI Structure
+
+```
+Course Container
+├── Header (always visible)
+│   └── Back Button → "Volver a cursos"
+├── Scoreboard (progress tracking)
+└── Question Box (draggable container)
+    ├── Question Component
+    ├── Explanation Component
+    └── Completion Screen
+```
+
 ## State Flow
 
 1. **Course List** → 2. **Question** → 3. **Answer Selection**
@@ -146,6 +159,8 @@ const scrollToTop = useCallback(() => {
 - **Simplified logic** without complex drag hooks
 - **Auto scroll** on every state change
 - **Question queue** with skip reordering
+- **Always visible back button** in header for easy navigation
+- **Clean state transitions** to prevent phantom selections
 
 ### SimpleDragHint.tsx
 

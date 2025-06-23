@@ -1,35 +1,30 @@
-import { Octokit } from '@octokit/rest';
-import { generateForm } from './generateForm.js';
+import express from 'express';
+import cors from 'cors';
+import { githubRoutes } from './routes/github.js';
+import { questionsRoutes } from './routes/questions.js';
 
-async function init() {
-  const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-  if (!GITHUB_TOKEN) {
-    throw new Error('GITHUB_TOKEN must be set in environment variables');
-  }
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-  const octokit = new Octokit({ auth: GITHUB_TOKEN });
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-  const GITHUB_OWNER = process.env.GITHUB_OWNER;
-  const GITHUB_REPO = process.env.GITHUB_REPO;
-  if (!GITHUB_OWNER || !GITHUB_REPO) {
-    throw new Error(
-      'GITHUB_OWNER and GITHUB_REPO must be set in environment variables'
-    );
-  }
-  const path = '/javascript/examenes/automaticos';
+// Routes
+app.use('/api/github', githubRoutes);
+app.use('/api/questions', questionsRoutes);
 
-  const response = await octokit.repos.getContent({
-    owner: GITHUB_OWNER,
-    repo: GITHUB_REPO,
-    path: path,
-  });
+// Health check
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
 
-  const courses = response.data;
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`📊 Health check: http://localhost:${PORT}/health`);
+  console.log(`📂 GitHub API: http://localhost:${PORT}/api/github`);
+  console.log(`❓ Questions API: http://localhost:${PORT}/api/questions`);
+});
 
-  console.log(response);
-
-  //await generateForm();
-}
-
-await init();
-export default init;
+export default app;

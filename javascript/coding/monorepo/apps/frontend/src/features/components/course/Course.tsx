@@ -1,28 +1,21 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Question } from '../question/Question';
+import type { QuestionMetadata } from '../../../types';
+import { useGetQuestions } from '../courses/getCourseHook';
 import Explanation from '../question/Explanation';
-import { useDragGesture } from './useDragGesture';
-import { DRAG_CONFIG, calculateDragOpacity } from './dragConfig';
-import preguntasModulo1 from './examen_modulo1.json';
-import preguntasModule2 from './examen_modulo2.json';
-import type { QuestionMetadata, CourseMetadata } from '../../../types';
+import { Question } from '../question/Question';
 import './Course.css';
+import { DRAG_CONFIG, calculateDragOpacity } from './dragConfig';
+import { useDragGesture } from './useDragGesture';
 
-export interface CourseProps {
-  courses: CourseMetadata[];
-}
-
-export const Course: React.FC<CourseProps> = ({ courses }) => {
+export const Course: React.FC = () => {
   const params = useParams();
-  const courseId = params.courseId;
-  const selectedCourse = courses.find((course) => course.id === courseId);
+  const courseName = params.courseName ?? '';
 
-  const initialQuestions: QuestionMetadata[] =
-    selectedCourse?.id === '1' ? preguntasModulo1 : preguntasModule2;
+  const [questionQueue, setQuestionQueue] = useState<QuestionMetadata[]>([]);
 
-  const [questionQueue, setQuestionQueue] =
-    useState<QuestionMetadata[]>(initialQuestions);
+  useGetQuestions(setQuestionQueue, courseName);
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [incorrectCount, setIncorrectCount] = useState(0);
@@ -243,11 +236,11 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
     setIsProcessingAction(false);
   }, [currentQuestionIndex, currentViewMode]);
 
-  if (!selectedCourse) {
+  if (!questionQueue) {
     return (
       <div className="course-container">
         <div className="course-not-found">
-          <h1>Curso no encontrado</h1>
+          <h1>Cargando...</h1>
           <Link to="/" className="course-back-button">
             Volver a cursos
           </Link>
@@ -288,7 +281,7 @@ export const Course: React.FC<CourseProps> = ({ courses }) => {
               <h2>🎉 ¡Cuestionario completado!</h2>
               <p>
                 Has terminado todas las preguntas de{' '}
-                <strong>{selectedCourse.title}</strong>
+                <strong>{courseName}</strong>
               </p>
               <div className="completion-stats">
                 <div className="stat-item">

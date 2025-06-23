@@ -1,24 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Courses.css';
 import type { CourseMetadata } from '../../../types';
+import './Courses.css';
+import { useGetCourses } from './getCoursesHook';
 
-export interface CoursesProps {
-  courses: CourseMetadata[];
-}
+export const Courses: React.FC = () => {
+  const [courses, setCourses] = useState<CourseMetadata[]>([]);
 
-export const Courses: React.FC<CoursesProps> = ({ courses }) => {
+  useGetCourses(setCourses);
+
   return (
     <div className="courses-container">
       {courses.map((course) => (
         <Link
-          to={`/course/${course.id}`}
-          key={course.id}
+          to={`/course/${course.name}`}
+          key={course.sha}
           className="course-card"
           role="button"
-          aria-label={`Ir al curso ${course.title}`}
+          aria-label={`Ir al curso ${course.name}`}
         >
-          <h3>{course.title}</h3>
+          <h3>{course.name}</h3>
           <p>Advanced questions</p>
           <span className="course-arrow">→</span>
         </Link>

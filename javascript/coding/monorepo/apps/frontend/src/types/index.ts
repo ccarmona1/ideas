@@ -19,6 +19,6 @@ export interface DragHandlers {
 }
 
 export interface CourseMetadata {
-  id: string;
-  title: string;
+  sha: string;
+  name: string;
 }

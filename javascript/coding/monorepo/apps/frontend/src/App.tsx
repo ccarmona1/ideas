@@ -1,35 +1,19 @@
-import { useState } from 'react';
-import './App.css';
-import Courses from './features/components/courses/Courses';
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from 'react-router-dom';
+import './App.css';
 import Course from './features/components/course/Course';
-import type { CourseMetadata } from './types';
+import Courses from './features/components/courses/Courses';
 
 function App() {
-  const [courses] = useState<CourseMetadata[]>([
-    {
-      id: '1',
-      title: 'Pure JavaScript',
-    },
-    {
-      id: '2',
-      title: 'Typescript',
-    },
-  ]);
-
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route>
-        <Route path="/" element={<Courses courses={courses} />}></Route>
-        <Route
-          path="/course/:courseId"
-          element={<Course courses={courses} />}
-        ></Route>
+        <Route path="/" element={<Courses />}></Route>
+        <Route path="/course/:courseName" element={<Course />}></Route>
       </Route>
     )
   );

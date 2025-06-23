@@ -48,7 +48,7 @@ export const Courses: React.FC = () => {
       ))}
       <Link
         to={`/new-course`}
-        className="course-card"
+        className="course-card course-card-create"
         role="button"
         aria-label={`Crear nuevo curso`}
       >

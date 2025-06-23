@@ -19,9 +19,13 @@ export const NewCourse: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
+    
+    // Remove spaces from courseName
+    const processedValue = name === 'courseName' ? value.replace(/\s/g, '') : value;
+    
     setFormData((prev: CreateCourseDTO) => ({
       ...prev,
-      [name]: value,
+      [name]: processedValue,
     }));
 
     // Clear error when user starts typing

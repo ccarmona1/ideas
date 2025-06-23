@@ -4,7 +4,7 @@ import { githubRoutes } from './routes/github.js';
 import { questionsRoutes } from './routes/questions.js';
 
 const app = express();
-const PORT = process.env.PORT_NODE || 10000;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());

@@ -11,6 +11,10 @@
     {
       "name": "Frontend", 
       "path": "./apps/frontend"
+    },
+    {
+      "name": "Types",
+      "path": "./packages/types"
     }
   ],
   "settings": {

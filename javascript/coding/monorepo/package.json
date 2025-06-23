@@ -5,10 +5,16 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "devDependencies": {
     "concurrently": "^9.1.2"
+  },
+  "scripts": {
+    "build": "yarn workspace @tester/types build && yarn install --force && tsc -b",
+    "dev": "concurrently \"yarn workspace backend dev\" \"yarn workspace frontend dev\"",
+    "dev:backend": "yarn workspace backend dev",
+    "dev:frontend": "yarn workspace frontend dev"
   }
 }

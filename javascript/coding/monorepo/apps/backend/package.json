@@ -5,17 +5,18 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "ts-node --env-file=.env src/index.ts",
+    "dev": "tsx watch --env-file=.env src/index.ts",
     "start:dev": "yarn build && node --env-file=.env dist/src/index.js",
     "start": "yarn build && node dist/src/index.js",
     "build": "tsc -b",
     "lint": "eslint ."
   },
   "devDependencies": {
-    "ts-node": "^10.9.2",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@tester/types": "*",
     "@google/genai": "^1.6.0",
     "@octokit/rest": "^22.0.0",
     "@types/cors": "^2.8.19",

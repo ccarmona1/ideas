@@ -1,12 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { QuestionMetadata } from '../../../types';
 import { useGetQuestions } from '../courses/getCourseHook';
 import Explanation from '../question/Explanation';
 import { Question } from '../question/Question';
 import './Course.css';
-import { DRAG_CONFIG, calculateDragOpacity } from './dragConfig';
-import { useDragGesture } from './useDragGesture';
 
 export const Course: React.FC = () => {
   const params = useParams();
@@ -40,8 +38,10 @@ export const Course: React.FC = () => {
     selectedOptionIndex: number;
   } | null>(null);
 
-  // Ref para usar con executeAction antes de definirlo
-  const executeActionRef = useRef<(() => void) | undefined>(undefined);
+  // Estados para el drag visual del contenedor
+  const [containerDragY, setContainerDragY] = useState(0);
+  const [containerOpacity, setContainerOpacity] = useState(1);
+  const [isContainerDragging, setIsContainerDragging] = useState(false);
 
   const scrollToTop = useCallback(() => {
     window.scrollTo(0, 0);
@@ -50,18 +50,24 @@ export const Course: React.FC = () => {
     }, 10);
   }, []);
 
-  // Hook de arrastre
-  const {
-    containerRef,
-    dragY,
-    isDragging,
-    isAnimating,
-    resetPosition,
-    handlers: dragHandlers,
-  } = useDragGesture({
-    canDrag: canDrag,
-    onSwipeUp: () => executeActionRef.current?.(),
-  });
+  // Handlers para el drag visual del contenedor
+  const handleContainerDragStart = useCallback(() => {
+    setIsContainerDragging(true);
+  }, []);
+
+  const handleContainerDragMove = useCallback(
+    (deltaY: number, opacity: number) => {
+      setContainerDragY(deltaY);
+      setContainerOpacity(opacity);
+    },
+    []
+  );
+
+  const handleContainerDragEnd = useCallback(() => {
+    setIsContainerDragging(false);
+    setContainerDragY(0);
+    setContainerOpacity(1);
+  }, []);
 
   const handleSkipQuestion = useCallback(() => {
     setSkippedCount((c) => c + 1);
@@ -82,10 +88,9 @@ export const Course: React.FC = () => {
     }
 
     setQuestionTransition('entering');
-    resetPosition();
     scrollToTop();
     setTimeout(() => setQuestionTransition('idle'), 100);
-  }, [questionQueue, currentQuestionIndex, scrollToTop, resetPosition]);
+  }, [questionQueue, currentQuestionIndex, scrollToTop]);
 
   const handleShowExplanation = useCallback(
     (question: QuestionMetadata, selectedOption: number) => {
@@ -93,11 +98,10 @@ export const Course: React.FC = () => {
       setCurrentViewMode('explanation');
       setShowingExplanation(true);
       setQuestionTransition('entering');
-      resetPosition();
       scrollToTop();
       setTimeout(() => setQuestionTransition('idle'), 100);
     },
-    [scrollToTop, resetPosition]
+    [scrollToTop]
   );
 
   const handleNextFromExplanation = useCallback(() => {
@@ -110,10 +114,9 @@ export const Course: React.FC = () => {
     }
 
     setQuestionTransition('entering');
-    resetPosition();
     scrollToTop();
     setTimeout(() => setQuestionTransition('idle'), 100);
-  }, [currentQuestionIndex, questionQueue.length, scrollToTop, resetPosition]);
+  }, [currentQuestionIndex, questionQueue.length, scrollToTop]);
 
   const executeAction = useCallback(() => {
     if (isProcessingAction) return;
@@ -154,11 +157,6 @@ export const Course: React.FC = () => {
     handleSkipQuestion,
   ]);
 
-  // Actualizar el ref cuando executeAction cambie
-  useEffect(() => {
-    executeActionRef.current = executeAction;
-  }, [executeAction]);
-
   const handleDragAction = executeAction;
 
   useEffect(() => {
@@ -176,15 +174,11 @@ export const Course: React.FC = () => {
           setCurrentQuestionIndex(index + 1);
         }
         setQuestionTransition('entering');
-        resetPosition();
         scrollToTop();
-        setTimeout(
-          () => setQuestionTransition('idle'),
-          DRAG_CONFIG.ANIMATION.CLEANUP_DELAY
-        );
-      }, DRAG_CONFIG.ANIMATION.SUCCESS_FEEDBACK_DELAY);
+        setTimeout(() => setQuestionTransition('idle'), 100);
+      }, 200);
     },
-    [questionQueue.length, scrollToTop, resetPosition]
+    [questionQueue.length, scrollToTop]
   );
 
   const handleIncorrect = useCallback(() => {
@@ -263,17 +257,20 @@ export const Course: React.FC = () => {
       </div>
       {questionQueue.length > 0 ? (
         <div
-          ref={containerRef}
           key={`${currentViewMode}-${currentQuestionIndex}-${correctCount}-${
             showingExplanation ? explanationData?.selectedOption : ''
           }`}
           className={`course-question-box ${
             questionTransition === 'entering' ? 'entering' : ''
-          } ${isDragging ? 'dragging' : ''}`}
+          } ${isContainerDragging ? 'dragging' : ''}`}
           style={{
-            transform: `translateY(${dragY}px)`,
-            opacity: calculateDragOpacity(dragY),
-            willChange: isDragging || isAnimating ? 'transform' : 'auto',
+            transform: isContainerDragging
+              ? `translateY(${containerDragY}px)`
+              : 'none',
+            opacity: isContainerDragging ? containerOpacity : 1,
+            transition: isContainerDragging
+              ? 'none'
+              : 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)', // Spring easing
           }}
         >
           {currentViewMode === 'completed' ? (
@@ -310,8 +307,10 @@ export const Course: React.FC = () => {
               question={explanationData.question}
               selectedOption={explanationData.selectedOption}
               onDragAction={handleDragAction}
-              dragHandlers={dragHandlers}
               canDrag={canDrag}
+              onContainerDragStart={handleContainerDragStart}
+              onDragMove={handleContainerDragMove}
+              onDragEnd={handleContainerDragEnd}
             />
           ) : (
             questionQueue[currentQuestionIndex] && (
@@ -322,9 +321,11 @@ export const Course: React.FC = () => {
                 onSkip={handleSkipQuestion}
                 onDragStart={handleDragStart}
                 onDragAction={handleDragAction}
-                dragHandlers={dragHandlers}
                 canDrag={canDrag}
                 disabled={false}
+                onContainerDragStart={handleContainerDragStart}
+                onDragMove={handleContainerDragMove}
+                onDragEnd={handleContainerDragEnd}
               />
             )
           )}

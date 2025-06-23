@@ -2,17 +2,12 @@
 
 ## Overview
 
-React + TypeScript + Vite interactive learning app with multiple-choice questions, vertical### Two-Phase Drag System
-
-1. **Touch Detection**: Touch/click starts tracking but doesn't prevent scroll
-2. **Movement Threshold**: 25px movement required to enter "real drag" mode
-3. **Execution Threshold**: 300px upward movement required to execute action
-4. **Click vs Drag**: Smart detection prevents click events during drag operations navigation, and responsive design.
+React + TypeScript + Vite interactive learning app with multiple-choice questions, simplified drag system, and responsive design.
 
 ## Key Features
 
 - **Global scroll** works everywhere (never blocked)
-- **Vertical drag** only on `.drag-hint-interactive` elements
+- **Simple drag system** on `SimpleDragHint` components
 - **Auto scroll-to-top** on all state transitions
 - **Responsive cards** (desktop only, mobile flat design)
 - **Question explanations** for incorrect answers
@@ -28,11 +23,9 @@ src/
 └── features/components/
     ├── courses/           # Course selection
     ├── course/            # Main quiz logic
-    │   ├── Course.tsx     # State management & transitions
-    │   ├── useDragGesture.ts # Drag behavior hook
-    │   └── dragConfig.ts  # Drag configuration
+    │   └── Course.tsx     # State management & transitions
     ├── question/          # Question & explanation display
-    └── common/            # Shared components (DragHint)
+    └── common/            # Shared components (SimpleDragHint)
 ```
 
 ## State Flow
@@ -41,6 +34,50 @@ src/
    - **Correct** → Next Question (auto scroll)
    - **Incorrect** → Explanation → Next Question (auto scroll)
    - **Skip** → Requeue Question (auto scroll)
+
+## SimpleDragHint System
+
+### Simple and Direct Implementation
+
+The new `SimpleDragHint` component is a self-contained drag/click handler that:
+
+1. **Detects drag vs click** internally
+2. **Handles all pointer/touch events** within the component
+3. **Provides visual feedback** during drag
+4. **Drags parent container** for card-swipe effect
+5. **Executes actions** on drag completion or click
+
+### Key Features
+
+- **15px threshold**: Movement must exceed this to be considered a drag
+- **80px action threshold**: Upward drag must exceed this to execute action
+- **Downward resistance**: 0.4x resistance for downward movement
+- **Click fallback**: If no drag occurs, treats as click
+- **Visual feedback**: Opacity fade and transform during drag
+- **Parent synchronization**: Drags entire card/container in sync
+- **Touch action**: `none` only on the specific element
+- **Spring animation**: Smooth bounce-back when drag ends
+
+### Usage
+
+```typescript
+<SimpleDragHint
+  text="Arrastra o haz click aquí para continuar"
+  onAction={() => executeAction()}
+  canDrag={true}
+  onDragStart={() => handleContainerDragStart()}
+  onDragMove={(deltaY, opacity) => handleContainerDragMove(deltaY, opacity)}
+  onDragEnd={() => handleContainerDragEnd()}
+/>
+```
+
+### Configuration
+
+```typescript
+const DRAG_THRESHOLD = 15; // Minimum movement to start drag
+const ACTION_THRESHOLD = 80; // Minimum upward movement to execute
+const DOWNWARD_RESISTANCE = 0.4; // Resistance for downward movement
+```
 
 ## Critical CSS Rules
 
@@ -51,21 +88,14 @@ src/
 .question-container,
 .course-question-box,
 .option-btn {
-  touch-action: auto; /* Never 'none' */
-}
-
-/* ✅ NO height/overflow restrictions */
-html,
-body {
-  min-height: 100%; /* Not height: 100% */
-  /* NO overflow-y: auto */
+  touch-action: auto; /* Never 'none' except on drag elements */
 }
 ```
 
 ### Drag (SPECIFIC ELEMENTS ONLY)
 
 ```css
-/* ✅ CAPTURE drag only here */
+/* ✅ CAPTURE drag only on SimpleDragHint */
 .drag-hint-interactive {
   touch-action: none; /* Only for drag hints */
 }
@@ -113,24 +143,17 @@ const scrollToTop = useCallback(() => {
 ### Course.tsx
 
 - **Main state management** (questions, scoring, transitions)
-- **Drag integration** via useDragGesture hook
+- **Simplified logic** without complex drag hooks
 - **Auto scroll** on every state change
 - **Question queue** with skip reordering
 
-### useDragGesture.ts
+### SimpleDragHint.tsx
 
-- **Two-phase drag detection**: 25px threshold to start, 300px threshold to execute
-- **Vertical drag with high resistance** for downward movement (0.1x)
-- **Opacity fade** during drag (starts at -100px, full fade at -200px)
-- **Scroll prevention** during active drag only
-- **Mobile optimization**: Reduced thresholds (-220px execution threshold)
-
-### DragHint.tsx
-
-- **Interactive drag target** with touch-action: none
-- **Click vs Drag separation** prevents accidental triggers
+- **Self-contained** drag and click handling
+- **Pointer capture** for reliable drag tracking
+- **Visual feedback** with transform and opacity
 - **Keyboard accessibility** (Enter/Space)
-- **Visual feedback** with hover states
+- **Touch-optimized** for mobile devices
 
 ## CSS Variables System
 
@@ -148,32 +171,6 @@ const scrollToTop = useCallback(() => {
 }
 ```
 
-## Enhanced Drag Configuration
-
-### Two-Phase Drag System
-
-1. **Immediate Response**: Touch/click immediately starts drag state
-2. **Visual Threshold**: 25px movement required for visual feedback
-3. **Execution Threshold**: 300px upward movement required to execute action
-
-### Drag Configuration Values
-
-```typescript
-const DRAG_CONFIG = {
-  SWIPE_THRESHOLD: -300, // Execution threshold (desktop)
-  DRAG_START_THRESHOLD: 25, // Minimum movement to start drag (increased)
-  DOWNWARD_RESISTANCE: 0.1, // High resistance for downward movement
-  OPACITY_FADE_START: -100, // Start fading opacity
-  OPACITY_FADE_END: -200, // Full opacity fade
-};
-```
-
-### Mobile Optimizations
-
-- **Reduced execution threshold**: -220px (vs -300px on desktop)
-- **Same start threshold**: 25px (consistent across devices)
-- **Enhanced touch handling**: Prevents accidental triggers
-
 ## TypeScript Interfaces
 
 ```typescript
@@ -184,6 +181,12 @@ interface QuestionMetadata {
   explanation: string;
   invalidOptions: Partial<Record<'a' | 'b' | 'c' | 'd', string>>;
 }
+
+interface SimpleDragHintProps {
+  text: string;
+  onAction: () => void;
+  canDrag?: boolean;
+}
 ```
 
 ## Prohibited Changes
@@ -193,30 +196,22 @@ interface QuestionMetadata {
 - **Never change touch-action rules**: Critical for drag/scroll separation
 - **Never force card styles on mobile**: Responsive design philosophy
 
-## Common Issues
+## Common Issues & Solutions
 
 1. **Scroll blocked**: Check `touch-action: auto` and remove `overflow-y` restrictions
-2. **Drag conflicts**: Ensure `touch-action: none` only on `.drag-hint-interactive`
+2. **Drag not working**: Verify `canDrag` is `true` and `onAction` is provided
 3. **Auto-scroll missing**: Verify `scrollToTop()` called in all state transitions
 4. **Mobile card styles**: Should be flat (transparent background, no shadows)
-5. **Drag not working**: Verify `useDragGesture({ canDrag: canDrag })` uses dynamic state, not `canDrag: true`
-6. **Drag too sensitive**: Check DRAG_START_THRESHOLD (25px) and SWIPE_THRESHOLD (-300px) values
-7. **Accidental triggers**: Ensure visual feedback only starts after 25px movement
-8. **Second click required**: Check that drag state activates immediately on first touch
-9. **Click vs Drag conflicts**: Ensure click events are cancelled when drag is detected
+5. **Click not working**: Check that `onAction` function is properly defined
+6. **Drag too sensitive**: Adjust `DRAG_THRESHOLD` and `ACTION_THRESHOLD` values
 
-## Critical Drag System Requirements
+## System Requirements
 
 ### State Management
 
 ```typescript
-// ✅ CORRECT - Use dynamic canDrag state
+// ✅ CORRECT - Use canDrag state for enabling/disabling
 const [canDrag, setCanDrag] = useState(false);
-
-const { dragHandlers } = useDragGesture({
-  canDrag: canDrag, // ❌ NOT canDrag: true
-  onSwipeUp: executeAction,
-});
 
 // ✅ CORRECT - Set canDrag based on question state
 const handleDragStart = useCallback((selectedOption, isCorrect) => {
@@ -227,6 +222,43 @@ const handleDragStart = useCallback((selectedOption, isCorrect) => {
 }, []);
 ```
 
+### Parent Container Synchronization
+
+The drag system now provides a seamless "card swipe" experience:
+
+1. **Unified movement**: Both `SimpleDragHint` and parent container move together
+2. **Synchronized opacity**: Opacity changes apply to both elements
+3. **Consistent easing**: Both use the same spring-back animation
+4. **Drag state sharing**: Container receives drag state via callbacks
+
+```typescript
+// In parent component (Course.tsx)
+const [containerDragY, setContainerDragY] = useState(0);
+const [containerOpacity, setContainerOpacity] = useState(1);
+const [isContainerDragging, setIsContainerDragging] = useState(false);
+
+const handleContainerDragStart = () => setIsContainerDragging(true);
+const handleContainerDragMove = (deltaY: number, opacity: number) => {
+  setContainerDragY(deltaY);
+  setContainerOpacity(opacity);
+};
+const handleContainerDragEnd = () => {
+  setIsContainerDragging(false);
+  setContainerDragY(0);
+  setContainerOpacity(1);
+};
+
+// Apply to container
+<div
+  className={`course-question-box ${isContainerDragging ? 'dragging' : ''}`}
+  style={{
+    transform: isContainerDragging ? `translateY(${containerDragY}px)` : 'none',
+    opacity: isContainerDragging ? containerOpacity : 1,
+    transition: isContainerDragging ? 'none' : 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+  }}
+>
+```
+
 ### Flow Requirements
 
 1. **Question loads** → `canDrag = false` (initial state)
@@ -234,6 +266,6 @@ const handleDragStart = useCallback((selectedOption, isCorrect) => {
 3. **User skips question** → `handleDragStart()` → `canDrag = true`
 4. **User selects correct answer** → `handleDragStart()` → `canDrag = false`
 5. **Explanation shows** → `canDrag = true` (to allow continuing)
-6. **Mode changes** → Only explanation/completed modes override canDrag
+6. **Mode changes** → Override canDrag based on mode
 
-**Version**: 3.3 - Fixed Click vs Drag Conflicts & Improved Threshold Detection
+**Version**: 4.0 - Simplified Drag System with SimpleDragHint

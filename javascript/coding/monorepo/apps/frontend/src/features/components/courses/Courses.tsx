@@ -24,6 +24,16 @@ export const Courses: React.FC = () => {
           <span className="course-arrow">→</span>
         </Link>
       ))}
+      <Link
+        to={`/course-new`}
+        className="course-card"
+        role="button"
+        aria-label={`Crear nuevo curso`}
+      >
+        <h3>Crear nuevo examen</h3>
+        <p>Usando Gemini AI</p>
+        <span className="course-arrow">→</span>
+      </Link>
     </div>
   );
 };

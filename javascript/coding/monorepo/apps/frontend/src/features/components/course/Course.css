@@ -128,6 +128,8 @@
 
 .course-question-box.dragging {
   user-select: none;
+  /* Añadir un poco de sombra durante el drag para efecto de elevación */
+  box-shadow: 0 8px 25px 0 rgb(0 0 0 / 0.15), 0 4px 10px 0 rgb(0 0 0 / 0.1);
 }
 
 @media (max-width: 768px) {

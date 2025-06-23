@@ -1,22 +1,26 @@
 import React from 'react';
 import './Explanation.css';
-import { DragHint } from '../common/DragHint';
-import type { QuestionMetadata, DragHandlers } from '../../../types';
+import { SimpleDragHint } from '../common/SimpleDragHint';
+import type { QuestionMetadata } from '../../../types';
 
 export interface ExplanationProps {
   question: QuestionMetadata;
   selectedOption: number;
   onDragAction?: () => void;
-  dragHandlers?: DragHandlers;
   canDrag?: boolean;
+  onContainerDragStart?: () => void;
+  onDragMove?: (deltaY: number, opacity: number) => void;
+  onDragEnd?: () => void;
 }
 
 const Explanation: React.FC<ExplanationProps> = ({
   question,
   selectedOption,
   onDragAction,
-  dragHandlers,
   canDrag,
+  onContainerDragStart,
+  onDragMove,
+  onDragEnd,
 }) => {
   const correctIndex = ['a', 'b', 'c', 'd'].indexOf(question.answer);
   const selectedLetter = ['a', 'b', 'c', 'd'][selectedOption];
@@ -56,11 +60,13 @@ const Explanation: React.FC<ExplanationProps> = ({
       </div>
 
       <div className="explanation-footer">
-        <DragHint
+        <SimpleDragHint
           text="Arrastra o haz click aquí para continuar"
-          onAction={onDragAction}
-          dragHandlers={dragHandlers}
+          onAction={() => onDragAction?.()}
           canDrag={canDrag}
+          onDragStart={onContainerDragStart}
+          onDragMove={onDragMove}
+          onDragEnd={onDragEnd}
         />
       </div>
     </div>

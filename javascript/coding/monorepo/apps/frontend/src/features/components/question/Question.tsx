@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Question.css';
-import { DragHint } from '../common/DragHint';
-import type { QuestionMetadata, DragHandlers } from '../../../types';
+import { SimpleDragHint } from '../common/SimpleDragHint';
+import type { QuestionMetadata } from '../../../types';
 
 export interface QuestionProps {
   question: QuestionMetadata;
@@ -13,9 +13,11 @@ export interface QuestionProps {
     isCorrect: boolean
   ) => boolean;
   onDragAction?: () => void;
-  dragHandlers?: DragHandlers;
   canDrag?: boolean;
   disabled?: boolean;
+  onContainerDragStart?: () => void;
+  onDragMove?: (deltaY: number, opacity: number) => void;
+  onDragEnd?: () => void;
 }
 
 export const Question: React.FC<QuestionProps> = ({
@@ -25,9 +27,11 @@ export const Question: React.FC<QuestionProps> = ({
   onSkip,
   onDragStart,
   onDragAction,
-  dragHandlers,
   canDrag,
   disabled,
+  onContainerDragStart,
+  onDragMove,
+  onDragEnd,
 }) => {
   const [selectedOption, setSelectedOption] = useState<number | undefined>(
     undefined
@@ -105,22 +109,26 @@ export const Question: React.FC<QuestionProps> = ({
 
       {selectedOption !== undefined && !isCorrect && (
         <div className="explanation-footer">
-          <DragHint
+          <SimpleDragHint
             text="Arrastra o haz click aquí para ver la explicación"
-            onAction={onDragAction}
-            dragHandlers={dragHandlers}
+            onAction={() => onDragAction?.()}
             canDrag={canDrag}
+            onDragStart={onContainerDragStart}
+            onDragMove={onDragMove}
+            onDragEnd={onDragEnd}
           />
         </div>
       )}
 
       {selectedOption === undefined && onSkip && (
         <div className="explanation-footer">
-          <DragHint
+          <SimpleDragHint
             text="Arrastra o haz click aquí para responder después"
-            onAction={onDragAction}
-            dragHandlers={dragHandlers}
+            onAction={() => onDragAction?.()}
             canDrag={canDrag}
+            onDragStart={onContainerDragStart}
+            onDragMove={onDragMove}
+            onDragEnd={onDragEnd}
           />
         </div>
       )}

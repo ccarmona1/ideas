@@ -125,28 +125,28 @@ export const useDragGesture = ({
   // Event handlers
   const handlePointerDown = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
-      if (startDrag(e.clientY)) {
+      if (canDrag && startDrag(e.clientY)) {
         e.preventDefault();
         e.stopPropagation();
       }
     },
-    [startDrag]
+    [canDrag, startDrag]
   );
 
   const handlePointerMove = useCallback(
     (e: React.PointerEvent<HTMLDivElement>) => {
-      if (isDragging) {
+      if (canDrag && isDragging) {
         e.preventDefault();
         e.stopPropagation();
         updateDrag(e.clientY);
       }
     },
-    [isDragging, updateDrag]
+    [canDrag, isDragging, updateDrag]
   );
 
   const handlePointerUp = useCallback(
     (e?: React.PointerEvent<HTMLDivElement>) => {
-      if (isDragging) {
+      if (canDrag && isDragging) {
         if (e) {
           e.preventDefault();
           e.stopPropagation();
@@ -154,41 +154,43 @@ export const useDragGesture = ({
         endDrag();
       }
     },
-    [isDragging, endDrag]
+    [canDrag, isDragging, endDrag]
   );
 
   const handleTouchStart = useCallback(
     (e: React.TouchEvent<HTMLDivElement>) => {
-      const touch = e.touches[0];
-      if (startDrag(touch.clientY)) {
-        e.preventDefault();
-        e.stopPropagation();
+      if (canDrag) {
+        const touch = e.touches[0];
+        if (startDrag(touch.clientY)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
       }
     },
-    [startDrag]
+    [canDrag, startDrag]
   );
 
   const handleTouchMove = useCallback(
     (e: React.TouchEvent<HTMLDivElement>) => {
-      if (isDragging) {
+      if (canDrag && isDragging) {
         e.preventDefault();
         e.stopPropagation();
         const touch = e.touches[0];
         updateDrag(touch.clientY);
       }
     },
-    [isDragging, updateDrag]
+    [canDrag, isDragging, updateDrag]
   );
 
   const handleTouchEnd = useCallback(
     (e: React.TouchEvent<HTMLDivElement>) => {
-      if (isDragging) {
+      if (canDrag && isDragging) {
         e.preventDefault();
         e.stopPropagation();
         endDrag();
       }
     },
-    [isDragging, endDrag]
+    [canDrag, isDragging, endDrag]
   );
 
   const resetPosition = useCallback(() => {

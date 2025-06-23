@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Question.css';
 import { DragHint } from '../common/DragHint';
-import type { QuestionMetadata, DragHandlers } from '../../../types';
+import type { QuestionMetadata } from '../../../types';
 
 export interface QuestionProps {
   question: QuestionMetadata;
@@ -13,7 +13,6 @@ export interface QuestionProps {
     isCorrect: boolean
   ) => boolean;
   onDragAction?: () => void;
-  dragHandlers?: DragHandlers;
   canDrag?: boolean;
   disabled?: boolean;
 }
@@ -25,7 +24,6 @@ export const Question: React.FC<QuestionProps> = ({
   onSkip,
   onDragStart,
   onDragAction,
-  dragHandlers,
   canDrag,
   disabled,
 }) => {
@@ -108,7 +106,6 @@ export const Question: React.FC<QuestionProps> = ({
           <DragHint
             text="Arrastra o haz click aquí para ver la explicación"
             onAction={onDragAction}
-            dragHandlers={dragHandlers}
             canDrag={canDrag}
           />
         </div>
@@ -119,7 +116,6 @@ export const Question: React.FC<QuestionProps> = ({
           <DragHint
             text="Arrastra o haz click aquí para responder después"
             onAction={onDragAction}
-            dragHandlers={dragHandlers}
             canDrag={canDrag}
           />
         </div>

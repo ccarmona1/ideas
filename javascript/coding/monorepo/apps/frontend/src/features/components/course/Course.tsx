@@ -275,6 +275,7 @@ export const Course: React.FC = () => {
             opacity: calculateDragOpacity(dragY),
             willChange: isDragging || isAnimating ? 'transform' : 'auto',
           }}
+          {...dragHandlers}
         >
           {currentViewMode === 'completed' ? (
             <div className="course-completion">
@@ -309,7 +310,6 @@ export const Course: React.FC = () => {
             <Explanation
               question={explanationData.question}
               selectedOption={explanationData.selectedOption}
-              dragHandlers={dragHandlers}
               onDragAction={handleDragAction}
               canDrag={canDrag}
             />
@@ -322,7 +322,6 @@ export const Course: React.FC = () => {
                 onSkip={handleSkipQuestion}
                 onDragStart={handleDragStart}
                 onDragAction={handleDragAction}
-                dragHandlers={dragHandlers}
                 canDrag={canDrag}
                 disabled={false}
               />

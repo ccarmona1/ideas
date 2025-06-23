@@ -1,13 +1,12 @@
 import React from 'react';
 import './Explanation.css';
 import { DragHint } from '../common/DragHint';
-import type { QuestionMetadata, DragHandlers } from '../../../types';
+import type { QuestionMetadata } from '../../../types';
 
 export interface ExplanationProps {
   question: QuestionMetadata;
   selectedOption: number;
   onDragAction?: () => void;
-  dragHandlers?: DragHandlers;
   canDrag?: boolean;
 }
 
@@ -15,7 +14,6 @@ const Explanation: React.FC<ExplanationProps> = ({
   question,
   selectedOption,
   onDragAction,
-  dragHandlers,
   canDrag,
 }) => {
   const correctIndex = ['a', 'b', 'c', 'd'].indexOf(question.answer);
@@ -59,7 +57,6 @@ const Explanation: React.FC<ExplanationProps> = ({
         <DragHint
           text="Arrastra o haz click aquí para continuar"
           onAction={onDragAction}
-          dragHandlers={dragHandlers}
           canDrag={canDrag}
         />
       </div>

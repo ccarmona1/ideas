@@ -35,6 +35,7 @@ export const SimpleDragHint: React.FC<SimpleDragHintProps> = ({
       if (!canDrag) return;
 
       e.preventDefault();
+      e.stopPropagation(); // Evitar propagación
       setIsDragging(true);
       setDragStarted(false);
       startY.current = e.clientY;
@@ -53,6 +54,7 @@ export const SimpleDragHint: React.FC<SimpleDragHintProps> = ({
       if (!isDragging || startY.current === null) return;
 
       e.preventDefault();
+      e.stopPropagation(); // Evitar propagación
       const deltaY = e.clientY - startY.current;
       const absDelta = Math.abs(deltaY);
 
@@ -85,6 +87,7 @@ export const SimpleDragHint: React.FC<SimpleDragHintProps> = ({
       if (!isDragging) return;
 
       e.preventDefault();
+      e.stopPropagation(); // Evitar propagación
 
       if (elementRef.current) {
         elementRef.current.releasePointerCapture(e.pointerId);
@@ -111,12 +114,17 @@ export const SimpleDragHint: React.FC<SimpleDragHintProps> = ({
     [isDragging, dragStarted, dragY, onAction, onDragEnd]
   );
 
-  const handleClick = useCallback(() => {
-    // Solo procesar click si no fue un evento drag
-    if (!dragStarted && !isDragging) {
-      onAction();
-    }
-  }, [dragStarted, isDragging, onAction]);
+  const handleClick = useCallback(
+    (e: React.MouseEvent) => {
+      // Solo procesar click si no fue un evento drag
+      if (!dragStarted && !isDragging) {
+        e.preventDefault();
+        e.stopPropagation(); // Evitar propagación del click
+        onAction();
+      }
+    },
+    [dragStarted, isDragging, onAction]
+  );
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {

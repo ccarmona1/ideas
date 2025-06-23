@@ -37,6 +37,7 @@ export const Question: React.FC<QuestionProps> = ({
     undefined
   );
   const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
   const isCorrect =
     selectedOption !== undefined &&
@@ -46,17 +47,26 @@ export const Question: React.FC<QuestionProps> = ({
   useEffect(() => {
     setSelectedOption(undefined);
     setAnsweredCorrectly(false);
+    setIsReady(false);
+
     // Limpiar el estado de drag cuando cambia la pregunta
     if (onDragStart) {
       onDragStart(undefined, false);
     }
+
+    // Pequeña demora para evitar phantom clicks
+    const timer = setTimeout(() => {
+      setIsReady(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [question.question, onDragStart]);
 
   // Remover el useEffect que llamaba automáticamente onDragStart
   // Ahora solo se llamará cuando el usuario seleccione una opción
 
   const handleSelectOption = (index: number) => {
-    if (!answeredCorrectly && !disabled) {
+    if (!answeredCorrectly && !disabled && isReady) {
       setSelectedOption(index);
       const isOptionCorrect = ['a', 'b', 'c', 'd'][index] === question.answer;
 
@@ -102,7 +112,7 @@ export const Question: React.FC<QuestionProps> = ({
                 type="button"
                 className={btnClass}
                 onClick={() => handleSelectOption(index)}
-                disabled={answeredCorrectly || disabled}
+                disabled={answeredCorrectly || disabled || !isReady}
                 aria-pressed={selectedOption === index}
                 aria-label={`Opción ${String.fromCharCode(
                   65 + index

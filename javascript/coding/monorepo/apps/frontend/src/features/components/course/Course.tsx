@@ -112,21 +112,24 @@ export const Course: React.FC = () => {
   );
 
   const handleNextFromExplanation = useCallback(() => {
-    setCurrentViewMode('question');
-    setShowingExplanation(false);
-    setExplanationData(null);
+    // Pequeña demora para evitar que los eventos de click se propaguen
+    setTimeout(() => {
+      setCurrentViewMode('question');
+      setShowingExplanation(false);
+      setExplanationData(null);
 
-    // Limpiar el estado de la pregunta anterior al avanzar
-    setLastQuestionState(null);
-    setCanDrag(false);
+      // Limpiar el estado de la pregunta anterior al avanzar
+      setLastQuestionState(null);
+      setCanDrag(false);
 
-    if (currentQuestionIndex < questionQueue.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    }
+      if (currentQuestionIndex < questionQueue.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+      }
 
-    setQuestionTransition('entering');
-    scrollToTop();
-    setTimeout(() => setQuestionTransition('idle'), 100);
+      setQuestionTransition('entering');
+      scrollToTop();
+      setTimeout(() => setQuestionTransition('idle'), 100);
+    }, 50); // 50ms de demora para evitar phantom clicks
   }, [currentQuestionIndex, questionQueue.length, scrollToTop]);
 
   const executeAction = useCallback(() => {

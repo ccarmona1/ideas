@@ -13,5 +13,6 @@
   width: 100%;
   min-height: 100vh;
   padding: var(--spacing-lg);
+  padding-bottom: 80px; /* Space for footer */
   flex: 1;
 }

@@ -8,6 +8,7 @@ import './App.css';
 import Course from './features/components/course/Course';
 import Courses from './features/components/courses/Courses';
 import { NewCourse } from './features/components/new_course/NewCourse';
+import Footer from './components/Footer';
 
 function App() {
   const router = createBrowserRouter(
@@ -25,6 +26,7 @@ function App() {
       <main className="app-main">
         <RouterProvider router={router} />
       </main>
+      <Footer />
     </div>
   );
 }

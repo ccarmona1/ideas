@@ -7,8 +7,9 @@
   "scripts": {
     "dev": "ts-node --env-file=.env src/index.ts",
     "start:dev": "yarn build && node --env-file=.env dist/index.js",
-    "start": "yarn build && node dist/index.js",
+    "start": "yarn build:prod && node dist/index.js",
     "build": "tsc -b",
+    "build:prod": "tsc -b --sourceMap false --declaration true",
     "lint": "eslint ."
   },
   "devDependencies": {

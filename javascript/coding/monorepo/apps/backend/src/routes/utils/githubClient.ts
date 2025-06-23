@@ -5,7 +5,7 @@ if (!GITHUB_TOKEN) {
   throw new Error('GITHUB_TOKEN must be set in environment variables');
 }
 
-const internalOctokit = new Octokit({ auth: GITHUB_TOKEN });
+const internalOctokit: Octokit = new Octokit({ auth: GITHUB_TOKEN });
 
 const GITHUB_OWNER = process.env.GITHUB_OWNER;
 const GITHUB_REPO = process.env.GITHUB_REPO;

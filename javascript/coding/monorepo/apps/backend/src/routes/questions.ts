@@ -1,5 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
-import { Request, Response, Router } from 'express';
+import { Request, Response, Router, RequestHandler } from 'express';
 
 const router = Router();
 
@@ -22,7 +22,7 @@ interface QuestionAnswer {
 }
 
 // Generate questions using Gemini API
-router.post('/generate', async (req: Request, res: Response) => {
+const generateQuestionsHandler: RequestHandler = async (req: Request, res: Response): Promise<void> => {
   try {
     const {
       prompt,
@@ -32,16 +32,18 @@ router.post('/generate', async (req: Request, res: Response) => {
     }: GenerateQuestionsRequest = req.body;
 
     if (!prompt) {
-      return res.status(400).json({
+      res.status(400).json({
         error: 'Prompt is required',
       });
+      return;
     }
 
     const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
     if (!GEMINI_API_KEY) {
-      return res.status(500).json({
+      res.status(500).json({
         error: 'GEMINI_API_KEY must be set in environment variables',
       });
+      return;
     }
 
     const genAI = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
@@ -98,7 +100,7 @@ IMPORTANT: Return ONLY the JSON array. Do not include \`\`\`json or any other fo
       questions = JSON.parse(text);
     } catch (parseError) {
       console.error('Failed to parse Gemini response as JSON:', text);
-      return res.status(500).json({
+      res.status(500).json({
         error: 'Failed to parse AI response as valid JSON',
         details:
           parseError instanceof Error
@@ -106,14 +108,16 @@ IMPORTANT: Return ONLY the JSON array. Do not include \`\`\`json or any other fo
             : 'Unknown parsing error',
         rawResponse: text,
       });
+      return;
     }
 
     // Validate the structure
     if (!Array.isArray(questions)) {
-      return res.status(500).json({
+      res.status(500).json({
         error: 'AI response is not an array',
         rawResponse: text,
       });
+      return;
     }
 
     // Validate each question
@@ -127,10 +131,11 @@ IMPORTANT: Return ONLY the JSON array. Do not include \`\`\`json or any other fo
         question.correct_answer < 0 ||
         question.correct_answer > 3
       ) {
-        return res.status(500).json({
+        res.status(500).json({
           error: 'Invalid question format in AI response',
           invalidQuestion: question,
         });
+        return;
       }
     }
 
@@ -151,7 +156,8 @@ IMPORTANT: Return ONLY the JSON array. Do not include \`\`\`json or any other fo
       details: error instanceof Error ? error.message : 'Unknown error',
     });
   }
-});
+};
 
+router.post('/generate', generateQuestionsHandler);
 
 export { router as questionsRoutes };

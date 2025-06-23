@@ -22,7 +22,10 @@ interface QuestionAnswer {
 }
 
 // Generate questions using Gemini API
-const generateQuestionsHandler: RequestHandler = async (req: Request, res: Response): Promise<void> => {
+const generateQuestionsHandler: RequestHandler = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
     const {
       prompt,

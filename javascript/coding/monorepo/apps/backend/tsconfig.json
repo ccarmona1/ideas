@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "moduleResolution": "nodenext",
-    "outDir": "./dist",                            /* Specify an output folder for all emitted files. */
+    "outDir": "./dist",
+    "composite": true,                                /* Enable constraints that allow a TypeScript project to be used with project references. */
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */

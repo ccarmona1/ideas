@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 export const useGetCourses = (setCourses: Function) => {
   useEffect(() => {
     async function getCourses() {
-      const apiUrl = `${window.location.protocol}//${window.location.hostname}:3001/api/github/courses`;
+      const apiUrl = `${window.location.protocol}//${window.location.hostname}:10000/api/github/courses`;
       const response = await fetch(apiUrl, {
         headers: { 'Content-Type': 'application/json' },
       });

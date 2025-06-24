@@ -1,17 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import type { CourseMetadata } from '../../../types';
 import './Courses.css';
-import { useFetch } from '../../../hooks/useFetch';
-import { useCoursesList } from './useCoursesList';
 import BlockingSpinner from '../common/BlockingSpinner';
+import { useCourses } from '../../hooks/courses/useCourses';
 
 export const Courses: React.FC = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
-  const { data, loading, error } = useFetch<CourseMetadata[]>(
-    `${apiUrl}/api/course/all`
-  );
-  const { courses } = useCoursesList(data, loading, error);
+  const { courses, loading, error } = useCourses(apiUrl);
 
   if (loading) {
     return <BlockingSpinner message="Loading courses..." overlay={false} />;
@@ -38,7 +33,7 @@ export const Courses: React.FC = () => {
 
   return (
     <div className="courses-container">
-      {courses.map((course: CourseMetadata) => (
+      {courses.map((course) => (
         <Link
           to={`/course/${course.name}`}
           key={course.sha}

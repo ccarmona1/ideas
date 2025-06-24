@@ -53,3 +53,13 @@
 - Actualizado Courses.tsx para usar useFetch y lógica centralizada
 - Separación de lógica de negocio y presentación en hooks y componentes
 - Siguiente: aplicar mismo patrón a features/components/course, question, new_course, health, header
+
+# Refactor log para agentes
+
+- Extraída la lógica de fetch de cursos a un servicio dedicado (courseService.ts)
+- Creado hook dedicado para cursos (useCourses.ts) y reemplazado en Courses.tsx
+- Limpiados imports y eliminado tipado redundante en Courses.tsx
+- Eliminados hooks y lógica de negocio innecesarios del componente Courses
+- Estructura de carpetas preparada para escalabilidad: services/courses y hooks/courses
+- Sin comentarios en el código, sin lógica duplicada
+- Componente Courses ahora solo renderiza y delega lógica

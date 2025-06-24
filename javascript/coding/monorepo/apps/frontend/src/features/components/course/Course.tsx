@@ -8,11 +8,82 @@ import { useCourseNavigation } from './hooks/useCourseNavigation';
 import { useCourseDrag } from './hooks/useCourseDrag';
 import { useCourseStats } from './hooks/useCourseStats';
 
+interface CourseStatsProps {
+  stats: ReturnType<typeof useCourseStats>;
+}
+
+const CourseScoreboard: React.FC<CourseStatsProps> = ({ stats }) => (
+  <div className="course-scoreboard">
+    <span className="score-correct">✔ {stats.correct}</span>
+    <span className="score-incorrect">✖ {stats.incorrect}</span>
+    <span className="score-total">Restantes: {stats.remaining}</span>
+    {stats.skipped > 0 && (
+      <span className="score-skipped">⏭ {stats.skipped}</span>
+    )}
+  </div>
+);
+
+const CourseCompletion: React.FC<{
+  stats: ReturnType<typeof useCourseStats>;
+  courseName: string;
+}> = ({ stats, courseName }) => (
+  <div className="course-completion">
+    <h2>🎉 ¡Cuestionario completado!</h2>
+    <p>
+      Has terminado todas las preguntas de <strong>{courseName}</strong>
+    </p>
+    <div className="completion-stats">
+      <div className="stat-item">
+        <span className="stat-value">{stats.correct}</span>
+        <span className="stat-label">Correctas</span>
+      </div>
+      <div className="stat-item">
+        <span className="stat-value">{stats.incorrect}</span>
+        <span className="stat-label">Incorrectas</span>
+      </div>
+      <div className="stat-item">
+        <span className="stat-value">{stats.skipped}</span>
+        <span className="stat-label">Saltadas</span>
+      </div>
+      <div className="stat-item accuracy">
+        <span className="stat-value">{stats.accuracy}%</span>
+        <span className="stat-label">Precisión</span>
+      </div>
+    </div>
+  </div>
+);
+
+const CourseLoading: React.FC = () => (
+  <div className="course-question-box">
+    <div className="course-loading">
+      <h2>Cargando preguntas...</h2>
+    </div>
+  </div>
+);
+
+const CourseError: React.FC = () => (
+  <div className="course-error">
+    <h2>Error loading course</h2>
+    <p>Ha ocurrido un error al cargar las preguntas del curso.</p>
+    <Link to="/" className="course-error__back-button">
+      ← Back to courses
+    </Link>
+  </div>
+);
+
+const CourseEmpty: React.FC = () => (
+  <div className="course-empty">
+    <h2>No questions available</h2>
+    <p>This course doesn't have any questions yet.</p>
+    <Link to="/" className="course-empty__back-button">
+      ← Back to courses
+    </Link>
+  </div>
+);
+
 export const Course: React.FC = () => {
   const params = useParams();
   const courseName = params.courseName ?? '';
-
-  // Hook de navegación y estado de preguntas
   const {
     questionQueue,
     currentQuestionIndex,
@@ -30,8 +101,6 @@ export const Course: React.FC = () => {
     handleDragStart,
     executeAction,
   } = useCourseNavigation(courseName);
-
-  // Hook de drag visual
   const {
     containerDragY,
     containerOpacity,
@@ -40,9 +109,7 @@ export const Course: React.FC = () => {
     handleContainerDragMove,
     handleContainerDragEnd,
   } = useCourseDrag();
-
   const handleDragAction = executeAction;
-
   const stats = useCourseStats({
     questionQueue,
     currentQuestionIndex,
@@ -50,7 +117,6 @@ export const Course: React.FC = () => {
     incorrectCount,
     skippedCount,
   });
-
   if (!questionQueue) {
     return (
       <div className="course-container">
@@ -65,40 +131,16 @@ export const Course: React.FC = () => {
       </div>
     );
   }
-
-  // Show loading spinner while fetching questions
-  // El loading y error se deben manejar en el hook, pero por ahora se mantienen aquí
-  // para no romper la UI. Mejorar en siguiente iteración.
   if (questionQueue.length === 0 && currentQuestionIndex === 0) {
     return (
       <BlockingSpinner message="Loading course questions..." overlay={false} />
     );
   }
-
-  // Show error state if questions failed to load
   if (questionQueue.length === 0 && currentQuestionIndex > 0) {
-    return (
-      <div className="course-error">
-        <h2>Error loading course</h2>
-        <p>Ha ocurrido un error al cargar las preguntas del curso.</p>
-        <Link to="/" className="course-error__back-button">
-          ← Back to courses
-        </Link>
-      </div>
-    );
+    return <CourseError />;
   }
-
-  // Show empty state if no questions available
   if (questionQueue.length === 0) {
-    return (
-      <div className="course-empty">
-        <h2>No questions available</h2>
-        <p>This course doesn't have any questions yet.</p>
-        <Link to="/" className="course-empty__back-button">
-          ← Back to courses
-        </Link>
-      </div>
-    );
+    return <CourseEmpty />;
   }
   return (
     <div className="course-container">
@@ -106,14 +148,7 @@ export const Course: React.FC = () => {
         <Link to="/" className="course-back-button">
           <span className="back-button-text">Volver a cursos</span>
         </Link>
-        <div className="course-scoreboard">
-          <span className="score-correct">✔ {stats.correct}</span>
-          <span className="score-incorrect">✖ {stats.incorrect}</span>
-          <span className="score-total">Restantes: {stats.remaining}</span>
-          {stats.skipped > 0 && (
-            <span className="score-skipped">⏭ {stats.skipped}</span>
-          )}
-        </div>
+        <CourseScoreboard stats={stats} />
       </div>
       {questionQueue.length > 0 ? (
         <div
@@ -134,31 +169,7 @@ export const Course: React.FC = () => {
           }}
         >
           {currentViewMode === 'completed' ? (
-            <div className="course-completion">
-              <h2>🎉 ¡Cuestionario completado!</h2>
-              <p>
-                Has terminado todas las preguntas de{' '}
-                <strong>{courseName}</strong>
-              </p>
-              <div className="completion-stats">
-                <div className="stat-item">
-                  <span className="stat-value">{stats.correct}</span>
-                  <span className="stat-label">Correctas</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-value">{stats.incorrect}</span>
-                  <span className="stat-label">Incorrectas</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-value">{stats.skipped}</span>
-                  <span className="stat-label">Saltadas</span>
-                </div>
-                <div className="stat-item accuracy">
-                  <span className="stat-value">{stats.accuracy}%</span>
-                  <span className="stat-label">Precisión</span>
-                </div>
-              </div>
-            </div>
+            <CourseCompletion stats={stats} courseName={courseName} />
           ) : showingExplanation && explanationData ? (
             <Explanation
               question={explanationData.question}
@@ -188,11 +199,7 @@ export const Course: React.FC = () => {
           )}
         </div>
       ) : (
-        <div className="course-question-box">
-          <div className="course-loading">
-            <h2>Cargando preguntas...</h2>
-          </div>
-        </div>
+        <CourseLoading />
       )}
     </div>
   );

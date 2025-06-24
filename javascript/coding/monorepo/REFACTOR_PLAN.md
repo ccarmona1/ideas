@@ -30,3 +30,4 @@ Refactorizaciones que espero:
 - No pueden haber métodos con más de 7 parámetros, sigue estándares de código limpio
 - Evita agregar comentarios
 - Elimina cualquier comentario que encuentres
+- Elimina cualquier componente o hook duplicado

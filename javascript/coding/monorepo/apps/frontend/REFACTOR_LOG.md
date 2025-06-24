@@ -26,3 +26,10 @@
 - [HECHO] Eliminado hook duplicado getCoursesHook.tsx. Courses.tsx usa solo useGetCourses tipado. Build y e2e tests pasan OK. Siguiente: refactorizar features/components/courses/Courses.tsx para separar lógica de negocio/presentación y tipar props si aplica.
 - [HECHO] Refactorizado Courses.tsx: lógica de negocio separada en useCoursesList, tipado estricto, presentación limpia. Listo para revisión de features relacionados y siguientes pasos de escalabilidad.
 - [HECHO] Refactor y tipado de NewCourse y useCreateCourse: tipado local, validación, presentación limpia. Listo para integración de lógica de negocio en un hook si crece la complejidad.
+- refactor: Course.tsx
+  - Eliminados todos los comentarios
+  - Extraídos subcomponentes: CourseScoreboard, CourseCompletion, CourseLoading, CourseError, CourseEmpty
+  - Tipado estricto en subcomponentes
+  - Lógica de estados y renderizado separada
+  - Componente principal reducido y más limpio
+  - Preparado para siguientes iteraciones (hooks, lógica, estilos)

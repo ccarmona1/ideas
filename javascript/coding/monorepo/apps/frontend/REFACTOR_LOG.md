@@ -38,3 +38,9 @@
 - Limpiados comentarios en archivos afectados.
 - Build y e2e tests pendientes de correr tras la limpieza.
 - Eliminados todos los comentarios de los archivos SimpleDragHint.tsx, NewCourse.tsx, HealthCheck.tsx y BlockingSpinner.tsx según el plan de refactorización. Listos para siguientes pasos de separación de lógica y estilos.
+- Extraído hook useNewCourseForm para encapsular la lógica de formulario y validación de NewCourse.
+- NewCourse ahora es solo presentacional y usa el hook.
+- Eliminados comentarios y estados internos del componente.
+- Importación de tipos desde '@tester/types'.
+- Eliminado import innecesario de useNavigate.
+- Estructura de carpetas preparada para hooks y types en new_course.

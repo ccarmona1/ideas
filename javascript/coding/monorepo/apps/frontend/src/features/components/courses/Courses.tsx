@@ -2,11 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Courses.css';
 import BlockingSpinner from '../common/BlockingSpinner';
-import { useCourses } from '../../hooks/courses/useCourses';
+import { useGetCourses } from '../../hooks/useGetCourses';
 
 export const Courses: React.FC = () => {
-  const apiUrl = import.meta.env.VITE_API_URL;
-  const { courses, loading, error } = useCourses(apiUrl);
+  const { data: courses, loading, error } = useGetCourses();
 
   if (loading) {
     return <BlockingSpinner message="Loading courses..." overlay={false} />;

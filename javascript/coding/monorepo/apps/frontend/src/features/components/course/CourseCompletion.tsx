@@ -1,12 +1,15 @@
 import React from 'react';
-import { useCourseStats } from './hooks/useCourseStats';
+import type { UseCourseStats } from './hooks/useCourseStats';
 
 interface CourseCompletionProps {
-  stats: ReturnType<typeof useCourseStats>;
+  stats: UseCourseStats;
   courseName: string;
 }
 
-const CourseCompletion: React.FC<CourseCompletionProps> = ({ stats, courseName }) => (
+const CourseCompletion: React.FC<CourseCompletionProps> = ({
+  stats,
+  courseName,
+}) => (
   <div className="course-completion">
     <h2>🎉 ¡Cuestionario completado!</h2>
     <p>

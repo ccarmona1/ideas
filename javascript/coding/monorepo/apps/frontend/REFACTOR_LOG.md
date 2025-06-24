@@ -44,3 +44,11 @@
 - Importación de tipos desde '@tester/types'.
 - Eliminado import innecesario de useNavigate.
 - Estructura de carpetas preparada para hooks y types en new_course.
+
+2025-06-24 Primera iteración:
+- Unificado y tipado hook de fetch de datos (useFetch) en src/hooks/useFetch.ts
+- Eliminados hooks duplicados y sin tipar (getCoursesHook.tsx, getCourseHook.tsx)
+- Eliminados comentarios en useCoursesList.ts y tipado estricto
+- Actualizado Courses.tsx para usar useFetch y lógica centralizada
+- Separación de lógica de negocio y presentación en hooks y componentes
+- Siguiente: aplicar mismo patrón a features/components/course, question, new_course, health, header

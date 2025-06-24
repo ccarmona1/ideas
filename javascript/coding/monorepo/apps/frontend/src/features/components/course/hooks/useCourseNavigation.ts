@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import type { QuestionMetadata } from '../../../../types';
-import { useGetQuestions } from '../../../hooks/useGetQuestions';
+import { useGetQuestions } from '../../../../hooks/useGetQuestions';
 
 export interface UseCourseNavigationResult {
   questionQueue: QuestionMetadata[];

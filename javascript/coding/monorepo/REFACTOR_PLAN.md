@@ -32,4 +32,6 @@ Refactorizaciones que espero:
 - Elimina cualquier comentario que encuentres
 - Elimina cualquier componente o hook duplicado
 - Un archivo solo puede tener un componente (Single responsability)
-- Importa los tipos desde "'@tester/types';", evita importaciones usando paths relativos para los tipos del paquete "@tester/types"
+- Todo llamado a un servicio externo debe de realizarse en su propio Servicio y su propio Hook
+- Valida método0s, clases o hooks innecesarios y elimínalos.
+- Los e2e tests ya reconocen los elementos correctamente, si un e2e falla es porque el elemento cambió o se dañó algo.

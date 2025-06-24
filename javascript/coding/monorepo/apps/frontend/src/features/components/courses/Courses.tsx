@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import type { CourseMetadata } from '../../../types';
 import './Courses.css';
-import { useGetCourses } from '../../hooks/useGetCourses';
+import { useFetch } from '../../../hooks/useFetch';
 import { useCoursesList } from './useCoursesList';
 import BlockingSpinner from '../common/BlockingSpinner';
 
 export const Courses: React.FC = () => {
-  const { data, loading, error } = useGetCourses();
+  const apiUrl = import.meta.env.VITE_API_URL;
+  const { data, loading, error } = useFetch<CourseMetadata[]>(`${apiUrl}/api/course/all`);
   const { courses } = useCoursesList(data, loading, error);
 
   if (loading) {

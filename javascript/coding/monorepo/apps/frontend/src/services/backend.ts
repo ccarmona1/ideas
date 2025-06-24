@@ -88,3 +88,15 @@ export class BackendService {
 }
 
 export const backendService = BackendService.getInstance();
+
+export async function fetchCourseQuestions(courseName: string) {
+  const API_URL = import.meta.env.VITE_API_URL;
+  const url = `${API_URL}/api/course/content/${courseName}`;
+  const response = await fetch(url, {
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json();
+}

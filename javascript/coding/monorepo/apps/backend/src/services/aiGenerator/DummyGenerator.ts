@@ -1,6 +1,6 @@
 import { CreateCourseDTO } from '@tester/types';
 import { AIGenerator } from './AIGenerator.js';
-import ingles from './ingles.json';
+import ingles from './ingles.json' with { type: 'json' };
 
 export class DummyGenerator extends AIGenerator {
   constructor() {

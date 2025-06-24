@@ -1,10 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Explanation from '../question/Explanation';
 import { Question } from '../question/Question';
 import BlockingSpinner from '../common/BlockingSpinner';
 import './Course.css';
 import { useCourseNavigation } from './hooks/useCourseNavigation';
+import { useCourseDrag } from './hooks/useCourseDrag';
 
 export const Course: React.FC = () => {
   const params = useParams();
@@ -30,29 +31,15 @@ export const Course: React.FC = () => {
     accuracy,
   } = useCourseNavigation(courseName);
 
-  // Estados visuales de drag
-  const [containerDragY, setContainerDragY] = useState(0);
-  const [containerOpacity, setContainerOpacity] = useState(1);
-  const [isContainerDragging, setIsContainerDragging] = useState(false);
-
-  // Handlers para el drag visual del contenedor
-  const handleContainerDragStart = useCallback(() => {
-    setIsContainerDragging(true);
-  }, []);
-
-  const handleContainerDragMove = useCallback(
-    (deltaY: number, opacity: number) => {
-      setContainerDragY(deltaY);
-      setContainerOpacity(opacity);
-    },
-    []
-  );
-
-  const handleContainerDragEnd = useCallback(() => {
-    setIsContainerDragging(false);
-    setContainerDragY(0);
-    setContainerOpacity(1);
-  }, []);
+  // Hook de drag visual
+  const {
+    containerDragY,
+    containerOpacity,
+    isContainerDragging,
+    handleContainerDragStart,
+    handleContainerDragMove,
+    handleContainerDragEnd,
+  } = useCourseDrag();
 
   const handleDragAction = executeAction;
 

@@ -15,3 +15,4 @@
 - [HECHO] Refactorizado Course.tsx para usar useCourseNavigation. Lint y build fallan por imports y variables no usadas.
 - [HECHO] Limpiados imports y destructuraciones no usadas en Course.tsx y useCourseNavigation.ts. Build y e2e tests pasan OK.
 - [LISTO PARA COMMIT] Siguiente: extraer lógica de drag a useCourseDrag y continuar con la separación de negocio/estilos.
+- [HECHO] Lógica de drag extraída a useCourseDrag.ts y Course.tsx actualizado para usar el nuevo hook. Build y tests pendientes de correr.

@@ -1,85 +1,17 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import Explanation from '../question/Explanation';
 import { Question } from '../question/Question';
 import BlockingSpinner from '../common/BlockingSpinner';
 import './Course.css';
 import { useCourseNavigation } from './hooks/useCourseNavigation';
 import { useCourseDrag } from './hooks/useCourseDrag';
 import { useCourseStats } from './hooks/useCourseStats';
-
-interface CourseStatsProps {
-  stats: ReturnType<typeof useCourseStats>;
-}
-
-const CourseScoreboard: React.FC<CourseStatsProps> = ({ stats }) => (
-  <div className="course-scoreboard">
-    <span className="score-correct">✔ {stats.correct}</span>
-    <span className="score-incorrect">✖ {stats.incorrect}</span>
-    <span className="score-total">Restantes: {stats.remaining}</span>
-    {stats.skipped > 0 && (
-      <span className="score-skipped">⏭ {stats.skipped}</span>
-    )}
-  </div>
-);
-
-const CourseCompletion: React.FC<{
-  stats: ReturnType<typeof useCourseStats>;
-  courseName: string;
-}> = ({ stats, courseName }) => (
-  <div className="course-completion">
-    <h2>🎉 ¡Cuestionario completado!</h2>
-    <p>
-      Has terminado todas las preguntas de <strong>{courseName}</strong>
-    </p>
-    <div className="completion-stats">
-      <div className="stat-item">
-        <span className="stat-value">{stats.correct}</span>
-        <span className="stat-label">Correctas</span>
-      </div>
-      <div className="stat-item">
-        <span className="stat-value">{stats.incorrect}</span>
-        <span className="stat-label">Incorrectas</span>
-      </div>
-      <div className="stat-item">
-        <span className="stat-value">{stats.skipped}</span>
-        <span className="stat-label">Saltadas</span>
-      </div>
-      <div className="stat-item accuracy">
-        <span className="stat-value">{stats.accuracy}%</span>
-        <span className="stat-label">Precisión</span>
-      </div>
-    </div>
-  </div>
-);
-
-const CourseLoading: React.FC = () => (
-  <div className="course-question-box">
-    <div className="course-loading">
-      <h2>Cargando preguntas...</h2>
-    </div>
-  </div>
-);
-
-const CourseError: React.FC = () => (
-  <div className="course-error">
-    <h2>Error loading course</h2>
-    <p>Ha ocurrido un error al cargar las preguntas del curso.</p>
-    <Link to="/" className="course-error__back-button">
-      ← Back to courses
-    </Link>
-  </div>
-);
-
-const CourseEmpty: React.FC = () => (
-  <div className="course-empty">
-    <h2>No questions available</h2>
-    <p>This course doesn't have any questions yet.</p>
-    <Link to="/" className="course-empty__back-button">
-      ← Back to courses
-    </Link>
-  </div>
-);
+import CourseScoreboard from './CourseScoreboard';
+import CourseCompletion from './CourseCompletion';
+import CourseLoading from './CourseLoading';
+import CourseError from './CourseError';
+import CourseEmpty from './CourseEmpty';
+import Explanation from '../question/Explanation';
 
 export const Course: React.FC = () => {
   const params = useParams();

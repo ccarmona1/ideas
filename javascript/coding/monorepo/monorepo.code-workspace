@@ -15,6 +15,10 @@
     {
       "name": "Types",
       "path": "./packages/types"
+    },
+    {
+      "name": "E2E",
+      "path": "./packages/e2e"
     }
   ],
   "settings": {

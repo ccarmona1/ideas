@@ -17,11 +17,20 @@ export function useCourseStats(params: {
   incorrectCount: number;
   skippedCount: number;
 }): UseCourseStats {
-  const { questionQueue, currentQuestionIndex, correctCount, incorrectCount, skippedCount } = params;
+  const {
+    questionQueue,
+    currentQuestionIndex,
+    correctCount,
+    incorrectCount,
+    skippedCount,
+  } = params;
   return useMemo(() => {
     const total = questionQueue.length;
     const remaining = total - currentQuestionIndex;
-    const accuracy = correctCount + incorrectCount > 0 ? Math.round((correctCount / (correctCount + incorrectCount)) * 100) : 0;
+    const accuracy =
+      correctCount + incorrectCount > 0
+        ? Math.round((correctCount / (correctCount + incorrectCount)) * 100)
+        : 0;
     return {
       total,
       correct: correctCount,
@@ -30,5 +39,11 @@ export function useCourseStats(params: {
       accuracy,
       remaining,
     };
-  }, [questionQueue.length, currentQuestionIndex, correctCount, incorrectCount, skippedCount]);
+  }, [
+    questionQueue.length,
+    currentQuestionIndex,
+    correctCount,
+    incorrectCount,
+    skippedCount,
+  ]);
 }

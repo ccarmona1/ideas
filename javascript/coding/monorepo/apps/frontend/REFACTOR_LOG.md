@@ -22,3 +22,7 @@
 - [LISTO PARA COMMIT] Siguiente: continuar separación de estilos/negocio en otros features o hooks, o avanzar con useCourseStats.
 - [HECHO] Creado useCourseStats para encapsular lógica de estadísticas del curso. Import corregido. Listo para integración en Course o scoreboard.
 - [HECHO] Integrado useCourseStats en Course.tsx. Scoreboard y pantalla de resultados usan stats centralizado. Build y e2e tests pasan OK.
+- [PENDIENTE] Unificar y tipar hooks de obtención de cursos (useGetCourses) y eliminar duplicidad en features/components/courses y features/hooks.
+- [HECHO] Eliminado hook duplicado getCoursesHook.tsx. Courses.tsx usa solo useGetCourses tipado. Build y e2e tests pasan OK. Siguiente: refactorizar features/components/courses/Courses.tsx para separar lógica de negocio/presentación y tipar props si aplica.
+- [HECHO] Refactorizado Courses.tsx: lógica de negocio separada en useCoursesList, tipado estricto, presentación limpia. Listo para revisión de features relacionados y siguientes pasos de escalabilidad.
+- [HECHO] Refactor y tipado de NewCourse y useCreateCourse: tipado local, validación, presentación limpia. Listo para integración de lógica de negocio en un hook si crece la complejidad.

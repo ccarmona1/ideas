@@ -5,7 +5,10 @@ export interface UseQuestionLogicProps {
   question: QuestionMetadata;
   onCorrect: () => void;
   onIncorrect?: () => void;
-  onDragStart?: (selectedOption: number | undefined, isCorrect: boolean) => void;
+  onDragStart?: (
+    selectedOption: number | undefined,
+    isCorrect: boolean
+  ) => void;
   disabled?: boolean;
 }
 
@@ -25,7 +28,9 @@ export function useQuestionLogic({
   onDragStart,
   disabled,
 }: UseQuestionLogicProps): UseQuestionLogicResult {
-  const [selectedOption, setSelectedOption] = useState<number | undefined>(undefined);
+  const [selectedOption, setSelectedOption] = useState<number | undefined>(
+    undefined
+  );
   const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
   const [isReady, setIsReady] = useState(false);
 

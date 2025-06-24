@@ -24,9 +24,10 @@ export const Explanation: React.FC<ExplanationProps> = ({
 }) => {
   const correctIndex = ['a', 'b', 'c', 'd'].indexOf(question.answer);
   const selectedLetter = ['a', 'b', 'c', 'd'][selectedOption];
-  const invalidReason = question.invalidOptions?.[
-    selectedLetter as keyof typeof question.invalidOptions
-  ];
+  const invalidReason =
+    question.invalidOptions?.[
+      selectedLetter as keyof typeof question.invalidOptions
+    ];
 
   return (
     <div className="question-container explanation-container">

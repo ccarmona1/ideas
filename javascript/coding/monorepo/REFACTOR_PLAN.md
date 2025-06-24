@@ -8,6 +8,8 @@ Refactoriza la app sabiendo que:
 - Cada vez que hagas un refactor corre el build y los e2e tests y dale tiempo al usuario para hacer el commit y el push
 - Siempre lee REFACTOR_LOG.md para que no dupliques trabajo
 - No preguntes por aprobación en cada iteración
+- Haz iteraciones largas
+- Refactoriza toda la app
 
 Comandos:
 
@@ -26,3 +28,5 @@ Refactorizaciones que espero:
 - Define una esctructura de carpetas que permita que la aplicación sea escalable y mantenible
 - Haz que la aplicación sea escalable y mantenible
 - No pueden haber métodos con más de 7 parámetros, sigue estándares de código limpio
+- Evita agregar comentarios
+- Elimina cualquier comentario que encuentres

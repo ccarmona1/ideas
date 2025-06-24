@@ -1,4 +1,4 @@
-import type { CreateCourseDTO } from '@tester/types';
+import type { CreateCourseDTO } from '../../../types/createCourseDTO';
 
 export const createCourse = async (createCourseDto: CreateCourseDTO) => {
   const apiUrl = import.meta.env.VITE_API_URL;

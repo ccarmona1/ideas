@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './NewCourse.css';
-import type { CreateCourseDTO } from '@tester/types';
+import type { CreateCourseDTO } from '../../../types/createCourseDTO';
 import { createCourse } from './useCreateCourse';
 import BlockingSpinner from '../common/BlockingSpinner';
 

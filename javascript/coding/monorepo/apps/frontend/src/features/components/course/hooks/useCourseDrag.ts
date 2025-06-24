@@ -18,10 +18,13 @@ export function useCourseDrag(): UseCourseDragResult {
     setIsContainerDragging(true);
   }, []);
 
-  const handleContainerDragMove = useCallback((deltaY: number, opacity: number) => {
-    setContainerDragY(deltaY);
-    setContainerOpacity(opacity);
-  }, []);
+  const handleContainerDragMove = useCallback(
+    (deltaY: number, opacity: number) => {
+      setContainerDragY(deltaY);
+      setContainerOpacity(opacity);
+    },
+    []
+  );
 
   const handleContainerDragEnd = useCallback(() => {
     setIsContainerDragging(false);

@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import type { CourseMetadata } from '../../../types';
 import './Courses.css';
 import { useGetCourses } from '../../hooks/useGetCourses';
+import { useCoursesList } from './useCoursesList';
 import BlockingSpinner from '../common/BlockingSpinner';
 
 export const Courses: React.FC = () => {
-  const { data: courses, loading, error } = useGetCourses();
+  const { data, loading, error } = useGetCourses();
+  const { courses } = useCoursesList(data, loading, error);
 
   if (loading) {
     return <BlockingSpinner message="Loading courses..." overlay={false} />;

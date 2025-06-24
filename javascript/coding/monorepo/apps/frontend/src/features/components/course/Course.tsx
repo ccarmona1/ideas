@@ -109,9 +109,7 @@ export const Course: React.FC = () => {
         <div className="course-scoreboard">
           <span className="score-correct">✔ {stats.correct}</span>
           <span className="score-incorrect">✖ {stats.incorrect}</span>
-          <span className="score-total">
-            Restantes: {stats.remaining}
-          </span>
+          <span className="score-total">Restantes: {stats.remaining}</span>
           {stats.skipped > 0 && (
             <span className="score-skipped">⏭ {stats.skipped}</span>
           )}

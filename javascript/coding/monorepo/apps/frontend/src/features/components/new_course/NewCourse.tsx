@@ -21,17 +21,12 @@ export const NewCourse: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-
-    // Remove spaces from courseName
     const processedValue =
       name === 'courseName' ? value.replace(/\s/g, '') : value;
-
     setFormData((prev: CreateCourseDTO) => ({
       ...prev,
       [name]: processedValue,
     }));
-
-    // Clear error when user starts typing
     if (errors[name as keyof CreateCourseDTO]) {
       setErrors((prev: Partial<CreateCourseDTO>) => ({
         ...prev,
@@ -42,36 +37,28 @@ export const NewCourse: React.FC = () => {
 
   const validateForm = (): boolean => {
     const newErrors: Partial<CreateCourseDTO> = {};
-
     if (!formData.courseName.trim()) {
       newErrors.courseName = 'El nombre del curso es obligatorio';
     }
-
     if (!formData.courseKeywords.trim()) {
       newErrors.courseKeywords = 'Las palabras clave son obligatorias';
     }
-
     if (!formData.courseDifficulty) {
       newErrors.courseDifficulty = 'Debes seleccionar una dificultad' as any;
     }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!validateForm()) {
       return;
     }
-
     setIsSubmitting(true);
-    setServerError(null); // Clear any previous errors
-
+    setServerError(null);
     try {
       await createCourse(formData);
-
       navigate('/');
     } catch (error) {
       console.error('Error creating course:', error);
@@ -87,15 +74,12 @@ export const NewCourse: React.FC = () => {
 
   return (
     <div className="new-course-container">
-      {/* Loading State with AI Thinking Animation */}
       {isSubmitting && (
         <BlockingSpinner
           message="La IA está pensando y creando tu curso..."
           overlay={true}
         />
       )}
-
-      {/* Server Error Message */}
       {serverError && (
         <div className="error-notification">
           <div className="error-content">

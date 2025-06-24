@@ -6,19 +6,13 @@ interface HealthCheckProps {
   children: React.ReactNode;
 }
 
-/**
- * Health Check Guard Component
- * Ensures the backend is available before rendering the main application
- * Blocks UI with a spinner until health check passes
- */
 export const HealthCheck: React.FC<HealthCheckProps> = ({ children }) => {
   const [isHealthy, setIsHealthy] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
   const [retryCount, setRetryCount] = useState(0);
   const [error, setError] = useState<string | null>(null);
-
   const MAX_RETRIES = 5;
-  const RETRY_DELAY = 2000; // 2 seconds
+  const RETRY_DELAY = 2000;
 
   useEffect(() => {
     const performHealthCheck = async () => {

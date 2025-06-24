@@ -6,11 +6,6 @@ interface BlockingSpinnerProps {
   overlay?: boolean;
 }
 
-/**
- * Blocking Spinner Component
- * Displays a loading spinner that blocks user interaction
- * Used for critical loading states like health checks and data fetching
- */
 export const BlockingSpinner: React.FC<BlockingSpinnerProps> = ({
   message = 'Loading...',
   overlay = true,

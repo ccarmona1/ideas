@@ -33,3 +33,8 @@
   - Lógica de estados y renderizado separada
   - Componente principal reducido y más limpio
   - Preparado para siguientes iteraciones (hooks, lógica, estilos)
+- Eliminados hooks duplicados getCourseHook.tsx y getCoursesHook.tsx de features/components/courses. Toda la lógica de obtención de cursos centralizada en features/hooks/useGetCourses.ts y useCoursesList.ts.
+- Actualizados imports en Courses.tsx y otros componentes relacionados para usar los hooks centralizados y tipados.
+- Limpiados comentarios en archivos afectados.
+- Build y e2e tests pendientes de correr tras la limpieza.
+- Eliminados todos los comentarios de los archivos SimpleDragHint.tsx, NewCourse.tsx, HealthCheck.tsx y BlockingSpinner.tsx según el plan de refactorización. Listos para siguientes pasos de separación de lógica y estilos.

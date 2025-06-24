@@ -8,7 +8,9 @@ import BlockingSpinner from '../common/BlockingSpinner';
 
 export const Courses: React.FC = () => {
   const apiUrl = import.meta.env.VITE_API_URL;
-  const { data, loading, error } = useFetch<CourseMetadata[]>(`${apiUrl}/api/course/all`);
+  const { data, loading, error } = useFetch<CourseMetadata[]>(
+    `${apiUrl}/api/course/all`
+  );
   const { courses } = useCoursesList(data, loading, error);
 
   if (loading) {

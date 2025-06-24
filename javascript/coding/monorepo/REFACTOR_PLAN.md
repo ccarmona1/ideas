@@ -17,6 +17,12 @@ Comandos:
 - yarn build
 - yarn e2e
 
+Backend URLs:
+
+GET /api/course/all
+GET /apicontent/:name
+POST /api/create
+
 Refactorizaciones que espero:
 
 - Un refactor profesiona (extraer subhooks, tipar todo, etc)

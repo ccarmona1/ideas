@@ -33,7 +33,7 @@ export default defineConfig({
     video: 'on',
 
     launchOptions: {
-      slowMo: process.env.CI ? 0 : 2000,
+      slowMo: process.env.DEPLOY_ENV === 'dev' ? 2000 : 0,
     },
   },
 

@@ -1,16 +1,23 @@
 import { CreateCourseDTO } from '@tester/types';
-import { CourseDTO } from '../../../../../packages/types/src/dto/CourseDTO.js';
+import {
+  CourseDTO,
+  CourseDTOWithContent,
+} from '../../../../../packages/types/src/dto/CourseDTO.js';
 import { Repository } from '../repository/Repository.js';
 import { QuestionService } from './QuestionService.js';
 
 export class CourseService {
   constructor(
-    private readonly repository: Repository<CourseDTO, CreateCourseDTO>,
+    private readonly repository: Repository<
+      CourseDTO,
+      CreateCourseDTO,
+      CourseDTOWithContent
+    >,
     private readonly questionService: QuestionService
   ) {}
 
-  getContent(name: string): Promise<CourseDTO> {
-    return this.repository.get(name);
+  getContent(name: string): Promise<CourseDTOWithContent> {
+    return this.repository.getContent(name);
   }
 
   getAll(): Promise<CourseDTO[]> {

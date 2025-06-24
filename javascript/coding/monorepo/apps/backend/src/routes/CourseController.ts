@@ -11,9 +11,7 @@ export class CourseController {
       const data = await this.courseService.getContent(
         '/javascript/examenes/automaticos/' + name + '.json'
       );
-      const decoded = Buffer.from((data as any).content, 'base64').toString(
-        'utf8'
-      );
+      const decoded = Buffer.from(data.content, 'base64').toString('utf8');
 
       res.json(JSON.parse(decoded));
     } catch (error) {
@@ -36,9 +34,9 @@ export class CourseController {
 
       res.json(parsedData);
     } catch (error) {
-      console.error('GitHub API error:', error);
+      console.error('CourseController error:', error);
       res.status(500).json({
-        error: 'Failed to fetch courses from GitHub',
+        error: 'Failed to fetch courses from CourseController',
         details: error instanceof Error ? error.message : 'Unknown error',
       });
     }

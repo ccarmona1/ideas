@@ -27,5 +27,6 @@
   "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
   "typescript.inlayHints.variableTypes.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.workspaceSymbols.scope": "allOpenProjects"
+  "typescript.workspaceSymbols.scope": "allOpenProjects",
+  "chat.tools.autoApprove": true,
 }

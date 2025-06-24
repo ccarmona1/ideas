@@ -46,9 +46,9 @@ WEAK_TYPESCRIPT:
 
 TASKS:
 
-- TASK_0_1: Execute VSCode task "Run E2E tests"
-- TASK_0_2: Execute VSCode task "Build Frontend" (must succeed)
-- TASK_0_3: Execute VSCode task "Build Backend" (must succeed)
+- TASK_0_1: Execute Backend Build yarn command
+- TASK_0_2: Execute Frontend Build yarn command
+- TASK_0_3: Execute E2E test yarn command
 - TASK_0_4: Verify application functionality:
   - Load courses page
   - Open quiz from course
@@ -56,8 +56,7 @@ TASKS:
   - Answer question incorrectly (show explanation)
   - Test drag/swipe for skip and explanations
   - Test new course creation
-- TASK_0_5: Create git branch "refactor/phase-by-phase"
-- TASK_0_6: Take screenshots for reference
+- TASK_0_5: Take screenshots for reference
 
 VALIDATION: All tasks complete, application works identically
 
@@ -147,7 +146,7 @@ TASK_1_3: Update QuestionMetadata interface
 
 TASK_1_4: Verify compilation
 
-- EXECUTE: Build Frontend task (expect failures - do not fix yet)
+- EXECUTE: Build Frontend yarn command
 - VERIFY: Type errors are detected correctly
 
 VALIDATION: Types created, compilation shows expected errors
@@ -310,7 +309,7 @@ export function validateFormData(
 
 TASK_3_3: Test services compilation
 
-- EXECUTE: Build Frontend task
+- EXECUTE: Build Frontend yarn command
 - VERIFY: No compilation errors
 - VERIFY: Services are pure functions without dependencies
 
@@ -512,7 +511,7 @@ export function useQuestionState(question: QuestionMetadata) {
 
 TASK_4_4: Verify hooks compilation
 
-- EXECUTE: Build Frontend task
+- EXECUTE: Build Frontend yarn command
 - VERIFY: No compilation errors
 - VERIFY: All hooks properly typed
 
@@ -619,8 +618,9 @@ TASK_5_3: Refactor /src/features/components/course/Course.tsx
 
 TASK_5_4: Test integration
 
-- EXECUTE: Build Frontend task
-- EXECUTE: Build Backend task
+- EXECUTE: Build Frontend yarn command
+- EXECUTE: Build Backend yarn command
+- EXECUTE: Build E2E test yarn command
 - TEST: Quiz functionality identical to before refactor
 - TEST: All transitions and animations work
 - TEST: Drag and drop functionality works
@@ -762,7 +762,7 @@ TASK_6_3: Refactor /src/features/components/question/Question.tsx
 
 TASK_6_4: Test functionality
 
-- EXECUTE: Build Frontend task
+- EXECUTE: Build Frontend yarn command
 - TEST: Question selection works identically
 - TEST: Drag hints appear correctly
 - TEST: Answer validation works
@@ -912,7 +912,7 @@ TASK_7_3: Refactor /src/features/components/new_course/NewCourse.tsx
 
 TASK_7_4: Test form functionality
 
-- EXECUTE: Build Frontend task
+- EXECUTE: Build Frontend yarn command
 - TEST: Form validation works identically
 - TEST: Course creation works
 - TEST: Error handling works
@@ -964,11 +964,10 @@ VALIDATION: Performance optimized, documentation added, cleanup complete
 
 FOR_EACH_PHASE:
 
-- EXECUTE: Build Frontend task (must succeed)
-- EXECUTE: Build Backend task (must succeed)
+- EXECUTE: Build Frontend yarn command
+- EXECUTE: Build Backend yarn command
 - VERIFY: 0 TypeScript errors
 - TEST: Specific functionality for phase
-- COMMIT: Changes with descriptive message
 
 ### FINAL_VALIDATION
 
@@ -1028,10 +1027,9 @@ IF_FAILURE:
 ## EXECUTION_RULES
 
 RULE_SEQUENTIAL_EXECUTION: Complete each phase entirely before proceeding
-RULE_ALWAYS_BUILD: Execute build tasks after every file modification
+RULE_ALWAYS_BUILD: Execute build yarn commands and e2e test command after every file modification
 RULE_PRESERVE_BEHAVIOR: Never change user-facing functionality
 RULE_IMMEDIATE_ROLLBACK: Revert if cannot resolve issues quickly
-RULE_FREQUENT_COMMITS: Commit after each completed phase
 RULE_TEST_CONSTANTLY: Verify functionality after each change
 
 ## NEXT_ACTIONS
@@ -1043,9 +1041,9 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
 
 ### ✅ FASE 0: PREPARACIÓN
 
-- [ ] **Ejecutar task `Run E2E tests` desde VSCode Tasks**
-- [ ] **Ejecutar task `Build Frontend` - debe completar sin errores**
-- [ ] **Ejecutar task `Build Backend` - debe completar sin errores**
+- [ ] **Ejecutar Backend Build yarn command**
+- [ ] **Ejecutar Frontend Build yarn command**
+- [ ] **Ejecutar E2E tests yarn command**
 - [ ] **Verificar funcionalidad básica:**
   - [ ] Página principal carga lista de cursos
   - [ ] Click en curso abre quiz correctamente
@@ -1132,11 +1130,6 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
 - [ ] **Cambiar `answer: string` por `answer: AnswerOptionType`**
 - [ ] **Cambiar `invalidOptions: Partial<Record<'a'|'b'|'c'|'d', string>>` por `invalidOptions: Partial<Record<AnswerOptionType, string>>`**
 
-#### 1.4 Verificar compilación
-
-- [ ] **Ejecutar `Build Frontend` - debe fallar en varios lugares (esperado)**
-- [ ] **NO arreglar errores aún - solo verificar que los tipos se detectan**
-
 **✅ Checkpoint:** Todo compila sin errores
 
 ---
@@ -1169,7 +1162,7 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
   };
   ```
 - [ ] **Eliminar interface `UseApiState` (ahora innecesaria)**
-- [ ] **Verificar que funciona igual con `Build Frontend`**
+- [ ] **Verificar que funciona igual con `Build Frontend yarn command`**
 
 #### 2.3 Refactorizar `useGetQuestions.ts`
 
@@ -1185,7 +1178,7 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
   };
   ```
 - [ ] **Eliminar interface `UseApiState` duplicada**
-- [ ] **Verificar que funciona igual con `Build Frontend`**
+- [ ] **Verificar que funciona igual con `Build Frontend yarn command`**
 
 #### 2.4 Actualizar imports en componentes
 
@@ -1272,7 +1265,7 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
 - [ ] **Crear archivo de prueba temporal `/src/services/__test__.ts`**
 - [ ] **Probar cada función con datos reales**
 - [ ] **Eliminar archivo de prueba**
-- [ ] **Verificar `Build Frontend` compila correctamente**
+- [ ] **Verificar `Build Frontend yarn command` compila correctamente**
 
 **✅ Checkpoint:** Servicios creados, aún no utilizados en componentes
 
@@ -1340,7 +1333,7 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
 #### 4.4 Verificar hooks
 
 - [ ] **Crear archivo temporal para probar cada hook**
-- [ ] **Verificar que `Build Frontend` compila sin errores**
+- [ ] **Verificar que `Build Frontend yarn command` compila sin errores**
 - [ ] **Eliminar archivos de prueba**
 
 **✅ Checkpoint:** Hooks creados pero aún no integrados
@@ -1432,7 +1425,7 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
 
 #### 5.6 Verificar funcionalidad
 
-- [ ] **Ejecutar `Build Frontend` - debe compilar sin errores**
+- [ ] **Ejecutar `Build Frontend yarn command` - debe compilar sin errores**
 - [ ] **Probar manualmente que el quiz funciona igual**
 - [ ] **Verificar transiciones y animaciones**
 
@@ -1524,7 +1517,7 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
 
 #### 6.5 Verificar funcionalidad
 
-- [ ] **Ejecutar `Build Frontend` - debe compilar sin errores**
+- [ ] **Ejecutar `Build Frontend yarn command` - debe compilar sin errores**
 - [ ] **Probar selección de opciones**
 - [ ] **Probar drag hints y funcionalidad**
 
@@ -1621,7 +1614,7 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
 
 #### 7.5 Verificar funcionalidad
 
-- [ ] **Ejecutar `Build Frontend` - debe compilar sin errores**
+- [ ] **Ejecutar `Build Frontend yarn command` - debe compilar sin errores**
 - [ ] **Probar validación de campos**
 - [ ] **Probar creación de curso**
 
@@ -1689,7 +1682,7 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
 
 #### 8.5 Verificar bundle size y performance
 
-- [ ] **Ejecutar `Build Frontend` en modo producción**
+- [ ] **Ejecutar `Build Frontend yarn command` en modo producción**
 - [ ] **Verificar que no hay warnings de performance**
 - [ ] **Probar que las transiciones siguen siendo suaves**
 
@@ -1706,8 +1699,8 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
 
 ### ✅ Checklist por cada fase completada:
 
-- [ ] **Ejecutar task `Build Frontend` desde VSCode**
-- [ ] **Ejecutar task `Build Backend` desde VSCode**
+- [ ] **Ejecutar Backend Build yarn command**
+- [ ] **Ejecutar Frontend Build yarn command**
 - [ ] **Verificar 0 errores de TypeScript**
 - [ ] **Probar funcionalidad específica afectada:**
   - [ ] **Fase 1-2:** Verificar que cursos cargan igual
@@ -1717,12 +1710,11 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
   - [ ] **Fase 7:** Verificar creación de cursos
   - [ ] **Fase 8:** Verificar performance general
 - [ ] **Si existe task `Run E2E tests`, ejecutarla**
-- [ ] **Commit cambios con mensaje descriptivo**
 
 ### ✅ Validación final (después de todas las fases):
 
-- [ ] **Ejecutar task `Build Frontend` - 0 errores**
-- [ ] **Ejecutar task `Build Backend` - 0 errores**
+- [ ] **Ejecutar Backend Build yarn command - 0 errores**
+- [ ] **Ejecutar Frontend Build yarn command - 0 errores**
 - [ ] **Probar flujo completo manualmente:**
   - [ ] Página principal carga correctamente
   - [ ] Seleccionar curso abre quiz
@@ -1796,14 +1788,15 @@ FINAL_DELIVERABLE: Refactored codebase with improved architecture
 ### 🚨 REGLA #2: SIEMPRE EJECUTAR BUILD
 
 - [ ] **Después de CADA cambio de archivo, ejecutar:**
-  - `Build Frontend` task
-  - `Build Backend` task
+  - Ejecutar Baackend Build yarn command
+  - Ejecutar Frontend Build yarn command
+  - Ejecutar E2E test yarn command
 - [ ] **Si hay errores, arreglarlos ANTES de continuar**
 - [ ] **No avanzar si hay warnings de TypeScript**
 
 ### 🚨 REGLA #3: TESTING CONSTANTE
 
 - [ ] **Probar funcionalidad después de cada fase**
-  - `Run E2E tests` task
+  - `Run E2E tests` yarn command
 - [ ] **Si algo no funciona igual, investigar INMEDIATAMENTE**
 - [ ] **No continuar hasta que funcionalidad esté igual**

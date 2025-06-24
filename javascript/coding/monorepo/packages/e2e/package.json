@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:dev": "DEPLOY_ENV=dev npx playwright test --ui",
-    "test": "DEPLOY_ENV=pdn npx playwright test"
+    "test": "PW_TEST_HTML_REPORT_OPEN='never' DEPLOY_ENV=dev npx playwright test"
   },
   "keywords": [],
   "author": "",

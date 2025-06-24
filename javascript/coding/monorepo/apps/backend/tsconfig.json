@@ -2,6 +2,8 @@
   "compilerOptions": {
     "moduleResolution": "nodenext",
     "outDir": "./dist",
+    "resolveJsonModule": true,
+    "types": ["node"],
     "composite": true,                                /* Enable constraints that allow a TypeScript project to be used with project references. */
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
@@ -113,6 +115,7 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
+  "include": ["src/**/*", "src/**/*.json"],
   "references": [
     { "path": "../../packages/types" }
   ]

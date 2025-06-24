@@ -5,13 +5,14 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch --env-file=.env src/index.ts",
-    "start:dev": "yarn build && node --env-file=.env dist/src/index.js",
-    "start": "tsc --noEmitOnError false --skipLibCheck && node dist/src/index.js",
+    "dev": "DEPLOY_ENV=dev tsx watch --env-file=.env src/index.ts",
+    "start:dev": "yarn build && yarn dev",
+    "start": "tsc --noEmitOnError false --skipLibCheck && DEPLOY_ENV=pdn node dist/src/index.js",
     "build": "tsc -b",
     "lint": "eslint ."
   },
   "devDependencies": {
+    "@types/node": "^24.0.4",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   },

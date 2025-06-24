@@ -1,10 +1,13 @@
 import { Octokit } from '@octokit/rest';
 import { Repository } from './Repository.js';
-import { CourseDTO } from '../../../../../packages/types/src/dto/CourseDTO.js';
+import {
+  CourseDTO,
+  CourseDTOWithContent,
+} from '../../../../../packages/types/src/dto/CourseDTO.js';
 import { CreateCourseDTO } from '@tester/types';
 
 export class GitHubRepository
-  implements Repository<CourseDTO, CreateCourseDTO>
+  implements Repository<CourseDTO, CreateCourseDTO, CourseDTOWithContent>
 {
   private internalOctokit: Octokit;
   private GITHUB_OWNER: string;
@@ -31,7 +34,7 @@ export class GitHubRepository
   async save(data: CreateCourseDTO): Promise<CourseDTO> {
     let sha: string | undefined;
     try {
-      const existingCourse = await this.get(data.courseName + '.json'); // validate performance
+      const existingCourse = await this.getContent(data.courseName + '.json'); // validate performance
 
       sha = existingCourse?.sha;
     } catch (error) {
@@ -66,13 +69,13 @@ export class GitHubRepository
     return response.data as CourseDTO[];
   }
 
-  async get(name: string): Promise<CourseDTO> {
+  async getContent(name: string): Promise<CourseDTOWithContent> {
     const response = await this.internalOctokit.repos.getContent({
       owner: this.GITHUB_OWNER,
       repo: this.GITHUB_REPO,
       path: name,
     });
 
-    return response.data as CourseDTO;
+    return response.data as CourseDTOWithContent;
   }
 }

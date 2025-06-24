@@ -16,3 +16,9 @@
 - [HECHO] Limpiados imports y destructuraciones no usadas en Course.tsx y useCourseNavigation.ts. Build y e2e tests pasan OK.
 - [LISTO PARA COMMIT] Siguiente: extraer lógica de drag a useCourseDrag y continuar con la separación de negocio/estilos.
 - [HECHO] Lógica de drag extraída a useCourseDrag.ts y Course.tsx actualizado para usar el nuevo hook. Build y tests pendientes de correr.
+- [HECHO] Build y e2e tests pasan tras extracción de lógica de drag. Siguiente: separar lógica de presentación y negocio en Question y Explanation, y tipar props.
+- [HECHO] Lógica de negocio de Question extraída a useQuestionLogic. Question.tsx ahora es un componente de presentación puro.
+- [HECHO] Explanation revisado, tipado y lógica de negocio mínima extraída. Es un componente de presentación puro.
+- [LISTO PARA COMMIT] Siguiente: continuar separación de estilos/negocio en otros features o hooks, o avanzar con useCourseStats.
+- [HECHO] Creado useCourseStats para encapsular lógica de estadísticas del curso. Import corregido. Listo para integración en Course o scoreboard.
+- [HECHO] Integrado useCourseStats en Course.tsx. Scoreboard y pantalla de resultados usan stats centralizado. Build y e2e tests pasan OK.

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './Question.css';
 import { SimpleDragHint } from '../common/SimpleDragHint';
 import type { QuestionMetadata } from '../../../types';
+import { useQuestionLogic } from './useQuestionLogic';
 
 export interface QuestionProps {
   question: QuestionMetadata;
@@ -20,69 +21,35 @@ export interface QuestionProps {
   onDragEnd?: () => void;
 }
 
-export const Question: React.FC<QuestionProps> = ({
-  question,
-  onCorrect,
-  onIncorrect,
-  onSkip,
-  onDragStart,
-  onDragAction,
-  canDrag,
-  disabled,
-  onContainerDragStart,
-  onDragMove,
-  onDragEnd,
-}) => {
-  const [selectedOption, setSelectedOption] = useState<number | undefined>(
-    undefined
-  );
-  const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
-  const [isReady, setIsReady] = useState(false);
+export const Question: React.FC<QuestionProps> = (props) => {
+  const {
+    question,
+    onCorrect,
+    onIncorrect,
+    onSkip,
+    onDragStart,
+    onDragAction,
+    canDrag,
+    disabled,
+    onContainerDragStart,
+    onDragMove,
+    onDragEnd,
+  } = props;
 
-  const isCorrect =
-    selectedOption !== undefined &&
-    ['a', 'b', 'c', 'd'][selectedOption] === question.answer;
-  const correctIndex = ['a', 'b', 'c', 'd'].indexOf(question.answer);
-
-  useEffect(() => {
-    setSelectedOption(undefined);
-    setAnsweredCorrectly(false);
-    setIsReady(false);
-
-    // Limpiar el estado de drag cuando cambia la pregunta
-    if (onDragStart) {
-      onDragStart(undefined, false);
-    }
-
-    // Pequeña demora para evitar phantom clicks
-    const timer = setTimeout(() => {
-      setIsReady(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [question.question, onDragStart]);
-
-  // Remover el useEffect que llamaba automáticamente onDragStart
-  // Ahora solo se llamará cuando el usuario seleccione una opción
-
-  const handleSelectOption = (index: number) => {
-    if (!answeredCorrectly && !disabled && isReady) {
-      setSelectedOption(index);
-      const isOptionCorrect = ['a', 'b', 'c', 'd'][index] === question.answer;
-
-      // Llamar a onDragStart solo después de que el usuario seleccione
-      if (onDragStart) {
-        onDragStart(index, isOptionCorrect);
-      }
-
-      if (isOptionCorrect) {
-        setAnsweredCorrectly(true);
-        setTimeout(() => onCorrect(), 800);
-      } else {
-        if (onIncorrect) onIncorrect();
-      }
-    }
-  };
+  const {
+    selectedOption,
+    answeredCorrectly,
+    isReady,
+    isCorrect,
+    correctIndex,
+    handleSelectOption,
+  } = useQuestionLogic({
+    question,
+    onCorrect,
+    onIncorrect,
+    onDragStart,
+    disabled,
+  });
 
   return (
     <div className="question-container">

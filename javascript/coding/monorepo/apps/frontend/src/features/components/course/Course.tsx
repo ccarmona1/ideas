@@ -6,6 +6,7 @@ import BlockingSpinner from '../common/BlockingSpinner';
 import './Course.css';
 import { useCourseNavigation } from './hooks/useCourseNavigation';
 import { useCourseDrag } from './hooks/useCourseDrag';
+import { useCourseStats } from './hooks/useCourseStats';
 
 export const Course: React.FC = () => {
   const params = useParams();
@@ -28,7 +29,6 @@ export const Course: React.FC = () => {
     handleIncorrect,
     handleDragStart,
     executeAction,
-    accuracy,
   } = useCourseNavigation(courseName);
 
   // Hook de drag visual
@@ -42,6 +42,14 @@ export const Course: React.FC = () => {
   } = useCourseDrag();
 
   const handleDragAction = executeAction;
+
+  const stats = useCourseStats({
+    questionQueue,
+    currentQuestionIndex,
+    correctCount,
+    incorrectCount,
+    skippedCount,
+  });
 
   if (!questionQueue) {
     return (
@@ -99,13 +107,13 @@ export const Course: React.FC = () => {
           <span className="back-button-text">Volver a cursos</span>
         </Link>
         <div className="course-scoreboard">
-          <span className="score-correct">✔ {correctCount}</span>
-          <span className="score-incorrect">✖ {incorrectCount}</span>
+          <span className="score-correct">✔ {stats.correct}</span>
+          <span className="score-incorrect">✖ {stats.incorrect}</span>
           <span className="score-total">
-            Restantes: {questionQueue.length - currentQuestionIndex}
+            Restantes: {stats.remaining}
           </span>
-          {skippedCount > 0 && (
-            <span className="score-skipped">⏭ {skippedCount}</span>
+          {stats.skipped > 0 && (
+            <span className="score-skipped">⏭ {stats.skipped}</span>
           )}
         </div>
       </div>
@@ -136,19 +144,19 @@ export const Course: React.FC = () => {
               </p>
               <div className="completion-stats">
                 <div className="stat-item">
-                  <span className="stat-value">{correctCount}</span>
+                  <span className="stat-value">{stats.correct}</span>
                   <span className="stat-label">Correctas</span>
                 </div>
                 <div className="stat-item">
-                  <span className="stat-value">{incorrectCount}</span>
+                  <span className="stat-value">{stats.incorrect}</span>
                   <span className="stat-label">Incorrectas</span>
                 </div>
                 <div className="stat-item">
-                  <span className="stat-value">{skippedCount}</span>
+                  <span className="stat-value">{stats.skipped}</span>
                   <span className="stat-label">Saltadas</span>
                 </div>
                 <div className="stat-item accuracy">
-                  <span className="stat-value">{accuracy}%</span>
+                  <span className="stat-value">{stats.accuracy}%</span>
                   <span className="stat-label">Precisión</span>
                 </div>
               </div>

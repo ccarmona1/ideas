@@ -67,12 +67,18 @@ export async function openAnExam(page) {
     .filter({ hasNotText: 'Crear nuevo examen' })
     .nth(0)
     .click();
-  await expect(page.getByRole('heading')).toBeVisible();
+  await expect(page.getByRole('heading').nth(0)).toBeVisible();
   await expect(
     page.getByRole('button', { name: /^Opción [A-Z]: ([abcd]\) .*)$/ })
   ).toHaveCount(4);
+  const volverACursosButton = page.getByRole('link', {
+    name: '← Volver a cursos',
+  });
+  const volverACursosSmallButton = page.getByRole('link', {
+    name: '←',
+  });
   await expect(
-    page.getByRole('link', { name: '← Volver a cursos' })
+    volverACursosButton.or(volverACursosSmallButton).first()
   ).toBeVisible();
   await expect(page.getByText('✔ 0✖ 0Restantes:')).toBeVisible();
   await expect(page.getByText('✔')).toBeVisible();

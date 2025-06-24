@@ -26,6 +26,19 @@
 			"options": {
 				"cwd": "${workspaceFolder}/javascript/coding/monorepo/apps/backend"
 			}
+		},
+		{
+			"label": "Run E2E tests",
+			"type": "shell",
+			"command": "DEPLOY_ENV=dev yarn test",
+			"group": "test",
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/javascript/coding/monorepo/packages/e2e"
+			}
 		}
 	]
 }

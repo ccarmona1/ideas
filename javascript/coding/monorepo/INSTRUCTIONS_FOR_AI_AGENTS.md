@@ -10,245 +10,217 @@ IMPORTANT: After any code change, always run these VSCode tasks: "Build Frontend
 
 The application serves as a **learning assessment tool** where users progress through course-based question sets with immediate feedback mechanisms. Each incorrect answer triggers educational explanations to reinforce learning concepts, creating an iterative knowledge building experience.
 
-## Business Logic & User Experience
+### Key Features
 
-### Learning Flow Architecture
+- **Course Selection**: Browse available courses in a responsive grid layout
+- **AI Course Creation**: Generate new courses using Gemini AI with customizable parameters
+- **Interactive Quiz Engine**: Question-by-question progression with multiple choice answers
+- **Smart Feedback System**: Immediate validation with visual confirmation
+- **Educational Explanations**: Detailed explanations for incorrect answers
+- **Progress Tracking**: Real-time statistics (correct/incorrect/skipped counts)
+- **Flexible Navigation**: Skip questions and revisit them later
+- **Cross-Platform Support**: Touch gestures for mobile, mouse interactions for desktop
 
-**Primary User Journey:**
+## User Journey & Application Flow
 
-1. **Course Selection Hub** - Users browse available educational courses in a grid layout
-2. **Quiz Session** - Interactive question-by-question progression with multiple choice answers
-3. **Immediate Feedback** - Correct answers advance progression; incorrect answers trigger explanation screens
-4. **Completion Analytics** - Final statistics showing accuracy and learning progress
+### Main Application Routes
 
-### Question Management System
+1. **Home Page (`/`)** - Course selection hub displaying available courses in a grid layout
+2. **Course Quiz (`/course/:courseName`)** - Interactive quiz session for a specific course
+3. **New Course (`/new-course`)** - AI-powered course creation form using Gemini
 
-**Dynamic Question Queue:**
+### Quiz Experience Flow
 
-- Questions load from backend course repositories
-- Skipped questions automatically requeue at the end for second attempts
-- Real-time progress tracking with visible statistics (correct/incorrect/skipped counts)
-- Intelligent progression that ensures all content is reviewed
+**Question Interaction Pattern:**
 
-**Answer Validation Logic:**
+- Users select from 4 multiple choice options (A, B, C, D)
+- **Correct answers**: Automatically advance to next question with visual feedback
+- **Incorrect answers**: Show explanation screen with detailed learning content
+- **Skip option**: Available via drag/click gesture - questions are requeued at the end
 
-- Instant feedback on selection with visual confirmation
-- Correct answers trigger automatic advancement with smooth transitions
-- Incorrect answers pause progression to display educational explanations
-- Skip functionality available for challenging questions without penalty
+**Progress Management:**
 
-### Educational Reinforcement Pattern
+- Real-time scoreboard showing correct/incorrect/remaining counts
+- Questions can be skipped and will reappear later in the queue
+- Quiz completion shows comprehensive statistics and accuracy percentage
 
-**Explanation System for Learning:**
+**Educational Reinforcement:**
 
-- Wrong answers trigger detailed explanation screens showing:
-  - User's selected answer with clear marking as incorrect
-  - Correct answer highlighted and emphasized
-  - Conceptual explanation of the underlying topic
-  - Specific reasoning why the selected answer was wrong
-- Explanations require interaction to continue, ensuring engagement
-- Post-explanation continuation returns to question flow at next item
+- Wrong answers trigger explanation screens showing:
+  - User's selected answer marked as incorrect
+  - Correct answer highlighted
+  - Conceptual explanation of the topic
+  - Reasoning why the selected answer was wrong
+- Explanations require user interaction to continue, ensuring engagement
 
-## Technical Architecture Patterns
+## Technical Architecture
 
-### Application Structure Philosophy
+### Application Structure
 
-**Component Hierarchy:**
+**Frontend (React + TypeScript + Vite):**
 
-- **App Shell**: Router configuration with health-checked backend integration
-- **Course Hub**: Grid-based course selection with responsive card layouts
-- **Quiz Engine**: Main application logic managing state, progression, and user interactions
-- **Question Display**: Isolated components for question presentation and option selection
-- **Explanation Engine**: Dedicated educational feedback system with detailed content display
-- **UI Interaction System**: Unified drag/click/touch interface for seamless cross-platform experience
+- Single Page Application with React Router
+- Component-based architecture with reusable UI elements
+- Custom hooks for data fetching and state management
+- Responsive CSS with mobile-first design approach
 
-### State Management Strategy
+**Key Components:**
 
-**Centralized Quiz State:**
+- `App.tsx` - Main router configuration
+- `Courses.tsx` - Course selection grid with loading states
+- `Course.tsx` - Main quiz engine managing question flow and state
+- `Question.tsx` - Individual question display with option selection
+- `Explanation.tsx` - Educational feedback system for incorrect answers
+- `NewCourse.tsx` - AI-powered course creation form
 
-- Progress tracking (current question index, completion statistics)
-- User interaction state (selected answers, explanation viewing mode)
-- UI state management (transitions, animations, loading states)
-- Question queue management with dynamic reordering for skipped items
+**Backend Integration:**
 
-**Session Persistence:**
+- RESTful API communication through centralized service layer
+- Automatic health checks and error handling
+- Loading states and offline graceful degradation
 
-- Real-time statistics tracking throughout quiz session
-- State isolation between different quiz attempts
-- Clean state initialization for new course selections
+### State Management Philosophy
+
+**Quiz Session State:**
+
+- Current question index and progression tracking
+- Answer statistics (correct/incorrect/skipped counts)
+- Question queue with dynamic reordering for skipped items
+- UI transition states and animation coordination
+
+**Interaction State:**
+
+- Selected answer tracking and validation
+- Drag gesture recognition and threshold management
+- Cross-platform input handling (touch/mouse/keyboard)
 
 ### Cross-Platform Interaction Design
 
-**Unified Input Handling:**
+**Unified Gesture System:**
 
-- **Desktop Experience**: Mouse-based clicking with hover feedback and card-style layouts
-- **Mobile Experience**: Touch-optimized gestures with swipe-to-advance functionality
-- **Accessibility**: Keyboard navigation support with proper ARIA labeling
-- **Responsive Adaptation**: Automatic interface scaling and layout adjustment
+- Desktop: Mouse clicks with hover feedback
+- Mobile: Touch gestures with swipe-to-advance
+- Drag detection with configurable thresholds
+- Fallback click handling for accessibility
 
-**Gesture Recognition System:**
+## Course Creation & Content Management
 
-- Intelligent distinction between intentional gestures and accidental touches
-- Configurable thresholds for gesture activation vs. passive interaction
-- Smooth animation feedback during gesture recognition
-- Fallback click handling for non-gesture interactions
+### AI-Powered Course Generation
 
-## Data Integration & Backend Communication
+**Course Creation Form (`/new-course`):**
 
-### Course Content Management
+- Course name (spaces automatically removed)
+- Subject keywords for content generation
+- Difficulty level selection (principiante/intermedio/avanzado)
+- Number of questions (configurable)
+- Real-time form validation with error handling
 
-**Dynamic Content Loading:**
+**Gemini AI Integration:**
 
-- Course metadata retrieval from backend repositories
-- On-demand question loading per course selection
-- Error handling with user-friendly fallbacks
-- Loading state management with blocking interfaces during data fetch
+- Automated question generation based on provided parameters
+- Multiple choice format with 4 options per question
+- Includes detailed explanations for educational reinforcement
+- Content quality validation and error handling
 
-**Health Check Architecture:**
+### Backend Data Management
 
-- Backend availability verification before application startup
-- Automatic retry mechanisms with progressive backoff
-- User notification system for connectivity issues
-- Graceful degradation when backend services are unavailable
+**Course System:**
 
-### API Communication Patterns
+- Dynamic course loading from backend repositories
+- Course metadata with SHA tracking for updates
+- Health check verification before application startup
+- Graceful error handling with user-friendly fallbacks
 
-**Service Layer Design:**
+**Question Format:**
 
-- Centralized backend communication through singleton service pattern
-- Standardized error handling across all API interactions
-- Loading state propagation to UI components
-- Response validation and type safety enforcement
+- Standardized multiple choice structure (A, B, C, D)
+- Single correct answer per question
+- Explanation content for conceptual understanding
+- Progressive difficulty suitable for educational assessment
 
-## User Interface Design Philosophy
+## User Experience & Design
 
 ### Responsive Design Strategy
 
-**Device-Specific Adaptations:**
+**Device Adaptations:**
 
-- **Desktop**: Card-based layouts with shadows, spacing, and hover effects
-- **Mobile**: Flat design with full-width layouts and touch-optimized controls
-- **Tablet**: Hybrid approach scaling between desktop and mobile patterns
-- **Accessibility**: High contrast support, keyboard navigation, and screen reader compatibility
+- **Desktop**: Card-based layouts with hover effects and shadows
+- **Mobile**: Touch-optimized flat design with full-width layouts
+- **Tablet**: Hybrid scaling between desktop and mobile patterns
+- **Accessibility**: Keyboard navigation, screen reader support, high contrast
 
 **Visual Feedback Systems:**
 
-- Immediate response to user interactions with animation feedback
-- Progress indicators showing quiz completion status
+- Immediate response to user interactions with smooth animations
 - Color-coded answer validation (correct/incorrect/neutral states)
-- Smooth transitions between application states and screens
+- Progress indicators showing quiz completion status
+- Smooth transitions between application states
 
-### Navigation and Flow Control
+### Navigation & Flow Control
 
 **Seamless Progression:**
 
 - Automatic advancement on correct answers with visual confirmation
-- Pause-and-explain pattern for incorrect answers requiring user acknowledgment
-- Back navigation to course selection from any quiz state
+- Pause-and-explain pattern for incorrect answers
+- Back navigation to course selection available from any state
 - Completion celebration with detailed performance analytics
 
-**Scroll and Interaction Management:**
+**Interaction Management:**
 
-- Automatic scroll-to-top on all state transitions
-- Never blocking native scroll functionality
-- Gesture area isolation to prevent interference with navigation
+- Automatic scroll-to-top on state transitions
 - Touch event optimization for responsive feel
+- Gesture area isolation to prevent navigation interference
+- Never blocking native scroll functionality
 
-## Content and Learning Design
+## Development Guidelines
 
-### Question Format Standards
+### Code Organization
 
-**Multiple Choice Structure:**
-
-- Four-option format (A, B, C, D) with single correct answer
-- Clear question text with unambiguous phrasing
-- Balanced option distribution to prevent pattern recognition
-- Explanation content covering conceptual understanding
-
-**Educational Content Requirements:**
-
-- Explanations must provide conceptual understanding, not just correct answers
-- Invalid option reasoning to explain why each wrong answer is incorrect
-- Progressive difficulty suitable for educational progression
-- Content sourced from structured educational repositories
-
-### Assessment and Analytics
-
-**Learning Progress Tracking:**
-
-- Real-time accuracy calculation and display
-- Attempt tracking with skip count visibility
-- Completion percentage with question remaining counts
-- Final session summary with learning outcome metrics
-
-**Performance Feedback:**
-
-- Immediate validation feedback on answer selection
-- Cumulative statistics display throughout session
-- Completion celebration with comprehensive performance review
-- Encouragement messaging for continued learning engagement
-
-## Quality and Performance Standards
-
-### User Experience Requirements
-
-**Performance Expectations:**
-
-- Instant response to user interactions (sub-100ms)
-- Smooth animations and transitions without frame drops
-- Quick loading times for course and question data
-- Efficient memory usage during extended quiz sessions
-
-**Reliability Standards:**
-
-- Graceful error handling with user-friendly messages
-- Automatic recovery from temporary network issues
-- State preservation during brief connectivity losses
-- Consistent behavior across different devices and browsers
-
-### Accessibility and Inclusion
-
-**Universal Design Principles:**
-
-- Keyboard navigation for all interactive elements
-- Screen reader compatibility with proper semantic markup
-- High contrast support for visual accessibility
-- Touch target sizing appropriate for motor accessibility
-- Clear visual hierarchy and readable typography
-
-## Development and Maintenance Guidelines
-
-### Code Organization Principles
-
-**Component Isolation:**
+**Component Architecture:**
 
 - Single responsibility principle for all components
 - Clear separation between UI components and business logic
-- Reusable component design for cross-application consistency
-- Type safety enforcement throughout application architecture
+- Reusable component design for consistency
+- TypeScript enforcement throughout the application
 
-**State Management Rules:**
+**State Management:**
 
-- Centralized state for quiz progression and user interaction
-- Local state only for component-specific UI concerns
+- Custom hooks for data fetching (`useGetCourses`, `useGetQuestions`)
+- Local component state for UI-specific concerns
+- Centralized quiz state management in main Course component
 - Immutable state updates to prevent side effects
-- Clear state initialization and cleanup patterns
 
-### Extensibility and Scalability
+### Quality Standards
 
-**Future Enhancement Readiness:**
+**Performance Requirements:**
 
-- Modular architecture supporting new question types
-- Extensible backend integration for additional content sources
-- Configurable interaction thresholds and behavior parameters
-- Plugin-ready architecture for additional educational features
+- Sub-100ms response to user interactions
+- Smooth animations without frame drops
+- Efficient memory usage during extended sessions
+- Quick loading times for course and question data
 
-**Maintenance Considerations:**
+**Reliability:**
 
-- Clear documentation of interaction thresholds and behavior
-- Comprehensive error logging for debugging support
-- Performance monitoring integration points
-- Version compatibility tracking for backend API changes
+- Graceful error handling with user-friendly messages
+- Automatic recovery from temporary network issues
+- Consistent behavior across different devices and browsers
+- Comprehensive E2E testing with Playwright
+
+### Testing Strategy
+
+**End-to-End Testing:**
+
+- Complete user journey validation
+- Cross-browser compatibility testing
+- Drag gesture functionality verification
+- Answer selection and progression flow testing
+- Explanation system interaction testing
+
+**Development Workflow:**
+
+- Always run "Build Frontend" and "Build Backend" tasks after changes
+- TypeScript compilation error checking
+- Automated testing pipeline integration
 
 ---
 

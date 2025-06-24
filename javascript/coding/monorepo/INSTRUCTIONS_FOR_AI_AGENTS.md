@@ -4,6 +4,8 @@
 
 **Interactive learning platform** built as a React-based single page application that delivers multiple-choice quiz experiences with intelligent interaction patterns. The application specializes in educational content delivery through an intuitive drag-and-swipe interface optimized for both desktop and mobile experiences.
 
+IMPORTANT: After any code change, always run these VSCode tasks: "Build Frontend" and "Build Backend"
+
 ### Core Educational Purpose
 
 The application serves as a **learning assessment tool** where users progress through course-based question sets with immediate feedback mechanisms. Each incorrect answer triggers educational explanations to reinforce learning concepts, creating an iterative knowledge building experience.

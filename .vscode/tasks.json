@@ -9,7 +9,23 @@
 			"isBackground": false,
 			"problemMatcher": [
 				"$tsc"
-			]
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/javascript/coding/monorepo/apps/frontend"
+			}
+		},
+		{
+			"label": "Build Backend",
+			"type": "shell",
+			"command": "yarn build",
+			"group": "build",
+			"isBackground": false,
+			"problemMatcher": [
+				"$tsc"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/javascript/coding/monorepo/apps/backend"
+			}
 		}
 	]
 }

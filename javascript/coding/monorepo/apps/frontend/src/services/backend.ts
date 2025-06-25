@@ -1,9 +1,4 @@
-/**
- * Backend Service
- * Centralized service for all API communications with health check functionality
- */
-
-import type { CourseMetadata, QuestionMetadata } from '../types';
+import type { CourseDTO, CreateCourseDTO, QuestionDTO } from '@tester/types';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -74,17 +69,15 @@ export class BackendService {
     return await response.json();
   }
 
-  async getCourses(options?: RequestInit): Promise<CourseMetadata[]> {
-    return this.apiRequest<CourseMetadata[]>('/api/course/all', options);
+  async getCourses(options?: RequestInit): Promise<CourseDTO[]> {
+    return this.apiRequest<CourseDTO[]>('/api/course/all', options);
   }
 
-  async getQuestions(courseName: string): Promise<QuestionMetadata[]> {
-    return this.apiRequest<QuestionMetadata[]>(
-      `/api/course/content/${courseName}`
-    );
+  async getQuestions(courseName: string): Promise<QuestionDTO[]> {
+    return this.apiRequest<QuestionDTO[]>(`/api/course/content/${courseName}`);
   }
 
-  async createCourse(data: any): Promise<void> {
+  async createCourse(data: CreateCourseDTO): Promise<void> {
     await this.apiRequest('/api/course/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

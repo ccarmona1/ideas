@@ -1,56 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useApiResource } from '../../hooks/useApiResource';
 import { backendService } from '../../services/backend';
 import type { QuestionMetadata } from '../../types';
 
-interface UseApiState<T> {
-  data: T | null;
-  loading: boolean;
-  error: string | null;
+export function useGetQuestions(courseName: string) {
+  return useApiResource<QuestionMetadata[]>(
+    () => backendService.getQuestions(courseName),
+    [courseName]
+  );
 }
-
-/**
- * Custom hook for fetching questions for a specific course with loading state
- */
-export const useGetQuestions = (courseName: string) => {
-  const [state, setState] = useState<UseApiState<QuestionMetadata[]>>({
-    data: null,
-    loading: true,
-    error: null,
-  });
-
-  useEffect(() => {
-    if (!courseName) {
-      setState({
-        data: null,
-        loading: false,
-        error: 'Course name is required',
-      });
-      return;
-    }
-
-    const fetchQuestions = async () => {
-      try {
-        setState((prev) => ({ ...prev, loading: true, error: null }));
-        const questions = await backendService.getQuestions(courseName);
-        setState({
-          data: questions,
-          loading: false,
-          error: null,
-        });
-      } catch (error) {
-        setState({
-          data: null,
-          loading: false,
-          error:
-            error instanceof Error
-              ? error.message
-              : 'Failed to fetch questions',
-        });
-      }
-    };
-
-    fetchQuestions();
-  }, [courseName]);
-
-  return state;
-};

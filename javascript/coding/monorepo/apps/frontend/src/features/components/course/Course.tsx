@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Question } from '../question/Question';
-import BlockingSpinner from '../common/BlockingSpinner';
+import BlockingSpinner from '../../../components/common/BlockingSpinner';
 import './Course.css';
 import { useCourseNavigation } from './hooks/useCourseNavigation';
 import { useCourseDrag } from './hooks/useCourseDrag';

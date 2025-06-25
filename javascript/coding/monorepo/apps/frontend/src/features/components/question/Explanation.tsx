@@ -1,6 +1,6 @@
 import React from 'react';
 import './Explanation.css';
-import { SimpleDragHint } from '../common/SimpleDragHint';
+import { SimpleDragHint } from '../../../components/common/SimpleDragHint';
 import type { QuestionMetadata } from '../../../types';
 
 export interface ExplanationProps {

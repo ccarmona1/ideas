@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useNewCourseForm } from './hooks/useNewCourseForm';
-import BlockingSpinner from '../common/BlockingSpinner';
+import BlockingSpinner from '../../../components/common/BlockingSpinner';
 import './NewCourse.css';
 
 export const NewCourse: React.FC = () => {

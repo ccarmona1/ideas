@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { backendService } from '../../../services/backend';
-import BlockingSpinner from '../common/BlockingSpinner';
+import BlockingSpinner from '../../../components/common/BlockingSpinner';
 
 interface HealthCheckProps {
   children: React.ReactNode;

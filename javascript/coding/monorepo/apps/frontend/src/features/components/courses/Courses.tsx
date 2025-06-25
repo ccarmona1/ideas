@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Courses.css';
-import BlockingSpinner from '../common/BlockingSpinner';
+import BlockingSpinner from '../../../components/common/BlockingSpinner';
 import { useGetCourses } from '../../hooks/useGetCourses';
 
 export const Courses: React.FC = () => {

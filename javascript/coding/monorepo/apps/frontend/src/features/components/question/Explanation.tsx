@@ -1,6 +1,6 @@
 import React from 'react';
 import './Explanation.css';
-import { SimpleDragHint } from '../common/SimpleDragHint';
+import { SimpleDragHint } from '../../../components/common/SimpleDragHint';
 import type { QuestionMetadata } from '../../../types';
 
 export interface ExplanationProps {
@@ -13,7 +13,7 @@ export interface ExplanationProps {
   onDragEnd?: () => void;
 }
 
-const Explanation: React.FC<ExplanationProps> = ({
+export const Explanation: React.FC<ExplanationProps> = ({
   question,
   selectedOption,
   onDragAction,
@@ -24,6 +24,10 @@ const Explanation: React.FC<ExplanationProps> = ({
 }) => {
   const correctIndex = ['a', 'b', 'c', 'd'].indexOf(question.answer);
   const selectedLetter = ['a', 'b', 'c', 'd'][selectedOption];
+  const invalidReason =
+    question.invalidOptions?.[
+      selectedLetter as keyof typeof question.invalidOptions
+    ];
 
   return (
     <div className="question-container explanation-container">
@@ -45,16 +49,10 @@ const Explanation: React.FC<ExplanationProps> = ({
         <h2>Explicación</h2>
         <p>{question.explanation}</p>
 
-        {selectedLetter in (question.invalidOptions || {}) && (
+        {invalidReason && (
           <div className="invalid-reason">
             <h3>¿Por qué es incorrecta tu respuesta?</h3>
-            <p>
-              {
-                question.invalidOptions?.[
-                  selectedLetter as keyof typeof question.invalidOptions
-                ]
-              }
-            </p>
+            <p>{invalidReason}</p>
           </div>
         )}
       </div>

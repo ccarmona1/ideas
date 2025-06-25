@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { backendService } from '../../services/backend';
+import type { QuestionMetadata } from '../../types';
 
 interface UseApiState<T> {
   data: T | null;
@@ -11,7 +12,7 @@ interface UseApiState<T> {
  * Custom hook for fetching questions for a specific course with loading state
  */
 export const useGetQuestions = (courseName: string) => {
-  const [state, setState] = useState<UseApiState<any[]>>({
+  const [state, setState] = useState<UseApiState<QuestionMetadata[]>>({
     data: null,
     loading: true,
     error: null,
@@ -37,7 +38,6 @@ export const useGetQuestions = (courseName: string) => {
           error: null,
         });
       } catch (error) {
-        console.error('Error fetching questions:', error);
         setState({
           data: null,
           loading: false,

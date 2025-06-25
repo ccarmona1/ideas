@@ -3,6 +3,8 @@
  * Centralized service for all API communications with health check functionality
  */
 
+import type { CourseMetadata, QuestionMetadata } from '../types';
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 export interface ApiResponse<T> {
@@ -78,13 +80,27 @@ export class BackendService {
     }
   }
 
-  async getCourses(): Promise<any[]> {
-    return this.apiRequest<any[]>('/api/course/all');
+  async getCourses(options?: RequestInit): Promise<CourseMetadata[]> {
+    return this.apiRequest<CourseMetadata[]>('/api/course/all', options);
   }
 
-  async getQuestions(courseName: string): Promise<any[]> {
-    return this.apiRequest<any[]>(`/api/course/content/${courseName}`);
+  async getQuestions(courseName: string): Promise<QuestionMetadata[]> {
+    return this.apiRequest<QuestionMetadata[]>(
+      `/api/course/content/${courseName}`
+    );
   }
 }
 
 export const backendService = BackendService.getInstance();
+
+export async function fetchCourseQuestions(courseName: string) {
+  const API_URL = import.meta.env.VITE_API_URL;
+  const url = `${API_URL}/api/course/content/${courseName}`;
+  const response = await fetch(url, {
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json();
+}

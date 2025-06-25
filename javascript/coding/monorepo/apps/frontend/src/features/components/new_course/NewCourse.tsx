@@ -1,101 +1,27 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useNewCourseForm } from './hooks/useNewCourseForm';
+import BlockingSpinner from '../../../components/common/BlockingSpinner';
 import './NewCourse.css';
-import type { CreateCourseDTO } from '@tester/types';
-import { createCourse } from './useCreateCourse';
-import BlockingSpinner from '../common/BlockingSpinner';
 
 export const NewCourse: React.FC = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState<CreateCourseDTO>({
-    courseName: '',
-    courseKeywords: '',
-    courseDifficulty: 'principiante',
-    courseNumOfQuestions: 5,
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState<Partial<CreateCourseDTO>>({});
-  const [serverError, setServerError] = useState<string | null>(null);
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-
-    // Remove spaces from courseName
-    const processedValue =
-      name === 'courseName' ? value.replace(/\s/g, '') : value;
-
-    setFormData((prev: CreateCourseDTO) => ({
-      ...prev,
-      [name]: processedValue,
-    }));
-
-    // Clear error when user starts typing
-    if (errors[name as keyof CreateCourseDTO]) {
-      setErrors((prev: Partial<CreateCourseDTO>) => ({
-        ...prev,
-        [name]: undefined,
-      }));
-    }
-  };
-
-  const validateForm = (): boolean => {
-    const newErrors: Partial<CreateCourseDTO> = {};
-
-    if (!formData.courseName.trim()) {
-      newErrors.courseName = 'El nombre del curso es obligatorio';
-    }
-
-    if (!formData.courseKeywords.trim()) {
-      newErrors.courseKeywords = 'Las palabras clave son obligatorias';
-    }
-
-    if (!formData.courseDifficulty) {
-      newErrors.courseDifficulty = 'Debes seleccionar una dificultad' as any;
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    setServerError(null); // Clear any previous errors
-
-    try {
-      await createCourse(formData);
-
-      navigate('/');
-    } catch (error) {
-      console.error('Error creating course:', error);
-      setServerError(
-        error instanceof Error
-          ? error.message
-          : 'Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.'
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const {
+    formData,
+    isSubmitting,
+    errors,
+    serverError,
+    handleInputChange,
+    handleSubmit,
+    setServerError,
+  } = useNewCourseForm();
 
   return (
     <div className="new-course-container">
-      {/* Loading State with AI Thinking Animation */}
       {isSubmitting && (
         <BlockingSpinner
           message="La IA está pensando y creando tu curso..."
           overlay={true}
         />
       )}
-
-      {/* Server Error Message */}
       {serverError && (
         <div className="error-notification">
           <div className="error-content">
@@ -111,13 +37,10 @@ export const NewCourse: React.FC = () => {
           </div>
         </div>
       )}
-
       <Link to="/" className="course-back-button">
         <span className="back-button-text">Volver a cursos</span>
       </Link>
-
       <h1 className="new-course-title">Crear Nuevo Curso</h1>
-
       <form className="new-course-form" onSubmit={handleSubmit}>
         <div className={`form-group ${errors.courseName ? 'has-error' : ''}`}>
           <label htmlFor="courseName">Nombre del curso</label>
@@ -135,7 +58,6 @@ export const NewCourse: React.FC = () => {
             <span className="error-message">{errors.courseName}</span>
           )}
         </div>
-
         <div
           className={`form-group ${errors.courseKeywords ? 'has-error' : ''}`}
         >
@@ -154,7 +76,6 @@ export const NewCourse: React.FC = () => {
             <span className="error-message">{errors.courseKeywords}</span>
           )}
         </div>
-
         <div
           className={`form-group ${errors.courseDifficulty ? 'has-error' : ''}`}
         >
@@ -173,7 +94,6 @@ export const NewCourse: React.FC = () => {
             <span className="error-message">{errors.courseDifficulty}</span>
           )}
         </div>
-
         <div
           className={`form-group ${
             errors.courseNumOfQuestions ? 'has-error' : ''
@@ -195,7 +115,6 @@ export const NewCourse: React.FC = () => {
             <span className="error-message">{errors.courseNumOfQuestions}</span>
           )}
         </div>
-
         <button
           type="submit"
           className={`submit-button ${isSubmitting ? 'loading' : ''}`}

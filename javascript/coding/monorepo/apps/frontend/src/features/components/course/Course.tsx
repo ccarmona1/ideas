@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Question } from '../question/Question';
-import BlockingSpinner from '../../../components/common/BlockingSpinner';
 import './Course.css';
 import { useCourseNavigation } from './hooks/useCourseNavigation';
 import { useCourseDrag } from './hooks/useCourseDrag';
@@ -10,8 +9,12 @@ import CourseScoreboard from './CourseScoreboard';
 import CourseCompletion from './CourseCompletion';
 import CourseLoading from './CourseLoading';
 import CourseError from './CourseError';
-import CourseEmpty from './CourseEmpty';
 import Explanation from '../question/Explanation';
+import {
+  CourseNotFound,
+  CourseLoadingState,
+  CourseEmptyState,
+} from './CourseState';
 
 export const Course: React.FC = () => {
   const params = useParams();
@@ -49,31 +52,12 @@ export const Course: React.FC = () => {
     incorrectCount,
     skippedCount,
   });
-  if (!questionQueue) {
-    return (
-      <div className="course-container">
-        <div className="course-header">
-          <Link to="/" className="course-back-button">
-            <span className="back-button-text">Volver a cursos</span>
-          </Link>
-        </div>
-        <div className="course-not-found">
-          <h1>Cargando...</h1>
-        </div>
-      </div>
-    );
-  }
-  if (questionQueue.length === 0 && currentQuestionIndex === 0) {
-    return (
-      <BlockingSpinner message="Loading course questions..." overlay={false} />
-    );
-  }
-  if (questionQueue.length === 0 && currentQuestionIndex > 0) {
+  if (!questionQueue) return <CourseNotFound />;
+  if (questionQueue.length === 0 && currentQuestionIndex === 0)
+    return <CourseLoadingState />;
+  if (questionQueue.length === 0 && currentQuestionIndex > 0)
     return <CourseError />;
-  }
-  if (questionQueue.length === 0) {
-    return <CourseEmpty />;
-  }
+  if (questionQueue.length === 0) return <CourseEmptyState />;
   return (
     <div className="course-container">
       <div className="course-header">
@@ -84,9 +68,9 @@ export const Course: React.FC = () => {
       </div>
       {questionQueue.length > 0 ? (
         <div
-          key={`${currentViewMode}-${currentQuestionIndex}-${correctCount}-${
-            showingExplanation ? explanationData?.selectedOption : ''
-          }`}
+          key={`${currentViewMode}-${currentQuestionIndex}-${correctCount}-$
+            {showingExplanation ? explanationData?.selectedOption : ''}
+          `}
           className={`course-question-box ${
             questionTransition === 'entering' ? 'entering' : ''
           } ${isContainerDragging ? 'dragging' : ''}`}

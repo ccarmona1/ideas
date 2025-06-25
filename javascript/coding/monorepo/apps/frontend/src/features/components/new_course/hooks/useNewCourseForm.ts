@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createCourse } from '../useCreateCourse';
+import { createCourse } from '../../../services/courses/courseService';
 import type { CreateCourseDTO } from '@tester/types';
 
 export interface UseNewCourseForm {
@@ -68,7 +68,8 @@ export function useNewCourseForm(): UseNewCourseForm {
     setIsSubmitting(true);
     setServerError(null);
     try {
-      await createCourse(formData);
+      const apiUrl = import.meta.env.VITE_API_URL;
+      await createCourse(apiUrl, formData);
       navigate('/');
     } catch (error) {
       setServerError(

@@ -42,3 +42,4 @@ Refactorizaciones que espero:
 - Valida método0s, clases o hooks innecesarios y elimínalos.
 - Los e2e tests ya reconocen los elementos correctamente, si un e2e falla es porque el elemento cambió o se dañó algo.
 - Hay hooks por todas partes, ¿dónde deben de ir los hooks?
+- Evita crear tasks en vs code

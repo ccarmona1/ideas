@@ -80,8 +80,8 @@ export class BackendService {
     }
   }
 
-  async getCourses(): Promise<CourseMetadata[]> {
-    return this.apiRequest<CourseMetadata[]>('/api/course/all');
+  async getCourses(options?: RequestInit): Promise<CourseMetadata[]> {
+    return this.apiRequest<CourseMetadata[]>('/api/course/all', options);
   }
 
   async getQuestions(courseName: string): Promise<QuestionMetadata[]> {

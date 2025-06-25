@@ -8,9 +8,6 @@ interface UseApiState<T> {
   error: string | null;
 }
 
-/**
- * Custom hook for fetching courses with loading state
- */
 export const useGetCourses = () => {
   const [state, setState] = useState<UseApiState<CourseMetadata[]>>({
     data: null,
@@ -19,17 +16,20 @@ export const useGetCourses = () => {
   });
 
   useEffect(() => {
+    const controller = new AbortController();
     const fetchCourses = async () => {
+      setState((prev) => ({ ...prev, loading: true, error: null }));
       try {
-        setState((prev) => ({ ...prev, loading: true, error: null }));
-        const courses = await backendService.getCourses();
+        const courses = await backendService.getCourses({
+          signal: controller.signal,
+        });
         setState({
           data: courses,
           loading: false,
           error: null,
         });
       } catch (error) {
-        console.error('Error fetching courses:', error);
+        if (controller.signal.aborted) return;
         setState({
           data: null,
           loading: false,
@@ -38,8 +38,10 @@ export const useGetCourses = () => {
         });
       }
     };
-
     fetchCourses();
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return state;

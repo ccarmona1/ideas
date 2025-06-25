@@ -1,12 +1,12 @@
+import type { QuestionDTO } from '@tester/types';
 import { useState, useEffect, useCallback } from 'react';
-import type { QuestionMetadata } from '../../../types';
 
 const OPTIONS = ['a', 'b', 'c', 'd'] as const;
 
 type OptionIndex = number | undefined;
 
 interface UseQuestionLogicProps {
-  question: QuestionMetadata;
+  question: QuestionDTO;
   onCorrect: () => void;
   onIncorrect?: () => void;
   onDragStart?: (selectedOption: OptionIndex, isCorrect: boolean) => void;

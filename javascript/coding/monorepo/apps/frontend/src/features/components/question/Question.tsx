@@ -1,11 +1,11 @@
 import React from 'react';
 import './Question.css';
 import { SimpleDragHint } from '../../../components/common/SimpleDragHint';
-import type { QuestionMetadata } from '../../../types';
 import { useQuestionLogic } from '../../hooks/question/useQuestionLogic';
+import type { QuestionDTO } from '@tester/types';
 
 export interface QuestionProps {
-  question: QuestionMetadata;
+  question: QuestionDTO;
   onCorrect: () => void;
   onIncorrect?: () => void;
   onSkip?: () => void;

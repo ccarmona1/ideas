@@ -1,9 +1,9 @@
 import { useApiResource } from '../../hooks/useApiResource';
 import { backendService } from '../../services/backend';
-import type { QuestionMetadata } from '../../types';
+import type { QuestionDTO } from '@tester/types';
 
 export function useGetQuestions(courseName: string) {
-  return useApiResource<QuestionMetadata[]>(
+  return useApiResource<QuestionDTO[]>(
     () => backendService.getQuestions(courseName),
     [courseName]
   );

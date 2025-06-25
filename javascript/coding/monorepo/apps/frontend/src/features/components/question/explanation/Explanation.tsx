@@ -1,10 +1,10 @@
 import React from 'react';
 import './Explanation.css';
-import { SimpleDragHint } from '../../../components/common/SimpleDragHint';
-import type { QuestionMetadata } from '../../../types';
+import { SimpleDragHint } from '../../../../components/common/SimpleDragHint';
+import type { QuestionDTO } from '@tester/types';
 
 export interface ExplanationProps {
-  question: QuestionMetadata;
+  question: QuestionDTO;
   selectedOption: number;
   onDragAction?: () => void;
   onContainerDragStart?: () => void;

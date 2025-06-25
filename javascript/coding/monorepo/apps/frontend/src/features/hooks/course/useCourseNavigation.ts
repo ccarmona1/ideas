@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
-import type { QuestionMetadata } from '../../../types';
 import { useGetQuestions } from '../useGetQuestions';
+import type { QuestionDTO } from '@tester/types';
 
 export interface UseCourseNavigationResult {
-  questionQueue: QuestionMetadata[];
+  questionQueue: QuestionDTO[];
   currentQuestionIndex: number;
   correctCount: number;
   incorrectCount: number;
   skippedCount: number;
   showingExplanation: boolean;
   explanationData: {
-    question: QuestionMetadata;
+    question: QuestionDTO;
     selectedOption: number;
   } | null;
   questionTransition: 'entering' | 'exiting' | 'idle';
@@ -24,7 +24,7 @@ export interface UseCourseNavigationResult {
   } | null;
   handleSkipQuestion: () => void;
   handleShowExplanation: (
-    question: QuestionMetadata,
+    question: QuestionDTO,
     selectedOption: number
   ) => void;
   handleNextFromExplanation: () => void;
@@ -39,14 +39,14 @@ export interface UseCourseNavigationResult {
   accuracy: number;
   setCurrentViewMode: (mode: 'question' | 'explanation' | 'completed') => void;
   setCurrentQuestionIndex: (index: number) => void;
-  setQuestionQueue: (queue: QuestionMetadata[]) => void;
+  setQuestionQueue: (queue: QuestionDTO[]) => void;
 }
 
 export function useCourseNavigation(
   courseName: string
 ): UseCourseNavigationResult {
   const { data: questionsData } = useGetQuestions(courseName);
-  const [questionQueue, setQuestionQueue] = useState<QuestionMetadata[]>([]);
+  const [questionQueue, setQuestionQueue] = useState<QuestionDTO[]>([]);
 
   useEffect(() => {
     if (questionsData && questionsData.length > 0) {
@@ -60,7 +60,7 @@ export function useCourseNavigation(
   const [skippedCount, setSkippedCount] = useState(0);
   const [showingExplanation, setShowingExplanation] = useState(false);
   const [explanationData, setExplanationData] = useState<{
-    question: QuestionMetadata;
+    question: QuestionDTO;
     selectedOption: number;
   } | null>(null);
   const [questionTransition, setQuestionTransition] = useState<
@@ -98,7 +98,7 @@ export function useCourseNavigation(
   }, [questionQueue, currentQuestionIndex]);
 
   const handleShowExplanation = useCallback(
-    (question: QuestionMetadata, selectedOption: number) => {
+    (question: QuestionDTO, selectedOption: number) => {
       setExplanationData({ question, selectedOption });
       setCurrentViewMode('explanation');
       setShowingExplanation(true);

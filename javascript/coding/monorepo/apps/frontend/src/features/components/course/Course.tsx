@@ -9,7 +9,7 @@ import CourseScoreboard from './CourseScoreboard';
 import CourseCompletion from './CourseCompletion';
 import CourseLoading from './CourseLoading';
 import CourseError from './CourseError';
-import Explanation from '../question/Explanation';
+import Explanation from '../question/explanation/Explanation';
 import {
   CourseNotFound,
   CourseLoadingState,

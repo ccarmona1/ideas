@@ -1,5 +1,5 @@
+import type { QuestionDTO } from '@tester/types';
 import { useMemo } from 'react';
-import type { QuestionMetadata } from '../../../types';
 
 export interface UseCourseStats {
   total: number;
@@ -11,7 +11,7 @@ export interface UseCourseStats {
 }
 
 export function useCourseStats(params: {
-  questionQueue: QuestionMetadata[];
+  questionQueue: QuestionDTO[];
   currentQuestionIndex: number;
   correctCount: number;
   incorrectCount: number;

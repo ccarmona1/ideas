@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type DependencyList } from 'react';
 
 interface UseApiResourceResult<T> {
   data: T | null;
@@ -10,7 +10,7 @@ type Fetcher<T> = (signal: AbortSignal) => Promise<T>;
 
 export function useApiResource<T>(
   fetcher: Fetcher<T>,
-  deps: object[] = [],
+  deps: DependencyList = [],
 ): UseApiResourceResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);

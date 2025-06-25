@@ -1,4 +1,3 @@
-import type { IDIContainer } from 'rsdi';
 import { DIContainer } from 'rsdi';
 import { CourseController } from '../routes/CourseController.js';
 import { QuestionController } from '../routes/QuestionController.js';
@@ -9,12 +8,23 @@ import { QuestionService } from '../services/domain/QuestionService.js';
 import { DummyRepository } from '../services/repository/DummyRepository.js';
 import { GitHubRepository } from '../services/repository/GitHubRepository.js';
 
-export type AppDIContainer = ReturnType<typeof configureDI>;
+export type AppDIContainer = {
+  get<T extends keyof Dependencies>(name: T): Dependencies[T];
+};
 
-export default function configureDI(): IDIContainer {
+type Dependencies = {
+  repository: DummyRepository | GitHubRepository;
+  aiGenerator: DummyGenerator | GeminiGenerator;
+  questionService: QuestionService;
+  courseService: CourseService;
+  courseController: CourseController;
+  questionController: QuestionController;
+};
+
+export default function configureDI(): AppDIContainer {
   const env = process.env.DEPLOY_ENV;
 
-  console.log('Current env: ' + env);
+  console.log(`Current env: ${env}`);
 
   return new DIContainer()
     .add('repository', () =>
@@ -39,5 +49,5 @@ export default function configureDI(): IDIContainer {
     .add(
       'questionController',
       ({ questionService }) => new QuestionController(questionService),
-    );
+    ) as AppDIContainer;
 }

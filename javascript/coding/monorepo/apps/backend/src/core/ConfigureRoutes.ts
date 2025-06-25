@@ -3,7 +3,8 @@ import { Router } from 'express';
 import configureDI from './DependencyInjection.js';
 
 export const configureRoutes = (app: Express): void => {
-  const { courseController } = configureDI();
+  const diContainer = configureDI();
+  const courseController = diContainer.get('courseController');
 
   const courseRouter = Router();
   courseRouter.get('/all', courseController.getAll.bind(courseController));

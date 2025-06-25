@@ -7,7 +7,6 @@ export interface ExplanationProps {
   question: QuestionMetadata;
   selectedOption: number;
   onDragAction?: () => void;
-  canDrag?: boolean;
   onContainerDragStart?: () => void;
   onDragMove?: (deltaY: number, opacity: number) => void;
   onDragEnd?: () => void;
@@ -17,7 +16,6 @@ export const Explanation: React.FC<ExplanationProps> = ({
   question,
   selectedOption,
   onDragAction,
-  canDrag,
   onContainerDragStart,
   onDragMove,
   onDragEnd,
@@ -61,7 +59,7 @@ export const Explanation: React.FC<ExplanationProps> = ({
         <SimpleDragHint
           text="Arrastra o haz click aquí para continuar"
           onAction={() => onDragAction?.()}
-          canDrag={canDrag}
+          canDrag={true}
           onDragStart={onContainerDragStart}
           onDragMove={onDragMove}
           onDragEnd={onDragEnd}

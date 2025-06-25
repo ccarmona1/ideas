@@ -68,9 +68,9 @@ export const Course: React.FC = () => {
       </div>
       {questionQueue.length > 0 ? (
         <div
-          key={`${currentViewMode}-${currentQuestionIndex}-${correctCount}-$
-            {showingExplanation ? explanationData?.selectedOption : ''}
-          `}
+          key={`${currentViewMode}-${currentQuestionIndex}-${correctCount}-${
+            showingExplanation ? explanationData?.selectedOption : ''
+          }`}
           className={`course-question-box ${
             questionTransition === 'entering' ? 'entering' : ''
           } ${isContainerDragging ? 'dragging' : ''}`}
@@ -91,7 +91,6 @@ export const Course: React.FC = () => {
               question={explanationData.question}
               selectedOption={explanationData.selectedOption}
               onDragAction={handleDragAction}
-              canDrag={canDrag}
               onContainerDragStart={handleContainerDragStart}
               onDragMove={handleContainerDragMove}
               onDragEnd={handleContainerDragEnd}
@@ -106,7 +105,6 @@ export const Course: React.FC = () => {
                 onDragStart={handleDragStart}
                 onDragAction={handleDragAction}
                 canDrag={canDrag}
-                disabled={false}
                 onContainerDragStart={handleContainerDragStart}
                 onDragMove={handleContainerDragMove}
                 onDragEnd={handleContainerDragEnd}

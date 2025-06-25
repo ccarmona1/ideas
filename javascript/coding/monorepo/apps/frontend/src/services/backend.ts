@@ -83,6 +83,14 @@ export class BackendService {
       `/api/course/content/${courseName}`
     );
   }
+
+  async createCourse(data: any): Promise<void> {
+    await this.apiRequest('/api/course/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+  }
 }
 
 export const backendService = BackendService.getInstance();

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import type { QuestionMetadata } from '../../../types';
 
+const OPTIONS = ['a', 'b', 'c', 'd'] as const;
+
 export interface UseQuestionLogicProps {
   question: QuestionMetadata;
   onCorrect: () => void;
@@ -31,34 +33,29 @@ export function useQuestionLogic({
   const [selectedOption, setSelectedOption] = useState<number | undefined>(
     undefined
   );
-  const [answeredCorrectly, setAnsweredCorrectly] = useState(false);
-  const [isReady, setIsReady] = useState(false);
+  const [answeredCorrectly, setAnsweredCorrectly] = useState<boolean>(false);
+  const [isReady, setIsReady] = useState<boolean>(false);
 
   const isCorrect =
-    selectedOption !== undefined &&
-    ['a', 'b', 'c', 'd'][selectedOption] === question.answer;
-  const correctIndex = ['a', 'b', 'c', 'd'].indexOf(question.answer);
+    selectedOption !== undefined && OPTIONS[selectedOption] === question.answer;
+  const correctIndex = OPTIONS.indexOf(
+    question.answer as (typeof OPTIONS)[number]
+  );
 
   useEffect(() => {
     setSelectedOption(undefined);
     setAnsweredCorrectly(false);
     setIsReady(false);
-    if (onDragStart) {
-      onDragStart(undefined, false);
-    }
-    const timer = setTimeout(() => {
-      setIsReady(true);
-    }, 100);
+    if (onDragStart) onDragStart(undefined, false);
+    const timer = setTimeout(() => setIsReady(true), 100);
     return () => clearTimeout(timer);
   }, [question.question, onDragStart]);
 
   const handleSelectOption = (index: number) => {
     if (!answeredCorrectly && !disabled && isReady) {
       setSelectedOption(index);
-      const isOptionCorrect = ['a', 'b', 'c', 'd'][index] === question.answer;
-      if (onDragStart) {
-        onDragStart(index, isOptionCorrect);
-      }
+      const isOptionCorrect = OPTIONS[index] === question.answer;
+      if (onDragStart) onDragStart(index, isOptionCorrect);
       if (isOptionCorrect) {
         setAnsweredCorrectly(true);
         setTimeout(() => onCorrect(), 800);

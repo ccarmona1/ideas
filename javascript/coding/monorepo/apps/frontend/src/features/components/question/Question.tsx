@@ -2,7 +2,7 @@ import React from 'react';
 import './Question.css';
 import { SimpleDragHint } from '../../../components/common/SimpleDragHint';
 import type { QuestionMetadata } from '../../../types';
-import { useQuestionLogic } from './useQuestionLogic';
+import { useQuestionLogic } from '../../hooks/question/useQuestionLogic';
 
 export interface QuestionProps {
   question: QuestionMetadata;

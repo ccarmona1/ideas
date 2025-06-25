@@ -9,3 +9,6 @@
 - Actualizados todos los imports de BlockingSpinner y SimpleDragHint a la nueva ubicación centralizada. Build debe pasar correctamente.
 - Refactor profesional en useGetCourses: manejo seguro de ciclo de vida con isMounted, tipado estricto, sin comentarios, lógica centralizada y lista para escalar.
 - Refactor en Course.tsx: extracción de estados (not found, loading, empty) a CourseState.tsx, limpieza de imports y simplificación del renderizado condicional. Componente más mantenible y escalable.
+- Refactor en Courses.tsx: extracción de estados (loading, error, empty) a CoursesState.tsx, limpieza de imports y simplificación del renderizado condicional. Componente más mantenible y escalable.
+- Refactor en useQuestionLogic: tipado explícito en useState, opciones extraídas a constante, lógica simplificada, sin comentarios, hook listo para escalar y mantener.
+- useQuestionLogic movido a src/features/hooks/question/useQuestionLogic.ts, imports actualizados y archivo antiguo eliminado. Cumple separación de lógica y single responsibility.

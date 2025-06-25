@@ -1,34 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Courses.css';
-import BlockingSpinner from '../../../components/common/BlockingSpinner';
 import { useGetCourses } from '../../hooks/useGetCourses';
+import { CoursesLoading, CoursesError, CoursesEmpty } from './CoursesState';
 
 export const Courses: React.FC = () => {
   const { data: courses, loading, error } = useGetCourses();
 
-  if (loading) {
-    return <BlockingSpinner message="Loading courses..." overlay={false} />;
-  }
-
-  if (error) {
+  if (loading) return <CoursesLoading />;
+  if (error)
     return (
-      <div className="courses-error">
-        <h2>Error loading courses</h2>
-        <p>{error}</p>
-        <button onClick={() => window.location.reload()}>Retry</button>
-      </div>
+      <CoursesError error={error} onRetry={() => window.location.reload()} />
     );
-  }
-
-  if (!courses || courses.length === 0) {
-    return (
-      <div className="courses-empty">
-        <h2>No courses available</h2>
-        <p>Please check back later.</p>
-      </div>
-    );
-  }
+  if (!courses || courses.length === 0) return <CoursesEmpty />;
 
   return (
     <div className="courses-container">

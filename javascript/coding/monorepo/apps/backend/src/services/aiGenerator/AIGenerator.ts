@@ -1,4 +1,4 @@
-import { CreateCourseDTO } from '@tester/types';
+import type { CreateCourseDTO } from '@tester/types';
 
 export abstract class AIGenerator {
   abstract generateContent(prompt: string): Promise<string>;

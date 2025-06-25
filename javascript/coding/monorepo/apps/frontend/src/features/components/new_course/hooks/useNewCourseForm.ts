@@ -9,7 +9,7 @@ export interface UseNewCourseForm {
   errors: Partial<CreateCourseDTO>;
   serverError: string | null;
   handleInputChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   setServerError: React.Dispatch<React.SetStateAction<string | null>>;
@@ -28,7 +28,7 @@ export function useNewCourseForm(): UseNewCourseForm {
   const [serverError, setServerError] = useState<string | null>(null);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     const processedValue =
@@ -54,7 +54,7 @@ export function useNewCourseForm(): UseNewCourseForm {
       newErrors.courseKeywords = 'Las palabras clave son obligatorias';
     }
     if (!formData.courseDifficulty) {
-      newErrors.courseDifficulty = 'Debes seleccionar una dificultad' as any;
+      newErrors.courseDifficulty = 'Debes seleccionar una dificultad';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -74,7 +74,7 @@ export function useNewCourseForm(): UseNewCourseForm {
       setServerError(
         error instanceof Error
           ? error.message
-          : 'Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.'
+          : 'Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.',
       );
     } finally {
       setIsSubmitting(false);

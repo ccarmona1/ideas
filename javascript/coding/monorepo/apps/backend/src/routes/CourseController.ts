@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
-import { CourseService } from '../services/domain/CourseService.js';
-import { CreateCourseDTO } from '@tester/types';
+import type { Request, Response } from 'express';
+import type { CourseService } from '../services/domain/CourseService.js';
+import type { CreateCourseDTO } from '@tester/types';
 
 export class CourseController {
   constructor(private readonly courseService: CourseService) {}

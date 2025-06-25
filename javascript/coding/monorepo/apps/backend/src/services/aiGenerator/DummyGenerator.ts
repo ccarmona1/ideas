@@ -1,4 +1,3 @@
-import { CreateCourseDTO } from '@tester/types';
 import { AIGenerator } from './AIGenerator.js';
 import ingles from './ingles.json' with { type: 'json' };
 
@@ -8,7 +7,7 @@ export class DummyGenerator extends AIGenerator {
     console.log('Using DummyGenerator');
   }
 
-  async generateContent(prompt: string): Promise<string> {
+  async generateContent(): Promise<string> {
     const jsonString = JSON.stringify(ingles, null, 2); // 2 es para identación bonita
     return jsonString;
   }

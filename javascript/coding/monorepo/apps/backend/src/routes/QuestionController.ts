@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import { QuestionService } from '../services/domain/QuestionService.js';
+import type { Request, Response } from 'express';
+import type { QuestionService } from '../services/domain/QuestionService.js';
 
 export class QuestionController {
   constructor(private readonly questionService: QuestionService) {}

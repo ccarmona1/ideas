@@ -10,7 +10,7 @@ type Fetcher<T> = (signal: AbortSignal) => Promise<T>;
 
 export function useApiResource<T>(
   fetcher: Fetcher<T>,
-  deps: unknown[] = []
+  deps: object[] = [],
 ): UseApiResourceResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState(true);

@@ -1,10 +1,10 @@
 import { Octokit } from '@octokit/rest';
-import { Repository } from './Repository.js';
-import {
+import type { CreateCourseDTO } from '@tester/types';
+import type {
   CourseDTO,
   CourseDTOWithContent,
 } from '../../../../../packages/types/src/dto/CourseDTO.js';
-import { CreateCourseDTO } from '@tester/types';
+import type { Repository } from './Repository.js';
 
 export class GitHubRepository
   implements Repository<CourseDTO, CreateCourseDTO, CourseDTOWithContent>
@@ -23,7 +23,7 @@ export class GitHubRepository
 
     if (!process.env.GITHUB_OWNER || !process.env.GITHUB_REPO) {
       throw new Error(
-        'GITHUB_OWNER and GITHUB_REPO must be set in environment variables'
+        'GITHUB_OWNER and GITHUB_REPO must be set in environment variables',
       );
     }
 
@@ -38,7 +38,7 @@ export class GitHubRepository
 
       sha = existingCourse?.sha;
     } catch (error) {
-      console.log('creating new course');
+      console.log('creating new course', error);
     }
 
     const content = Buffer.from(data.content ?? '', 'utf-8').toString('base64');

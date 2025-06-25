@@ -1,9 +1,7 @@
-import test, { expect } from '@playwright/test';
+import test from '@playwright/test';
 import {
   openAnExam,
-  selectAnIncorrectAnswer,
-  selectTheCorrectAnswer,
-  selectTheFirstAnswer,
+  selectTheFirstAnswer
 } from './exam-page';
 
 test('Open an exam', async ({ page }) => {

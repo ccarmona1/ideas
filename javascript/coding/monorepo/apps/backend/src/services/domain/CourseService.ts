@@ -1,10 +1,10 @@
-import { CreateCourseDTO } from '@tester/types';
-import {
+import type { CreateCourseDTO } from '@tester/types';
+import type {
   CourseDTO,
   CourseDTOWithContent,
 } from '../../../../../packages/types/src/dto/CourseDTO.js';
-import { Repository } from '../repository/Repository.js';
-import { QuestionService } from './QuestionService.js';
+import type { Repository } from '../repository/Repository.js';
+import type { QuestionService } from './QuestionService.js';
 
 export class CourseService {
   constructor(

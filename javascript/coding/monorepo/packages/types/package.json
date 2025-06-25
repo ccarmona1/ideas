@@ -4,6 +4,7 @@
   "description": "Shared TypeScript types for the tester monorepo",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -25,7 +26,9 @@
     "build": "yarn clean && tsc -b",
     "clean": "rm -rf dist .tsbuildinfo",
     "dev": "tsc -b --watch",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [
     "typescript",

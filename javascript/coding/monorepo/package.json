@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
+  "type": "module",
   "workspaces": [
     "packages/*",
     "apps/*"
@@ -16,6 +17,8 @@
     "dev": "concurrently \"yarn workspace backend dev\" \"yarn workspace frontend dev\"",
     "dev:backend": "yarn workspace backend dev",
     "dev:frontend": "yarn workspace frontend dev",
-    "e2e": "yarn workspace e2e test"
+    "e2e": "yarn workspace e2e test",
+    "lint": "yarn workspace backend lint && yarn workspace frontend lint && yarn workspace @tester/types lint",
+    "lint:fix": "yarn workspace backend lint --fix && yarn workspace frontend lint --fix && yarn workspace @tester/types lint --fix"
   }
 }

@@ -9,12 +9,14 @@
     "start:dev": "yarn build && yarn dev",
     "start": "tsc --noEmitOnError false --skipLibCheck && DEPLOY_ENV=pdn node dist/src/index.js",
     "build": "tsc -b",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@types/node": "^24.0.4",
     "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "@typescript-eslint/eslint-plugin": "^8.35.0",
+    "@typescript-eslint/parser": "^8.35.0"
   },
   "dependencies": {
     "@google/genai": "^1.6.0",

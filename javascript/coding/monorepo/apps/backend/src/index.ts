@@ -1,12 +1,5 @@
 import cors from 'cors';
-import express, { Router } from 'express';
-import { CourseController } from './routes/CourseController.js';
-import { QuestionController } from './routes/QuestionController.js';
-import { GeminiGenerator } from './services/aiGenerator/GeminiGenerator.js';
-import { CourseService } from './services/domain/CourseService.js';
-import { QuestionService } from './services/domain/QuestionService.js';
-import { GitHubRepository } from './services/repository/GitHubRepository.js';
-import configureDI from './core/DependencyInjection.js';
+import express from 'express';
 import { configureRoutes } from './core/ConfigureRoutes.js';
 
 const app = express();

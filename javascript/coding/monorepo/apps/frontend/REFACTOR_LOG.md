@@ -12,3 +12,4 @@
 - Refactor en Courses.tsx: extracción de estados (loading, error, empty) a CoursesState.tsx, limpieza de imports y simplificación del renderizado condicional. Componente más mantenible y escalable.
 - Refactor en useQuestionLogic: tipado explícito en useState, opciones extraídas a constante, lógica simplificada, sin comentarios, hook listo para escalar y mantener.
 - useQuestionLogic movido a src/features/hooks/question/useQuestionLogic.ts, imports actualizados y archivo antiguo eliminado. Cumple separación de lógica y single responsibility.
+- Hooks de curso (useCourseNavigation, useCourseDrag, useCourseStats) migrados de components/course/hooks a features/hooks/course. Implementación profesionalizada, imports actualizados y archivos originales eliminados. Estructura lista para escalar y mantener.

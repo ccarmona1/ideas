@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import type { QuestionMetadata } from '../../../../types';
+import type { QuestionMetadata } from '../../../types';
 
 export interface UseCourseStats {
   total: number;

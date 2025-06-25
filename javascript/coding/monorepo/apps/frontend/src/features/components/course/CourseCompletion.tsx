@@ -1,5 +1,5 @@
 import React from 'react';
-import type { UseCourseStats } from './hooks/useCourseStats';
+import type { UseCourseStats } from '../../hooks/course/useCourseStats';
 
 interface CourseCompletionProps {
   stats: UseCourseStats;

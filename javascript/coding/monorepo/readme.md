@@ -1,5 +1,9 @@
 # Monorepo
 
+## App Overview
+
+MicroLearn AI is an application for generating exams and educational content, presented in a microlearning format inspired by scrolling cards. Users can create exams on any topic, and the app leverages AI models (such as Gemini) to assist in content generation and personalization. The platform supports dynamic question creation, adaptive learning, and seamless integration with modern AI technologies to enhance the learning experience.
+
 ## Repository Structure
 
 - `apps/` — Main applications in the monorepo.

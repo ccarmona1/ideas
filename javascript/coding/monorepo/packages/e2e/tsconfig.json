@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      //"@myhelper/*": ["packages/myhelper/*"] // This mapping is relative to "baseUrl".
-    }
-  }
-}

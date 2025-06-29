@@ -29,4 +29,5 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.workspaceSymbols.scope": "allOpenProjects",
   "chat.tools.autoApprove": true,
+  "debug.inlineValues": "on"
 }

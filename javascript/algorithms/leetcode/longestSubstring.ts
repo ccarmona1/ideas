@@ -51,38 +51,30 @@ right = 3
 mapa = a-0,n-1,v-2,i-3
 [{a,n,v,i},a,j]
 
-quinta iteración, se encuentra una a (el valor máximo del string 
-sin repeticiones se actualiza a 4 y se actualiza el left)
+quinta iteración, se encuentra una "a" 
+se calcula el maxLength = right - left  + 1
 
-left = 1 (la última vez que se vio a "a" fue en la posición 0, por ende continuamos con el siguiente caracter)
-right = 1 (se reinicia right, la ventana empieza con un solo caracter)
-maxLengt = 4
-mapa = n-1 se reinicia el mapa
-[a,{n},v,i,a,j]
+se recalcula el left usando el mapa y mirando la última ubicación de "a" (0) + 1 = 1
+left = 1
+right = 4
+mapa = a-4,n-1,v-2,i-3
+[a,{n,v,i,a},j]
 
 sexta iteración
 
-left=1
-right=2
-maxLengt = 4
-mapa = n-1,v-2
-[a,{n,v},i,a,j]
-
-... se continua así hasta la j
-
-left=1
-right=5
-maxLengt = 5
-mapa = n-1,v-2,i-3,a-4,j-5
+left = 1
+right = 5
+mapa = a-4,n-1,v-2,i-3
 [a,{n,v,i,a,j}]
 
-se termina el ciclo, maxLenght = 5
+se acaba el ciclo, maxLenght = 5
+
 
 */
 
 lengthOfLongestSubstring('anviaj');
-lengthOfLongestSubstring('bbbbb');
-lengthOfLongestSubstring('abcabcbb');
-lengthOfLongestSubstring('pwwkew');
-lengthOfLongestSubstring('dvdf');
-lengthOfLongestSubstring('aab');
+// lengthOfLongestSubstring('bbbbb');
+// lengthOfLongestSubstring('abcabcbb');
+// lengthOfLongestSubstring('pwwkew');
+// lengthOfLongestSubstring('dvdf');
+// lengthOfLongestSubstring('aab');

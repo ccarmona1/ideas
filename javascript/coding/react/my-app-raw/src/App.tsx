@@ -1,10 +1,10 @@
 import './App.css';
-import { Lazy } from './components/LazyLoading/Lazy';
+import { ContextoGlobal } from './components/ContextoGlobal/ContextoGlobal';
 
 function App() {
   return (
     <>
-      <Lazy></Lazy>
+      <ContextoGlobal></ContextoGlobal>
     </>
   );
 }

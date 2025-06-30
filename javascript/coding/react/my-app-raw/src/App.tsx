@@ -1,10 +1,18 @@
+import { useCallback } from 'react';
 import './App.css';
-import Hermanos from './components/Hermanos/Hermanos';
+import { Debounced } from './components/Debounced/Debounced';
 
 function App() {
+  const print = useCallback((value: string) => {
+    console.log(value);
+  }, []);
+
   return (
     <>
-      <Hermanos></Hermanos>
+      <Debounced
+        value="initial value"
+        handleNewDebouncedValue={print}
+      ></Debounced>
     </>
   );
 }

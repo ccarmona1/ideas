@@ -18,7 +18,7 @@ Crea un componente `<DebouncedInput>` que reciba un `value`, lo actualice intern
 
 ---
 
-## 2. UserProfile con Suspense y Lazy Loading
+## 2. UserProfile con Suspense y Lazy Loading (Completado)
 
 **Descripción:**  
 Construye un componente `<UserProfile>` que haga fetch de información de usuario al montarse. Usa `React.lazy` y `React.Suspense` para cargar el componente y mostrar un loader mientras se obtiene la información.
@@ -31,7 +31,7 @@ Construye un componente `<UserProfile>` que haga fetch de información de usuari
 
 ---
 
-## 3. Estado Global con Context + useReducer
+## 3. Estado Global con Context + useReducer (Completado)
 
 **Descripción:**  
 Implementa un contexto de autenticación que maneje acciones de `login`, `logout` y persistencia con `localStorage`.

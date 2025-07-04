@@ -1,0 +1,108 @@
+## 1 - JavaScript Profundo y Mecanismos de Ejecución (COMPLETADO)
+
+### 1.1 - Motor JavaScript (V8) (COMPLETADO)
+
+- 1.1.1 - Parsing y Abstract Syntax Tree (AST) (COMPLETADO)
+- 1.1.2 - Ignition (Interpreter) y TurboFan (Optimizing Compiler) (COMPLETADO)
+- 1.1.3 - JIT Compilation (COMPLETADO)
+- 1.1.4 - Garbage Collection (Generational GC, Mark-Sweep, Mark-Compact) (COMPLETADO)
+- 1.1.5 - Hidden Classes y Inline Caching (COMPLETADO)
+- 1.1.6 - Snapshot Serialization y Deserialización (COMPLETADO)
+- 1.1.7 - Optimización de Arrays (COMPLETADO)
+- 1.1.8 - Deopt Reasons y Pipeline de Optimización/Desoptimización (COMPLETADO)
+- 1.1.9 - Comparación de Motores JavaScript (V8, SpiderMonkey, JavaScriptCore) (COMPLETADO)
+- 1.1.10 - Impacto de Nuevas Propuestas ECMAScript en V8 (COMPLETADO)
+
+### 1.2 - Contextos de Ejecución y Scopes Avanzados (COMPLETADO)
+
+- 1.2.1 - Execution Context Stack (Global, Function, Eval) (COMPLETADO)
+- 1.2.2 - Lexical Environment y Variable Environment (COMPLETADO)
+- 1.2.3 - 'this' Binding en Profundidad (COMPLETADO)
+- 1.2.4 - Closures y Closure Profundo y su relacion con This (COMPLETADO)
+- 1.2.5 - Temporal Dead Zone (TDZ) y Hoisting avanzado (COMPLETADO)
+- 1.2.6 - Strict Mode (Modo Estricto): diferencias y advertencias (COMPLETADO)
+- 1.2.7 - Visualización Avanzada de Scope Chain y Resolución en Tiempo de Ejecución (COMPLETADO)
+- 1.2.8 - Edge Cases con eval y with: Seguridad y Performance (COMPLETADO)
+- 1.2.9 - Impacto de Módulos ES6 en el Scope Global y Aislamiento de Contextos (COMPLETADO)
+- 1.2.10 - Debugging de Scopes y Contextos con Herramientas Modernas (COMPLETADO)
+
+### 1.3 - Prototipos, Clases y Encapsulamiento en JavaScript (COMPLETADO)
+
+- 1.3.1 - Herencia Prototípica y Cadena de Prototipos (COMPLETADO)
+- 1.3.2 - Funciones Constructoras, Operador 'new' y Object.create() (COMPLETADO)
+- 1.3.3 - Clases ES6+: Azúcar Sintáctico, Herencia y Representación Interna (COMPLETADO)
+- 1.3.4 - Mixins, Composición y Encapsulamiento (Símbolos y Propiedades Privadas) (COMPLETADO)
+- 1.3.5 - Características Estáticas de las Clases (Static Class Features) (COMPLETADO)
+- 1.3.6 - Clases Abstractas (Abstract Classes): Simulación, Patrones y Limitaciones (COMPLETADO)
+- 1.3.7 - Interfaces y Duck Typing en JavaScript: Patrones y Buenas Prácticas (COMPLETADO)
+- 1.3.8 - Polimorfismo en JavaScript: Clásico y por Composición (COMPLETADO)
+- 1.3.9 - Decoradores de Clase (Class Decorators): Estado Actual y Polyfills (COMPLETADO)
+- 1.3.10 - Comparación de Clases y Objetos en JavaScript vs. Otros Lenguajes (Java, C#, Python) (COMPLETADO)
+- 1.3.11 - Limitaciones y Advertencias de las Clases ES6+ (COMPLETADO)
+- 1.3.12 - Debugging Avanzado de la Cadena de Prototipos (COMPLETADO)
+- 1.3.13 - Performance de Herencia y Composición en V8 (COMPLETADO)
+- 1.3.14 - Proxies y Metaprogramación Avanzada para Encapsulamiento (COMPLETADO)
+- 1.3.15 - Enumerables y Property Descriptors: Iteración, Definición y Buenas Prácticas (COMPLETADO)
+- 1.3.16 - Interoperabilidad ES5/ES6+ y Migración de Sistemas Legacy (COMPLETADO)
+- 1.3.17 - Análisis de Seguridad: Encapsulamiento con Símbolos y Campos Privados (COMPLETADO)
+- 1.3.18 - Integración de Patrones de Diseño Clásicos con Clases Modernas (COMPLETADO)
+
+### 1.4 - Novedades y Mejoras en ES6+ (ECMAScript 2015+) (COMPLETADO)
+
+- 1.4.1 - Declaración de Variables: var, let, const, TDZ y Block Scope (COMPLETADO)
+- 1.4.2 - Arrow Functions, Closures y Lexical Environment (COMPLETADO)
+- 1.4.3 - Destructuración y Parámetros por Defecto (COMPLETADO)
+- 1.4.4 - Promesas, async/await y Combinadores de Promesas (COMPLETADO)
+- 1.4.5 - Iteradores, Generadores y for-of (COMPLETADO)
+- 1.4.6 - Otras Mejoras: template literals, Map/Set (todas). (COMPLETADO)
+- 1.4.7 - Optional Chaining (?.) y Nullish Coalescing (??) y todos los operadores (COMPLETADO)
+
+### 1.5 - Manejo de la Asincronía en JavaScript (Event Loop - Navegador) (antes de ES6 y ES6+) (COMPLETADO)
+
+- 1.5.1 - Call Stack y Web APIs (COMPLETADO)
+- 1.5.2 - Callback Queue (Task Queue) y Microtask Queue (COMPLETADO)
+- 1.5.3 - Macrotasks vs. Microtasks (setTimeout, setInterval vs. Promise.then(), queueMicrotask) (COMPLETADO)
+- 1.5.4 - El 'Tick' del Event Loop (COMPLETADO)
+- 1.5.5 - Timers Internals (COMPLETADO)
+- 1.5.6 - Web Workers y Service Workers (COMPLETADO)
+
+### 1.6 - Patrones Avanzados de Asincronía con ES6+ y su relación con el event loop (COMPLETADO)
+
+- 1.6.1 - Promesas (Promise combinators: allSettled, any) (COMPLETADO)
+- 1.6.2 - async/await avanzado y su manejo en el event loop del navegador (COMPLETADO)
+- 1.6.3 - Stream API (Only Javascript, Fetch, Backpressure, Duplex, Blob) (COMPLETADO)
+- 1.6.4 - Cancelable Promises y AbortController (COMPLETADO)
+- 1.6.5 - Async Iterators y for-await-of (COMPLETADO)
+
+### 1.7 - Diseño de Patrones en JavaScript con ES6+ (COMPLETADO)
+
+- 1.7.1 - Patrones Creacionales (Singleton, Factory) (COMPLETADO)
+- 1.7.2 - Patrones Estructurales (Adapter, Decorator, Proxy) (COMPLETADO)
+- 1.7.3 - Patrones de Comportamiento (Observer, Strategy, Command) (COMPLETADO)
+- 1.7.4 - Patrones Avanzados (Module, Revealing Module, IIFE) (COMPLETADO)
+- 1.7.5 - Comparación y Elección de Patrones de Diseño (COMPLETADO)
+
+### 1.8 - Entendimiento y Manipulación del DOM (COMPLETADO)
+
+- 1.8.1 - ¿Qué es el DOM? Estructura y Árbol de Nodos (COMPLETADO)
+- 1.8.2 - Selección y Búsqueda de Elementos (getElementById, querySelector, etc.) (COMPLETADO)
+- 1.8.3 - Manipulación de Elementos: Lectura y Modificación de Propiedades y Atributos (COMPLETADO)
+- 1.8.4 - Creación, Inserción y Eliminación de Nodos (COMPLETADO)
+- 1.8.5 - Eventos y Delegación de Eventos (Bubbling, Capturing, Delegation) (COMPLETADO)
+- 1.8.6 - Buenas Prácticas y Performance en Manipulación del DOM (COMPLETADO)
+
+### 1.9 - Operadores y Palabras Clave para Análisis de Tipos y Prototipos (COMPLETADO)
+
+- 1.9.1 - typeof: Detección de Tipos Primitivos y Casos Especiales (COMPLETADO)
+- 1.9.2 - instanceof: Herencia, Prototipos y Limitaciones (COMPLETADO)
+- 1.9.3 - Realms, iframes y su impacto en la detección de tipos y prototipos (COMPLETADO)
+- 1.9.4 - constructor y Object.prototype.toString: Detección Avanzada de Tipos (COMPLETADO)
+- 1.9.5 - Comparaciones: ==, ===, null, undefined y Coerción de Tipos (COMPLETADO)
+- 1.9.6 - Buenas Prácticas y Errores Comunes en Detección de Tipos (COMPLETADO)
+
+### 1.10 - Versiones de ECMAScript: Evolución y Diferencias (ES3, ES5, ES6/2015, ES7, etc.) (COMPLETADO)
+
+- 1.10.1 - Historia y evolución de ECMAScript (COMPLETADO)
+- 1.10.2 - Principales características de ES3, ES5, ES6/2015, ES7+ (COMPLETADO)
+- 1.10.3 - Compatibilidad y soporte en navegadores y entornos de ejecución (COMPLETADO)
+- 1.10.4 - Impacto de las diferencias de versión en el desarrollo y mantenimiento de proyectos (COMPLETADO)

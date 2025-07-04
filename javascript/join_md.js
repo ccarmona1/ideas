@@ -3,6 +3,11 @@ const { join } = require('path');
 
 const files = [
   'course.md',
+  'module1.md',
+  'module2.md',
+  'module3.md',
+  'module4.md',
+  'module5.md',
   'module6.md',
 ];
 

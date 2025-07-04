@@ -160,7 +160,7 @@
 - 1.10.3 - Compatibilidad y soporte en navegadores y entornos de ejecución (COMPLETADO)
 - 1.10.4 - Impacto de las diferencias de versión en el desarrollo y mantenimiento de proyectos (COMPLETADO)
 
-## 2 - TypeScript para Aplicaciones Robustas y Escalables (INCOMPLETO)
+## 2 - TypeScript para Aplicaciones Robustas y Escalables (COMPLETADO)
 
 ### 2.1 - Inicialización y Configuración de TypeScript (COMPLETADO)
 
@@ -244,25 +244,20 @@
 - 2.13.1 - Performance del Compilador y Tipos Complejos (COMPLETADO)
 - 2.13.2 - Optimización de tipos para mejorar el performance del compilador (COMPLETADO)
 
-### 2.14 - Patrones de Diseño y TypeScript (INCOMPLETO)
+### 2.14 - Patrones de Diseño y TypeScript (COMPLETADO)
 
-- 2.14.1 - Patrones Clásicos y Enforcing con Tipos (INCOMPLETO)
-- 2.14.2 - Patrones de diseño funcionales con TypeScript (INCOMPLETO)
+- 2.14.1 - Patrones Clásicos y Enforcing con Tipos (COMPLETADO)
+- 2.14.2 - Patrones de diseño funcionales con TypeScript (COMPLETADO)
 
-### 2.15 - Integración con Herramientas Modernas (INCOMPLETO)
+### 2.15 - Integración con Herramientas Modernas (COMPLETADO)
 
-- 2.15.1 - Build Tools, Monorepos y Workspaces (INCOMPLETO)
-- 2.15.2 - Integración con CI/CD y herramientas de análisis estático (INCOMPLETO)
+- 2.15.1 - Build Tools, Monorepos y Workspaces (COMPLETADO)
+- 2.15.2 - Integración con CI/CD y herramientas de análisis estático (COMPLETADO)
 
-### 2.16 - Ecosistema, Comunidad y Futuro de TypeScript (INCOMPLETO)
+### 2.16 - Ecosistema, Comunidad y Futuro de TypeScript (COMPLETADO)
 
-- 2.16.1 - Propuestas Futuras y Herramientas de Generación de Tipos (INCOMPLETO)
-- 2.16.2 - Diferencias y cambios entre versiones de TypeScript (INCOMPLETO)
-
-### 2.17 - TypeScript con React y JSX (INCOMPLETO)
-
-- 2.17.1 - Tipado de Props, State y JSX en React (INCOMPLETO)
-- 2.17.2 - Integración de TypeScript con proyectos React existentes (INCOMPLETO)
+- 2.16.1 - Propuestas Futuras y Herramientas de Generación de Tipos (COMPLETADO)
+- 2.16.2 - Diferencias y cambios entre versiones de TypeScript (COMPLETADO)
 
 ## 3 - Node.js Internals y Arquitecturas de Alto Rendimiento (INCOMPLETO)
 

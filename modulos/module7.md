@@ -1,18 +1,18 @@
 ## 7 - Complejidad Algorítmica y Optimización en JavaScript/TypeScript (INCOMPLETO)
 
-### 7.1 - Fundamentos de Complejidad Algorítmica (INCOMPLETO)
+### 7.1 - Fundamentos de Complejidad Algorítmica (COMPLETO)
 
-- 7.1.1 - ¿Qué es la complejidad algorítmica? (Big O, Big Ω, Big Θ) con visualizaciones y analogías prácticas (INCOMPLETO)
-- 7.1.2 - Medición empírica de tiempos y memoria en JavaScript/TypeScript (benchmarks, performance.now, process.hrtime) (INCOMPLETO)
-- 7.1.3 - Ejemplos prácticos: comparación de algoritmos sencillos (búsqueda lineal vs binaria, suma de arrays, etc.) (INCOMPLETO)
-- 7.1.4 - Errores comunes al analizar complejidad en código real (INCOMPLETO)
+- 7.1.1 - ¿Qué es la complejidad algorítmica? (Big O, Big Ω, Big Θ) con visualizaciones y analogías prácticas (COMPLETO)
+- 7.1.2 - Medición empírica de tiempos y memoria en JavaScript/TypeScript (benchmarks, performance.now, process.hrtime) (COMPLETO)
+- 7.1.3 - Ejemplos prácticos: comparación de algoritmos sencillos (búsqueda lineal vs binaria, suma de arrays, etc.) (COMPLETO)
+- 7.1.4 - Errores comunes al analizar complejidad en código real (COMPLETO)
 
-### 7.2 - Algoritmos Fundamentales: Práctica y Optimización (INCOMPLETO)
+### 7.2 - Algoritmos Fundamentales: Práctica y Optimización (COMPLETO)
 
-- 7.2.1 - Búsqueda y recorrido de estructuras (arrays, objetos, sets, maps) (INCOMPLETO)
-- 7.2.2 - Ordenamiento: bubble, selection, insertion, merge, quicksort (implementación, comparación y optimización) (INCOMPLETO)
+- 7.2.1 - Búsqueda y recorrido de estructuras (arrays, objetos, sets, maps) (COMPLETO)
+- 7.2.2 - Ordenamiento: bubble, selection, insertion, merge, quicksort (implementación, comparación y optimización) (COMPLETO)
 - 7.2.3 - Recursión vs iteración: cuándo y cómo elegir, trampolines y tail call optimization (INCOMPLETO)
-- 7.2.4 - Prácticas sugeridas: profiling, refactorización y micro-optimizaciones (INCOMPLETO)
+- 7.2.4 - Prácticas sugeridas: profiling, refactorización y micro-optimizaciones (COMPLETO)
 
 ### 7.3 - Algoritmos Intermedios y Patrones de Resolución (INCOMPLETO)
 

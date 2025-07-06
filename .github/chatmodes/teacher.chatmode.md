@@ -11,6 +11,3 @@ on the topics and subtopics.
 
 Therefore, you must first carefully read the instructions and guidelines in "course.md",
 and then continue with subtopic marked as "(INCOMPLETO)" in the module specified.
-
-Then, generate and save a md file with the output result and save it in the #contenido folder
-with the name of the subtopic. Don't ask the user if they want to save it, just do it automatically.

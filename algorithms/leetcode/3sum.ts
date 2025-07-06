@@ -1,36 +1,71 @@
 function threeSum(nums: number[]): number[][] {
-  let x = 0;
-  let y = 1;
-  const setSums = new Set(nums);
-  const answer: number[][] = [];
-
-  while (x < nums.length && y < nums.length) {
-    if (x === y) {
-      y = y + 1;
-      continue;
-    }
-
-    const numX = nums[x];
-    const numY = nums[y];
-
-    let numZ = -(numX + numY);
-    console.log('numX', x, numX);
-    console.log('numY', y, numY);
-    console.log('numZ', numZ);
-    console.log('sum', numX + numY + numZ);
-
-    if (setSums.has(numZ) && numX !== numZ && numY !== numZ) {
-      answer.push([numX, numY, numZ]);
-    }
-    if (y + 1 > nums.length) {
-      x = x + 1;
-      y = 0;
-    } else {
-      y = y + 1;
+  nums = nums.sort((a, b) => a - b);
+  const results: number[][] = [];
+  const n = nums.length;
+  for (let z = 0; z < n - 2; z++) {
+    if (z > 0 && nums[z] === nums[z - 1]) continue;
+    let x = z + 1;
+    let y = n - 1;
+    while (x < y) {
+      console.log(nums[z], nums[x], nums[y]);
+      const sum = nums[z] + nums[x] + nums[y];
+      if (sum === 0) {
+        results.push([nums[z], nums[x], nums[y]]);
+        while (x < y && nums[x] === nums[x + 1]) x++;
+        while (x < y && nums[y] === nums[y - 1]) y--;
+        x++;
+        y--;
+      } else if (sum < 0) {
+        x++;
+      } else {
+        y--;
+      }
     }
   }
-
-  return answer;
+  return results;
 }
 
-console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+console.log(threeSum([-1, 0, 1, 2, -1, -4])); // [-4,-1,-1,0,1,2] [[-1,-1,2],[-1,0,1]]
+// console.log(threeSum([0, 0, 0]));
+// console.log(threeSum([0, 0, 0, 0]));
+// console.log(threeSum([1, 2, -2, -1]));
+// console.log(threeSum([3, -2, 1, 0]));
+// console.log(
+//   threeSum([2, -3, 0, -2, -5, -5, -4, 1, 2, -2, 2, 0, 2, -4, 5, 5, -10])
+// ); // [[-10,5,5],[-5,0,5],[-4,2,2],[-3,-2,5],[-3,1,2],[-2,0,2]]
+// console.log(
+//   threeSum([
+//     13, 4, -6, -7, -15, -1, 0, -1, 0, -12, -12, 9, 3, -14, -2, -5, -6, 7, 8, 2,
+//     -4, 6, -5, -10, -4, -9, -14, -14, 12, -13, -7, 3, 7, 2, 11, 7, 9, -4, 13,
+//     -6, -1, -14, -12, 9, 9, -6, -11, 10, -14, 13, -2, -11, -4, 8, -6, 0, 7, -12,
+//     1, 4, 12, 9, 14, -4, -3, 11, 10, -9, -8, 8, 0, -1, 1, 3, -15, -12, 4, 12,
+//     13, 6, 10, -4, 10, 13, 12, 12, -2, 4, 7, 7, -15, -4, 1, -15, 8, 5, 3, 3, 11,
+//     2, -11, -12, -14, 5, -1, 9, 0, -12, 6, -1, 1, 1, 2, -3,
+//   ])
+// );
+
+// console.time();
+// console.log(
+//   threeSum([
+//     -4, -5, -6, 3, 11, -13, 3, 14, 1, -10, 11, 6, 8, 9, -6, -9, 6, 3, -15, -8,
+//     0, 5, 6, -8, 14, -11, 0, 2, 14, -15, 14, -13, -5, -15, 5, 13, -13, -6, 13,
+//     -4, -1, 1, -13, 14, -13, -12, -10, 9, 6, 12, 8, 14, -5, -8, -9, -6, -4, -2,
+//     3, -5, -2, -6, -2, 1, -5, -12, -1, -11, -11, -11, 0, -4, -2, -5, -5, 0, -2,
+//     -7, -14, -10, -10, 10, -11, -8, -13, -13, 1, -2, -7, 11, 8, 6, -9, -9, 14,
+//     1, -13, -9, -3, -9, -5, 13, 2, 8, -7, 13, -14, 6, -9, -13, 3, -12,
+//   ])
+// );
+// console.timeEnd();
+
+// console.time();
+// console.log(
+//   threeSum([
+//     2, 13, -2, -5, -1, 10, 6, -8, 5, -5, 7, -5, -14, -4, -5, 10, -15, -2, -14,
+//     -6, 10, 6, -14, -14, -9, -11, 8, -3, -2, 12, -9, -14, 3, 5, -12, -13, -8, 1,
+//     -14, 12, 12, 0, 14, 5, 4, -14, -8, 4, -9, -7, 14, -13, 6, 7, -12, 5, 12, 11,
+//     -13, -5, 0, -6, -12, -12, 6, 13, 12, 13, 0, 5, 2, -11, 13, 1, 9, 2, 2, -14,
+//     13, 8, -14, 4, 2, 8, -3, -3, -10, -14, -15, 14, -12, 1, -15, 14, -4, 6, 12,
+//     -6, -4, -3, 6, 5,
+//   ])
+// );
+// console.timeEnd();

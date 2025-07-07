@@ -1,3 +1,7 @@
+# react_component_lifecycle_and_reconciliation_flow
+
+> **Nota:** Todo este flujo de ciclo de vida, reconciliación, diffing y commit phase es gestionado internamente por la arquitectura React Fiber. Fiber permite que React divida el trabajo de actualización en pequeñas unidades, priorice tareas y soporte renderizado concurrente para una UI más fluida y eficiente.
+
 ```mermaid
 flowchart TD
 A[Inicio - Cambian props o estado] --> B{Tipo de componente}
@@ -31,7 +35,7 @@ H3 --> H4[Commit Phase - actualiza DOM real]
 H4 --> H5[Efectos secundarios - useEffect componentDidMount componentDidUpdate]
 H5 --> I[Componente listo para nueva interacción]
 
-%% Colores
+%% Colores amigables para tema oscuro
 style C1 fill:#ffb347,stroke:#222,stroke-width:1px,color:#222
 style C4 fill:#ffb347,stroke:#222,stroke-width:1px,color:#222
 style E1 fill:#ffb347,stroke:#222,stroke-width:1px,color:#222

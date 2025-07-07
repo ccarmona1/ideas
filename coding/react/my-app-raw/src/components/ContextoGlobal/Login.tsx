@@ -1,35 +1,36 @@
-import React, { useCallback, useContext, type FC } from 'react';
-import { GlobalContext } from './ContextoGlobal';
+import { useCallback, useContext, type FC } from 'react';
+import { GlobalContext } from './GlobalContext';
 
-export const Login: FC<{
-  handleLogin: () => void;
-  handleLogout: () => void;
-}> = ({ handleLogin, handleLogout }) => {
-  const props = useContext(GlobalContext);
+export const Login: FC = () => {
+  const context = useContext(GlobalContext);
 
-  const { token } = props!;
+  if (!context) {
+    throw new Error('Login must be used within a GlobalContext.Provider');
+  }
 
-  const handleLoginInternal = useCallback(
-    (event: React.FormEvent) => {
-      event.preventDefault();
-      console.log('login');
-      handleLogin();
-    },
-    [handleLogin]
-  );
+  const { user, dispatch } = context;
 
-  const handleLogoutInternal = useCallback(
-    (event: React.FormEvent) => {
-      event.preventDefault();
-      console.log('logout');
-      handleLogout();
-    },
-    [handleLogout]
-  );
+  const handleLogin = useCallback(() => {
+    const user = { logged: true, name: 'John Doe' };
+    localStorage.setItem('token', JSON.stringify(user));
+    dispatch({ type: 'login', user });
+  }, [dispatch]);
 
-  return token ? (
-    <button onClick={handleLogoutInternal}>Logout</button>
-  ) : (
-    <button onClick={handleLoginInternal}>Login</button>
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('token');
+    dispatch({ type: 'logout' });
+  }, [dispatch]);
+
+  return (
+    <>
+      {user?.logged ? (
+        <>
+          {JSON.stringify(user)}
+          <button onClick={handleLogout}>Logout</button>
+        </>
+      ) : (
+        <button onClick={handleLogin}>Login</button>
+      )}
+    </>
   );
 };

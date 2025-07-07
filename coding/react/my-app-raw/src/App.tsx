@@ -1,10 +1,10 @@
 import './App.css';
-import { ContextoGlobal } from './components/ContextoGlobal/ContextoGlobal';
+import { FormDinamico } from './components/FormDinamico/FormDinamico';
 
 function App() {
   return (
     <>
-      <ContextoGlobal></ContextoGlobal>
+      <FormDinamico></FormDinamico>
     </>
   );
 }

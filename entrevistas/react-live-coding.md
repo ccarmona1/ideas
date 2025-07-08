@@ -44,7 +44,7 @@ Implementa un contexto de autenticación que maneje acciones de `login`, `logout
 
 ---
 
-## 4. Formulario Dinámico desde JSON
+## 4. Formulario Dinámico desde JSON (Completado)
 
 **Descripción:**  
 Crea un componente `<FormBuilder>` que reciba un esquema en JSON y genere un formulario con campos dinámicos (`input`, `select`, etc.).
@@ -71,7 +71,7 @@ Crea un componente `<FormBuilder>` que reciba un esquema en JSON y genere un for
 
 ---
 
-## 5. Optimización con Memo y Hooks
+## 5. Optimización con Memo y Hooks (Completado)
 
 **Descripción:**  
 Optimiza una lista grande de productos usando `React.memo`, `useMemo` y `useCallback`. Asegúrate de que los componentes hijos no se rendericen innecesariamente.

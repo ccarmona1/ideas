@@ -1,10 +1,10 @@
 import './App.css';
-import { FormDinamico } from './components/FormDinamico/FormDinamico';
+import { Memo } from './components/Memo/Memo';
 
 function App() {
   return (
     <>
-      <FormDinamico></FormDinamico>
+      <Memo></Memo>
     </>
   );
 }

@@ -1,13 +1,10 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Launch Program (Windows)",
       "skipFiles": [
         "<node_internals>/**"
       ],
@@ -15,7 +12,21 @@
       "outFiles": [
         "${workspaceFolder}/**/*.js"
       ],
-      "runtimeArgs": ["--no-experimental-strip-types","--experimental-transform-types"],
+      "runtimeArgs": ["--experimental-transform-types"],
+      "runtimeExecutable": "node"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program (Linux)",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${file}",
+      "outFiles": [
+        "${workspaceFolder}/**/*.js"
+      ],
+      "runtimeArgs": ["--experimental-transform-types"],
       "runtimeExecutable": "/Users/crisman_carmona/.nvm/versions/node/v24.3.0/bin/node"
     }
   ]

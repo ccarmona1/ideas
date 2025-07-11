@@ -1,12 +1,8 @@
 import './App.css';
-import { Memo } from './components/Memo/Memo';
+import { DataFetcherTest } from './components/DataFetcher/DataFetcherTest';
 
 function App() {
-  return (
-    <>
-      <Memo></Memo>
-    </>
-  );
+  return <DataFetcherTest></DataFetcherTest>;
 }
 
 export default App;

@@ -16,3 +16,4 @@
 | **Hooks**                   | Not available                                           | Yes (`useState`, `useEffect`, `useRef`, etc.) |
 | **Rendering**               | `render()` method                                       | Direct JSX return                             |
 | **TypeScript typing**       | Interfaces for props and state                          | Typing for props and hooks                    |
+| **Lifecycle: All renders**  | `componentDidMount()` + `componentDidUpdate()`          | `useEffect(() => { ... })` (sin dependencias) |

@@ -1,8 +1,8 @@
 import './App.css';
-import { DataFetcherTest } from './components/DataFetcher/DataFetcherTest';
+import { ClassVsFunctional } from './components/ClassVsFunctional/ClassVsFunctional';
 
 function App() {
-  return <DataFetcherTest></DataFetcherTest>;
+  return <ClassVsFunctional></ClassVsFunctional>;
 }
 
 export default App;

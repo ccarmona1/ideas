@@ -1,30 +1,17 @@
 ## 6 - ReactJS: Fundamentos, Arquitectura y Optimización Avanzada (INCOMPLETO)
 
-### 6.1 - Introducción y Fundamentos de ReactJS (INCOMPLETO)
+### 6.1 - Introducción y Fundamentos de ReactJS (COMPLETADO)
 
 - 6.1.1 - ¿Qué es ReactJS? Ventajas, casos de uso y diferencias con otros frameworks (COMPLETADO)
 - 6.1.2 - JSX y renderizado básico (COMPLETADO)
 - 6.1.3 - Componentes funcionales y de clase (COMPLETADO)
-- 6.1.4 - Props y state (INCOMPLETO)
-- 6.1.5 - Ciclo de vida de componentes (INCOMPLETO)
-- 6.1.6 - Manejo de eventos (INCOMPLETO)
-- 6.1.7 - Renderizado condicional y listas (INCOMPLETO)
-- 6.1.8 - Formularios y control de inputs (INCOMPLETO)
-- 6.1.9 - Comunicación entre componentes (props drilling, lifting state up) (INCOMPLETO)
-- 6.1.10 - Buenas prácticas y advertencias comunes para principiantes (INCOMPLETO)
-
-### 6.2 - Estructura de Proyecto y Herramientas Iniciales (INCOMPLETO)
-
-- 6.2.1 - SPA vs MPA, estructura de carpetas y herramientas de scaffolding (Create React App, Vite, Next.js) (INCOMPLETO)
-- 6.2.2 - Integración de TypeScript en React desde cero (INCOMPLETO)
-- 6.2.3 - Monorepos y microfrontends en React (INCOMPLETO)
-- 6.2.4 - Estructuración de carpetas para escalabilidad y mantenibilidad (INCOMPLETO)
-
-### 6.3 - Routing y Navegación en React (INCOMPLETO)
-
-- 6.3.1 - React Router: rutas básicas, anidadas y protegidas (INCOMPLETO)
-- 6.3.2 - Lazy loading de rutas y patrones de navegación avanzados (INCOMPLETO)
-- 6.3.3 - Autenticación y autorización en rutas protegidas (INCOMPLETO)
+- 6.1.4 - Props y state (COMPLETADO)
+- 6.1.5 - Ciclo de vida de componentes (COMPLETADO)
+- 6.1.6 - Manejo de eventos (COMPLETADO)
+- 6.1.7 - Renderizado condicional y listas (COMPLETADO)
+- 6.1.8 - Formularios y control de inputs (COMPLETADO)
+- 6.1.9 - Comunicación entre componentes (props drilling, lifting state up) (COMPLETADO)
+- 6.1.10 - Buenas prácticas y advertencias comunes para principiantes (COMPLETADO)
 
 ### 6.4 - Fundamentos Internos y Avanzados de ReactJS (INCOMPLETO)
 
@@ -54,6 +41,19 @@
 - 6.8.1 - Memoización (memoization) y React.memo (INCOMPLETO)
 - 6.8.2 - Code Splitting y Lazy Loading (INCOMPLETO)
 - 6.8.3 - Herramientas de profiling y análisis de performance (INCOMPLETO)
+
+### 6.2 - Estructura de Proyecto y Herramientas Iniciales (INCOMPLETO)
+
+- 6.2.1 - SPA vs MPA, estructura de carpetas y herramientas de scaffolding (Create React App, Vite, Next.js) (INCOMPLETO)
+- 6.2.2 - Integración de TypeScript en React desde cero (INCOMPLETO)
+- 6.2.3 - Monorepos y microfrontends en React (INCOMPLETO)
+- 6.2.4 - Estructuración de carpetas para escalabilidad y mantenibilidad (INCOMPLETO)
+
+### 6.3 - Routing y Navegación en React (INCOMPLETO)
+
+- 6.3.1 - React Router: rutas básicas, anidadas y protegidas (INCOMPLETO)
+- 6.3.2 - Lazy loading de rutas y patrones de navegación avanzados (INCOMPLETO)
+- 6.3.3 - Autenticación y autorización en rutas protegidas (INCOMPLETO)
 
 ### 6.9 - Testing en React: Unitario, Integración y E2E (INCOMPLETO)
 

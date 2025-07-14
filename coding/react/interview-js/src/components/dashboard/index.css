@@ -1,0 +1,11 @@
+.dashboard-flex-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .dashboard-flex-row {
+    flex-direction: column;
+  }
+}

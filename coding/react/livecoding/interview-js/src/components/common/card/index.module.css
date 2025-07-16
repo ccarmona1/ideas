@@ -1,0 +1,7 @@
+.card {
+  width: 50vh;
+  border-color: black;
+  border-style: solid;
+  padding: 1rem;
+  border-radius: var(--card-radius);
+}

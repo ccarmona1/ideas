@@ -1,47 +1,37 @@
+import SearchEmployees from '../searchEmployees';
+import EmployeeDetails from '../employee/employeeDetails';
 import { memo, useState } from 'react';
-import { useFetch } from '../../hooks/useFetch';
-import { Error } from '../common/error';
-import { Loading } from '../common/loading';
-import { PeopleList } from '../people/list';
-import { Person } from '../people/description';
-import './index.css';
+import style from './index.module.css';
+import Card from '../common/card';
 
-const MemoPeopleList = memo(PeopleList);
+const MemoSearchEmployees = memo(SearchEmployees);
 
-export const Dashboard = () => {
-  console.count('Dashboard count');
+const Dashboard = () => {
+  console.count('Dashboard');
 
-  const [selectedPerson, setSelectedPerson] = useState();
+  const [selectedEmployee, setSelectedEmployee] = useState();
 
-  const [data, loading, error] = useFetch({
-    url: 'https://www.swapi.tech/api',
-  });
-
-  const urls = data?.result;
+  const handleCloseComponent = () => {
+    setSelectedEmployee(undefined);
+  };
 
   return (
-    <section className="dashboard-container">
-      <h1 style={{ textAlign: 'center' }}>Dashboard</h1>
-
-      <div>
-        {loading ? (
-          <Loading name={'Dashboard'}></Loading>
-        ) : error ? (
-          <Error></Error>
-        ) : urls ? (
-          <div className="dashboard-flex-row">
-            <MemoPeopleList
-              url={urls.people}
-              handleSelectItem={setSelectedPerson}
-            ></MemoPeopleList>
-            {selectedPerson && (
-              <Person personMetadata={selectedPerson}></Person>
-            )}
-          </div>
-        ) : (
-          <>No Data</>
-        )}
-      </div>
-    </section>
+    <div className={style.dashboard}>
+      <Card>
+        <MemoSearchEmployees
+          handleSelectEmployee={setSelectedEmployee}
+        ></MemoSearchEmployees>
+      </Card>
+      {selectedEmployee && (
+        <Card>
+          <EmployeeDetails
+            handleCloseComponent={handleCloseComponent}
+            employee={selectedEmployee}
+          ></EmployeeDetails>
+        </Card>
+      )}
+    </div>
   );
 };
+
+export default Dashboard;

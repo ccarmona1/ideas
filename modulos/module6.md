@@ -13,12 +13,12 @@
 - 6.1.9 - Comunicación entre componentes (props drilling, lifting state up) (COMPLETADO)
 - 6.1.10 - Buenas prácticas y advertencias comunes para principiantes (COMPLETADO)
 
-### 6.2 - Estructura de Proyecto y Herramientas Iniciales (INCOMPLETO)
+### 6.2 - Estructura de Proyecto y Herramientas Iniciales (COMPLETADO)
 
-- 6.2.1 - SPA vs MPA, estructura de carpetas y herramientas de scaffolding (Create React App, Vite, Next.js) (INCOMPLETO)
-- 6.2.2 - Integración de TypeScript en React desde cero (INCOMPLETO)
-- 6.2.3 - Monorepos y microfrontends en React (INCOMPLETO)
-- 6.2.4 - Estructuración de carpetas para escalabilidad y mantenibilidad (INCOMPLETO)
+- 6.2.1 - SPA vs MPA, estructura de carpetas y herramientas de scaffolding (Create React App, Vite, Next.js) (COMPLETADO)
+- 6.2.2 - Integración de TypeScript en React desde cero (COMPLETADO)
+- 6.2.3 - Monorepos y microfrontends en React (COMPLETADO)
+- 6.2.4 - Estructuración de carpetas para escalabilidad y mantenibilidad (COMPLETADO)
 
 ### 6.3 - Routing y Navegación en React (INCOMPLETO)
 
@@ -26,16 +26,16 @@
 - 6.3.2 - Lazy loading de rutas y patrones de navegación avanzados (INCOMPLETO)
 - 6.3.3 - Autenticación y autorización en rutas protegidas (INCOMPLETO)
 
-### 6.4 - Fundamentos Internos y Avanzados de ReactJS (INCOMPLETO)
+### 6.4 - Fundamentos Internos y Avanzados de ReactJS (COMPLETADO)
 
-- 6.4.1 - Virtual DOM y reconciliación (reconciliation) (INCOMPLETO)
-- 6.4.2 - Fiber Architecture y Concurrent Mode (INCOMPLETO)
-- 6.4.3 - Hooks personalizados y reglas internas (INCOMPLETO)
+- 6.4.1 - Virtual DOM y reconciliación (reconciliation) (COMPLETADO)
+- 6.4.2 - Fiber Architecture y Concurrent Mode (COMPLETADO)
+- 6.4.3 - Hooks personalizados y reglas internas (COMPLETADO)
 
 ### 6.5 - Gestión de Estado en React: Fundamentos y Avanzado (INCOMPLETO)
 
-- 6.5.1 - useReducer y patrones avanzados de reducers (INCOMPLETO)
-- 6.5.2 - Redux, Redux Toolkit, Zustand, Jotai, Recoil, MobX: comparativa y casos de uso (INCOMPLETO)
+- 6.5.1 - useReducer y patrones avanzados de reducers (COMPLETADO)
+- 6.5.2 - Redux, Redux Toolkit, Zustand, Jotai, Recoil, MobX: comparativa y casos de uso (COMPLETADO)
 - 6.5.3 - Persistencia de estado y sincronización con almacenamiento local/remoto (INCOMPLETO)
 
 ### 6.6 - Data Fetching y Side Effects (INCOMPLETO)

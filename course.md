@@ -35,6 +35,8 @@
 - Menciona prácticas sugeridas y código de ejemplo por subtema.
 - Sigue la hoja de ruta, no adelantes temas.
 - Todo código que generes debe estar encapsulado en bloques de triple backticks para su correcta visualización y renderizado.
+- No uses código público
+- Incluye ejemplos ideales y ejemplos de código que no debemos de hacer.
 
 **Público objetivo:**
 

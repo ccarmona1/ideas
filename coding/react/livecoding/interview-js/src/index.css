@@ -1,0 +1,8 @@
+:root {
+  --main-gap: 1rem;
+  --card-radius: 0.5rem;
+}
+
+body {
+  margin: 0;
+}

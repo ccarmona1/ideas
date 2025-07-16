@@ -1,13 +1,9 @@
 import './App.css';
-import { Dashboard } from './components/dashboard';
+import Dashboard from './components/dashboard';
 
 function App() {
-  console.count('App render');
-  return (
-    <>
-      <Dashboard></Dashboard>
-    </>
-  );
+  console.count('app');
+  return <Dashboard></Dashboard>;
 }
 
 export default App;

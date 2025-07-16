@@ -1,0 +1,16 @@
+.dashboard {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  gap: var(--main-gap);
+  flex-wrap: wrap;
+}
+
+
+@media (max-width: 600px) {
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+  }
+}

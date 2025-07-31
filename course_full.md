@@ -1,6 +1,6 @@
-# Especialización Avanzada en JavaScript, TypeScript, ReactJS y Node.js
+# Estudio avanzado con IA
 
-**Descripción:** Curso diseñado para ingenieros de sistemas con experiencia, enfocado en las mecánicas internas, optimización de rendimiento y arquitecturas avanzadas para lograr un dominio experto en JS, TS, ReactJS y Node.js.
+**Descripción:** Curso diseñado para ingenieros de sistemas con experiencia, enfocado en las mecánicas internas, optimización de rendimiento y arquitecturas avanzadas para lograr un dominio experto los modulos listados en este documento.
 
 **Instrucciones IA:**
 
@@ -35,6 +35,8 @@
 - Menciona prácticas sugeridas y código de ejemplo por subtema.
 - Sigue la hoja de ruta, no adelantes temas.
 - Todo código que generes debe estar encapsulado en bloques de triple backticks para su correcta visualización y renderizado.
+- No uses código público
+- Incluye ejemplos ideales y ejemplos de código que no debemos de hacer.
 
 **Público objetivo:**
 
@@ -470,22 +472,22 @@
 - 6.2.3 - Monorepos y microfrontends en React (COMPLETADO)
 - 6.2.4 - Estructuración de carpetas para escalabilidad y mantenibilidad (COMPLETADO)
 
-### 6.3 - Routing y Navegación en React (COMPLETADO)
+### 6.3 - Routing y Navegación en React (INCOMPLETO)
 
-- 6.3.1 - React Router: rutas básicas, anidadas y protegidas (COMPLETADO)
-- 6.3.2 - Lazy loading de rutas y patrones de navegación avanzados (COMPLETADO)
-- 6.3.3 - Autenticación y autorización en rutas protegidas (COMPLETADO)
+- 6.3.1 - React Router: rutas básicas, anidadas y protegidas (INCOMPLETO)
+- 6.3.2 - Lazy loading de rutas y patrones de navegación avanzados (INCOMPLETO)
+- 6.3.3 - Autenticación y autorización en rutas protegidas (INCOMPLETO)
 
-### 6.4 - Fundamentos Internos y Avanzados de ReactJS (INCOMPLETO)
+### 6.4 - Fundamentos Internos y Avanzados de ReactJS (COMPLETADO)
 
-- 6.4.1 - Virtual DOM y reconciliación (reconciliation) (INCOMPLETO)
-- 6.4.2 - Fiber Architecture y Concurrent Mode (INCOMPLETO)
-- 6.4.3 - Hooks personalizados y reglas internas (INCOMPLETO)
+- 6.4.1 - Virtual DOM y reconciliación (reconciliation) (COMPLETADO)
+- 6.4.2 - Fiber Architecture y Concurrent Mode (COMPLETADO)
+- 6.4.3 - Hooks personalizados y reglas internas (COMPLETADO)
 
 ### 6.5 - Gestión de Estado en React: Fundamentos y Avanzado (INCOMPLETO)
 
-- 6.5.1 - useReducer y patrones avanzados de reducers (INCOMPLETO)
-- 6.5.2 - Redux, Redux Toolkit, Zustand, Jotai, Recoil, MobX: comparativa y casos de uso (INCOMPLETO)
+- 6.5.1 - useReducer y patrones avanzados de reducers (COMPLETADO)
+- 6.5.2 - Redux, Redux Toolkit, Zustand, Jotai, Recoil, MobX: comparativa y casos de uso (COMPLETADO)
 - 6.5.3 - Persistencia de estado y sincronización con almacenamiento local/remoto (INCOMPLETO)
 
 ### 6.6 - Data Fetching y Side Effects (INCOMPLETO)
@@ -587,27 +589,27 @@
 
 ### 6.20 - Estilos y UI en React (INCOMPLETO)
 
-- 6.20.1 - CSS Modules, Styled Components, Emotion, Tailwind, CSS-in-JS (COMPLETADO)
-- 6.20.2 - Buenas prácticas para estructurar y escalar estilos en React (COMPLETADO)
+- 6.20.1 - CSS Modules, Styled Components, Emotion, Tailwind, CSS-in-JS (INCOMPLETO)
+- 6.20.2 - Buenas prácticas para estructurar y escalar estilos en React (INCOMPLETO)
 - 6.20.3 - Integración con frameworks de diseño: Material UI, Ant Design, Chakra UI (INCOMPLETO)
 - 6.20.4 - Dark mode, theming y personalización de estilos globales (INCOMPLETO)
 - 6.20.5 - Responsive design y mobile first en React (INCOMPLETO)
 
 ## 7 - Complejidad Algorítmica y Optimización en JavaScript/TypeScript (INCOMPLETO)
 
-### 7.1 - Fundamentos de Complejidad Algorítmica (INCOMPLETO)
+### 7.1 - Fundamentos de Complejidad Algorítmica (COMPLETO)
 
-- 7.1.1 - ¿Qué es la complejidad algorítmica? (Big O, Big Ω, Big Θ) con visualizaciones y analogías prácticas (INCOMPLETO)
-- 7.1.2 - Medición empírica de tiempos y memoria en JavaScript/TypeScript (benchmarks, performance.now, process.hrtime) (INCOMPLETO)
-- 7.1.3 - Ejemplos prácticos: comparación de algoritmos sencillos (búsqueda lineal vs binaria, suma de arrays, etc.) (INCOMPLETO)
-- 7.1.4 - Errores comunes al analizar complejidad en código real (INCOMPLETO)
+- 7.1.1 - ¿Qué es la complejidad algorítmica? (Big O, Big Ω, Big Θ) con visualizaciones y analogías prácticas (COMPLETO)
+- 7.1.2 - Medición empírica de tiempos y memoria en JavaScript/TypeScript (benchmarks, performance.now, process.hrtime) (COMPLETO)
+- 7.1.3 - Ejemplos prácticos: comparación de algoritmos sencillos (búsqueda lineal vs binaria, suma de arrays, etc.) (COMPLETO)
+- 7.1.4 - Errores comunes al analizar complejidad en código real (COMPLETO)
 
-### 7.2 - Algoritmos Fundamentales: Práctica y Optimización (INCOMPLETO)
+### 7.2 - Algoritmos Fundamentales: Práctica y Optimización (COMPLETO)
 
-- 7.2.1 - Búsqueda y recorrido de estructuras (arrays, objetos, sets, maps) (INCOMPLETO)
-- 7.2.2 - Ordenamiento: bubble, selection, insertion, merge, quicksort (implementación, comparación y optimización) (INCOMPLETO)
+- 7.2.1 - Búsqueda y recorrido de estructuras (arrays, objetos, sets, maps) (COMPLETO)
+- 7.2.2 - Ordenamiento: bubble, selection, insertion, merge, quicksort (implementación, comparación y optimización) (COMPLETO)
 - 7.2.3 - Recursión vs iteración: cuándo y cómo elegir, trampolines y tail call optimization (INCOMPLETO)
-- 7.2.4 - Prácticas sugeridas: profiling, refactorización y micro-optimizaciones (INCOMPLETO)
+- 7.2.4 - Prácticas sugeridas: profiling, refactorización y micro-optimizaciones (COMPLETO)
 
 ### 7.3 - Algoritmos Intermedios y Patrones de Resolución (INCOMPLETO)
 
@@ -628,4 +630,30 @@
 - 7.5.2 - Identificación de cuellos de botella y refactorización guiada por datos (INCOMPLETO)
 - 7.5.3 - Diferencias de rendimiento entre navegador y Node.js (INCOMPLETO)
 - 7.5.4 - Advertencias: micro-optimizaciones vs optimizaciones de alto impacto (INCOMPLETO)
+
+## 8 - HTML y CSS Profundo para Ingenieros de Software (INCOMPLETO)
+
+### 8.1 - Fundamentos de HTML (INCOMPLETO)
+
+- 8.1.1 - Teoría básica de HTML y organización del código (INCOMPLETO)
+- 8.1.2 - Estructura de un documento HTML y Doctype (INCOMPLETO)
+- 8.1.3 - Diferencias entre HTML y XHTML, modos de navegador (INCOMPLETO)
+- 8.1.4 - Estructura de página y jerarquía de etiquetas (INCOMPLETO)
+
+### 8.2 - HTML Intermedio y Avanzado (INCOMPLETO)
+
+- 8.2.1 - Esenciales de marcado: organización, notación y dependencias (INCOMPLETO)
+- 8.2.2 - Conocimiento básico y avanzado de HTML5 (INCOMPLETO)
+- 8.2.3 - DOM y estructura del árbol de nodos (INCOMPLETO)
+- 8.2.4 - Principios de codificación en HTML: automatización, testing y buenas prácticas (INCOMPLETO)
+- 8.2.5 - Elementos básicos: headers, listas, enlaces, atributos, etiquetas raras (INCOMPLETO)
+- 8.2.6 - Metadatos, estilos y scripts: meta tags, codificación, estilos y scripts internos/externos, viewport (INCOMPLETO)
+- 8.2.7 - Etiquetas de layout y formato de texto: semánticas, estructurales, bold, italic, etc. (INCOMPLETO)
+- 8.2.8 - Tablas, formularios y entradas: layout, atributos, tipos de input, HTML5 input types (INCOMPLETO)
+
+### 8.3 - Principios de Codificación HTML y CSS (INCOMPLETO)
+
+- 8.3.1 - Aplicación de HTML/CSS en testing, automatización y procesamiento (INCOMPLETO)
+- 8.3.2 - Creación y organización de archivos HTML y CSS en proyectos (INCOMPLETO)
+- 8.3.3 - Inclusión de scripts y estilos internos y externos (INCOMPLETO)
 

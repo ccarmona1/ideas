@@ -1,6 +1,6 @@
-# Especialización Avanzada en JavaScript, TypeScript, ReactJS y Node.js
+# Estudio avanzado con IA
 
-**Descripción:** Curso diseñado para ingenieros de sistemas con experiencia, enfocado en las mecánicas internas, optimización de rendimiento y arquitecturas avanzadas para lograr un dominio experto en JS, TS, ReactJS y Node.js.
+**Descripción:** Curso diseñado para ingenieros de sistemas con experiencia, enfocado en las mecánicas internas, optimización de rendimiento y arquitecturas avanzadas para lograr un dominio experto los modulos listados en este documento.
 
 **Instrucciones IA:**
 

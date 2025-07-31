@@ -3,19 +3,17 @@ const { join } = require('path');
 
 const modDir = join(__dirname, 'modulos');
 const moduleFiles = readdirSync(modDir)
-  .filter((f) => /^module\d+\.md$/.test(f))
+  .filter((f) => /^\d+_.+\.md$/.test(f))
   .sort((a, b) => {
-    const numA = parseInt(a.match(/module(\d+)\.md/)[1], 10);
-    const numB = parseInt(b.match(/module(\d+)\.md/)[1], 10);
+    const numA = parseInt(a.match(/^(\d+)_/)[1], 10);
+    const numB = parseInt(b.match(/^(\d+)_/)[1], 10);
     return numA - numB;
   })
-  .map((f) => `modulos/${f}`);
-
-const files = ['course.md', ...moduleFiles];
+  .map((f) => join('modulos', f));
 
 let output = '';
 
-for (const file of files) {
+for (const file of moduleFiles) {
   output += readFileSync(join(__dirname, file), 'utf8') + '\n';
 }
 

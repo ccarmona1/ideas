@@ -1,12 +1,12 @@
 ## 8 - HTML y CSS Profundo para Ingenieros de Software (INCOMPLETO)
 
-### 8.1 - Fundamentos y Sintaxis de HTML (INCOMPLETO)
+### 8.1 - Fundamentos y Sintaxis de HTML (COMPLETADO)
 
-- 8.1.1 - Historia, propósito y evolución de HTML (INCOMPLETO)
-- 8.1.2 - Estructura mínima de un documento HTML y Doctype (INCOMPLETO)
-- 8.1.3 - Elementos, atributos y jerarquía de etiquetas (INCOMPLETO)
-- 8.1.4 - HTML vs XHTML y modos de navegador (INCOMPLETO)
-- 8.1.5 - Comentarios, entidades y codificación de caracteres (INCOMPLETO)
+- 8.1.1 - Historia, propósito y evolución de HTML (COMPLETADO)
+- 8.1.2 - Estructura mínima de un documento HTML y Doctype (COMPLETADO)
+- 8.1.3 - Elementos, atributos y jerarquía de etiquetas (COMPLETADO)
+- 8.1.4 - HTML vs XHTML y modos de navegador (COMPLETADO)
+- 8.1.5 - Comentarios, entidades y codificación de caracteres (COMPLETADO)
 
 ### 8.2 - Estructura Semántica y Accesibilidad (INCOMPLETO)
 

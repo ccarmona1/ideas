@@ -1,18 +1,18 @@
 ## 9 - APIs Avanzadas del Navegador, Almacenamiento y Comunicación (INCOMPLETO)
 
-### 9.1 - Fundamentos y Arquitectura de las APIs del Navegador (INCOMPLETO)
+### 9.1 - Fundamentos y Arquitectura de las APIs del Navegador (COMPLETADO)
 
 - 9.1.1 - Definición, propósito y evolución de las Browser APIs (COMPLETADO)
-- 9.1.2 - Categorías principales: manipulación de DOM, datos, gráficos, dispositivos, almacenamiento y comunicación (INCOMPLETO)
-- 9.1.3 - Funcionamiento interno, ciclo de vida y optimización de APIs (INCOMPLETO)
-- 9.1.4 - Diferencias entre APIs de navegador y Node.js (INCOMPLETO)
+- 9.1.2 - Categorías principales: manipulación de DOM, datos, gráficos, dispositivos, almacenamiento y comunicación (COMPLETADO)
+- 9.1.3 - Funcionamiento interno, ciclo de vida y optimización de APIs (COMPLETADO)
+- 9.1.4 - Diferencias entre APIs de navegador y Node.js (COMPLETADO)
 
-### 9.2 - Multimedia: Video, Audio y Streaming (INCOMPLETO)
+### 9.2 - Multimedia: Video, Audio y Streaming (COMPLETADO)
 
-- 9.2.1 - Tipos de medios soportados y codecs (INCOMPLETO)
-- 9.2.2 - Propiedades, métodos y eventos de video/audio (INCOMPLETO)
-- 9.2.3 - Media Source Extension, MPEG-DASH y streaming adaptativo (INCOMPLETO)
-- 9.2.4 - Accesibilidad y performance en multimedia (INCOMPLETO)
+- 9.2.1 - Tipos de medios soportados y codecs (COMPLETADO)
+- 9.2.2 - Propiedades, métodos y eventos de video/audio (COMPLETADO)
+- 9.2.3 - Media Source Extension, MPEG-DASH y streaming adaptativo (COMPLETADO)
+- 9.2.4 - Accesibilidad y performance en multimedia (COMPLETADO)
 
 ### 9.3 - History API, Navegación y Routing (INCOMPLETO)
 

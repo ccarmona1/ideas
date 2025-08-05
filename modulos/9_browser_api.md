@@ -14,13 +14,12 @@
 - 9.2.3 - Media Source Extension, MPEG-DASH y streaming adaptativo (COMPLETADO)
 - 9.2.4 - Accesibilidad y performance en multimedia (COMPLETADO)
 
-### 9.3 - History API, Navegación y Routing (INCOMPLETO)
+### 9.3 - History API, Navegación y Routing (COMPLETADO)
 
-- 9.3.1 - Interfaz History: métodos y propiedades (INCOMPLETO)
-- 9.3.2 - Navegación y manipulación del historial (INCOMPLETO)
-- 9.3.3 - Añadir y modificar entradas/estados (INCOMPLETO)
-- 9.3.4 - Routing en cliente con HTML5 y SPA (INCOMPLETO)
-- 9.3.5 - Fallback de historial en servidor y SSR (INCOMPLETO)
+- 9.3.1 - Interfaz History: métodos y propiedades (COMPLETADO)
+- 9.3.2 - Añadir y modificar entradas/estados (COMPLETADO)
+- 9.3.3 - Routing en cliente con HTML5 y SPA (COMPLETADO)
+- 9.3.4 - Fallback de historial en servidor y SSR (COMPLETADO)
 
 ### 9.4 - Almacenamiento Web: Cookies, LocalStorage y SessionStorage (INCOMPLETO)
 

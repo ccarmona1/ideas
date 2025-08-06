@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync, readdirSync } = require('fs');
 const { join } = require('path');
 
-const modDir = join(__dirname, 'modulos');
+const modDir = join(__dirname, 'modules');
 const moduleFiles = readdirSync(modDir)
   .filter((f) => /^\d+_.+\.md$/.test(f))
   .sort((a, b) => {
@@ -9,7 +9,7 @@ const moduleFiles = readdirSync(modDir)
     const numB = parseInt(b.match(/^(\d+)_/)[1], 10);
     return numA - numB;
   })
-  .map((f) => join('modulos', f));
+  .map((f) => join('modules', f));
 
 let output = '';
 
@@ -18,4 +18,4 @@ for (const file of moduleFiles) {
 }
 
 writeFileSync(join(__dirname, 'course_full.md'), output);
-console.log('Archivo consolidado generado.');
+console.log('Full file generated.');

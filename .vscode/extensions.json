@@ -3,6 +3,9 @@
     "google.geminicodeassist",
     "dbaeumer.vscode-eslint",
     "ms-vscode.vscode-typescript-next",
-    "bierner.markdown-mermaid"
+    "bierner.markdown-mermaid",
+    "eamodio.gitlens",
+    "streetsidesoftware.code-spell-checker-spanish",
+    "streetsidesoftware.code-spell-checker"
   ]
 }

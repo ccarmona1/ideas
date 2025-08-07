@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "javascript.preferGoToSourceDefinition": true,
+    "debug.inlineValues": "on",
+    "editor.tabSize": 2,
+    "cSpell.words": ["esnext"],
+    "terminal.integrated.suggest.enabled": true
+  }
+}

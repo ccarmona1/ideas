@@ -4,7 +4,8 @@
     "outDir": "dist",
     "strict": true,
     "target": "es2023",
-    "module": "esnext",
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
     "noEmitOnError": true,
     "experimentalDecorators": true
   },

@@ -1,11 +1,11 @@
 ## 3 - Node.js Internals y Arquitecturas de Alto Rendimiento (INCOMPLETO)
 
-### 3.1 - Arquitectura Interna de Node.js (INCOMPLETO)
+### 3.1 - Arquitectura Interna de Node.js (COMPLETADO)
 
-- 3.1.1 - V8 Engine en Node.js (INCOMPLETO)
-- 3.1.2 - libuv (Thread Pool para operaciones de E/S, I/O Bound vs. CPU Bound) (INCOMPLETO)
-- 3.1.3 - node-addon-api / N-API (creación y uso de addons nativos de C++) (INCOMPLETO)
-- 3.1.4 - Zero-Cost Abstractions, WebAssembly y Node.js Native Modules (INCOMPLETO)
+- 3.1.1 - V8 Engine en Node.js (COMPLETADO)
+- 3.1.2 - libuv (Thread Pool para operaciones de E/S, I/O Bound vs. CPU Bound) (COMPLETADO)
+- 3.1.3 - node-addon-api / N-API (creación y uso de addons nativos de C++) (COMPLETADO)
+- 3.1.4 - Zero-Cost Abstractions, WebAssembly y Node.js Native Modules (COMPLETADO)
 
 ### 3.2 - Event Loop en Node.js (Profundo) (INCOMPLETO)
 

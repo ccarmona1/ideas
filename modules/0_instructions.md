@@ -4,6 +4,7 @@
 
 **Instrucciones IA:**
 
+- Incluye la respuesta es en el chat, no es necesario modificar ningún archivo.
 - Este es un curso dividido en modulos, temas y subtemas.
 - Los modulos tienen un id único consecutivo y un nombre descriptivo.
 - Cada tema tiene un id único consecutivo y un nombre descriptivo.

@@ -5,11 +5,59 @@
     }
   ],
   "settings": {
+    "cSpell.language": "en,es-ES",
+    "workbench.startupEditor": "none",
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "terminal.integrated.defaultProfile.windows": "JavaScript Debug Terminal",
+    "explorer.confirmDragAndDrop": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "editor.minimap.enabled": false,
+    "terminal.integrated.defaultProfile.linux": "JavaScript Debug Terminal",
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "cSpell.userWords": ["Carmona", "Crisman"],
     "editor.formatOnSave": true,
-    "javascript.preferGoToSourceDefinition": true,
-    "debug.inlineValues": "on",
     "editor.tabSize": 2,
-    "cSpell.words": ["esnext"],
-    "terminal.integrated.suggest.enabled": true
+    "terminal.integrated.defaultProfile.osx": "JavaScript Debug Terminal",
+    "debug.inlineValues": "on",
+    "[markdown]": {
+      "editor.unicodeHighlight.ambiguousCharacters": false,
+      "editor.unicodeHighlight.invisibleCharacters": false,
+      "diffEditor.ignoreTrimWhitespace": false,
+      "editor.wordWrap": "on",
+      "editor.quickSuggestions": {
+        "comments": "off",
+        "strings": "off",
+        "other": "off"
+      }
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "terminal.integrated.suggest.enabled": true,
+    "geminicodeassist.inlineSuggestions.enableAuto": false,
+    "gitlens.ai.model": "gemini:gemini-2.0-flash",
+    "[jsonc]": {
+      "editor.quickSuggestions": {
+        "strings": true
+      },
+      "editor.suggest.insertMode": "replace"
+    }
   }
 }

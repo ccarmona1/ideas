@@ -1,5 +1,8 @@
 {
   "recommendations": [
-    "google.geminicodeassist"
+    "google.geminicodeassist",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next",
+    "bierner.markdown-mermaid"
   ]
 }
